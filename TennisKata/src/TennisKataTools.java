@@ -14,4 +14,14 @@ public class TennisKataTools {
         return randomPlayer;
     }
 
+
+    static String isWinTheBall(Boolean ballState){
+        if(ballState){
+            return "Wins the ball";
+        }
+        else
+            return "Lost the ball";
+    }
+
+
 }

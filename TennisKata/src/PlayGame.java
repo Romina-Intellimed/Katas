@@ -7,9 +7,10 @@ import java.util.Random;
  */
 public class PlayGame {
 
-    static Integer gameState;
-    static Integer ballWinnerId;
-    static Integer ballLooserId;
+    static Integer gameState=TennisKataGameRules.START;
+    static Boolean start=false;
+    static Integer MAX_SERVES_DEUCE=5;
+
     Player player1;
     Player player2;
     List<Player> playersList;
@@ -27,38 +28,46 @@ public class PlayGame {
 
     String startGame(){
         Player winner=null;
-    // separate function
-        Random randomlyPlayerSelector=new Random();
-        Player serverPlayer=playersList.get(randomlyPlayerSelector.nextInt(playersList.size()));
-        gameState=GameRules.START;
+        Player serverPlayer=TennisKataTools.randomPlayer(playersList);
+        start=true;
 
 
-        while ( getGameState() != GameRules.IS_GAME_WIN ) {
-            // separate function - static function - in a class like game utils
-            ballWinnerId=randomlyPlayerSelector.nextInt(playersList.size());
-            winner = playersList.get(ballWinnerId);
-            winner.winTheBall = true;
-            winner.addPoints(1);
+        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN ) {
+
+            setWinnerOfTheBall();
+
             // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
             setPlayerAdvantage(player1);
             setPlayerAdvantage(player2);
             // player1.winTheBall.toString() - explain it
-                    System.out.println("Player1: " + player1.getName() + " " + player1.getScore() + " " + player1.winTheBall.toString());
-                    System.out.println("Player2: " + player2.getName() + " " + player2.getScore() + " " + player2.winTheBall.toString());
+                    System.out.println("Player1: " + player1.getName() + " " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
+                    System.out.println("Player2: " + player2.getName() + " " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
 
-            // get rid of these
-                    System.out.println("Wins the ball: " + winner.getName());
-                    System.out.println("Looses the ball: " + getLooser().getName());
-
+            updateGameState();
         }
-
-
-
         return winner.getName().toString();
     }
-// dummy commit
 
-    Player getLooser(){
+
+    Player getWinnerOfTheBall(){
+        Player winnerOfTheBall=null;
+        if(player1.winTheBall==true)
+            winnerOfTheBall=player1;
+        else if(player2.winTheBall==true)
+            winnerOfTheBall=player2;
+        return winnerOfTheBall;
+    }
+
+    void setWinnerOfTheBall(){
+        Player ballWinner;
+        ballWinner = TennisKataTools.randomPlayer(playersList);
+        ballWinner.winTheBall = true;
+        ballWinner.addPoints(1);
+    }
+
+
+
+ /*   Player getLooser(){
         Player looser=null;
             for(int i=0;i<playersList.size();i++){
                 if(i!=ballWinnerId){
@@ -68,7 +77,7 @@ public class PlayGame {
                 }
             }
         return  looser;
-    }
+    } */
 
     void setBallWinner(Player player){
 
@@ -96,30 +105,37 @@ public class PlayGame {
 // put a flag not to pass more than 5 times if game is in deuce
 
 
-    Integer getGameState() {
+    Integer getGameState(){
+
+        return gameState;
+    }
+
+    void updateGameState() {
+
         if (getGameWinner() != null) {
-            gameState = GameRules.IS_GAME_WIN;
+            gameState = TennisKataGameRules.IS_GAME_WIN;
             System.out.println("The game is WON state");
         }
         else if (isDeuce()) {
-            gameState = GameRules.IS_GAME_DEUCE;
+            gameState = TennisKataGameRules.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
         }
-        else {
-            gameState = GameRules.PLAY;
+        else if (start) {
+            gameState = TennisKataGameRules.PLAY;
             System.out.println("The game is in PLAY state");
         }
-        return gameState;
+
     }
+
 
 
     Player getGameWinner() {
         Player winner = null;
 
-        if (player1.score==GameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
+        if (player1.score== TennisKataGameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
             winner = player1;
         }
-        else if ( player2.score==GameRules.FORTY && player2.score > player1.score && player2.winTheBall == true) {
+        else if ( player2.score== TennisKataGameRules.FORTY && player2.score > player1.score && player2.winTheBall == true) {
             winner = player2;
 
         }
@@ -138,28 +154,20 @@ public class PlayGame {
 
     Boolean isDeuce() {
         Boolean isDeuce=false;
-        if (player1.score == GameRules.FORTY && player2.score == GameRules.FORTY) {
-            gameState = GameRules.IS_GAME_DEUCE;
-            isDeuce=true;
+        if (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY) {
+
+                isDeuce=true;
             System.out.println("The game is in DEUCE");
             }
-        else
-            if(whoWinTheBall()!=null && whoWinTheBall().hasAdvantage==false && whoWinTheBall().getScore()==3) {
-                gameState = GameRules.IS_GAME_DEUCE;
-                isDeuce=true;
-                System.out.println("The game is in DEUCE");
+      /*   else
+           if(whoWinTheBall()!=null && whoWinTheBall().hasAdvantage==false && whoWinTheBall().getScore()==TennisKataGameRules.FORTY) {
+                 isDeuce=true;
+            System.out.println("The game is in DEUCE");
+            } */
+        else{
+                isDeuce=false;
             }
         return isDeuce;
-    }
-
-
-    Player whoWinTheBall(){
-        Player winnerOfTheBall=null;
-        if(player1.winTheBall==true)
-            winnerOfTheBall=player1;
-        else if(player2.winTheBall==true)
-            winnerOfTheBall=player2;
-        return winnerOfTheBall;
     }
 
 

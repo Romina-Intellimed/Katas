@@ -6,11 +6,10 @@ import java.util.List;
  */
 public class PlayGame {
 
-    Integer gameState=TennisKataGameRules.START;
-    Boolean start=false;
+    Integer gameState = TennisKataGameRules.START;
+    Boolean start = false;
 
-    Integer countDeuce =0;
-
+    Integer countDeuce = 0;
 
     Player player1;
     Player player2;
@@ -19,21 +18,19 @@ public class PlayGame {
     PlayGame(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-
         playersList = new ArrayList<Player>();
         playersList.add(player1);
         playersList.add(player2);
     }
 
 
+    String startGame() {
+        Player winner = TennisKataTools.noWinner;
+        Player serverPlayer = TennisKataTools.randomPlayer(playersList);
+        start = true;
 
-    String startGame(){
-        Player winner=null;
-        Player serverPlayer=TennisKataTools.randomPlayer(playersList);
-        start=true;
 
-
-        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE) {
+        while (getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE) {
 
             updatePlayersState();
             updatePlayersAdvantageState(winner);
@@ -48,27 +45,26 @@ public class PlayGame {
     }
 
 
-
-    void updatePlayersState(){
-        Player ballWinner=getBallWinner();
-        Player ballLooser=getBallLooser(ballWinner);
+    void updatePlayersState() {
+        Player ballWinner = getBallWinner();
+        Player ballLooser = getBallLooser(ballWinner);
 
         ballWinner.winTheBall = true;
         ballWinner.addPoints(1);
-        ballLooser.winTheBall=false;
+        ballLooser.winTheBall = false;
 
     }
 
-    Player getBallWinner(){
+    Player getBallWinner() {
         return TennisKataTools.randomPlayer(playersList);
     }
 
-    Player getBallLooser(Player ballWinner){
-        Player ballLooser=null;
-        for(int i=0;i<playersList.size();i++){
-            if(i!=playersList.indexOf(ballWinner)){
+    Player getBallLooser(Player ballWinner) {
+        Player ballLooser = null;
+        for (int i = 0; i < playersList.size(); i++) {
+            if (i != playersList.indexOf(ballWinner)) {
 
-            ballLooser= playersList.get(i);
+                ballLooser = playersList.get(i);
 
             }
         }
@@ -76,17 +72,15 @@ public class PlayGame {
     }
 
 
+    Player updatePlayersAdvantageState(Player winner) {
+        if (isDeuce()) {
+            winner.hasAdvantage = true;
+            winner.hasGameBall = true;
+            getBallLooser(winner).hasAdvantage = false;
+            getBallLooser(winner).hasGameBall = false;
 
-    Player updatePlayersAdvantageState(Player winner){
-        if(isDeuce()){
-            winner.hasAdvantage=true;
-            winner.hasGameBall=true;
-            getBallLooser(winner).hasAdvantage=false;
-            getBallLooser(winner).hasGameBall=false;
-
-            System.out.println(winner.getName()+" has advantage and has the ball");
-        }
-        else if( !isDeuce()){
+            System.out.println(winner.getName() + " has advantage and has the ball");
+        } else if (!isDeuce()) {
 
             //winner.hasAdvantage=false;
             //winner.hasGameBall=false;
@@ -97,7 +91,7 @@ public class PlayGame {
         return null;
     }
 
-    Integer getGameState(){
+    Integer getGameState() {
 
         return gameState;
     }
@@ -107,13 +101,11 @@ public class PlayGame {
         if (getGameWinner() != null) {
             gameState = TennisKataGameRules.IS_GAME_WIN;
             System.out.println("The game is WON state");
-        }
-        else if (isDeuce()) {
+        } else if (isDeuce()) {
             countDeuce++;
             gameState = TennisKataGameRules.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
-        }
-        else if (start) {
+        } else if (start) {
             gameState = TennisKataGameRules.PLAY;
             System.out.println("The game is in PLAY state");
         }
@@ -121,51 +113,40 @@ public class PlayGame {
     }
 
 
-
     Player getGameWinner() {
         Player winner = null;
 
-        if (player1.score== TennisKataGameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
+        if (player1.score == TennisKataGameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
             winner = player1;
-        }
-        else if ( player2.score== TennisKataGameRules.FORTY && player2.score > player1.score && player2.winTheBall == true) {
+        } else if (player2.score == TennisKataGameRules.FORTY && player2.score > player1.score && player2.winTheBall == true) {
             winner = player2;
 
-        }
-        else if (player1.hasAdvantage == true && player1.winTheBall == true) {
+        } else if (player1.hasAdvantage == true && player1.winTheBall == true) {
             winner = player1;
-        }
-        else if (player2.hasAdvantage == true && player2.winTheBall == true) {
+        } else if (player2.hasAdvantage == true && player2.winTheBall == true) {
             winner = player2;
         }
         return winner;
     }
 
 
-
-
-
     Boolean isDeuce() {
-        Boolean isDeuce=false;
+        Boolean isDeuce = false;
         if (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY) {
 
-                isDeuce=true;
+            isDeuce = true;
             System.out.println("The game is in DEUCE");
-            }
+        }
       /*   else
            if(whoWinTheBall()!=null && whoWinTheBall().hasAdvantage==false && whoWinTheBall().getScore()==TennisKataGameRules.FORTY) {
                  isDeuce=true;
             System.out.println("The game is in DEUCE");
             } */
-        else{
-                isDeuce=false;
-            }
+        else {
+            isDeuce = false;
+        }
         return isDeuce;
     }
-
-
-
-
 
 
 }

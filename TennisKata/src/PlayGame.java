@@ -27,21 +27,26 @@ public class PlayGame {
 
     String startGame(){
         Player winner=null;
+    // separate function
         Random randomlyPlayerSelector=new Random();
         Player serverPlayer=playersList.get(randomlyPlayerSelector.nextInt(playersList.size()));
         gameState=GameRules.START;
 
-        while ( getGameState() != 3 ) {
+
+        while ( getGameState() != GameRules.IS_GAME_WIN ) {
+            // separate function - static function - in a class like game utils
             ballWinnerId=randomlyPlayerSelector.nextInt(playersList.size());
             winner = playersList.get(ballWinnerId);
             winner.winTheBall = true;
             winner.addPoints(1);
+            // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
             setPlayerAdvantage(player1);
             setPlayerAdvantage(player2);
+            // player1.winTheBall.toString() - explain it
                     System.out.println("Player1: " + player1.getName() + " " + player1.getScore() + " " + player1.winTheBall.toString());
                     System.out.println("Player2: " + player2.getName() + " " + player2.getScore() + " " + player2.winTheBall.toString());
 
-
+            // get rid of these
                     System.out.println("Wins the ball: " + winner.getName());
                     System.out.println("Looses the ball: " + getLooser().getName());
 
@@ -88,6 +93,8 @@ public class PlayGame {
 
     }
 
+// put a flag not to pass more than 5 times if game is in deuce
+
 
     Integer getGameState() {
         if (getGameWinner() != null) {
@@ -108,7 +115,7 @@ public class PlayGame {
 
     Player getGameWinner() {
         Player winner = null;
-        // define constants 3-forty, 2-thirty...
+
         if (player1.score==GameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
             winner = player1;
         }

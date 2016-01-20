@@ -26,7 +26,6 @@ public class PlayGame {
 
     String startGame() {
         Player winner = TennisKataTools.noPlayer;
-        Player serverPlayer = TennisKataTools.randomPlayer(playersList);
         start = true;
 
 

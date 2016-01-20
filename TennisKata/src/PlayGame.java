@@ -25,7 +25,7 @@ public class PlayGame {
 
 
     String startGame() {
-        Player winner = TennisKataTools.noWinner;
+        Player winner = TennisKataTools.noPlayer;
         Player serverPlayer = TennisKataTools.randomPlayer(playersList);
         start = true;
 
@@ -60,7 +60,7 @@ public class PlayGame {
     }
 
     Player getBallLooser(Player ballWinner) {
-        Player ballLooser = null;
+        Player ballLooser = TennisKataTools.noPlayer;
         for (int i = 0; i < playersList.size(); i++) {
             if (i != playersList.indexOf(ballWinner)) {
 

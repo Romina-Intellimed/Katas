@@ -8,7 +8,7 @@ public class TennisKataTools {
 
 
     static Random randomlyPlayerSelector=new Random();
-    static Player noWinner=new Player("No winner");
+    static Player noPlayer =new Player("No winner");
 
     static Player randomPlayer(List<Player> playersList){
         Player randomPlayer=playersList.get(randomlyPlayerSelector.nextInt(playersList.size()));

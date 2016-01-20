@@ -32,7 +32,7 @@ public class PlayGame {
         while (gameIsInPlaying()) {
 
             updatePlayersState();
-            updatePlayersAdvantageState(winner);
+
             // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
             System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
             System.out.println("Player2: " + player2.getName() + " score: " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
@@ -55,7 +55,7 @@ public class PlayGame {
         ballWinner.winTheBall = true;
         ballWinner.addPoints(1);
         ballLooser.winTheBall = false;
-
+        updatePlayersAdvantageState(ballWinner);
     }
 
     Player getBallWinner() {

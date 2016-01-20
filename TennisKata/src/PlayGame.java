@@ -6,9 +6,11 @@ import java.util.List;
  */
 public class PlayGame {
 
-    static Integer gameState=TennisKataGameRules.START;
-    static Boolean start=false;
-    static Integer MAX_SERVES_DEUCE=0;
+    Integer gameState=TennisKataGameRules.START;
+    Boolean start=false;
+
+    Integer NUMBER_SERVES_DEUCE =0;
+
 
     Player player1;
     Player player2;
@@ -31,7 +33,7 @@ public class PlayGame {
         start=true;
 
 
-        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && MAX_SERVES_DEUCE<=5) {
+        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && NUMBER_SERVES_DEUCE <=5) {
 
             updatePlayersState();
             updatePlayersAdvantageState(winner);
@@ -107,7 +109,7 @@ public class PlayGame {
             System.out.println("The game is WON state");
         }
         else if (isDeuce()) {
-            MAX_SERVES_DEUCE++;
+            NUMBER_SERVES_DEUCE++;
             gameState = TennisKataGameRules.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
         }

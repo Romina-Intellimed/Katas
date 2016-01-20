@@ -8,7 +8,7 @@ public class PlayGame {
 
     static Integer gameState=TennisKataGameRules.START;
     static Boolean start=false;
-    static Integer MAX_SERVES_DEUCE=5;
+    static Integer MAX_SERVES_DEUCE=0;
 
     Player player1;
     Player player2;
@@ -31,9 +31,9 @@ public class PlayGame {
         start=true;
 
 
-        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN ) {
+        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && MAX_SERVES_DEUCE<=5) {
 
-            updatePlayersWinTheBallState();
+            updatePlayersState();
             updatePlayersAdvantageState(winner);
             // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
             System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
@@ -41,12 +41,13 @@ public class PlayGame {
 
             updateGameState();
         }
-        return winner.getName().toString();
+
+        return "END";
     }
 
 
 
-    void updatePlayersWinTheBallState(){
+    void updatePlayersState(){
         Player ballWinner=getBallWinner();
         Player ballLooser=getBallLooser(ballWinner);
 
@@ -78,6 +79,9 @@ public class PlayGame {
         if(isDeuce()){
             winner.hasAdvantage=true;
             winner.hasGameBall=true;
+            getBallLooser(winner).hasAdvantage=false;
+            getBallLooser(winner).hasGameBall=false;
+
             System.out.println(winner.getName()+" has advantage and has the ball");
         }
         else if( !isDeuce()){
@@ -91,30 +95,6 @@ public class PlayGame {
         return null;
     }
 
-
-
-
-    void setPlayerAdvantage(Player player){
-
-        if(player.winTheBall=true && isDeuce()){
-                player.hasAdvantage=true;
-                player.hasGameBall=true;
-            System.out.println(player.getName()+" has advantage and has the ball");
-            //    int indexCurrentPlayer=playersList.indexOf(player);
-        }
-        else if(player.winTheBall=false && !isDeuce()){
-
-            player.hasAdvantage=false;
-            player.hasGameBall=false;
-            System.out.println(player.getName()+" has no advantage and has not the ball");
-
-        }
-
-    }
-
-// put a flag not to pass more than 5 times if game is in deuce
-
-
     Integer getGameState(){
 
         return gameState;
@@ -127,6 +107,7 @@ public class PlayGame {
             System.out.println("The game is WON state");
         }
         else if (isDeuce()) {
+            MAX_SERVES_DEUCE++;
             gameState = TennisKataGameRules.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
         }

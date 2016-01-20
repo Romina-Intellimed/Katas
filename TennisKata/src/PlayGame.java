@@ -25,16 +25,13 @@ public class PlayGame {
 
 
     String startGame() {
-        Player winner = TennisKataTools.noPlayer;
+
         startGame = true;
 
 
         while (gameIsInPlaying()) {
 
             playOneServe();
-
-            // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
-
             updateGameState();
         }
 
@@ -77,7 +74,7 @@ public class PlayGame {
         return ballLooser;
     }
 
-
+    // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
     Player updatePlayersAdvantageState(Player winner) {
         if (isDeuce()) {
             winner.hasAdvantage = true;
@@ -142,8 +139,7 @@ public class PlayGame {
 
             isDeuce = true;
             System.out.println("The game is in DEUCE");
-        }
-        else {
+        } else {
             isDeuce = false;
         }
         return isDeuce;

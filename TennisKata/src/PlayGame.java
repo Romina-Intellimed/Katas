@@ -33,14 +33,11 @@ public class PlayGame {
 
         while ( getGameState() != TennisKataGameRules.IS_GAME_WIN ) {
 
-            winner=updatePlayersWinTheBallState();
+            updatePlayersWinTheBallState();
             updatePlayersAdvantageState(winner);
             // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
-          //  setPlayerAdvantage(player1);
-           // setPlayerAdvantage(player2);
-            // player1.winTheBall.toString() - explain it
-                    System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
-                    System.out.println("Player2: " + player2.getName() + " score: " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
+            System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
+            System.out.println("Player2: " + player2.getName() + " score: " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
 
             updateGameState();
         }
@@ -49,20 +46,31 @@ public class PlayGame {
 
 
 
-    Player updatePlayersWinTheBallState(){
-        Player ballWinner;
-        ballWinner = TennisKataTools.randomPlayer(playersList);
+    void updatePlayersWinTheBallState(){
+        Player ballWinner=getBallWinner();
+        Player ballLooser=getBallLooser(ballWinner);
+
         ballWinner.winTheBall = true;
         ballWinner.addPoints(1);
+        ballLooser.winTheBall=false;
 
-        for(int i=0;i<playersList.size();i++){
-            if(i!=playersList.indexOf(ballWinner)){
-                playersList.get(i).winTheBall=false;
-            }
-        }
-        return ballWinner;
     }
 
+    Player getBallWinner(){
+        return TennisKataTools.randomPlayer(playersList);
+    }
+
+    Player getBallLooser(Player ballWinner){
+        Player ballLooser=null;
+        for(int i=0;i<playersList.size();i++){
+            if(i!=playersList.indexOf(ballWinner)){
+
+            ballLooser= playersList.get(i);
+
+            }
+        }
+        return ballLooser;
+    }
 
 
 
@@ -71,7 +79,6 @@ public class PlayGame {
             winner.hasAdvantage=true;
             winner.hasGameBall=true;
             System.out.println(winner.getName()+" has advantage and has the ball");
-            //    int indexCurrentPlayer=playersList.indexOf(player);
         }
         else if( !isDeuce()){
 

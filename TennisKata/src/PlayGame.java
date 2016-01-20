@@ -29,7 +29,7 @@ public class PlayGame {
         startGame = true;
 
 
-        while (getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE) {
+        while (gameIsInPlaying()) {
 
             updatePlayersState();
             updatePlayersAdvantageState(winner);
@@ -41,6 +41,10 @@ public class PlayGame {
         }
 
         return "END";
+    }
+
+    private boolean gameIsInPlaying() {
+        return getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE;
     }
 
 

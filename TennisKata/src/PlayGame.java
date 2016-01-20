@@ -33,14 +33,14 @@ public class PlayGame {
 
         while ( getGameState() != TennisKataGameRules.IS_GAME_WIN ) {
 
-            updatePlayersWinTheBallState();
-
+            winner=updatePlayersWinTheBallState();
+            updatePlayersAdvantageState(winner);
             // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
           //  setPlayerAdvantage(player1);
            // setPlayerAdvantage(player2);
             // player1.winTheBall.toString() - explain it
-                    System.out.println("Player1: " + player1.getName() + " " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
-                    System.out.println("Player2: " + player2.getName() + " " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
+                    System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
+                    System.out.println("Player2: " + player2.getName() + " score: " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
 
             updateGameState();
         }
@@ -49,7 +49,7 @@ public class PlayGame {
 
 
 
-    void updatePlayersWinTheBallState(){
+    Player updatePlayersWinTheBallState(){
         Player ballWinner;
         ballWinner = TennisKataTools.randomPlayer(playersList);
         ballWinner.winTheBall = true;
@@ -60,24 +60,24 @@ public class PlayGame {
                 playersList.get(i).winTheBall=false;
             }
         }
-
+        return ballWinner;
     }
 
 
 
 
-    Player updatePlayersAdvantageState(Player player){
-        if(player.winTheBall=true && isDeuce()){
-            player.hasAdvantage=true;
-            player.hasGameBall=true;
-            System.out.println(player.getName()+" has advantage and has the ball");
+    Player updatePlayersAdvantageState(Player winner){
+        if(isDeuce()){
+            winner.hasAdvantage=true;
+            winner.hasGameBall=true;
+            System.out.println(winner.getName()+" has advantage and has the ball");
             //    int indexCurrentPlayer=playersList.indexOf(player);
         }
-        else if(player.winTheBall=false && !isDeuce()){
+        else if( !isDeuce()){
 
-            player.hasAdvantage=false;
-            player.hasGameBall=false;
-            System.out.println(player.getName()+" has no advantage and has not the ball");
+            //winner.hasAdvantage=false;
+            //winner.hasGameBall=false;
+            //System.out.println(winner.getName()+" has no advantage and has not the ball");
 
         }
 

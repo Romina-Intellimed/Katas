@@ -47,8 +47,6 @@ public class PlayGame {
         Player ballWinner = getBallWinner();
         Player ballLooser = getBallLooser(ballWinner);
 
-        ballWinner.winTheBall = true;
-        ballWinner.addPoints(1);
         ballLooser.winTheBall = false;
         updatePlayersAdvantageState(ballWinner);
 
@@ -59,7 +57,10 @@ public class PlayGame {
     }
 
     Player getBallWinner() {
-        return TennisKataTools.randomPlayer(playersList);
+        Player player = TennisKataTools.randomPlayer(playersList);
+        player.winTheBall=true;
+        player.addPoints(1);
+        return player;
     }
 
     Player getBallLooser(Player ballWinner) {

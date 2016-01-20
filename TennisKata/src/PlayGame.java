@@ -47,7 +47,7 @@ public class PlayGame {
         Player ballWinner = getBallWinner();
         Player ballLooser = getBallLooser(ballWinner);
 
-        ballLooser.winTheBall = false;
+
         updatePlayersAdvantageState(ballWinner);
 
         System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
@@ -69,7 +69,8 @@ public class PlayGame {
             if (i != playersList.indexOf(ballWinner)) {
 
                 ballLooser = playersList.get(i);
-
+                ballLooser.winTheBall=false;
+                break;
             }
         }
         return ballLooser;

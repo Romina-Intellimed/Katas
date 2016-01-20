@@ -45,9 +45,7 @@ public class PlayGame {
 
     void playOneServe() {
         Player ballWinner = getBallWinner();
-        Player ballLooser = getBallLooser(ballWinner);
-
-
+        
         updatePlayersAdvantageState(ballWinner);
 
         System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));

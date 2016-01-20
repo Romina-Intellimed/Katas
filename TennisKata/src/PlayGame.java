@@ -7,7 +7,7 @@ import java.util.List;
 public class PlayGame {
 
     Integer gameState = TennisKataGameRules.START;
-    Boolean start = false;
+    Boolean startGame = false;
 
     Integer countDeuce = 0;
 
@@ -26,7 +26,7 @@ public class PlayGame {
 
     String startGame() {
         Player winner = TennisKataTools.noPlayer;
-        start = true;
+        startGame = true;
 
 
         while (getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE) {
@@ -104,7 +104,7 @@ public class PlayGame {
             countDeuce++;
             gameState = TennisKataGameRules.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
-        } else if (start) {
+        } else if (startGame) {
             gameState = TennisKataGameRules.PLAY;
             System.out.println("The game is in PLAY state");
         }
@@ -136,11 +136,6 @@ public class PlayGame {
             isDeuce = true;
             System.out.println("The game is in DEUCE");
         }
-      /*   else
-           if(whoWinTheBall()!=null && whoWinTheBall().hasAdvantage==false && whoWinTheBall().getScore()==TennisKataGameRules.FORTY) {
-                 isDeuce=true;
-            System.out.println("The game is in DEUCE");
-            } */
         else {
             isDeuce = false;
         }

@@ -44,7 +44,7 @@ public final class TennisKataGameRules {
 
         switch(gameState){
             case START:
-                state="start";
+                state="startGame";
             case PLAY:
                 state="play";
             case IS_GAME_DEUCE:

@@ -6,6 +6,7 @@ public final class TennisKataGameRules {
 
     static final int  LOVE=0, FIFTEEN=1, THIRTY=2, FORTY=3;
     static final int START=0, PLAY=1, IS_GAME_DEUCE=2, IS_GAME_WIN=3;
+    static Integer MAX_SERVES_DEUCE =5;
 
 
     public enum scoreEnum {

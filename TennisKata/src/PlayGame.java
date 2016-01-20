@@ -10,7 +10,6 @@ public class PlayGame {
     Boolean start=false;
 
     Integer countDeuce =0;
-    Integer MAX_SERVES_DEUCE =5;
 
 
     Player player1;
@@ -34,7 +33,7 @@ public class PlayGame {
         start=true;
 
 
-        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <=MAX_SERVES_DEUCE) {
+        while ( getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE) {
 
             updatePlayersState();
             updatePlayersAdvantageState(winner);

@@ -137,15 +137,9 @@ public class PlayGame {
 
 
     Boolean isDeuce() {
-        Boolean isDeuce = false;
-        if (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY) {
 
-            isDeuce = true;
-            System.out.println("The game is in DEUCE");
-        } else {
-            isDeuce = false;
-        }
-        return isDeuce;
+        return (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY) ;
+
     }
 
     Boolean isAdvantage(){

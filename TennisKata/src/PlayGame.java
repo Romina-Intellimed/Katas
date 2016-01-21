@@ -74,7 +74,6 @@ public class PlayGame {
         return ballLooser;
     }
 
-    // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
     void updatePlayersAdvantageState(Player winner) {
         if (isDeuce()) {
             winner.hasAdvantage = true;
@@ -84,9 +83,10 @@ public class PlayGame {
 
             System.out.println(winner.getName() + " has advantage and has the ball");
         } else if(isAdvantage() && winner.hasAdvantage==false){
-            gameState=TennisKataGameRules.IS_GAME_DEUCE;
+
             getBallLooser(winner).hasAdvantage = false;
             getBallLooser(winner).hasGameBall = false;
+            winner.hasGameBall=false;
         }
 
 

@@ -15,9 +15,9 @@ public class Player {
 
 
     // take into the sets
-    public Integer addPoints(Integer points){
+    public Integer addPoints(){
 
-        score = score+points ;
+        score = score+1;
 
         return score;
     }

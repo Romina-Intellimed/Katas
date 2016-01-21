@@ -57,7 +57,7 @@ public class PlayGame {
     Player getBallWinner() {
         Player player = TennisKataTools.randomPlayer(playersList);
         player.winTheBall=true;
-        player.addPoints(1);
+        player.addPoints();
         return player;
     }
 

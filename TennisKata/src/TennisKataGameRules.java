@@ -5,7 +5,7 @@ public final class TennisKataGameRules {
 
 
     static final int  LOVE=0, FIFTEEN=1, THIRTY=2, FORTY=3;
-    static final int START=0, PLAY=1, IS_GAME_DEUCE=2, IS_GAME_WIN=3;
+    static final int START=0, PLAY=1, IS_GAME_DEUCE=2, IS_GAME_ADVANTAGE=3,IS_GAME_WIN=4;
     static Integer MAX_SERVES_DEUCE =5;
 
 
@@ -14,7 +14,7 @@ public final class TennisKataGameRules {
     }
 
     public enum gameStateEnum {
-        START, PLAY, IS_GAME_DEUCE, IS_GAME_WIN
+        START, PLAY, IS_GAME_DEUCE, IS_GAME_ADVNATAGE, IS_GAME_WIN
         }
 
 
@@ -50,6 +50,8 @@ public final class TennisKataGameRules {
             case IS_GAME_DEUCE:
                 state="deuce";
             case IS_GAME_WIN:
+                state="isGameWon";
+            case IS_GAME_ADVANTAGE:
                 state="isGameWon";
 
         }

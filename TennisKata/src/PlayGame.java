@@ -45,7 +45,7 @@ public class PlayGame {
 
     void playOneServe() {
         Player ballWinner = getBallWinner();
-        
+
         updatePlayersAdvantageState(ballWinner);
 
         System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
@@ -112,6 +112,9 @@ public class PlayGame {
             gameState = TennisKataGameRules.PLAY;
             System.out.println("The game is in PLAY state");
         }
+        else if(isDeuce() && (player1.hasAdvantage == true || player2.hasAdvantage == true)){
+            gameState=TennisKataGameRules.IS_GAME_ADVANTAGE;
+        }
 
     }
 
@@ -145,5 +148,8 @@ public class PlayGame {
         return isDeuce;
     }
 
+    Boolean isAdvantage(){
+        return (isDeuce() && (player1.hasAdvantage == true || player2.hasAdvantage == true));
+    }
 
 }

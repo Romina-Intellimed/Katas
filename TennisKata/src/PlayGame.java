@@ -48,8 +48,8 @@ public class PlayGame {
 
         updatePlayersAdvantageState(ballWinner);
 
-        System.out.println("Player1: " + player1.getName() + " score: " + player1.getScore() + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
-        System.out.println("Player2: " + player2.getName() + " score: " + player2.getScore() + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
+        System.out.println("Player1: " + player1.getName() + " score: " + TennisKataGameRules.displayResult(player1.getScore()) + " " + TennisKataTools.isWinTheBall(player1.winTheBall));
+        System.out.println("Player2: " + player2.getName() + " score: " + TennisKataGameRules.displayResult(player2.getScore()) + " " + TennisKataTools.isWinTheBall(player2.winTheBall));
 
 
     }

@@ -11,8 +11,12 @@ public class TennisKataMain {
 
 
         System.out.println( tennisKataPlayGame.startGame());
+
         System.out.println("Player1: "+player1.getName()+" "+ TennisKataGameRules.displayResult(player1.getScore())+" "+player1.winTheBall.toString());
         System.out.println("Player2: "+player2.getName()+" "+ TennisKataGameRules.displayResult(player2.getScore())+" "+player2.winTheBall.toString());
+
+        System.out.println("Winner: "+tennisKataPlayGame.getGameWinner().getName());
+
 
     }
 

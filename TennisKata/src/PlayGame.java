@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class PlayGame {
 
-    Integer gameState = TennisKataGameRules.START;
+    GameState gameState = GameState.START;
     Boolean startGame = false;
 
     Integer countDeuce = 0;
@@ -39,7 +39,7 @@ public class PlayGame {
     }
 
     private boolean gameIsInPlaying() {
-        return getGameState() != TennisKataGameRules.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE;
+        return getGameState() != GameState.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE;
     }
 
 
@@ -92,7 +92,7 @@ public class PlayGame {
 
     }
 
-    Integer getGameState() {
+    GameState getGameState() {
 
         return gameState;
     }
@@ -100,18 +100,18 @@ public class PlayGame {
     void updateGameState() {
 
         if (getGameWinner() != null) {
-            gameState = TennisKataGameRules.IS_GAME_WIN;
+            gameState = GameState.IS_GAME_WIN;
             System.out.println("The game is WON state");
         } else if (isDeuce()) {
             countDeuce++;
-            gameState = TennisKataGameRules.IS_GAME_DEUCE;
+            gameState = GameState.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
         } else if (startGame) {
-            gameState = TennisKataGameRules.PLAY;
+            gameState = GameState.PLAY;
             System.out.println("The game is in PLAY state");
         }
         else if(isAdvantage()){
-            gameState=TennisKataGameRules.IS_GAME_ADVANTAGE;
+            gameState=GameState.IS_GAME_ADVANTAGE;
         }
 
     }

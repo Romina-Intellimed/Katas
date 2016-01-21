@@ -75,7 +75,7 @@ public class PlayGame {
     }
 
     // set false advantage for the other player - updatePlayersAdvantageState - > other method - update player advantage
-    Player updatePlayersAdvantageState(Player winner) {
+    void updatePlayersAdvantageState(Player winner) {
         if (isDeuce()) {
             winner.hasAdvantage = true;
             winner.hasGameBall = true;
@@ -83,15 +83,13 @@ public class PlayGame {
             getBallLooser(winner).hasGameBall = false;
 
             System.out.println(winner.getName() + " has advantage and has the ball");
-        } else if (!isDeuce()) {
-
-            //winner.hasAdvantage=false;
-            //winner.hasGameBall=false;
-            //System.out.println(winner.getName()+" has no advantage and has not the ball");
-
+        } else if(isAdvantage() && winner.hasAdvantage==false){
+            gameState=TennisKataGameRules.IS_GAME_DEUCE;
+            getBallLooser(winner).hasAdvantage = false;
+            getBallLooser(winner).hasGameBall = false;
         }
 
-        return null;
+
     }
 
     Integer getGameState() {
@@ -112,7 +110,7 @@ public class PlayGame {
             gameState = TennisKataGameRules.PLAY;
             System.out.println("The game is in PLAY state");
         }
-        else if(isDeuce() && (player1.hasAdvantage == true || player2.hasAdvantage == true)){
+        else if(isAdvantage()){
             gameState=TennisKataGameRules.IS_GAME_ADVANTAGE;
         }
 
@@ -137,13 +135,12 @@ public class PlayGame {
 
 
     Boolean isDeuce() {
-
-        return (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY) ;
+        return (player1.score == TennisKataGameRules.FORTY && player2.score == TennisKataGameRules.FORTY && !isAdvantage());
 
     }
 
     Boolean isAdvantage(){
-        return (isDeuce() && (player1.hasAdvantage == true || player2.hasAdvantage == true));
+        return (player1.hasAdvantage == true || player2.hasAdvantage == true);
     }
 
 }

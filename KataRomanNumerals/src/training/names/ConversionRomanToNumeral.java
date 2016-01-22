@@ -5,7 +5,7 @@ package training.names;
  */
 public class ConversionRomanToNumeral {
 
-    boolean assertRomanNumberFormat(String romanNumber) {
+    boolean isValidRomanNumber(String romanNumber) {
         int indexLetter = 0;
         Boolean assertValue = false;
         if (romanNumber == null || romanNumber.length() == 0) {
@@ -25,7 +25,7 @@ public class ConversionRomanToNumeral {
 
 
     public Integer romanToNumeral(String romanNumber) {
-        if (!assertRomanNumberFormat(romanNumber)) throw new IllegalArgumentException("Bad roman number");
+        if (!isValidRomanNumber(romanNumber)) throw new IllegalArgumentException("Bad roman number");
 
         Integer numeral = 0;
         int indexLetter = 0;

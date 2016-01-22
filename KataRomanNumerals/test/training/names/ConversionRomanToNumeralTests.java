@@ -45,5 +45,32 @@ public class ConversionRomanToNumeralTests {
     }
 
 
+    @Test
+    public void stringWithRomanLettersShouldBeRomanNumber(){
+        String input="I";
+        Boolean expectedOutput=true;
+
+        Boolean actualOutput=converter.isValidRomanNumber(input);
+
+        Assert.assertEquals(input + " should be a string composed of roman letters: " +actualOutput,expectedOutput,actualOutput);
+    }
+
+
+
+    @Test
+    public void emptyStringIsNotValidRomanNumber(){
+        String input="";
+        Boolean expectedOutput=false;
+
+        Boolean actualOutput=converter.isValidRomanNumber(input);
+
+        Assert.assertEquals(input + " should be not null: " +actualOutput,expectedOutput,actualOutput);
+    }
+
+
+    @Test
+    public void addingValueToActualNumber(){
+
+    }
 
 }

@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.*;
+
 /**
  * Created by Romina DRUTA on 22.01.2016.
  */
@@ -18,7 +20,7 @@ public class ConversionRomanToNumeralTests {
 
     @Test
     public void dummyTest() {
-        assert true == true;
+        assert true;
     }
 
     @Test
@@ -28,7 +30,7 @@ public class ConversionRomanToNumeralTests {
 
         Integer actualOutput = converter.romanToNumeral(input);
 
-        Assert.assertEquals(input + " is converted to " + actualOutput, expectedOutput, actualOutput);
+        assertEquals(input + " is converted to " + actualOutput, expectedOutput, actualOutput);
     }
 
 
@@ -40,7 +42,7 @@ public class ConversionRomanToNumeralTests {
 
         Integer actualOutput=converter.romanToNumeral(input);
 
-        Assert.assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
 
     }
 
@@ -52,24 +54,20 @@ public class ConversionRomanToNumeralTests {
 
         Boolean actualOutput=converter.isValidRomanNumber(input);
 
-        Assert.assertEquals(input + " should be a string composed of roman letters: " +actualOutput,expectedOutput,actualOutput);
+        assertEquals(input + " should be a string composed of roman letters: " +actualOutput,expectedOutput,actualOutput);
     }
 
 
 
     @Test
     public void emptyStringIsNotValidRomanNumber(){
-        String input="";
-        Boolean expectedOutput=false;
-
-        Boolean actualOutput=converter.isValidRomanNumber(input);
-
-        Assert.assertEquals(input + " should be not null: " +actualOutput,expectedOutput,actualOutput);
+        assertEquals("" + " should be not null: " + converter.isValidRomanNumber(""), false, converter.isValidRomanNumber(""));
     }
 
 
     @Test
     public void addingValueToActualNumber(){
+
 
     }
 

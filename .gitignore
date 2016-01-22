@@ -1,7 +1,7 @@
 */*.iml
-/*/out/*
-/*/.idea/*
-/*/.settings/*
-/*/bin/*
-/*/.classpath
-/*/.project
+*/out/*
+*/.idea/*
+*/.settings/*
+*/bin/*
+*/.classpath
+*/.project

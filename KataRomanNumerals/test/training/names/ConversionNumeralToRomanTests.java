@@ -49,5 +49,19 @@ public class ConversionNumeralToRomanTests {
 
 
 
+    @Test
+    public void twoShouldBEConvertedToII(){
+        Integer input = 2;
+        String expectedOutput = "II";
+
+        String actualOutput = converter.numeralToRoman(input);
+
+        assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
+
+    }
+
+
+
+
 
 }

@@ -298,6 +298,17 @@ public class ConversionRomanToNumeralTests {
 
     }
 
+    @Test
+    public void sixShouldBeEqualToStringLength(){
+        Integer inputIndexLetter=6;
+        String inputString="string";
+
+        Boolean expectedOutput=true;
+
+        Boolean actualOutput=converter.isEndOfRomanNumber(inputIndexLetter,inputString);
+        assertEquals(inputIndexLetter + " should be last letter position in "+inputString,expectedOutput,actualOutput);
+
+    }
 
 
 }

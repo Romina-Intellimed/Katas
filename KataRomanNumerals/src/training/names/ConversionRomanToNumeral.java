@@ -62,7 +62,7 @@ public class ConversionRomanToNumeral {
     }
 
 
-    private boolean isEndOfRomanNumber(Integer indexLetter, String romanNumber) {
+    protected boolean isEndOfRomanNumber(Integer indexLetter, String romanNumber) {
         return indexLetter == romanNumber.length();
     }
 

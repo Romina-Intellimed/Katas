@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.jnlp.IntegrationService;
+
 import static junit.framework.Assert.*;
 
 /**
@@ -306,8 +308,21 @@ public class ConversionRomanToNumeralTests {
         Boolean expectedOutput=true;
 
         Boolean actualOutput=converter.isEndOfRomanNumber(inputIndexLetter,inputString);
-        assertEquals(inputIndexLetter + " should be last letter position in "+inputString,expectedOutput,actualOutput);
+        assertEquals(inputIndexLetter + " should be last letter position in "+inputString,expectedOutput,actualOutput); ///???
 
+    }
+
+
+    @Test
+    public void tenShouldBeCorrespondingToXInString(){
+        Integer inputIndexLetter=2;
+        String inputRomanNumber="CXX";
+
+        Integer expectedOutput=10;
+
+        Integer actualOutput=converter.getValueForLetterWithIndex(inputIndexLetter,inputRomanNumber);
+
+        assertEquals(inputIndexLetter + "in "+inputRomanNumber+ " should be "+actualOutput,expectedOutput,actualOutput);
     }
 
 

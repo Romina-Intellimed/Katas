@@ -66,7 +66,7 @@ public class ConversionRomanToNumeral {
         return indexLetter == romanNumber.length();
     }
 
-    private Integer getValueForLetterWithIndex(Integer indexLetter, String romanNumber) {
+    protected Integer getValueForLetterWithIndex(Integer indexLetter, String romanNumber) {
         char currentLetter = romanNumber.charAt(indexLetter);
         return RomanNumeralsMap.getCorrespondingNumberforRomanDigit(currentLetter);
     }

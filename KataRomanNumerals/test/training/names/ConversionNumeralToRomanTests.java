@@ -33,11 +33,20 @@ public class ConversionNumeralToRomanTests {
 
         assertEquals(input + " respects the given limits " + actualOutput, expectedOutput, actualOutput);
 
-
     }
 
 
-    
+    @Test
+    public void oneShouldBEConvertedToI(){
+        Integer input = 1;
+        String expectedOutput = "I";
+
+        String actualOutput = converter.numeralToRoman(input);
+
+        assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
+
+    }
+
 
 
 

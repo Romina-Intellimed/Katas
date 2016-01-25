@@ -11,7 +11,7 @@ public class ConversionNumeralToRoman {
 
 
     boolean assertNumeralInLimits(Integer numeral) {
-        if(numeral!=null && (numeral > MINIMUM_NUMERAL && numeral <= MAXIMUM_NUMERAL))
+        if(numeral!=null && (numeral >= MINIMUM_NUMERAL && numeral <= MAXIMUM_NUMERAL))
              return true;
         else
             return false;

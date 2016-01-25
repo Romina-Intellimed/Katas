@@ -26,6 +26,19 @@ public class ConversionRomanToNumeralTests {
     }
 
     @Test
+    public void shouldThrowExceptionIfInvalidRomanNumber() {
+        String input = "IEW";
+        Boolean expectedOutput = false;
+
+        Boolean actualOutput = converter.isValidRomanNumber(input);
+
+        assertEquals(input + " is not a valid number: " + actualOutput, expectedOutput, actualOutput);
+    }
+
+
+
+
+    @Test
     public void IshouldConvertTo1() {
         String input = "I";
         Integer expectedOutput = 1;
@@ -93,7 +106,7 @@ public class ConversionRomanToNumeralTests {
 
 
     @Test
-    public void LLshouldCOnvertTo50(){
+    public void LshouldCOnvertTo50(){
         String input = "L";
         Integer expectedOutput=50;
 
@@ -104,7 +117,7 @@ public class ConversionRomanToNumeralTests {
     }
 
     @Test
-    public void XCLshouldCOnvertTo90(){
+    public void XCshouldCOnvertTo90(){
         String input = "XC";
         Integer expectedOutput=90;
 
@@ -232,8 +245,8 @@ public class ConversionRomanToNumeralTests {
 
     @Test
     public void CCCDXLIVshouldCOnvertTo1344(){
-        String input = "CCCDXLIV"; ///????????????  - should say not a valid input ???
-        Integer expectedOutput=644; // ??? you should not enter more than one smaller number in front of a larger number
+        String input = "CCCDXLIV";
+        Integer expectedOutput=644;
 
         Integer actualOutput=converter.romanToNumeral(input);
 
@@ -246,7 +259,7 @@ public class ConversionRomanToNumeralTests {
 
     @Test
     public void CMCDXLIVshouldCOnvertTo1344(){
-        String input = "CMCDXLIV"; ///????????????  - should say not a valid input ???
+        String input = "CMCDXLIV";
         Integer expectedOutput=1344;
 
         Integer actualOutput=converter.romanToNumeral(input);
@@ -301,20 +314,20 @@ public class ConversionRomanToNumeralTests {
     }
 
     @Test
-    public void sixShouldBeEqualToStringLength(){
+    public void shouldBeEndOfRomanNumber(){
         Integer inputIndexLetter=6;
-        String inputString="string";
+        String inputString="CDXLII";
 
         Boolean expectedOutput=true;
 
         Boolean actualOutput=converter.isEndOfRomanNumber(inputIndexLetter,inputString);
-        assertEquals(inputIndexLetter + " should be last letter position in "+inputString,expectedOutput,actualOutput); ///???
+        assertEquals(inputIndexLetter + " should be last letter position in "+inputString,expectedOutput,actualOutput);
 
     }
 
 
     @Test
-    public void tenShouldBeCorrespondingToXInString(){
+    public void shouldReturnCorrectValueForLetterWithGivenIndex(){
         Integer inputIndexLetter=2;
         String inputRomanNumber="CXX";
 

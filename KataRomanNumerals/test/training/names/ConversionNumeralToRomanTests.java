@@ -23,9 +23,22 @@ public class ConversionNumeralToRomanTests {
         assert true;
     }
 
+    // To check with C.
+    @Test
+    public void shouldThrowExceptionIfInvalidNumeral(){
+        Integer input = 55555;
+        Boolean expectedOutput = false;
+
+        Boolean actualOutput = converter.assertNumeralInLimits(input);
+
+        assertEquals(input + " respects the given limits " + actualOutput, expectedOutput, actualOutput);
+
+    }
+
+
 
     @Test
-    public void number567IsInLimits(){
+    public void givenNumberIsInLimits(){
         Integer input = 567;
         Boolean expectedOutput = true;
 

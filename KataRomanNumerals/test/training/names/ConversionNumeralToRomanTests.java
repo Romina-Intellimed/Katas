@@ -72,8 +72,20 @@ public class ConversionNumeralToRomanTests {
 
         assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
 
+    }
+
+    @Test
+    public void nineShouldBEConvertedToIX(){
+        Integer input = 9;
+        String expectedOutput = "IX";
+
+        String actualOutput = converter.numeralToRoman(input);
+
+        assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
 
     }
+
+
 
 
 

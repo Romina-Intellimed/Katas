@@ -172,6 +172,88 @@ public class ConversionRomanToNumeralTests {
 
 
 
+    @Test
+    public void XLIshouldCOnvertTo41(){
+        String input = "XLI";
+        Integer expectedOutput=41;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void CXLIshouldCOnvertTo141(){
+        String input = "CXLI";
+        Integer expectedOutput=141;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void CXLIVshouldCOnvertTo144(){
+        String input = "CXLIV";
+        Integer expectedOutput=144;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void CDXLIVshouldCOnvertTo444(){
+        String input = "CDXLIV";
+        Integer expectedOutput=444;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void MCDXLIVshouldCOnvertTo1444(){
+        String input = "MCDXLIV";
+        Integer expectedOutput=1444;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+    @Test
+    public void CCCDXLIVshouldCOnvertTo1344(){
+        String input = "CCCDXLIV"; ///????????????  - should say not a valid input ???
+        Integer expectedOutput=644; // ??? you should not enter more than one smaller number in front of a larger number
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+
+
+    @Test
+    public void CMCDXLIVshouldCOnvertTo1344(){
+        String input = "CMCDXLIV"; ///????????????  - should say not a valid input ???
+        Integer expectedOutput=1344;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
 
     @Test
     public void stringWithRomanLettersShouldBeRomanNumber(){

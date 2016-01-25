@@ -34,6 +34,37 @@ public class ConversionRomanToNumeralTests {
     }
 
 
+    @Test
+    public void IVshouldConvertTo4() {
+        String input = "IV";
+        Integer expectedOutput = 4;
+
+        Integer actualOutput = converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to " + actualOutput, expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void VshouldConvertTo5() {
+        String input = "V";
+        Integer expectedOutput = 5;
+
+        Integer actualOutput = converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to " + actualOutput, expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void IXshouldCOnvertTo9(){
+        String input = "IX";
+        Integer expectedOutput=9;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
 
     @Test
     public void XshouldCOnvertTo10(){
@@ -45,6 +76,101 @@ public class ConversionRomanToNumeralTests {
         assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
 
     }
+
+
+    @Test
+    public void XLshouldCOnvertTo40(){
+        String input = "XL";
+        Integer expectedOutput=40;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+    @Test
+    public void LLshouldCOnvertTo50(){
+        String input = "L";
+        Integer expectedOutput=50;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void XCLshouldCOnvertTo90(){
+        String input = "XC";
+        Integer expectedOutput=90;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void CLshouldCOnvertTo100(){
+        String input = "C";
+        Integer expectedOutput=100;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+    @Test
+    public void CDLshouldCOnvertTo400(){
+        String input = "CD";
+        Integer expectedOutput=400;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+    @Test
+    public void DLshouldCOnvertTo500(){
+        String input = "D";
+        Integer expectedOutput=500;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
+    @Test
+    public void CMshouldCOnvertTo900(){
+        String input = "CM";
+        Integer expectedOutput=900;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+    @Test
+    public void MshouldCOnvertTo1000(){
+        String input = "M";
+        Integer expectedOutput=1000;
+
+        Integer actualOutput=converter.romanToNumeral(input);
+
+        assertEquals(input + " is converted to "+actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
 
 
     @Test

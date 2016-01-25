@@ -58,9 +58,22 @@ public class ConversionNumeralToRomanTests {
 
         assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
 
+
     }
 
 
+
+    @Test
+    public void fourShouldBEConvertedToIV(){
+        Integer input = 4;
+        String expectedOutput = "IV";
+
+        String actualOutput = converter.numeralToRoman(input);
+
+        assertEquals(input + " should be converted to " + actualOutput, expectedOutput, actualOutput);
+
+
+    }
 
 
 

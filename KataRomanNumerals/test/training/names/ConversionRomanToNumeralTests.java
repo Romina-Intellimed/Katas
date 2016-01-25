@@ -274,9 +274,30 @@ public class ConversionRomanToNumeralTests {
 
 
     @Test
-    public void addingValueToActualNumber(){
+    public void sumOf25Plus65IsActualNumber90(){
+        Integer inputCurrentNumber=25;
+        Integer inputNumberToAdd=65;
 
+        Integer expectedOutput=90;
+
+        Integer actualOutput=converter.addCurrentValueToNumber(inputCurrentNumber,inputNumberToAdd);
+
+        assertEquals(inputCurrentNumber+"+"+inputNumberToAdd +" should be : " +actualOutput,expectedOutput,actualOutput);
 
     }
+
+    @Test
+    public void groupOfNumbersShouldBeSubstracted(){
+        Integer inputCurrentNumber=9;
+        Integer inputNextNumber=10;
+
+        Boolean expectedOutput=true;
+
+        Boolean actualOutput=converter.isSubstractionGroup(inputCurrentNumber,inputNextNumber);
+        assertEquals(inputCurrentNumber + " should be substracted from "+inputNextNumber +actualOutput,expectedOutput,actualOutput);
+
+    }
+
+
 
 }

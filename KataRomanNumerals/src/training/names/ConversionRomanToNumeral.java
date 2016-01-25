@@ -52,12 +52,12 @@ public class ConversionRomanToNumeral {
         return numeral;
     }
 
-    private Integer addCurrentValueToNumber(Integer numeral, Integer currentNumber) {
+    protected Integer addCurrentValueToNumber(Integer numeral, Integer currentNumber) {
         numeral += currentNumber;
         return numeral;
     }
 
-    private boolean isSubstractionGroup(Integer currentNumber, Integer nextNumber) {
+    protected boolean isSubstractionGroup(Integer currentNumber, Integer nextNumber) {
         return nextNumber > currentNumber;
     }
 

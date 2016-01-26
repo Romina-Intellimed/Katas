@@ -14,19 +14,19 @@ public final class TennisKataGameRules {
         switch (score) {
             case LOVE:
                 resultScore= "0";
-                break;
+                return resultScore;
             case FIFTEEN:
                 resultScore="15";
-                break;
+                return resultScore;
             case THIRTY:
                 resultScore="30";
-                break;
+                return resultScore;
             case FORTY:
                 resultScore= "40";
-                break;
+                return resultScore;
+            default:
+                return resultScore;
         }
-        return resultScore;
-
     }
 
 

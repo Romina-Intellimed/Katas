@@ -28,7 +28,7 @@ public class PlayerTest {
     public void addPointsShouldIncreaseByOne(){
         Integer scoreInput=this.playerTest.score;
 
-        Integer expectedScoreOutput=21;
+        Integer expectedScoreOutput=playerTest.score+1;
 
         Integer actualScoreOutput=playerTest.addPoints();
 

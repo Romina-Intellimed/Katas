@@ -25,9 +25,9 @@ public class PlayGame {
 
 
 
+// we should test all methods through startGame - we have to treat all the cases calling startGame - check players properties && game state
 
-
-    String startGame() {
+   void startGame() {
 
         startGame = true;
 
@@ -38,7 +38,7 @@ public class PlayGame {
             updateGameState();
         }
 
-        return "END";
+
     }
 
 

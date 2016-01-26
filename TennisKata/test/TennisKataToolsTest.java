@@ -55,6 +55,18 @@ public class TennisKataToolsTest {
 
     }
 
+    @Test
+    public void shouldLooseTheBall(){
+        Boolean inputValue=false;
+        String expectedResult="Lost the ball";
+
+
+        String actualResult=tools.isWinTheBall(inputValue);
+
+        assertEquals("for input " +inputValue + " should be the same with " + actualResult, expectedResult, actualResult);
+
+
+    }
 
 
 

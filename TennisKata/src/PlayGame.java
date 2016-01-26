@@ -130,7 +130,7 @@ public class PlayGame {
 
 
     Player getGameWinner() {
-        Player winner = null;
+        Player winner = TennisKataTools.noPlayer;
 
         if (player1.score == TennisKataGameRules.FORTY && player1.score > player2.score && player1.winTheBall == true) {
             winner = player1;

@@ -90,6 +90,36 @@ public class PlayGameTest {
     }
 
 
+    @Test
+    public void gameShouldBeDeuceWhenScoresEqualFortyAndPlayersHaveNoAdvantage(){
+        playerGameTest.player1.score=TennisKataGameRules.FORTY;
+        playerGameTest.player2.score=TennisKataGameRules.FORTY;
+        playerGameTest.player1.hasAdvantage=false;
+        playerGameTest.player2.hasAdvantage=false;
+
+        Boolean expectedResult=true;
+
+        Boolean actualRestult=playerGameTest.isDeuce();
+
+        assertEquals("Game should be in deuce: "+actualRestult  ,expectedResult, actualRestult);
+
+
+    }
+
+    @Test
+    public void gameShouldBeInAdvantage(){
+        playerGameTest.player1.hasAdvantage=true;
+        playerGameTest.player2.hasAdvantage=true;
+
+
+        Boolean expectedResult=true;
+
+        Boolean actualRestult=playerGameTest.isAdvantage();
+
+        assertEquals("Game should be in Advantage: "+actualRestult  ,expectedResult, actualRestult);
+
+    }
+
 
 
 

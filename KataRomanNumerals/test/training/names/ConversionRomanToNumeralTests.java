@@ -25,14 +25,12 @@ public class ConversionRomanToNumeralTests {
         assert true;
     }
 
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void shouldThrowExceptionIfInvalidRomanNumber() {
         String input = "IEW";
-        Boolean expectedOutput = false;
 
-        Boolean actualOutput = converter.isValidRomanNumber(input);
+        converter.romanToNumeral(input);
 
-        assertEquals(input + " is not a valid number: " + actualOutput, expectedOutput, actualOutput);
     }
 
 

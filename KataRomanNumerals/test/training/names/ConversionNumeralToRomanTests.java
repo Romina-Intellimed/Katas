@@ -2,6 +2,7 @@ package training.names;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -23,16 +24,9 @@ public class ConversionNumeralToRomanTests {
         assert true;
     }
 
-    // To check with C.
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void shouldThrowExceptionIfInvalidNumeral(){
-        Integer input = 55555;
-        Boolean expectedOutput = false;
-
-        Boolean actualOutput = converter.assertNumeralInLimits(input);
-
-        assertEquals(input + " respects the given limits " + actualOutput, expectedOutput, actualOutput);
-
+        converter.numeralToRoman(55555);
     }
 
 

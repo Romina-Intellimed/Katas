@@ -14,6 +14,7 @@ public class PlayerTest {
     @Before
     public void setup() {
         playerTest = new Player("Test");
+        playerTest.score=20;
     }
 
     @Test
@@ -25,8 +26,8 @@ public class PlayerTest {
 
     @Test
     public void addPointsShouldIncreaseByOne(){
-        Integer scoreInput=20;
-        playerTest.score=scoreInput;
+        Integer scoreInput=this.playerTest.score;
+
         Integer expectedScoreOutput=21;
 
         Integer actualScoreOutput=playerTest.addPoints();

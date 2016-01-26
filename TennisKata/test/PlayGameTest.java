@@ -2,6 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.internal.BooleanSupplier;
 
+import javax.swing.text.StyledEditorKit;
+
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -61,6 +63,34 @@ public class PlayGameTest {
 
 
     }
+
+    @Test
+    public void getGameWinnerShouldBeAPlayer(){
+
+        Player expectedOutput=TennisKataTools.noPlayer;
+                expectedOutput=playerGameTest.playersList.get(1);
+
+        Player actualOutput=playerGameTest.getGameWinner();
+        Boolean isInList=playerGameTest.playersList.contains(actualOutput);
+
+        assertEquals("Expected output should be in players list " +isInList,actualOutput, expectedOutput);
+
+    }
+
+    @Test
+    public void getGameLooserShouldBeTheOtherPlayer(){
+        Player playerInput=TennisKataTools.noPlayer;
+                playerInput=playerGameTest.player1;
+
+        Player expectedLooser=playerGameTest.player2;
+        Player actualLooser=playerGameTest.getBallLooser(playerInput);
+
+        assertEquals("Winner "+playerInput.getName() +" should be different than  "+actualLooser.getName() ,expectedLooser, actualLooser);
+
+    }
+
+
+
 
 
 }

@@ -68,6 +68,9 @@ public class PlayGame {
         return player;
     }
 
+
+
+
     Player getBallLooser(Player ballWinner) {
         Player ballLooser = TennisKataTools.noPlayer;
         for (int i = 0; i < playersList.size(); i++) {
@@ -80,6 +83,8 @@ public class PlayGame {
         }
         return ballLooser;
     }
+
+
 
     void updatePlayersAdvantageState(Player winner) {
         if (isDeuce()) {

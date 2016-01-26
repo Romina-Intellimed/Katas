@@ -45,7 +45,7 @@ public class PlayGame {
 
 
 
-    private boolean gameIsInPlaying() {
+    protected boolean gameIsInPlaying() {
         return getGameState() != GameState.IS_GAME_WIN && countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE;
     }
 

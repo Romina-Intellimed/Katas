@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.internal.BooleanSupplier;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -32,7 +33,34 @@ public class PlayGameTest {
 
     }
 
+    @Test
+    public void gameShouldBeInPlaying(){
+        playerGameTest.gameState=GameState.IS_GAME_ADVANTAGE;
+        playerGameTest.countDeuce=4;
 
+        Boolean expectedOutput=true;
+
+        Boolean actualOutput=playerGameTest.gameIsInPlaying();
+
+        assertEquals("Game should be in playing " +expectedOutput,actualOutput, expectedOutput);
+
+
+    }
+
+
+    @Test
+    public void gameShouldNotBeInPlaying(){
+        playerGameTest.gameState=GameState.IS_GAME_WIN;
+        playerGameTest.countDeuce=4;
+
+        Boolean expectedOutput=false;
+
+        Boolean actualOutput=playerGameTest.gameIsInPlaying();
+
+        assertEquals("Game should not be in playing " +expectedOutput,actualOutput, expectedOutput);
+
+
+    }
 
 
 }

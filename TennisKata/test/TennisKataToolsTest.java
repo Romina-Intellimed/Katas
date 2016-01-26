@@ -1,3 +1,4 @@
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -5,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -26,19 +28,16 @@ public class TennisKataToolsTest {
 
 
     @Test
-    public void shouldReturnRandomPlayer(){
+    public void shouldReturnRandomPlayerFromPlayersList(){
         List<Player> inputPlayersList=new ArrayList<>();
         inputPlayersList.add(new Player("player-test-1"));
         inputPlayersList.add(new Player("player-test-2"));
 
-        Player expectedPlayer1Output=inputPlayersList.get(0);
-        Player expectedPlayer2Output=inputPlayersList.get(1);
 
         Player actualPlayerOuput=tools.randomPlayer(inputPlayersList);
+        Boolean isInPlayersList=inputPlayersList.contains(actualPlayerOuput);
 
-
-        assertEquals(expectedPlayer1Output + " or " + expectedPlayer2Output+ " should be " + actualPlayerOuput, expectedPlayer1Output, actualPlayerOuput); //???
-
+        assertTrue(isInPlayersList);
 
     }
 

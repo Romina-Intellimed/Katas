@@ -38,6 +38,7 @@ public class PlayGame {
             updateGameState();
         }
 
+        gameState = GameState.END;
 
     }
 

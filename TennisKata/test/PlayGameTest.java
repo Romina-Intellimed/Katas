@@ -1,3 +1,4 @@
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -84,11 +85,10 @@ public class PlayGameTest {
     }
 
 
-
     private void assertGameEnded() {
     //TODO
 
-        assertFalse(playerGameTest.getGameState()!= GameState.IS_GAME_WIN && playerGameTest.countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE);
+        Assert.assertEquals(GameState.END, playerGameTest.getGameState());
 
     }
 

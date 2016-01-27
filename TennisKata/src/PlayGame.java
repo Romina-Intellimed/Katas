@@ -113,7 +113,7 @@ public class PlayGame {
 
     void updateGameState() {
         //todo: replace with end game state
-        if (getGameWinner() != null) {
+        if (getGameWinner() != TennisKataTools.noPlayer) {
             gameState = GameState.IS_GAME_WIN;
             System.out.println("The game is WON state");
         } else if (isDeuce()) {

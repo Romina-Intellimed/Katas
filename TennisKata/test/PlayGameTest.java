@@ -37,7 +37,18 @@ public class PlayGameTest {
     }
 
     private void assertWinnerHasCorrectScore(Player winner) {
+        Player looser = getLooser(winner);
+        assertTrue((winner.getScore() == TennisKataGameRules.FORTY && looser.getScore() < winner.getScore()) ||
+                (winner.getScore() == TennisKataGameRules.FORTY && looser.getScore() == winner.getScore() && winner.hasAdvantage && winner.winTheBall && !looser.hasAdvantage && !looser.winTheBall));
+    }
 
+    private Player getLooser(Player winner) {
+        for(Player currentPlayer: playerGameTest.playersList) {
+            if (currentPlayer != winner) {
+                return currentPlayer;
+            }
+        }
+        return TennisKataTools.noPlayer;
     }
 
     private void assertWinnerExists(Player winner) {

@@ -5,6 +5,7 @@ import org.junit.experimental.theories.internal.BooleanSupplier;
 
 import javax.swing.text.StyledEditorKit;
 
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -48,7 +49,7 @@ public class PlayGameTest {
 
     private void assertPlayerState() {
     //TODO
-
+        
     }
     private void assertGameEnded() {
     //TODO
@@ -94,13 +95,11 @@ public class PlayGameTest {
     //TODO Fix this
     public void getGameWinnerShouldBeAPlayer(){
 
-        Player expectedOutput=TennisKataTools.noPlayer;
-                expectedOutput=playerGameTest.playersList.get(1);
 
-        Player actualOutput=playerGameTest.getGameWinner();
-        Boolean isInList=playerGameTest.playersList.contains(actualOutput);
+        Player actualWinner=playerGameTest.getGameWinner();
+        Boolean isInList=playerGameTest.playersList.contains(actualWinner);
 
-        assertEquals("Expected output should be in players list " +isInList,actualOutput, expectedOutput);
+        assertTrue(isInList);
 
     }
 

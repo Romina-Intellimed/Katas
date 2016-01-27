@@ -43,16 +43,50 @@ public class PlayGameTest {
 
         assertCorrectScore();
         assertGameEnded();
-        assertPlayerState();
+        assertPlayerStateHasAdvantage();
+        assertPlayerStateLooseAdvantage();
     }
 
 
-    private void assertPlayerState() {
+    private void assertPlayerStateHasAdvantage() {
     //TODO
-        
+        Player actualWinner=playerGameTest.player1;
+        playerGameTest.player1.score = TennisKataGameRules.FORTY;
+        playerGameTest.player2.score = TennisKataGameRules.FORTY;
+
+        playerGameTest.player1.hasAdvantage=false;
+        playerGameTest.player2.hasAdvantage=false;
+
+        playerGameTest.updatePlayersAdvantageState(actualWinner);
+
+        assertTrue(actualWinner.hasAdvantage.equals(true));
+        assertTrue(actualWinner.hasGameBall.equals(true));
+
     }
+
+
+
+    private void assertPlayerStateLooseAdvantage() {
+        //TODO
+        Player actualWinner=playerGameTest.player1;
+        playerGameTest.player1.score = TennisKataGameRules.FORTY;
+        playerGameTest.player2.score = TennisKataGameRules.FORTY;
+
+        playerGameTest.player1.hasAdvantage=false;
+        playerGameTest.player2.hasAdvantage=true;
+
+        playerGameTest.updatePlayersAdvantageState(actualWinner);
+
+        assertTrue(actualWinner.hasGameBall.equals(false));
+
+    }
+
+
+
     private void assertGameEnded() {
     //TODO
+
+
 
     }
 
@@ -91,17 +125,23 @@ public class PlayGameTest {
     }
 
     @Test
-    @Ignore
-    //TODO Fix this
-    public void getGameWinnerShouldBeAPlayer(){
+      //TODO Fix this
+    public void getGameWinnerShouldBeAPlayerWithHighestScore(){
 
-
+        playerGameTest.player1.score = TennisKataGameRules.FORTY;
+        playerGameTest.player2.score =TennisKataGameRules.FIFTEEN;
+        playerGameTest.player1.winTheBall = true;
         Player actualWinner=playerGameTest.getGameWinner();
         Boolean isInList=playerGameTest.playersList.contains(actualWinner);
 
         assertTrue(isInList);
 
     }
+
+    
+
+
+
 
     @Test
     public void getGameLooserShouldBeTheOtherPlayer(){

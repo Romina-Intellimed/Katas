@@ -44,9 +44,8 @@ public class PlayGameTest {
         assertTrue(playerGameTest.playersList.contains(winner));
     }
 
-
-    private void assertPlayerStateHasAdvantage() {
-    //TODO
+    @Test
+    public void playerStateIsUpdatedCorrectlyWhenPlayerGainsAdvantage() {
         Player actualWinner=playerGameTest.player1;
         playerGameTest.player1.score = TennisKataGameRules.FORTY;
         playerGameTest.player2.score = TennisKataGameRules.FORTY;
@@ -62,9 +61,8 @@ public class PlayGameTest {
     }
 
 
-
-    private void assertPlayerStateLooseAdvantage() {
-        //TODO
+    @Test
+    public void playerStateIsUpdatedCorrectlyWhenPlayerLoosesAdvantage() {
         Player actualWinner=playerGameTest.player1;
         playerGameTest.player1.score = TennisKataGameRules.FORTY;
         playerGameTest.player2.score = TennisKataGameRules.FORTY;

@@ -45,7 +45,7 @@ public class PlayGameTest {
 
 
         assertGameEnded();
-        //assertWinnerExists(winner);
+        assertWinnerExists(winner);
         assertWinnerHasCorrectScore(winner);
         //assertCorrectScore();
     }

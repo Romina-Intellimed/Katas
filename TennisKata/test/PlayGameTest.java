@@ -5,6 +5,7 @@ import org.junit.experimental.theories.internal.BooleanSupplier;
 
 import javax.swing.text.StyledEditorKit;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
@@ -86,7 +87,7 @@ public class PlayGameTest {
     private void assertGameEnded() {
     //TODO
 
-
+        assertFalse(playerGameTest.gameIsInPlaying());
 
     }
 

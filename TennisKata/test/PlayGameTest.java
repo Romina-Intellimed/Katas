@@ -78,17 +78,8 @@ public class PlayGameTest {
 
 
     private void assertGameEnded() {
-    //TODO
-
         Assert.assertEquals(GameState.END, playerGameTest.getGameState());
 
-    }
-
-    private void assertCorrectScore() {
-    //TODO
-
-        Player actuaWinner=playerGameTest.getGameWinner();
-        assertTrue(actuaWinner.getScore().equals(Score.FORTY));
     }
 
     @Test
@@ -121,7 +112,6 @@ public class PlayGameTest {
     }
 
     @Test
-      //TODO Fix this
     public void getGameWinnerShouldBeAPlayerWithHighestScore(){
 
         playerGameTest.player1.score = TennisKataGameRules.FORTY;
@@ -136,7 +126,6 @@ public class PlayGameTest {
 
 
     @Test
-    //TODO Fix this
     public void getGameWinnerShouldBeAPlayerWithAdvantageWhoWinsTheBall(){
 
         playerGameTest.player1.hasAdvantage = true;

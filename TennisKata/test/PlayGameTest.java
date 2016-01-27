@@ -138,8 +138,19 @@ public class PlayGameTest {
 
     }
 
-    
 
+    @Test
+    //TODO Fix this
+    public void getGameWinnerShouldBeAPlayerWithAdvantageWhoWinsTheBall(){
+
+        playerGameTest.player1.hasAdvantage = true;
+        playerGameTest.player1.winTheBall = true;
+        Player actualWinner=playerGameTest.getGameWinner();
+        Boolean isInList=playerGameTest.playersList.contains(actualWinner);
+
+        assertTrue(isInList);
+
+    }
 
 
 

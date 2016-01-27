@@ -6,8 +6,7 @@ import java.util.List;
  */
 public class PlayGame {
 
-    GameState gameState = GameState.START;
-    Boolean startGame = false;
+    GameState gameState;
 
     Integer countDeuce = 0;
 
@@ -29,7 +28,7 @@ public class PlayGame {
 
    void startGame() {
 
-        startGame = true;
+       gameState = GameState.START;
 
 
         while (gameIsInPlaying()) {
@@ -119,7 +118,7 @@ public class PlayGame {
             countDeuce++;
             gameState = GameState.IS_GAME_DEUCE;
             System.out.println("The game is in DEUCE state");
-        } else if (startGame) {
+        } else if (gameState == GameState.START) {
             gameState = GameState.PLAY;
             System.out.println("The game is in PLAY state");
         }

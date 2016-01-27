@@ -26,7 +26,7 @@ public class PlayGame {
 
 // we should test all methods through startGame - we have to treat all the cases calling startGame - check players properties && game state
 
-   void startGame() {
+   Player startGame() {
 
        gameState = GameState.START;
 
@@ -38,6 +38,8 @@ public class PlayGame {
         }
 
         gameState = GameState.END;
+
+       return getGameWinner();
 
     }
 
@@ -110,7 +112,7 @@ public class PlayGame {
     }
 
     void updateGameState() {
-
+        //todo: replace with end game state
         if (getGameWinner() != null) {
             gameState = GameState.IS_GAME_WIN;
             System.out.println("The game is WON state");

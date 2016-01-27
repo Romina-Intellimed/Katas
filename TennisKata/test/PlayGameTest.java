@@ -41,13 +41,21 @@ public class PlayGameTest {
     @Test
     public void startGameShouldEnd(){
 
-        playerGameTest.startGame();
+        Player winner = playerGameTest.startGame();
 
 
         assertGameEnded();
-        assertPlayerStateHasAdvantage();
-        assertPlayerStateLooseAdvantage();
+        //assertWinnerExists(winner);
+        assertWinnerHasCorrectScore(winner);
         //assertCorrectScore();
+    }
+
+    private void assertWinnerHasCorrectScore(Player winner) {
+
+    }
+
+    private void assertWinnerExists(Player winner) {
+        assertTrue(playerGameTest.playersList.contains(winner));
     }
 
 

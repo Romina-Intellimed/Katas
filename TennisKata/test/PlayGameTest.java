@@ -42,10 +42,11 @@ public class PlayGameTest {
 
         playerGameTest.startGame();
 
-        assertCorrectScore();
+
         assertGameEnded();
         assertPlayerStateHasAdvantage();
         assertPlayerStateLooseAdvantage();
+        //assertCorrectScore();
     }
 
 
@@ -87,13 +88,15 @@ public class PlayGameTest {
     private void assertGameEnded() {
     //TODO
 
-        assertFalse(playerGameTest.gameIsInPlaying());
+        assertFalse(playerGameTest.getGameState()!= GameState.IS_GAME_WIN && playerGameTest.countDeuce <= TennisKataGameRules.MAX_SERVES_DEUCE);
 
     }
 
     private void assertCorrectScore() {
     //TODO
 
+        Player actuaWinner=playerGameTest.getGameWinner();
+        assertTrue(actuaWinner.getScore().equals(Score.FORTY));
     }
 
     @Test

@@ -1,10 +1,6 @@
 import junit.framework.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.experimental.theories.internal.BooleanSupplier;
-
-import javax.swing.text.StyledEditorKit;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -41,7 +37,7 @@ public class PlayGameTest {
     @Test
     public void startGameShouldEnd(){
 
-        Player winner = playerGameTest.startGame();
+        Player winner = playerGameTest.run();
 
 
         assertGameEnded();

@@ -5,14 +5,14 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    ArrayList players;
+    ArrayList<Player> players;
     String state;
 
 
     Game() {
         players = new ArrayList<>();
-        String player1 = "player1";
-        String player2 = "player2";
+        Player player1=new Player("player1");
+        Player player2=new Player("player2");
 
         players.add(player1);
         players.add(player2);
@@ -33,5 +33,8 @@ public class Game {
         return player;
 
     }
+
+
+
 
 }

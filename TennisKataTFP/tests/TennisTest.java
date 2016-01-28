@@ -42,11 +42,14 @@ public class TennisTest {
     @Test
     public void thePlayerWinsTheBall(){
 
-        assertEquals(testGame.players.get(0),testGame.setBallWinner(testGame.players.get(0).toString()));
+        assertEquals(testGame.players.get(0).getName(),testGame.setBallWinner(testGame.players.get(0).getName()));
     }
 
     @Test
     public void thePlayerWinsPoints(){
+
+
+        assertEquals(testGame.players.get(0).hasScored(),testGame.players.get(0).score);
 
     }
 

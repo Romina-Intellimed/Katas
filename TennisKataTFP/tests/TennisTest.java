@@ -33,9 +33,14 @@ public class TennisTest {
     }
 
     @Test
-    public void thePlayerWinsTheBall(){
+    public void thePlayerScores(){
+        Player player = testGame.players.get(0);
+        Integer expectedScore = player.score+1;
 
-        assertEquals(testGame.players.get(0).getName(),testGame.setBallWinner(testGame.players.get(0)));
+        testGame.playerScores(player);
+        Integer actualScore = player.score;
+
+        assertEquals(expectedScore,actualScore);
     }
 
 
@@ -53,7 +58,7 @@ public class TennisTest {
         Integer winnerScore=testGame.players.get(0).getScore()+1;
 
 
-        testGame.setBallWinner(testGame.players.get(0));
+        testGame.playerScores(testGame.players.get(0));
         assertEquals((winnerScore), testGame.players.get(0).getScore());
 
     }

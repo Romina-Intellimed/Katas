@@ -20,13 +20,10 @@ public class Game {
 
     }
 
-    String setBallWinner(Player player){
+    void playerScores(Player player){
         if(players.contains(player)) {
             player.hasScored();
         }
-
-        return player.getName();
-
     }
 
 

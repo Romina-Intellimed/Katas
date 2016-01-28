@@ -37,6 +37,17 @@ public class Game {
 
     }
 
+
+
+    void updateGameState(){
+        if(getGameWinner()!=null)
+            state="END";
+        else
+        if(players.get(0).score==4 && players.get(1).score==4)
+            state="DEUCE";
+    }
+
+
     Player getGameWinner(){
 
         if(players.get(0).getScore()==4 && players.get(0).getScore()>=players.get(1).getScore()+2)
@@ -48,10 +59,7 @@ public class Game {
     }
 
 
-    void updateGameState(){
-        if(getGameWinner()!=null)
-            state="END";
-    }
+
 
 
 }

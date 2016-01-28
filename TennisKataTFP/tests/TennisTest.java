@@ -91,6 +91,12 @@ public class TennisTest {
 
     @Test
     public void theGameIsInDeuceState(){
+        testGame.players.get(0).score=4;
+        testGame.players.get(1).score=4;
+
+        testGame.updateGameState();
+
+        assertTrue(testGame.state=="DEUCE");
 
 
     }

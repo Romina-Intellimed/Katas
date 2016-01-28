@@ -29,12 +29,23 @@ public class Game {
     }
 
     String setBallWinner(Player player){
-        player.hasScored();
+        if(players.contains(player)) {
+            player.hasScored();
+        }
+
         return player.getName();
 
     }
 
+    Player getGameWinner(){
 
+        if(players.get(0).getScore()==4 && players.get(0).getScore()>=players.get(1).getScore()+2)
+            return players.get(0);
+        if(players.get(1).getScore()==4 && players.get(1).getScore()>=players.get(0).getScore()+2)
+            return players.get(1);
+
+        return null;
+    }
 
 
 }

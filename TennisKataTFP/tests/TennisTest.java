@@ -29,6 +29,7 @@ public class TennisTest {
     public void theGameisInStartState(){
 
         assertTrue(testGame.state=="START");
+
     }
 
     @Test
@@ -36,14 +37,15 @@ public class TennisTest {
 
         assertEquals("player1",testGame.chooseWhoPassTheBall("player1"));
 
-
     }
 
     @Test
     public void thePlayerWinsTheBall(){
 
-        assertEquals(testGame.players.get(0).getName(),testGame.setBallWinner(testGame.players.get(0).getName()));
+        assertEquals(testGame.players.get(0).getName(),testGame.setBallWinner(testGame.players.get(0)));
     }
+
+
 
     @Test
     public void thePlayerWinsPoints(){
@@ -52,6 +54,18 @@ public class TennisTest {
         assertEquals(testGame.players.get(0).hasScored(),testGame.players.get(0).score);
 
     }
+
+    @Test
+    public void thePlayerWinsPointsWhenPlayerWinsTheBall(){
+        Integer winnerScore=testGame.players.get(0).getScore()+1;
+        testGame.setBallWinner(testGame.players.get(0));
+
+
+        assertEquals((winnerScore),testGame.players.get(0).getScore());
+
+    }
+
+
 
 
     @Test

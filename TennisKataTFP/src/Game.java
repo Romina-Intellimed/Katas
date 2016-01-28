@@ -28,9 +28,9 @@ public class Game {
 
     }
 
-    String setBallWinner(String player){
-
-        return player;
+    String setBallWinner(Player player){
+        player.hasScored();
+        return player.getName();
 
     }
 

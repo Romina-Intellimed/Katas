@@ -21,5 +21,13 @@ public class Game {
     }
 
 
+    Boolean onePassTheBall(String player){
+
+
+        return true;
+
+    }
+
+
 
 }

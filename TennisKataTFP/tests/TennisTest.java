@@ -32,7 +32,10 @@ public class TennisTest {
     }
 
     @Test
-    public void thePlayerPassTheBall(){
+    public void onePlayerPassTheBall(){
+
+        assertTrue(testGame.onePassTheBall("player1"));
+
 
     }
 
@@ -41,6 +44,10 @@ public class TennisTest {
 
     }
 
+    @Test
+    public void thePlayerWinsPoints(){
+
+    }
 
 
     @Test

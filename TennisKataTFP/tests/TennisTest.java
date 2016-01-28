@@ -34,7 +34,7 @@ public class TennisTest {
     @Test
     public void onePlayerPassTheBall(){
 
-        assertTrue(testGame.onePassTheBall("player1"));
+        assertEquals("player1",testGame.chooseWhoPassTheBall("player1"));
 
 
     }
@@ -42,6 +42,7 @@ public class TennisTest {
     @Test
     public void thePlayerWinsTheBall(){
 
+        assertEquals(testGame.players.get(0),testGame.setBallWinner(testGame.players.get(0).toString()));
     }
 
     @Test

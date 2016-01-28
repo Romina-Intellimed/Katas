@@ -21,13 +21,17 @@ public class Game {
     }
 
 
-    Boolean onePassTheBall(String player){
+    String chooseWhoPassTheBall(String player){
 
 
-        return true;
+        return player;
 
     }
 
+    String setBallWinner(String player){
 
+        return player;
+
+    }
 
 }

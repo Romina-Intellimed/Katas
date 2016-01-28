@@ -5,20 +5,21 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    ArrayList playersList;
+    ArrayList players;
     String state;
 
 
-    Game(){
-        playersList=new ArrayList<>();
-        String player1="player1";
-        String player2="player2";
+    Game() {
+        players = new ArrayList<>();
+        String player1 = "player1";
+        String player2 = "player2";
 
-        playersList.add(player1);
-        playersList.add(player2);
-        state="START";
+        players.add(player1);
+        players.add(player2);
+        state = "START";
 
     }
+
 
 
 }

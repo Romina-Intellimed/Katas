@@ -1,9 +1,5 @@
-import com.sun.media.jfxmedia.events.PlayerStateEvent;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +21,7 @@ public class TennisTest {
     @Test
     public void theGamesHasTwoPlayers(){
 
-        assertTrue(testGame.playersList.size()==2);
+        assertTrue(testGame.players.size()==2);
 
     }
 
@@ -35,13 +31,64 @@ public class TennisTest {
         assertTrue(testGame.state=="START");
     }
 
+    @Test
+    public void thePlayerPassTheBall(){
+
+    }
+
+    @Test
+    public void thePlayerWinsTheBall(){
+
+    }
+
 
 
     @Test
-    public void onePlayerShouldServe(){
+    public void theGameIsInEndStateAndOnePlayerHasTheMaximumScoreGreaterThanTheOpposite(){
+
+
+    }
 
 
 
+
+
+    @Test
+    public void theGameIsInDeuceState(){
+
+
+    }
+
+    @Test
+    public void thePlayerHasAdvantage(){
+
+
+    }
+
+    @Test
+    public void theGameIsInAdvantageState(){
+
+    }
+
+    @Test
+    public void thePlayerWithAdvantageWinsTheBall(){
+
+    }
+
+    @Test
+    public void theGameIsInEndState(){
+
+
+    }
+
+
+    @Test
+    public void thePlayerWithAdvantageLostsTheBall(){
+
+    }
+
+    @Test
+    public void theGameIsInDeuceAfterPlayerWithAdvantageLostsTheBall(){
 
     }
 

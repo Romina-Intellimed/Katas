@@ -29,7 +29,11 @@ public class TennisTest {
 
     }
 
+    @Test
+    public void theGameisInStartState(){
 
+        assertTrue(testGame.state=="START");
+    }
 
 
 

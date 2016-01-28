@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Game {
 
     ArrayList playersList;
+    String state;
 
 
     Game(){
@@ -15,7 +16,7 @@ public class Game {
 
         playersList.add(player1);
         playersList.add(player2);
-
+        state="START";
 
     }
 

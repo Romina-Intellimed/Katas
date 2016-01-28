@@ -33,17 +33,6 @@ public class TennisTest {
     }
 
     @Test
-    public void thePlayerScores(){
-        Player player = testGame.players.get(0);
-        Integer expectedScore = player.score+1;
-
-        testGame.playerScores(player);
-        Integer actualScore = player.score;
-
-        assertEquals(expectedScore,actualScore);
-    }
-
-    @Test
     public void thePlayerWinsPointsWhenPlayerWinsTheBall(){
         Integer winnerScore=testGame.players.get(0).getScore()+1;
 

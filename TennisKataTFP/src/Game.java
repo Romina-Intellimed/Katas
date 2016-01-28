@@ -48,4 +48,10 @@ public class Game {
     }
 
 
+    void updateGameState(){
+        if(getGameWinner()!=null)
+            state="END";
+    }
+
+
 }

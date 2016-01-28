@@ -68,7 +68,7 @@ public class TennisTest {
     //return player with greater score if maximum has been attaint and one player has scored with two points more than the other - or deuce if both are at 4
 
     @Test
-    public void onePlayerHasTheMaximumScoreGreaterThanTheOpponent(){
+    public void winnerWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent(){
         testGame.players.get(0).score=4;
         testGame.players.get(1).score=2;
 
@@ -78,12 +78,14 @@ public class TennisTest {
 
 
     @Test
-    public void theGameIsInEndStateWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpposite(){
+    public void theGameIsInEndStateWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent(){
+        testGame.players.get(0).score=4;
+        testGame.players.get(1).score=2;
 
+        testGame.updateGameState();
 
+        assertTrue(testGame.state=="END");
     }
-
-
 
 
 

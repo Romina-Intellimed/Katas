@@ -20,14 +20,6 @@ public class Game {
 
     }
 
-
-    String chooseWhoPassTheBall(String player){
-
-
-        return player;
-
-    }
-
     String setBallWinner(Player player){
         if(players.contains(player)) {
             player.hasScored();

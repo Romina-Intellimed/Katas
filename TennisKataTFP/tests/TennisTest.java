@@ -33,13 +33,6 @@ public class TennisTest {
     }
 
     @Test
-    public void onePlayerPassTheBall(){
-
-        assertEquals("player1",testGame.chooseWhoPassTheBall("player1"));
-
-    }
-
-    @Test
     public void thePlayerWinsTheBall(){
 
         assertEquals(testGame.players.get(0).getName(),testGame.setBallWinner(testGame.players.get(0)));
@@ -101,8 +94,12 @@ public class TennisTest {
 
     }
 
+
+    /// game in deuce, the winner of the ball has advantage and game ball
     @Test
     public void thePlayerHasAdvantage(){
+        testGame.state="DEUCE";
+        //testGame.getBallWinner().hasAdvantage=true;
 
 
     }

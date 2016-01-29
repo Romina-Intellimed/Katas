@@ -33,14 +33,6 @@ public class TennisTest {
 
     }
 
-    @Test
-    @Ignore
-    public void theGameisInPlayingState(){
-        testGame.run();
-        assertTrue(testGame.state=="PLAYING");
-
-    }
-
 
     @Test
     public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {

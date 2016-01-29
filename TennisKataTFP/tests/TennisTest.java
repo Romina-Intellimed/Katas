@@ -38,7 +38,12 @@ public class TennisTest {
     public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {
 
         testGame.run();
-        assertTrue(testGame.getGameWinner()==testGame.player1);
+
+        assertTrue(testGame.winner.score > testGame.looser.score);
+        assertTrue(testGame.winner.score==4);
+        assertEquals(testGame.state,"END");
+
+
 
 
     }

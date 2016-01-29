@@ -9,7 +9,8 @@ public class Game {
     String state;
     Player player1;
     Player player2;
-
+    Player winner;
+    Player looser;
 
     Game() {
         players = new ArrayList<>();
@@ -30,6 +31,8 @@ public class Game {
         playerOneWinsTheBall();
         playerOneWinsTheBall();
         playerTwoWinsTheBall();
+        System.out.println("Winner is : "+this.winner.name + " has the score of: "+ this.winner.score);
+        System.out.println("Looser is : "+this.looser.name + " has the score of: "+ this.looser.score);
 
     }
 
@@ -53,6 +56,8 @@ public class Game {
 
     void updateGameState() {
         if (getGameWinner() != null) {
+            winner=getGameWinner();
+
             state = "END";
         } else if (players.get(0).score == 4 && players.get(1).score == 4 && !isAdvantage()) {
             state = "DEUCE";
@@ -82,15 +87,34 @@ public class Game {
     }
 
 
+
     Player getGameWinner() {
+        updatePlayersFinalState();
 
-        if (players.get(0).getScore() == 4 && players.get(0).getScore() >= players.get(1).getScore() + 2)
-            return players.get(0);
-        if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2)
-            return players.get(1);
-
-        return null;
+        return winner;
     }
+
+    Player getGameLooser(){
+        updatePlayersFinalState();
+        return looser;
+    }
+
+
+
+
+    void updatePlayersFinalState() {
+
+        if (players.get(0).getScore() == 4 && players.get(0).getScore() >= players.get(1).getScore() + 2) {
+            winner = players.get(0);
+            looser=players.get(1);
+        }
+        if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2) {
+            winner = players.get(1);
+            looser=players.get(2);
+        }
+
+    }
+
 
 
 }

@@ -24,7 +24,7 @@ public class Game {
 
     void run() {
         //todo
-        state = "PLAYING";
+       state = "PLAYING";
        while(state!="END" ){
 
             updateGameState();
@@ -51,7 +51,7 @@ public class Game {
             state="DEUCE";
         else {
             state = "PLAYING";
-            playerScores(player1);
+            //playerScores(player1);
 
         }
 

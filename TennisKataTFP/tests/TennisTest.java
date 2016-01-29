@@ -44,8 +44,12 @@ public class TennisTest {
 
     @Test
     public void theGameHasAWinner(){
+        testGame.playerScores(testGame.player1);
+        testGame.playerScores(testGame.player1);
+        testGame.playerScores(testGame.player1);
+        testGame.playerScores(testGame.player2);
         testGame.run();
-        assertTrue(testGame.getGameWinner()!=null);
+        assertTrue(testGame.getGameWinner()==testGame.player1);
 
 
     }

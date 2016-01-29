@@ -26,6 +26,8 @@ public class Game {
         //todo
        state = "PLAYING";
        while(state!="END" ){
+       // playerScores(player1);
+      //  playerScores(player2);
 
             updateGameState();
 
@@ -44,11 +46,17 @@ public class Game {
 
 
     void updateGameState(){
-        if(getGameWinner()!=null)
-            state="END";
+        if(getGameWinner()!=null) {
+            state = "END";
+        }
         else
-        if(players.get(0).score==4 && players.get(1).score==4)
-            state="DEUCE";
+        if(players.get(0).score==4 && players.get(1).score==4 && !isAdvantage()) {
+            state = "DEUCE";
+        }
+        else
+            if(isAdvantage()){
+                state = "ADVANTAGE";
+            }
         else {
             state = "PLAYING";
             //playerScores(player1);
@@ -56,6 +64,15 @@ public class Game {
         }
 
     }
+
+    private boolean isAdvantage() {
+        return players.get(0).score==4 && players.get(1).score==4 && (players.get(0).winsTheBall==true || players.get(1).winsTheBall==true);
+    }
+
+    void updatePlayerAdvantageState(Player player){
+        player.hasAdvantage=true;
+    }
+
 
 
     Player getGameWinner(){

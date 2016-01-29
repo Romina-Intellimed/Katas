@@ -43,7 +43,8 @@ public class TennisTest {
 
 
     @Test
-    public void theGameHasAWinner(){
+    public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {
+        testGame.playerScores(testGame.player1);
         testGame.playerScores(testGame.player1);
         testGame.playerScores(testGame.player1);
         testGame.playerScores(testGame.player1);
@@ -102,23 +103,31 @@ public class TennisTest {
 
     }
 
-    @Test
-    public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {
-        //todo
-    }
-
 
     /// game in deuce, the winner of the ball has advantage and game ball
     @Test
-    public void thePlayerHasAdvantage(){
-        testGame.state="DEUCE";
-        //testGame.getBallWinner().hasAdvantage=true;
+    public void thePlayerAdvanatageStateIsUpdated(){
+        testGame.players.get(0).score=4;
+        testGame.players.get(1).score=4;
+        testGame.players.get(0).winsTheBall=true;
 
+        testGame.updatePlayerAdvantageState(testGame.players.get(0));
+
+        assertTrue(testGame.players.get(0).hasAdvantage);
 
     }
 
+
+
     @Test
     public void theGameIsInAdvantageState(){
+        testGame.players.get(0).score=4;
+        testGame.players.get(1).score=4;
+
+        testGame.players.get(0).winsTheBall=true;
+        testGame.updatePlayerAdvantageState(testGame.players.get(0));
+        testGame.updateGameState();
+        assertTrue(testGame.state=="ADVANTAGE");
 
     }
 

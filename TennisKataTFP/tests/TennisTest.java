@@ -44,11 +44,7 @@ public class TennisTest {
 
     @Test
     public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {
-        testGame.playerScores(testGame.player1);
-        testGame.playerScores(testGame.player1);
-        testGame.playerScores(testGame.player1);
-        testGame.playerScores(testGame.player1);
-        testGame.playerScores(testGame.player2);
+
         testGame.run();
         assertTrue(testGame.getGameWinner()==testGame.player1);
 

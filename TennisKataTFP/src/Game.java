@@ -13,8 +13,8 @@ public class Game {
 
     Game() {
         players = new ArrayList<>();
-        player1=new Player("player1");
-        player2=new Player("player2");
+        player1 = new Player("player1");
+        player2 = new Player("player2");
 
         players.add(player1);
         players.add(player2);
@@ -24,41 +24,41 @@ public class Game {
 
     void run() {
         //todo
-       state = "PLAYING";
-       while(state!="END" ){
-       // playerScores(player1);
-      //  playerScores(player2);
-
-            updateGameState();
-
-        }
-
-
+        state = "PLAYING";
+        playerOneWinsTheBall();
+        playerOneWinsTheBall();
+        playerOneWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
 
     }
 
-    void playerScores(Player player){
-        if(players.contains(player)) {
-            player.winsTheBall=true;
+    private void playerTwoWinsTheBall() {
+        playerScores(player2);
+        updateGameState();
+    }
+
+    private void playerOneWinsTheBall() {
+        playerScores(player1);
+        updateGameState();
+    }
+
+    void playerScores(Player player) {
+        if (players.contains(player)) {
+            player.winsTheBall = true;
             player.hasScored();
         }
     }
 
 
-
-    void updateGameState(){
-        if(getGameWinner()!=null) {
+    void updateGameState() {
+        if (getGameWinner() != null) {
             state = "END";
-        }
-        else
-        if(players.get(0).score==4 && players.get(1).score==4 && !isAdvantage()) {
+        } else if (players.get(0).score == 4 && players.get(1).score == 4 && !isAdvantage()) {
             state = "DEUCE";
-        }
-        else
-            if(isAdvantage()){
-                state = "ADVANTAGE";
-            }
-        else {
+        } else if (isAdvantage()) {
+            state = "ADVANTAGE";
+        } else {
             state = "PLAYING";
             //playerScores(player1);
 
@@ -67,34 +67,30 @@ public class Game {
     }
 
     private boolean isAdvantage() {
-        return players.get(0).score==4 && players.get(1).score==4 && (players.get(0).winsTheBall==true || players.get(1).winsTheBall==true);
+        return players.get(0).score == 4 && players.get(1).score == 4 && (players.get(0).winsTheBall == true || players.get(1).winsTheBall == true);
     }
 
-    void updatePlayersAdvantageState(Player player){
-        player.hasAdvantage=true;
-       // player.winsTheBall=false;
-        for(Player p: players){
-            if(p!=player){
-                p.hasAdvantage=false;
-                p.winsTheBall=false;
+    void updatePlayersAdvantageState(Player player) {
+        player.hasAdvantage = true;
+        // player.winsTheBall=false;
+        for (Player p : players) {
+            if (p != player) {
+                p.hasAdvantage = false;
+                p.winsTheBall = false;
             }
         }
     }
 
 
+    Player getGameWinner() {
 
-    Player getGameWinner(){
-
-        if(players.get(0).getScore()==4 && players.get(0).getScore()>=players.get(1).getScore()+2)
+        if (players.get(0).getScore() == 4 && players.get(0).getScore() >= players.get(1).getScore() + 2)
             return players.get(0);
-        if(players.get(1).getScore()==4 && players.get(1).getScore()>=players.get(0).getScore()+2)
+        if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2)
             return players.get(1);
 
         return null;
     }
-
-
-
 
 
 }

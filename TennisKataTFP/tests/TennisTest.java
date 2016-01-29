@@ -43,9 +43,6 @@ public class TennisTest {
         assertTrue(testGame.winner.score==4);
         assertEquals(testGame.state,"END");
 
-
-
-
     }
 
 

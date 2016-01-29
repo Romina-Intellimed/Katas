@@ -55,9 +55,8 @@ public class Game {
 
 
     void updateGameState() {
-        if (getGameWinner() != null) {
-            winner=getGameWinner();
-
+        winner=getGameWinner();
+        if (winner != null) {
             state = "END";
         } else if (players.get(0).score == 4 && players.get(1).score == 4 && !isAdvantage()) {
             state = "DEUCE";

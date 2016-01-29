@@ -39,6 +39,7 @@ public class Game {
 
     void playerScores(Player player){
         if(players.contains(player)) {
+            player.winsTheBall=true;
             player.hasScored();
         }
     }
@@ -69,8 +70,15 @@ public class Game {
         return players.get(0).score==4 && players.get(1).score==4 && (players.get(0).winsTheBall==true || players.get(1).winsTheBall==true);
     }
 
-    void updatePlayerAdvantageState(Player player){
+    void updatePlayersAdvantageState(Player player){
         player.hasAdvantage=true;
+       // player.winsTheBall=false;
+        for(Player p: players){
+            if(p!=player){
+                p.hasAdvantage=false;
+                p.winsTheBall=false;
+            }
+        }
     }
 
 

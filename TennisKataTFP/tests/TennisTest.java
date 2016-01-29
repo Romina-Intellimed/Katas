@@ -111,7 +111,7 @@ public class TennisTest {
         testGame.players.get(1).score=4;
         testGame.players.get(0).winsTheBall=true;
 
-        testGame.updatePlayerAdvantageState(testGame.players.get(0));
+        testGame.updatePlayersAdvantageState(testGame.players.get(0));
 
         assertTrue(testGame.players.get(0).hasAdvantage);
 
@@ -123,16 +123,22 @@ public class TennisTest {
     public void theGameIsInAdvantageState(){
         testGame.players.get(0).score=4;
         testGame.players.get(1).score=4;
+       testGame.players.get(0).winsTheBall=true;
 
-        testGame.players.get(0).winsTheBall=true;
-        testGame.updatePlayerAdvantageState(testGame.players.get(0));
+        testGame.updatePlayersAdvantageState(testGame.players.get(0));
         testGame.updateGameState();
+
+
         assertTrue(testGame.state=="ADVANTAGE");
 
     }
 
     @Test
     public void thePlayerWithAdvantageWinsTheBall(){
+        testGame.players.get(0).score=4;
+        testGame.players.get(1).score=4;
+
+        testGame.players.get(0).winsTheBall=true;
 
     }
 

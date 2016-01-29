@@ -22,6 +22,11 @@ public class Game {
 
     void run() {
         //todo
+        while(state!="END"){
+
+            updateGameState();
+        }
+
     }
 
     void playerScores(Player player){

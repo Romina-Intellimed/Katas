@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -33,12 +34,22 @@ public class TennisTest {
     }
 
     @Test
+    @Ignore
     public void theGameisInPlayingState(){
         testGame.run();
-
         assertTrue(testGame.state=="PLAYING");
 
     }
+
+
+    @Test
+    public void theGameHasAWinner(){
+        testGame.run();
+        assertTrue(testGame.getGameWinner()!=null);
+
+
+    }
+
 
 
     @Test
@@ -59,6 +70,7 @@ public class TennisTest {
 
         assertEquals(testGame.players.get(0),testGame.getGameWinner());
     }
+
 
 
 

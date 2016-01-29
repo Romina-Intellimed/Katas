@@ -7,12 +7,14 @@ public class Game {
 
     ArrayList<Player> players;
     String state;
+    Player player1;
+    Player player2;
 
 
     Game() {
         players = new ArrayList<>();
-        Player player1=new Player("player1");
-        Player player2=new Player("player2");
+        player1=new Player("player1");
+        player2=new Player("player2");
 
         players.add(player1);
         players.add(player2);
@@ -22,11 +24,12 @@ public class Game {
 
     void run() {
         //todo
-        state="PLAYING";
-      /*  while(state!="END"){
+        state = "PLAYING";
+       while(state!="END" ){
 
             updateGameState();
-        }*/
+
+        }
 
 
 
@@ -46,9 +49,11 @@ public class Game {
         else
         if(players.get(0).score==4 && players.get(1).score==4)
             state="DEUCE";
-        else
-            state="PLAYING";
+        else {
+            state = "PLAYING";
+            playerScores(player1);
 
+        }
 
     }
 

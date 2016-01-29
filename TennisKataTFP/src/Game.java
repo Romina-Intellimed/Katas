@@ -22,10 +22,13 @@ public class Game {
 
     void run() {
         //todo
-        while(state!="END"){
+        state="PLAYING";
+      /*  while(state!="END"){
 
             updateGameState();
-        }
+        }*/
+
+
 
     }
 
@@ -43,6 +46,10 @@ public class Game {
         else
         if(players.get(0).score==4 && players.get(1).score==4)
             state="DEUCE";
+        else
+            state="PLAYING";
+
+
     }
 
 

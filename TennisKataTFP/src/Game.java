@@ -20,6 +20,10 @@ public class Game {
 
     }
 
+    void run() {
+        //todo
+    }
+
     void playerScores(Player player){
         if(players.contains(player)) {
             player.hasScored();

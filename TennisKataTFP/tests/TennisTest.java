@@ -78,6 +78,11 @@ public class TennisTest {
 
     }
 
+    @Test
+    public void gameEndsWhenOnePlayerHasTheMaximumScoreGreaterThanTheOpponent() {
+        //todo
+    }
+
 
     /// game in deuce, the winner of the ball has advantage and game ball
     @Test

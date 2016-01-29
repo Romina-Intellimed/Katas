@@ -83,10 +83,8 @@ public class TennisTest {
 
     @Test
     public void theGameIsInDeuceState(){
-        testGame.players.get(0).score=4;
-        testGame.players.get(1).score=4;
 
-        testGame.updateGameState();
+        testGame.runDeuce();;
 
         assertTrue(testGame.state=="DEUCE");
 
@@ -133,7 +131,7 @@ public class TennisTest {
     }
 
     @Test
-    public void theGameIsInEndState(){
+    public void theGameIsInEndStateWhenPlayerWinsInAdvantageFromTheFirstDeuce(){
 
 
     }

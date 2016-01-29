@@ -36,6 +36,26 @@ public class Game {
 
     }
 
+
+
+    void runDeuce() {
+        //todo
+        state = "PLAYING";
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        System.out.println("Player1 has the score of: "+ player1.score);
+        System.out.println("Player2 has the score of: "+ player2.score);
+
+    }
+
+
+
     private void playerTwoWinsTheBall() {
         playerScores(player2);
         updateGameState();
@@ -48,7 +68,6 @@ public class Game {
 
     void playerScores(Player player) {
         if (players.contains(player)) {
-            player.winsTheBall = true;
             player.hasScored();
         }
     }
@@ -107,10 +126,11 @@ public class Game {
             winner = players.get(0);
             looser=players.get(1);
         }
-        if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2) {
+        else if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2) {
             winner = players.get(1);
             looser=players.get(2);
         }
+
 
     }
 

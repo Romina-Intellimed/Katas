@@ -8,7 +8,7 @@ public class TennisGameMain {
 
         Game myGame=new Game();
 
-        myGame.run();
+        myGame.runPlayerWithAdvantageWinsTheBall();
 
 
     }

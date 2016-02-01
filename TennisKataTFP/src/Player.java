@@ -16,9 +16,13 @@ public class Player {
     }
 
     Integer hasScored(){
+        if(score<4)
         score++;
+
         return score;
     }
+
+
 
     public Integer getScore() {
         return score;

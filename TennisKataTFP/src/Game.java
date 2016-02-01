@@ -24,7 +24,6 @@ public class Game {
     }
 
     void run() {
-        //todo
         state = "PLAYING";
         playerOneWinsTheBall();
         playerOneWinsTheBall();
@@ -39,7 +38,6 @@ public class Game {
 
 
     void runDeuce() {
-        //todo
         state = "PLAYING";
         playerOneWinsTheBall();
         playerTwoWinsTheBall();
@@ -55,18 +53,56 @@ public class Game {
     }
 
 
+    void runPlayerWithAdvantageWinsTheBall() {
+        state = "PLAYING";
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerOneWinsTheBall();
+
+        System.out.println("Player1 has the score of: "+ player1.score);
+        System.out.println("Player2 has the score of: "+ player2.score);
+
+    }
+
+
+
+
+
 
     private void playerTwoWinsTheBall() {
         playerScores(player2);
+        player2.winsTheBall=true;
+        player1.winsTheBall=false;
+
+        if(state.equals("DEUCE")) {
+            player2.hasAdvantage = true;
+            player1.hasAdvantage = false;
+        }
         updateGameState();
     }
 
     private void playerOneWinsTheBall() {
         playerScores(player1);
+
+        player2.winsTheBall=false;
+        player1.winsTheBall=true;
+
+        if(state.equals("DEUCE")) {
+            player1.hasAdvantage = true;
+            player2.hasAdvantage = false;
+        }
         updateGameState();
     }
 
     void playerScores(Player player) {
+
         if (players.contains(player)) {
             player.hasScored();
         }
@@ -77,29 +113,24 @@ public class Game {
         winner=getGameWinner();
         if (winner != null) {
             state = "END";
-        } else if (players.get(0).score == 4 && players.get(1).score == 4 && !isAdvantage()) {
+        } else if (players.get(0).score == 4 && players.get(1).score == 4 && !player1.hasAdvantage && !player2.hasAdvantage) {
             state = "DEUCE";
         } else if (isAdvantage()) {
             state = "ADVANTAGE";
         } else {
             state = "PLAYING";
-            //playerScores(player1);
-
         }
 
     }
 
     private boolean isAdvantage() {
-        return players.get(0).score == 4 && players.get(1).score == 4 && (players.get(0).winsTheBall == true || players.get(1).winsTheBall == true);
+        return players.get(0).score == 4 && players.get(1).score == 4 && (player1.hasAdvantage || player2.hasAdvantage);
     }
 
     void updatePlayersAdvantageState(Player player) {
-        player.hasAdvantage = true;
-        // player.winsTheBall=false;
         for (Player p : players) {
             if (p != player) {
                 p.hasAdvantage = false;
-                p.winsTheBall = false;
             }
         }
     }
@@ -128,10 +159,26 @@ public class Game {
         }
         else if (players.get(1).getScore() == 4 && players.get(1).getScore() >= players.get(0).getScore() + 2) {
             winner = players.get(1);
-            looser=players.get(2);
+            looser=players.get(0);
+        }
+        else if(player1.hasAdvantage == true && updateBallWinner()==player1 && state.equals("ADVANTAGE")) {
+            winner = players.get(0);
+            looser=players.get(1);
+        }
+        else if (player2.hasAdvantage == true && updateBallWinner()==player2 && state.equals("ADVANTAGE")){
+            winner = players.get(1);
+            looser=players.get(0);
         }
 
 
+    }
+
+
+    Player updateBallWinner(){
+        if (player1.winsTheBall==true)
+            return player1;
+      else
+            return player2;
     }
 
 

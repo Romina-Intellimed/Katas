@@ -92,12 +92,9 @@ public class TennisTest {
     }
 
     @Test
-    @Ignore
+
     public void thePlayerAdvanatageStateIsUpdated(){
-
         testGame.runPlayerWithAdvantageWinsTheBall();
-
-
         assertTrue(testGame.players.get(0).hasAdvantage);
 
     }
@@ -105,10 +102,11 @@ public class TennisTest {
 
 
     @Test
-    @Ignore
+
     public void theGameIsInAdvantageState(){
         testGame.players.get(0).score=4;
         testGame.players.get(1).score=4;
+        testGame.players.get(0).hasAdvantage=true;
 
         testGame.updateGameState();
 

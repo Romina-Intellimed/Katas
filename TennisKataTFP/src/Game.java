@@ -95,18 +95,31 @@ public class Game {
 
     private void playerTwoWinsTheBall() {
         playerScores(player2);
-        player2.winsTheBall=true;
-        player1.winsTheBall=false;
-
-        if(state.equals("DEUCE")) {
-            player2.hasAdvantage = true;
-            player1.hasAdvantage = false;
-        }
-        else if(state.equals("ADVANTAGE") && player1.hasAdvantage){
-            player1.hasAdvantage=false;
-            player2.hasAdvantage=false;
-        }
+        updatePlayersStateWhenPlayerWinsTheBall(player2);
         updateGameState();
+    }
+
+    private void updatePlayersStateWhenPlayerWinsTheBall(Player player) {
+        Player looser = (player == player1)? player2 : player1;
+        player.winsTheBall=true;
+        looser.winsTheBall=false;
+
+        if(isDeuce()) {
+            player.hasAdvantage = true;
+            looser.hasAdvantage = false;
+        }
+        else if(isPlayerInAdvantage(player1)){
+            looser.hasAdvantage=false;
+            player.hasAdvantage=false;
+        }
+    }
+
+    private boolean isDeuce() {
+        return state.equals("DEUCE");
+    }
+
+    private boolean isPlayerInAdvantage(Player player) {
+        return state.equals("ADVANTAGE") && player.hasAdvantage;
     }
 
     private void playerOneWinsTheBall() {
@@ -115,7 +128,7 @@ public class Game {
         player2.winsTheBall=false;
         player1.winsTheBall=true;
 
-        if(state.equals("DEUCE")) {
+        if(isDeuce()) {
             player1.hasAdvantage = true;
             player2.hasAdvantage = false;
         }

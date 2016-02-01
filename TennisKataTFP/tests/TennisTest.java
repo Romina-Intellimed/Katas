@@ -127,6 +127,7 @@ public class TennisTest {
     public void theGameIsInEndStateWhenPlayerWinsInAdvantageFromTheFirstDeuce(){
         testGame.runPlayerWithAdvantageWinsTheBall();
         assertEquals(testGame.players.get(0),testGame.winner);
+        assertEquals((Integer)4,testGame.winner.score);
         assertTrue((testGame.state=="END"));
 
     }

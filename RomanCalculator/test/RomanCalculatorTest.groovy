@@ -73,18 +73,14 @@ class RomanCalculatorTest {
 
 
     @Test
-    @Ignore
     void VplusVisX() {
-        assert "X" == calculator.sum("V", "V")
+        assert "X" == calculator.sumSpecialSymbols("V", "V")
     }
-
-
 
 
     @Test
     void LplusLisC() {
-
-
+        assert "C" == calculator.sumSpecialSymbols("L", "L")
     }
 
 

@@ -84,7 +84,7 @@ public class TennisTest {
     @Test
     public void theGameIsInDeuceState(){
 
-        testGame.runDeuce();;
+        testGame.runDeuce();
 
         assertTrue(testGame.state=="DEUCE");
 
@@ -135,14 +135,14 @@ public class TennisTest {
     }
 
 
-    @Test
-    public void thePlayerWithAdvantageLostsTheBall(){
 
-    }
+
 
     @Test
     public void theGameIsInDeuceAfterPlayerWithAdvantageLostsTheBall(){
+        testGame.runPlayerWithAdvantageLostsTheBall();
 
+        assertTrue((testGame.state=="DEUCE"));
     }
 
 

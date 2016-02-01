@@ -47,8 +47,8 @@ public class Game {
         playerTwoWinsTheBall();
         playerOneWinsTheBall();
         playerTwoWinsTheBall();
-        System.out.println("Player1 has the score of: "+ player1.score);
-        System.out.println("Player2 has the score of: "+ player2.score);
+        System.out.println("Player1 has the score of: "+ player1.score+ " avantage state: "+player1.hasAdvantage);
+        System.out.println("Player2 has the score of: "+ player2.score+ " avantage state: "+player2.hasAdvantage);
 
     }
 
@@ -66,11 +66,28 @@ public class Game {
         playerOneWinsTheBall();
         playerOneWinsTheBall();
 
-        System.out.println("Player1 has the score of: "+ player1.score);
-        System.out.println("Player2 has the score of: "+ player2.score);
+        System.out.println("Player1 has the score of: "+ player1.score+ " avantage state: "+player1.hasAdvantage);
+        System.out.println("Player2 has the score of: "+ player2.score+ " avantage state: "+player2.hasAdvantage);
 
     }
 
+    void runPlayerWithAdvantageLostsTheBall() {
+        state = "PLAYING";
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+        playerOneWinsTheBall();
+        playerTwoWinsTheBall();
+
+        System.out.println("Player1 has the score of: "+ player1.score+ " advantage state: "+player1.hasAdvantage +" game state "+state);
+        System.out.println("Player2 has the score of: "+ player2.score+ " avantage state: "+player2.hasAdvantage);
+
+    }
 
 
 
@@ -85,6 +102,10 @@ public class Game {
             player2.hasAdvantage = true;
             player1.hasAdvantage = false;
         }
+        else if(state.equals("ADVANTAGE") && player1.hasAdvantage){
+            player1.hasAdvantage=false;
+            player2.hasAdvantage=false;
+        }
         updateGameState();
     }
 
@@ -98,7 +119,10 @@ public class Game {
             player1.hasAdvantage = true;
             player2.hasAdvantage = false;
         }
-        updateGameState();
+        else if(state.equals("ADVANTAGE") && player2.hasAdvantage){
+            player2.hasAdvantage=false;
+            player1.hasAdvantage=false;
+        }updateGameState();
     }
 
     void playerScores(Player player) {

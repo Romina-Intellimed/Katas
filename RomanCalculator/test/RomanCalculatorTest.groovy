@@ -87,7 +87,7 @@ class RomanCalculatorTest {
 
     @Test
     void DplusDisM() {
-
+        assert "M" == calculator.sumSpecialSymbols("D", "D")
 
     }
 

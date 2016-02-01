@@ -134,7 +134,7 @@ public class Game {
 
 
     void updateGameState() {
-        winner=getGameWinner();
+        updatePlayersFinalState();
         if (winner != null) {
             state = "END";
         } else if (players.get(0).score == 4 && players.get(1).score == 4 && !player1.hasAdvantage && !player2.hasAdvantage) {
@@ -150,12 +150,6 @@ public class Game {
 
     private boolean isAdvantage() {
         return players.get(0).score == 4 && players.get(1).score == 4 && (player1.hasAdvantage || player2.hasAdvantage);
-    }
-
-    Player getGameWinner() {
-        updatePlayersFinalState();
-
-        return winner;
     }
 
 

@@ -63,7 +63,9 @@ public class TennisTest {
         testGame.players.get(0).score=4;
         testGame.players.get(1).score=2;
 
-        assertEquals(testGame.players.get(0),testGame.getGameWinner());
+        testGame.updatePlayersFinalState();
+
+        assertEquals(testGame.players.get(0),testGame.winner);
     }
 
 

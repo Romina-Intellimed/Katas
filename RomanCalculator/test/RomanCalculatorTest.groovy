@@ -34,13 +34,32 @@ class RomanCalculatorTest {
     @Test
     void CplusCisCC() {
         assert "CC" == calculator.sum("C", "C")
-
     }
 
     @Test
     void MplusMisMM() {
         assert "MM" == calculator.sum("M", "M")
+    }
 
+    @Test
+    void "V plus II is VII"() {
+        assert "VII" == calculator.sum("V", "II")
+    }
+
+    @Test
+    void "XX plus I is XXI"() {
+        assert "XXI" == calculator.sum("XX", "I")
+    }
+
+    @Test
+    void "XX plus II is XXII"() {
+        assert "XXII" == calculator.sum("XX", "II")
+    }
+
+    @Test
+    @Ignore
+    void "II plus V is VII"() {
+        assert "VII" == calculator.sum("II", "V")
     }
 
 

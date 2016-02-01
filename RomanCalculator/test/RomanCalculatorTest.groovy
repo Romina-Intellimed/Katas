@@ -1,4 +1,5 @@
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 
 /**
@@ -21,8 +22,14 @@ class RomanCalculatorTest {
     }
 
     @Test
-    void VplusVisX() {
+    void "I plus II is III"() {
+        assert "III" == calculator.sum("I", "II")
+    }
 
+    @Test
+    @Ignore
+    void VplusVisX() {
+        assert "X" == calculator.sum("V", "V")
     }
 
 

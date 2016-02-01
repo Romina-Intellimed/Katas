@@ -4,6 +4,6 @@
 class RomanCalculator {
 
     def sum(firstRoman, secondRoman) {
-        return "II"
+        return firstRoman + secondRoman
     }
 }

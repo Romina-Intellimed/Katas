@@ -143,13 +143,16 @@ public class TennisTest {
     @Test
     public void theGameIsInDeuceAfterPlayerWithAdvantageLostsTheBall(){
         testGame.runPlayerWithAdvantageLostsTheBall();
+        assertPlayerScoreAndAdvantageStateInDeuceAfterLoosingAdvantage();
+        assertTrue((testGame.state=="DEUCE"));
+    }
+
+    private void assertPlayerScoreAndAdvantageStateInDeuceAfterLoosingAdvantage() {
         assertEquals((Integer)4,testGame.player1.score);
         assertEquals((Integer)4,testGame.player2.score);
 
         assertTrue(!testGame.player1.hasAdvantage && !testGame.player2.hasAdvantage);
-        assertTrue((testGame.state=="DEUCE"));
     }
-
 
 
 }

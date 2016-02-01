@@ -128,6 +128,7 @@ public class TennisTest {
         testGame.runPlayerWithAdvantageWinsTheBall();
         assertEquals(testGame.players.get(0),testGame.winner);
         assertEquals((Integer)4,testGame.winner.score);
+        assertTrue(testGame.winner.hasAdvantage && !testGame.looser.hasAdvantage);
         assertTrue((testGame.state=="END"));
 
     }

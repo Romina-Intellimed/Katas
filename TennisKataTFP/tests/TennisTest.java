@@ -92,7 +92,6 @@ public class TennisTest {
     }
 
     @Test
-
     public void thePlayerAdvanatageStateIsUpdated(){
         testGame.runPlayerWithAdvantageWinsTheBall();
         assertTrue(testGame.players.get(0).hasAdvantage);
@@ -127,7 +126,7 @@ public class TennisTest {
     @Test
     public void theGameIsInEndStateWhenPlayerWinsInAdvantageFromTheFirstDeuce(){
         testGame.runPlayerWithAdvantageWinsTheBall();
-
+        assertEquals(testGame.players.get(0),testGame.winner);
         assertTrue((testGame.state=="END"));
 
     }

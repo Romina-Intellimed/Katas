@@ -57,7 +57,16 @@ class RomanCalculatorTest {
     }
 
     @Test
-    @Ignore
+    void "II plus I is III"() {
+        assert "III" == calculator.sum("II", "I")
+    }
+
+    @Test
+    void "I plus V is VI"() {
+        assert "VI" == calculator.sum("I", "V")
+    }
+
+    @Test
     void "II plus V is VII"() {
         assert "VII" == calculator.sum("II", "V")
     }

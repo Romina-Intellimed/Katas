@@ -17,13 +17,11 @@ class RomanCalculatorTest {
 
     @Test
     void IplusIisII() {
-
-
+        assert "II" == calculator.sum("I", "I")
     }
 
     @Test
     void VplusVisX() {
-
 
     }
 

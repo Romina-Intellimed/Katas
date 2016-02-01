@@ -27,17 +27,31 @@ class RomanCalculatorTest {
     }
 
     @Test
+    void XplusXisXX() {
+        assert "XX" == calculator.sum("X", "X")
+    }
+
+    @Test
+    void CplusCisCC() {
+        assert "CC" == calculator.sum("C", "C")
+
+    }
+
+    @Test
+    void MplusMisMM() {
+        assert "MM" == calculator.sum("M", "M")
+
+    }
+
+
+    @Test
     @Ignore
     void VplusVisX() {
         assert "X" == calculator.sum("V", "V")
     }
 
 
-    @Test
-    void XplusXisXX() {
 
-
-    }
 
     @Test
     void LplusLisC() {
@@ -46,21 +60,9 @@ class RomanCalculatorTest {
     }
 
 
-    @Test
-    void CplusCisCC() {
-
-
-    }
 
     @Test
     void DplusDisM() {
-
-
-    }
-
-
-    @Test
-    void MplusMisMM() {
 
 
     }

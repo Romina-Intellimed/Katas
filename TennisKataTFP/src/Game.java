@@ -147,32 +147,16 @@ public class Game {
 
     }
 
+
     private boolean isAdvantage() {
         return players.get(0).score == 4 && players.get(1).score == 4 && (player1.hasAdvantage || player2.hasAdvantage);
     }
-
-    void updatePlayersAdvantageState(Player player) {
-        for (Player p : players) {
-            if (p != player) {
-                p.hasAdvantage = false;
-            }
-        }
-    }
-
-
 
     Player getGameWinner() {
         updatePlayersFinalState();
 
         return winner;
     }
-
-    Player getGameLooser(){
-        updatePlayersFinalState();
-        return looser;
-    }
-
-
 
 
     void updatePlayersFinalState() {

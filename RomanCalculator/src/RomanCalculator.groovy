@@ -14,8 +14,20 @@ class RomanCalculator {
     }
 
     def sumSpecialSymbols(firstRoman, secondRoman){
+
+        romanSubstractivesEquivalence.each { entry ->
+            firstRoman = firstRoman.replaceAll(entry.value, entry.key)
+        }
+
+        romanSubstractivesEquivalence.each { entry ->
+            secondRoman = secondRoman.replaceAll(entry.value, entry.key)
+        }
+
+
         def digitsFromRomansToSumUp = firstRoman + secondRoman
         digitsFromRomansToSumUp = digitsFromRomansToSumUp.toList().sort{romanDigitValue.get(it)}.reverse().join()
+
+
         romanSameConsecutiveDigitEquivalence.keySet().each { key ->
             digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSameConsecutiveDigitEquivalence.get(key))
         }

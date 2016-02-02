@@ -139,6 +139,7 @@ class RomanCalculatorTest {
 
     @Test
     void "I plus VIII is IX"() {
+        assert "IX" == calculator.sumSpecialSymbols("I", "VIII")
 
     }
 

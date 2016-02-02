@@ -15,10 +15,11 @@ class RomanCalculator {
 
     def sumSpecialSymbols(firstRoman, secondRoman){
         def digitsFromRomansToSumUp = firstRoman + secondRoman
+        digitsFromRomansToSumUp = digitsFromRomansToSumUp.toList().sort{romanDigitValue.get(it)}.reverse().join()
         romanSameConsecutiveDigitEquivalence.keySet().each { key ->
             digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSameConsecutiveDigitEquivalence.get(key))
         }
-        romanSubstractivesEquivalence.keySet().each { key ->
+        romanSubstractivesEquivalence.keySet().iterator().reverse().each { key ->
             digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSubstractivesEquivalence.get(key))}
 
        return digitsFromRomansToSumUp

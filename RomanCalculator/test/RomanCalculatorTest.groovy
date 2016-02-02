@@ -155,12 +155,12 @@ class RomanCalculatorTest {
 
     @Test
     void "X plus XXX is XL"() {
-
+        assert "XL" == calculator.sumSpecialSymbols("X", "XXX")
     }
 
     @Test
     void "X plus LXXX is XC"() {
-
+        assert "XC" == calculator.sumSpecialSymbols("X", "LXXX")
     }
 
     @Test

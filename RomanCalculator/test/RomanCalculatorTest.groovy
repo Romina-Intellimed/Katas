@@ -173,4 +173,9 @@ class RomanCalculatorTest {
         assert "CM" == calculator.sumRomanNumbers("D", "CD")
 
     }
+
+    @Test
+    void "XIV plus LX is LXXIV"() {
+        assert "LXXIV" == calculator.sumRomanNumbers("XIV", "LX")
+    }
 }

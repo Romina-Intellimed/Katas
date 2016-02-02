@@ -18,57 +18,57 @@ class RomanCalculatorTest {
 
     @Test
     void IplusIisII() {
-        assert "II" == calculator.sum("I", "I")
+        assert "II" == calculator.sumSpecialSymbols("I", "I")
     }
 
     @Test
     void "I plus II is III"() {
-        assert "III" == calculator.sum("I", "II")
+        assert "III" == calculator.sumSpecialSymbols("I", "II")
     }
 
     @Test
     void XplusXisXX() {
-        assert "XX" == calculator.sum("X", "X")
+        assert "XX" == calculator.sumSpecialSymbols("X", "X")
     }
 
     @Test
     void CplusCisCC() {
-        assert "CC" == calculator.sum("C", "C")
+        assert "CC" == calculator.sumSpecialSymbols("C", "C")
     }
 
     @Test
     void MplusMisMM() {
-        assert "MM" == calculator.sum("M", "M")
+        assert "MM" == calculator.sumSpecialSymbols("M", "M")
     }
 
     @Test
     void "V plus II is VII"() {
-        assert "VII" == calculator.sum("V", "II")
+        assert "VII" == calculator.sumSpecialSymbols("V", "II")
     }
 
     @Test
     void "XX plus I is XXI"() {
-        assert "XXI" == calculator.sum("XX", "I")
+        assert "XXI" == calculator.sumSpecialSymbols("XX", "I")
     }
 
     @Test
     void "XX plus II is XXII"() {
-        assert "XXII" == calculator.sum("XX", "II")
+        assert "XXII" == calculator.sumSpecialSymbols("XX", "II")
     }
 
     @Test
     void "II plus I is III"() {
-        assert "III" == calculator.sum("II", "I")
+        assert "III" == calculator.sumSpecialSymbols("II", "I")
     }
 
     @Test
     void "I plus V is VI"() {
-        assert "VI" == calculator.sum("I", "V")
+        assert "VI" == calculator.sumSpecialSymbols("I", "V")
     }
 
     @Test
     void "II plus V is VII"() {
-        assert "VII" == calculator.sum("II", "V")
+        assert "VII" == calculator.sumSpecialSymbols("II", "V")
     }
 
 

@@ -42,8 +42,8 @@ class RomanCalculator {
     }
 
 
-    def replaceInStringValueWithKey(map, romanNumber) {
-        map.each { entry ->
+    def replaceInStringValueWithKey(keyValuePairs, romanNumber) {
+        keyValuePairs.each { entry ->
             romanNumber = romanNumber.replaceAll(entry.value, entry.key)
         }
         return romanNumber

@@ -15,13 +15,23 @@ class RomanCalculator {
         digitsFromRomansToSumUp = digitsFromRomansToSumUp.toList().sort { romanDigitValue.get(it) }.reverse().join()
 
 
+        digitsFromRomansToSumUp = replaceSameConsecutiveDigits(digitsFromRomansToSumUp)
+        digitsFromRomansToSumUp = replaceSubstractiveGroupsInTheResult(digitsFromRomansToSumUp)
+
+        return digitsFromRomansToSumUp
+    }
+
+    private def replaceSubstractiveGroupsInTheResult(digitsFromRomansToSumUp) {
+        romanSubstractivesEquivalence.iterator().reverse().each { entry ->
+            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
+        }
+        return digitsFromRomansToSumUp
+    }
+
+    private def replaceSameConsecutiveDigits(digitsFromRomansToSumUp) {
         romanSameConsecutiveDigitEquivalence.each { entry ->
             digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
         }
-        romanSubstractivesEquivalence.iterator().reverse().each {entry ->
-            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
-        }
-
         return digitsFromRomansToSumUp
     }
 

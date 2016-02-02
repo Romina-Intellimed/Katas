@@ -15,8 +15,8 @@ class RomanCalculator {
         digitsFromRomansToSumUp = digitsFromRomansToSumUp.toList().sort { romanDigitValue.get(it) }.reverse().join()
 
 
-        romanSameConsecutiveDigitEquivalence.keySet().each { key ->
-            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSameConsecutiveDigitEquivalence.get(key))
+        romanSameConsecutiveDigitEquivalence.each { entry ->
+            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
         }
         romanSubstractivesEquivalence.keySet().iterator().reverse().each { key ->
             digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSubstractivesEquivalence.get(key))

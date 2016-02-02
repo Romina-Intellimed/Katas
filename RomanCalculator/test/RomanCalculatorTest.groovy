@@ -108,7 +108,7 @@ class RomanCalculatorTest {
 
     @Test
     void CCplusCCisCD() {
-
+        assert "CD" == calculator.sumSpecialSymbols("CC", "CC")
 
     }
 

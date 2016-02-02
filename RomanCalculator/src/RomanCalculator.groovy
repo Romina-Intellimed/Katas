@@ -36,12 +36,17 @@ class RomanCalculator {
     }
 
     def replaceSubstractiveGroups(romanNumber) {
-        romanSubstractivesEquivalence.each { entry ->
-            romanNumber = romanNumber.replaceAll(entry.value, entry.key)
-        }
-        return romanNumber
+
+        return replaceInStringValueWithKey(romanSubstractivesEquivalence, romanNumber)
 
     }
 
+
+    def replaceInStringValueWithKey(map, romanNumber) {
+        map.each { entry ->
+            romanNumber = romanNumber.replaceAll(entry.value, entry.key)
+        }
+        return romanNumber
+    }
 
 }

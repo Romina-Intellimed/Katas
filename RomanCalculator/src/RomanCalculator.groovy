@@ -21,30 +21,29 @@ class RomanCalculator {
         return digitsFromRomansToSumUp
     }
 
-    private def replaceSubstractiveGroupsInTheResult(digitsFromRomansToSumUp) {
-        romanSubstractivesEquivalence.iterator().reverse().each { entry ->
-            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
-        }
-        return digitsFromRomansToSumUp
+    private def replaceSubstractiveGroupsInTheResult(stringWithRomanDigits) {
+        return replaceInStringKeyWithValue(romanSubstractivesEquivalence.iterator().reverse(), stringWithRomanDigits)
     }
 
-    private def replaceSameConsecutiveDigits(digitsFromRomansToSumUp) {
-        romanSameConsecutiveDigitEquivalence.each { entry ->
-            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(entry.key, entry.value)
-        }
-        return digitsFromRomansToSumUp
+    private def replaceSameConsecutiveDigits(stringWithRomanDigits) {
+        return replaceInStringKeyWithValue(romanSameConsecutiveDigitEquivalence, stringWithRomanDigits)
     }
 
     def replaceSubstractiveGroups(romanNumber) {
-
         return replaceInStringValueWithKey(romanSubstractivesEquivalence, romanNumber)
-
     }
 
 
     def replaceInStringValueWithKey(keyValuePairs, romanNumber) {
         keyValuePairs.each { entry ->
             romanNumber = romanNumber.replaceAll(entry.value, entry.key)
+        }
+        return romanNumber
+    }
+
+    def replaceInStringKeyWithValue(keyValuePairs, romanNumber) {
+        keyValuePairs.each { entry ->
+            romanNumber = romanNumber.replaceAll(entry.key, entry.value)
         }
         return romanNumber
     }

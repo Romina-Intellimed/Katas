@@ -8,12 +8,7 @@ class RomanCalculator {
     def romanSubstractivesEquivalence =['IIII':'IV', 'VIIII':'IX', 'XXXX':'XL', 'LXXXX':'XC', 'CCCC':'CD', 'DCCCC':'CM']
 
 
-    def sum(firstRoman, secondRoman) {
-        def digitsFromRomansToSumUp = firstRoman + secondRoman
-        return digitsFromRomansToSumUp.toList().sort{romanDigitValue.get(it)}.reverse().join()
-    }
-
-    def sumSpecialSymbols(firstRoman, secondRoman){
+    def sumRomanNumbers(firstRoman, secondRoman){
 
         romanSubstractivesEquivalence.each { entry ->
             firstRoman = firstRoman.replaceAll(entry.value, entry.key)

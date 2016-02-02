@@ -4,7 +4,8 @@
 class RomanCalculator {
 
     def romanDigitValue = ['I': 1, 'V': 2, 'X': 3, 'L': 4, 'C': 5, 'D': 6, 'M': 7]
-    def romanDigitEquivalence = ['IIII':'IV','IIIII':'V','VIIII':'IX','VV':'X','XXXX':'XL','XXXXX':'L','LXXXX':'XC','LL':'C','CCCC':'CD','DCCCC':'CM','CCCCC':'M','DD':'M']
+    def romanSameConsecutiveDigitEquivalence = ['IIIII':'V', 'VV':'X', 'XXXXX':'L', 'LL':'C', 'CCCCC':'D', 'DD':'M']
+    def romanSubstractivesEquivalence =['IIII':'IV', 'VIIII':'IX', 'XXXX':'XL', 'LXXXX':'XC', 'CCCC':'CD', 'DCCCC':'CM']
 
 
     def sum(firstRoman, secondRoman) {
@@ -14,9 +15,11 @@ class RomanCalculator {
 
     def sumSpecialSymbols(firstRoman, secondRoman){
         def digitsFromRomansToSumUp = firstRoman + secondRoman
-        romanDigitEquivalence.keySet().each { key ->
-            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanDigitEquivalence.get(key))
+        romanSameConsecutiveDigitEquivalence.keySet().each { key ->
+            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSameConsecutiveDigitEquivalence.get(key))
         }
+        romanSubstractivesEquivalence.keySet().each { key ->
+            digitsFromRomansToSumUp = digitsFromRomansToSumUp.replaceAll(key, romanSubstractivesEquivalence.get(key))}
 
        return digitsFromRomansToSumUp
     }

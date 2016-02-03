@@ -5,11 +5,29 @@
 
 
 class GridOfCells {
-    def bidimensionalGrid
+    //GameOfLifeCell[][] gameOfLifeGrid
+    def gameOfLifeGrid = []
+    def liveCells = 0;
+    def deadCells = 0;
 
 
     GridOfCells (){
-        bidimensionalGrid = new ArrayList<>()
     }
+
+    def gridEvolution(){
+
+        gameOfLifeGrid.size().times { i->
+            gameOfLifeGrid.size().times {j->
+                if (gameOfLifeGrid[i][j].state == false)
+                    deadCells++
+            }
+        }
+   return gameOfLifeGrid;
+    }
+
+
+
+
+
 
 }

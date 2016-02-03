@@ -20,8 +20,8 @@ class GridOfCells {
 
     }
 
-    def cellEvolution(grid, cellXPos, cellYPos) {
-        def neighbours = getCellNeighbours(grid, cellXPos, cellYPos)
+    def cellEvolution(cellXPos, cellYPos) {
+        def neighbours = getCellNeighbours(gameOfLifeGrid, cellXPos, cellYPos)
 
         (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
     }

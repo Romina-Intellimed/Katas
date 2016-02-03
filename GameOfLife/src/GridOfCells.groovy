@@ -21,16 +21,9 @@ class GridOfCells {
     }
 
     def cellEvolution(grid, cellXPos, cellYPos) {
-        addProtectionWall(grid)
-        //cellYPos++
-        //cellXPos++
         def neighbours = getCellNeighbours(grid, cellXPos, cellYPos)
 
         (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
-    }
-
-    private def addProtectionWall(grid) {
-
     }
 
     private def getCellNeighbours(grid, cellXPos, cellYPos) {

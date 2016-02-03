@@ -16,7 +16,13 @@ class GridOfCells {
     def cellEvolution(cellXPos, cellYPos) {
         def neighbours = getCellNeighbours(cellXPos, cellYPos)
 
-        (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
+        def alive = 1
+        def dead = 0
+        (livingNeighboursNr(neighbours) > 1 && livingNeighboursNr(neighbours)<4)? alive : dead
+    }
+
+    private def livingNeighboursNr(neighbours) {
+        neighbours.sum()
     }
 
     private def getCellNeighbours(cellXPos, cellYPos) {

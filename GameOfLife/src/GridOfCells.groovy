@@ -13,13 +13,6 @@ class GridOfCells {
     def MAX_X = gameOfLifeGrid.size()
     def MAX_Y = gameOfLifeGrid.size()
 
-
-
-
-    GridOfCells() {
-
-    }
-
     def cellEvolution(cellXPos, cellYPos) {
         def neighbours = getCellNeighbours(cellXPos, cellYPos)
 

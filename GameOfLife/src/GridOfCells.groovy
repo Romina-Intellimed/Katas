@@ -20,9 +20,14 @@ class GridOfCells {
     }
 
     private def getCellNeighbours(cellXPos, cellYPos) {
-        [gameOfLifeGrid[cellXPos -1][cellYPos -1], gameOfLifeGrid[cellXPos-1][cellYPos], gameOfLifeGrid[cellXPos -1][cellYPos +1],
-         gameOfLifeGrid[cellXPos][cellYPos -1], gameOfLifeGrid[cellXPos][cellYPos +1],
-         gameOfLifeGrid[cellXPos +1][cellYPos -1], gameOfLifeGrid[cellXPos+1][cellYPos], gameOfLifeGrid[cellXPos +1][cellYPos +1]]
+        def cellPositionIncrement = 1
+        def xPreviousPos = cellXPos - cellPositionIncrement
+        def yPreviousPos = cellYPos - cellPositionIncrement
+        def yNextPos = cellYPos + cellPositionIncrement
+        def xNextPos = cellXPos + cellPositionIncrement
+        [gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
+         gameOfLifeGrid[cellXPos][yPreviousPos], gameOfLifeGrid[cellXPos][yNextPos],
+         gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
     }
 
     def countNeighboursLiveCells(thisPosX, thisPosY){

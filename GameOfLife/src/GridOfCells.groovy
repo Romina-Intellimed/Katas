@@ -21,15 +21,15 @@ class GridOfCells {
     }
 
     def cellEvolution(cellXPos, cellYPos) {
-        def neighbours = getCellNeighbours(gameOfLifeGrid, cellXPos, cellYPos)
+        def neighbours = getCellNeighbours(cellXPos, cellYPos)
 
         (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
     }
 
-    private def getCellNeighbours(grid, cellXPos, cellYPos) {
-        [grid[cellXPos -1][cellYPos -1], grid[cellXPos-1][cellYPos], grid[cellXPos -1][cellYPos +1],
-         grid[cellXPos][cellYPos -1], grid[cellXPos][cellYPos +1],
-         grid[cellXPos +1][cellYPos -1], grid[cellXPos+1][cellYPos], grid[cellXPos +1][cellYPos +1]]
+    private def getCellNeighbours(cellXPos, cellYPos) {
+        [gameOfLifeGrid[cellXPos -1][cellYPos -1], gameOfLifeGrid[cellXPos-1][cellYPos], gameOfLifeGrid[cellXPos -1][cellYPos +1],
+         gameOfLifeGrid[cellXPos][cellYPos -1], gameOfLifeGrid[cellXPos][cellYPos +1],
+         gameOfLifeGrid[cellXPos +1][cellYPos -1], gameOfLifeGrid[cellXPos+1][cellYPos], gameOfLifeGrid[cellXPos +1][cellYPos +1]]
     }
 
     def countNeighboursLiveCells(thisPosX, thisPosY){
@@ -42,7 +42,7 @@ class GridOfCells {
 
         for (int rowNum=startPosX; rowNum<=endPosX; rowNum++) {
             for (int colNum=startPosY; colNum<=endPosY; colNum++) {
-                // All the neighbors will be grid[rowNum][colNum]
+                // All the neighbors will be gameOfLifeGrid[rowNum][colNum]
                 println " cell with rowNum = ${rowNum} and colNum=${colNum} is ${gameOfLifeGrid[rowNum][colNum]}"
                 if(gameOfLifeGrid[rowNum][colNum].state == true)
                     neighboursLiveCells++

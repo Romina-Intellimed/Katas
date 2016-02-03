@@ -24,7 +24,7 @@ class GameOfLifeTest {
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+        def actualCellState = gridOfCells.cellEvolution(grid, cellXPos, cellYPos)
 
         assert 0 == actualCellState
     }
@@ -35,7 +35,7 @@ class GameOfLifeTest {
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+        def actualCellState = gridOfCells.cellEvolution(grid, cellXPos, cellYPos)
 
         assert 1 == actualCellState
     }
@@ -46,7 +46,7 @@ class GameOfLifeTest {
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+        def actualCellState = gridOfCells.cellEvolution(grid, cellXPos, cellYPos)
 
         assert 1 == actualCellState
     }
@@ -57,21 +57,27 @@ class GameOfLifeTest {
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+        def actualCellState = gridOfCells.cellEvolution(grid, cellXPos, cellYPos)
 
         assert 0 == actualCellState
     }
 
-    private def cellEvolution(grid, cellXPos, cellYPos) {
-        def neighbours = getCellNeighbours(grid, cellXPos, cellYPos)
+    @Test
+    @Ignore
+    void "a corner living cell with less than 2 living neighbours dies"() {
+        def grid = [[0, 1, 0], [0, 0, 0], [1, 0, 0]]
+        def cellXPos = 0
+        def cellYPos = 0
 
-        (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
+        def actualCellState = gridOfCells.cellEvolution(grid, cellXPos, cellYPos)
+
+        assert 0 == actualCellState
     }
 
-    private def getCellNeighbours(grid, cellXPos, cellYPos) {
-        [grid[cellXPos -1][cellYPos -1], grid[cellXPos-1][cellYPos], grid[cellXPos -1][cellYPos +1],
-         grid[cellXPos][cellYPos -1], grid[cellXPos][cellYPos +1],
-         grid[cellXPos +1][cellYPos -1], grid[cellXPos+1][cellYPos], grid[cellXPos +1][cellYPos +1]]
+    @Test
+    void "test out of bounds for groovy grid"() {
+        def grid = [[0,1], [0,0]]
+        assert 0 == grid[-1][0]
     }
 
     @Test

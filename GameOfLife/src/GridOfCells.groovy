@@ -20,7 +20,24 @@ class GridOfCells {
 
     }
 
+    def cellEvolution(grid, cellXPos, cellYPos) {
+        addProtectionWall(grid)
+        //cellYPos++
+        //cellXPos++
+        def neighbours = getCellNeighbours(grid, cellXPos, cellYPos)
 
+        (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
+    }
+
+    private def addProtectionWall(grid) {
+
+    }
+
+    private def getCellNeighbours(grid, cellXPos, cellYPos) {
+        [grid[cellXPos -1][cellYPos -1], grid[cellXPos-1][cellYPos], grid[cellXPos -1][cellYPos +1],
+         grid[cellXPos][cellYPos -1], grid[cellXPos][cellYPos +1],
+         grid[cellXPos +1][cellYPos -1], grid[cellXPos+1][cellYPos], grid[cellXPos +1][cellYPos +1]]
+    }
 
     def countNeighboursLiveCells(thisPosX, thisPosY){
         def neighboursLiveCells=0

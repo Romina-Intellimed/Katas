@@ -19,6 +19,62 @@ class GameOfLifeTest {
     }
 
     @Test
+    void "a middle living cell with fewer than 2 live neighbours dies"() {
+        def grid = [[0, 1, 0], [0, 1, 0], [0, 0, 0]]
+        def cellXPos = 1
+        def cellYPos = 1
+
+        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+
+        assert 0 == actualCellState
+    }
+
+    @Test
+    void "a middle living cell with 2 live neighbours lives"() {
+        def grid = [[0, 1, 0], [1, 1, 0], [0, 0, 0]]
+        def cellXPos = 1
+        def cellYPos = 1
+
+        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+
+        assert 1 == actualCellState
+    }
+
+    @Test
+    void "a middle living cell with 3 live neighbours lives"() {
+        def grid = [[0, 1, 0], [1, 1, 1], [0, 0, 0]]
+        def cellXPos = 1
+        def cellYPos = 1
+
+        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+
+        assert 1 == actualCellState
+    }
+
+    @Test
+    void "a middle living cell with 4 live neighbours lives"() {
+        def grid = [[0, 1, 0], [1, 1, 1], [1, 0, 0]]
+        def cellXPos = 1
+        def cellYPos = 1
+
+        def actualCellState = cellEvolution(grid, cellXPos, cellYPos)
+
+        assert 0 == actualCellState
+    }
+
+    private def cellEvolution(grid, cellXPos, cellYPos) {
+        def neighbours = getCellNeighbours(grid, cellXPos, cellYPos)
+
+        (neighbours.sum() > 1 && neighbours.sum()<4)? 1 : 0
+    }
+
+    private def getCellNeighbours(grid, cellXPos, cellYPos) {
+        [grid[cellXPos -1][cellYPos -1], grid[cellXPos-1][cellYPos], grid[cellXPos -1][cellYPos +1],
+         grid[cellXPos][cellYPos -1], grid[cellXPos][cellYPos +1],
+         grid[cellXPos +1][cellYPos -1], grid[cellXPos+1][cellYPos], grid[cellXPos +1][cellYPos +1]]
+    }
+
+    @Test
     void "for a 2x2 grid of cells with no live cell next generation grid has only dead cells(has 4 dead cells)"() {
         gridOfCells.gameOfLifeGrid[0] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]
         gridOfCells.gameOfLifeGrid[1] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]

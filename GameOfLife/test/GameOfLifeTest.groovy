@@ -37,10 +37,10 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        GameOfLifeCell cell = new GameOfLifeCell()
-        cell.cellXPos = 1
-        cell.cellYPos = 1
-        def actualCell = gridOfCells.cellEvolution(cell)
+        def middleCell = gridOfCells.gameOfLifeGrid[1][1]
+        middleCell.cellXPos = 1
+        middleCell.cellYPos = 1
+        def actualCell = gridOfCells.cellEvolution(middleCell)
 
         assert GameOfLifeCell.alive == actualCell.aliveState
     }
@@ -50,10 +50,10 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        GameOfLifeCell cell = new GameOfLifeCell()
-        cell.cellXPos = 1
-        cell.cellYPos = 1
-        def actualCell = gridOfCells.cellEvolution(cell)
+        def middleCell = gridOfCells.gameOfLifeGrid[1][1]
+        middleCell.cellXPos = 1
+        middleCell.cellYPos = 1
+        def actualCell = gridOfCells.cellEvolution(middleCell)
 
         assert GameOfLifeCell.alive == actualCell.aliveState
     }
@@ -63,10 +63,10 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        GameOfLifeCell cell = new GameOfLifeCell()
-        cell.cellXPos = 1
-        cell.cellYPos = 1
-        def actualCell = gridOfCells.cellEvolution(cell)
+        def middleCell = gridOfCells.gameOfLifeGrid[1][1]
+        middleCell.cellXPos = 1
+        middleCell.cellYPos = 1
+        def actualCell = gridOfCells.cellEvolution(middleCell)
 
         assert GameOfLifeCell.dead == actualCell.aliveState
 

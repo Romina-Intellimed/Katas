@@ -32,45 +32,53 @@ class GameOfLifeTest {
     }
 
     @Test
-    @Ignore
     void "a middle living cell with 2 live neighbours lives"() {
-        gridOfCells.gameOfLifeGrid = [[0, 1, 0], [1, 1, 0], [0, 0, 0]]
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = gridOfCells.cellEvolution(cellXPos, cellYPos)
+        def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert 1 == actualCellState
+        assert GameOfLifeCell.dead== actualCell.aliveState // ?? dead = 1
     }
 
     @Test
-    @Ignore
     void "a middle living cell with 3 live neighbours lives"() {
-        gridOfCells.gameOfLifeGrid = [[0, 1, 0], [1, 1, 1], [0, 0, 0]]
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = gridOfCells.cellEvolution(cellXPos, cellYPos)
+        def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert 1 == actualCellState
+        assert GameOfLifeCell.dead== actualCell.aliveState
     }
 
     @Test
     @Ignore
     void "a middle living cell with 4 live neighbours lives"() {
-        gridOfCells.gameOfLifeGrid = [[0, 1, 0], [1, 1, 1], [1, 0, 0]]
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
         def cellXPos = 1
         def cellYPos = 1
 
         def actualCellState = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
         assert 0 == actualCellState
+
+
     }
 
     @Test
     @Ignore
     void "a corner living cell with less than 2 living neighbours dies"() {
-        gridOfCells.gameOfLifeGrid = [[0, 1, 0], [0, 0, 0], [1, 0, 0]]
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
         def cellXPos = 0
         def cellYPos = 0
 

@@ -41,7 +41,7 @@ class GameOfLifeTest {
 
         def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert GameOfLifeCell.dead== actualCell.aliveState // ?? dead = 1
+        assert GameOfLifeCell.dead == actualCell.aliveState // ?? dead = 1
     }
 
     @Test
@@ -54,11 +54,10 @@ class GameOfLifeTest {
 
         def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert GameOfLifeCell.dead== actualCell.aliveState
+        assert GameOfLifeCell.dead == actualCell.aliveState
     }
 
     @Test
-    @Ignore
     void "a middle living cell with 4 live neighbours lives"() {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
@@ -66,15 +65,13 @@ class GameOfLifeTest {
         def cellXPos = 1
         def cellYPos = 1
 
-        def actualCellState = gridOfCells.cellEvolution(cellXPos, cellYPos)
+        def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert 0 == actualCellState
-
+        assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
 
     @Test
-    @Ignore
     void "a corner living cell with less than 2 living neighbours dies"() {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
@@ -82,9 +79,10 @@ class GameOfLifeTest {
         def cellXPos = 0
         def cellYPos = 0
 
-        def actualCellState = gridOfCells.cellEvolution(cellXPos, cellYPos)
+        def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
 
-        assert 0 == actualCellState
+        assert GameOfLifeCell.dead == actualCell.aliveState
+
     }
 
     @Test

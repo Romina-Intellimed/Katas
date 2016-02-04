@@ -18,9 +18,8 @@ class GridOfCells {
 
     def cellEvolution(cellXPos, cellYPos) {
         def neighbours = getCellNeighbours(cellXPos, cellYPos)
-        def alive = 1
-        def dead = 0
-        isAlive(neighbours) ? alive : dead
+        isAlive(neighbours)? gameOfLifeGrid[cellXPos][cellYPos].beAlive() : gameOfLifeGrid[cellXPos][cellYPos].beDead()
+        return gameOfLifeGrid[cellXPos][cellYPos]
     }
 
     private boolean isAlive(neighbours) {
@@ -28,7 +27,7 @@ class GridOfCells {
     }
 
     private def livingNeighboursNr(neighbours) {
-        neighbours.sum()
+        neighbours.sum { it.aliveState }
     }
 
     private def getCellNeighbours(cellXPos, cellYPos) {
@@ -43,21 +42,18 @@ class GridOfCells {
     }
 
 
-
-
-
-    def countNeighboursLiveCells(thisPosX, thisPosY){
-        def neighboursLiveCells=0
-        int startPosX = (thisPosX - 1 < MIN_X) ? thisPosX : thisPosX-1;
-        int startPosY = (thisPosY - 1 < MIN_Y) ? thisPosY : thisPosY-1;
-        int endPosX =   (thisPosX + 1 > MAX_X) ? thisPosX : thisPosX+1;
-        int endPosY =   (thisPosY + 1 > MAX_Y) ? thisPosY : thisPosY+1;
+    def countNeighboursLiveCells(thisPosX, thisPosY) {
+        def neighboursLiveCells = 0
+        int startPosX = (thisPosX - 1 < MIN_X) ? thisPosX : thisPosX - 1;
+        int startPosY = (thisPosY - 1 < MIN_Y) ? thisPosY : thisPosY - 1;
+        int endPosX = (thisPosX + 1 > MAX_X) ? thisPosX : thisPosX + 1;
+        int endPosY = (thisPosY + 1 > MAX_Y) ? thisPosY : thisPosY + 1;
         println " thisPosX = ${thisPosX} and thisPosY=${thisPosY}"
 
-        for (int rowNum=startPosX; rowNum<=endPosX; rowNum++) {
-            for (int colNum=startPosY; colNum<=endPosY; colNum++) {
+        for (int rowNum = startPosX; rowNum <= endPosX; rowNum++) {
+            for (int colNum = startPosY; colNum <= endPosY; colNum++) {
                 println " cell with rowNum = ${rowNum} and colNum=${colNum} is ${gameOfLifeGrid[rowNum][colNum]}"
-                if(gameOfLifeGrid[rowNum][colNum].state == true)
+                if (gameOfLifeGrid[rowNum][colNum].state == true)
                     neighboursLiveCells++
 
             }
@@ -72,32 +68,29 @@ class GridOfCells {
         (gameOfLifeGrid.size()).times { i ->
             (gameOfLifeGrid.size()).times { j ->
                 println " liveCells = ${liveCells} and deadCells=${deadCells} "
-                if (gameOfLifeGrid[i][j].state==true &&  (countNeighboursLiveCells(i,j)==2 || countNeighboursLiveCells(i,j)==3)) {
+                if (gameOfLifeGrid[i][j].state == true && (countNeighboursLiveCells(i, j) == 2 || countNeighboursLiveCells(i, j) == 3)) {
                     gameOfLifeGrid[i][j].state == true
-                    println "neighbours live cells: ${countNeighboursLiveCells(i,j)}"
-                }
-                else   if (gameOfLifeGrid[i][j].state==true &&  countNeighboursLiveCells(i,j)<2 ){
+                    println "neighbours live cells: ${countNeighboursLiveCells(i, j)}"
+                } else if (gameOfLifeGrid[i][j].state == true && countNeighboursLiveCells(i, j) < 2) {
                     gameOfLifeGrid[i][j].state == false
-                }
-                else   if (gameOfLifeGrid[i][j].state==true &&  countNeighboursLiveCells(i,j)>3 ){
+                } else if (gameOfLifeGrid[i][j].state == true && countNeighboursLiveCells(i, j) > 3) {
                     gameOfLifeGrid[i][j].state == false
-                }
-                else if (gameOfLifeGrid[i][j].state == false && countNeighboursLiveCells(i, j) == 3) {
+                } else if (gameOfLifeGrid[i][j].state == false && countNeighboursLiveCells(i, j) == 3) {
                     gameOfLifeGrid[i][j].state == true
-                } else if (gameOfLifeGrid[i][j].state == false && (countNeighboursLiveCells(i,j)<2 || countNeighboursLiveCells(i,j)>3)) {
-                    gameOfLifeGrid[i][j].state ==false
+                } else if (gameOfLifeGrid[i][j].state == false && (countNeighboursLiveCells(i, j) < 2 || countNeighboursLiveCells(i, j) > 3)) {
+                    gameOfLifeGrid[i][j].state == false
 
                 }
-          }
+            }
         }
         println "grid: ${gameOfLifeGrid}"
         return gameOfLifeGrid;
     }
 
-    def countTypeOfCells(){
+    def countTypeOfCells() {
         gameOfLifeGrid.size().times { i ->
             gameOfLifeGrid.size().times { j ->
-                if(gameOfLifeGrid[i][j].state == false)
+                if (gameOfLifeGrid[i][j].state == false)
                     deadCells++
                 else if (gameOfLifeGrid[i][j].state == true)
                     liveCells++

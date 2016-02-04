@@ -7,8 +7,8 @@ class GameOfLifeCell {
 
     def state
     def aliveNeighbours
-    static int alive = 0
-    static int dead = 1
+    static int alive = 1
+    static int dead = 0
     def aliveState
 
     GameOfLifeCell(Boolean state){

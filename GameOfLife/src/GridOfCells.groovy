@@ -39,21 +39,17 @@ class GridOfCells {
         def yNextPos = actualCell.cellYPos + cellPositionIncrement
         def xNextPos = actualCell.cellXPos + cellPositionIncrement
 
-         if(isBottomRightCorner(yNextPos, xNextPos)){
-             neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos)
-        } else  if (isMiddleCell(xPreviousPos, yPreviousPos)) {
-             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
-        } else if(isTopLeftCorner(xPreviousPos, yPreviousPos))  {
-             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
-        } else if(isBottmLeftCorner(yPreviousPos, xNextPos)){
-             neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
-        } else if(isTopRightCornerCell(xPreviousPos, yNextPos)){
-             neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos)
-
-         }
-
-
-
+        if (isBottomRightCorner(yNextPos, xNextPos)) {
+            neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos)
+        } else if (isMiddleCell(xPreviousPos, yPreviousPos)) {
+            neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
+        } else if (isTopLeftCorner(xPreviousPos, yPreviousPos)) {
+            neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
+        } else if (isBottmLeftCorner(yPreviousPos, xNextPos)) {
+            neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
+        } else if (isTopRightCornerCell(xPreviousPos, yNextPos)) {
+            neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos)
+        }
     }
 
     private ArrayList<List> neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos) {
@@ -80,9 +76,12 @@ class GridOfCells {
     }
 
     private def neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos) {
-        [gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
-         gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[actualCell.cellXPos][yNextPos],
-         gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
+        def allNeighbours = [] as Set
+        allNeighbours.addAll(neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos))
+        allNeighbours.addAll(neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos))
+        allNeighbours.addAll(neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos))
+        allNeighbours.addAll(neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos))
+        return allNeighbours
     }
 
     private def neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos) {

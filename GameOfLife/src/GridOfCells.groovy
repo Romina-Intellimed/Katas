@@ -15,14 +15,6 @@ class GridOfCells {
     def MAX_X = gameOfLifeGrid.size()
     def MAX_Y = gameOfLifeGrid.size()
 
-
-    def cellEvolution(cellXPos, cellYPos) {
-
-        def neighbours = getCellNeighbours(cellXPos, cellYPos)
-        isAlive(neighbours)? gameOfLifeGrid[cellXPos][cellYPos].beAlive() : gameOfLifeGrid[cellXPos][cellYPos].beDead()
-        return gameOfLifeGrid[cellXPos][cellYPos]
-    }
-
     def cellEvolution(GameOfLifeCell actualCell) {
 
         def neighbours = getCellNeighbours(actualCell.cellXPos, actualCell.cellYPos)
@@ -30,9 +22,6 @@ class GridOfCells {
         return gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos]
 
     }
-
-
-
 
     private boolean isAlive(neighbours) {
         livingNeighboursNr(neighbours) >= MINIMUM_LIVE_NEIGHBOURS && livingNeighboursNr(neighbours) <= MAXIMUM_LIVE_NEIGHBOURS
@@ -44,10 +33,12 @@ class GridOfCells {
 
     private def getCellNeighbours(cellXPos, cellYPos) {
         def cellPositionIncrement = 1
+
         def xPreviousPos = cellXPos - cellPositionIncrement
         def yPreviousPos = cellYPos - cellPositionIncrement
         def yNextPos = cellYPos + cellPositionIncrement
         def xNextPos = cellXPos + cellPositionIncrement
+
         [gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
          gameOfLifeGrid[cellXPos][yPreviousPos], gameOfLifeGrid[cellXPos][yNextPos],
          gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]

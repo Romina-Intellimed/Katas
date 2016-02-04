@@ -73,16 +73,14 @@ class GameOfLifeTest {
     }
 
     @Test
-    @Ignore
-    void "a corner living cell with less than 2 living neighbours dies"() {
+    void "the upper left corner living cell with less than 2 living neighbours dies"() {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        def cellXPos = 0
-        def cellYPos = 0
-
-        def actualCell = gridOfCells.cellEvolution(cellXPos, cellYPos)
-
+        def cornerCell = gridOfCells.gameOfLifeGrid[0][0]
+        cornerCell.cellXPos = 0
+        cornerCell.cellYPos = 0
+        def actualCell = gridOfCells.cellEvolution(cornerCell)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }

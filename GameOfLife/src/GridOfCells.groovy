@@ -18,7 +18,7 @@ class GridOfCells {
     def cellEvolution(GameOfLifeCell actualCell) {
 
         def neighbours = getCellNeighbours(actualCell)
-        isAlive(neighbours)? actualCell.beAlive() : actualCell.beDead()
+        isAlive(neighbours) ? actualCell.beAlive() : actualCell.beDead()
         return actualCell
 
     }
@@ -39,9 +39,14 @@ class GridOfCells {
         def yNextPos = actualCell.cellYPos + cellPositionIncrement
         def xNextPos = actualCell.cellXPos + cellPositionIncrement
 
-        [gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
-         gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[actualCell.cellXPos][yNextPos],
-         gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
+        if (xPreviousPos >= 0 && yPreviousPos >= 0) {
+            [gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
+             gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[actualCell.cellXPos][yNextPos],
+             gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
+        } else {
+            [gameOfLifeGrid[actualCell.cellXPos][yNextPos],
+             gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
+        }
     }
 
 

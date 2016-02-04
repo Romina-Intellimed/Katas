@@ -99,8 +99,8 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid[0] = [new GameOfLifeCell(true), new GameOfLifeCell(false)]
         gridOfCells.gameOfLifeGrid[1] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]
         gridOfCells.gridEvolution()
-
         gridOfCells.countTypeOfCells()
+
 
         assert gridOfCells.liveCells == 0
         assert gridOfCells.deadCells == 4

@@ -46,7 +46,6 @@ class GridOfCells {
 
         for (int rowNum=startPosX; rowNum<=endPosX; rowNum++) {
             for (int colNum=startPosY; colNum<=endPosY; colNum++) {
-                // All the neighbors will be gameOfLifeGrid[rowNum][colNum]
                 println " cell with rowNum = ${rowNum} and colNum=${colNum} is ${gameOfLifeGrid[rowNum][colNum]}"
                 if(gameOfLifeGrid[rowNum][colNum].state == true)
                     neighboursLiveCells++
@@ -62,28 +61,26 @@ class GridOfCells {
         println "grid: ${gameOfLifeGrid}"
         (gameOfLifeGrid.size()).times { i ->
             (gameOfLifeGrid.size()).times { j ->
-               // println " cell with i = ${i} and j=${j} is ${gameOfLifeGrid[i][j]}"
                 println " liveCells = ${liveCells} and deadCells=${deadCells} "
-                if (gameOfLifeGrid[i][j].state==true &&  (countNeighboursLiveCells(i,j)>=2 || countNeighboursLiveCells(i,j)<=3)) {
+                if (gameOfLifeGrid[i][j].state==true &&  (countNeighboursLiveCells(i,j)==2 || countNeighboursLiveCells(i,j)==3)) {
                     gameOfLifeGrid[i][j].state == true
-
+                    println "neighbours live cells: ${countNeighboursLiveCells(i,j)}"
                 }
                 else   if (gameOfLifeGrid[i][j].state==true &&  countNeighboursLiveCells(i,j)<2 ){
                     gameOfLifeGrid[i][j].state == false
-
                 }
                 else   if (gameOfLifeGrid[i][j].state==true &&  countNeighboursLiveCells(i,j)>3 ){
                     gameOfLifeGrid[i][j].state == false
                 }
                 else if (gameOfLifeGrid[i][j].state == false && countNeighboursLiveCells(i, j) == 3) {
                     gameOfLifeGrid[i][j].state == true
-
                 } else if (gameOfLifeGrid[i][j].state == false && (countNeighboursLiveCells(i,j)<2 || countNeighboursLiveCells(i,j)>3)) {
                     gameOfLifeGrid[i][j].state ==false
 
                 }
           }
         }
+        println "grid: ${gameOfLifeGrid}"
         return gameOfLifeGrid;
     }
 

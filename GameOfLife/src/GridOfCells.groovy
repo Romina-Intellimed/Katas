@@ -18,8 +18,8 @@ class GridOfCells {
     def cellEvolution(GameOfLifeCell actualCell) {
 
         def neighbours = getCellNeighbours(actualCell)
-        isAlive(neighbours)? gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos].beAlive() : gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos].beDead()
-        return gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos]
+        isAlive(neighbours)? actualCell.beAlive() : actualCell.beDead()
+        return actualCell
 
     }
 

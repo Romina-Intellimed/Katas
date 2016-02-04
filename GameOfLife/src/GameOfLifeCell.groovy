@@ -9,7 +9,13 @@ class GameOfLifeCell {
     def aliveNeighbours
     static int alive = 1
     static int dead = 0
+    def cellXPos
+    def cellYPos
     def aliveState
+
+    GameOfLifeCell(){
+
+    }
 
     GameOfLifeCell(Boolean state){
         this.state = state

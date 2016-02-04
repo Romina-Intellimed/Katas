@@ -17,10 +17,22 @@ class GridOfCells {
 
 
     def cellEvolution(cellXPos, cellYPos) {
+
         def neighbours = getCellNeighbours(cellXPos, cellYPos)
         isAlive(neighbours)? gameOfLifeGrid[cellXPos][cellYPos].beAlive() : gameOfLifeGrid[cellXPos][cellYPos].beDead()
         return gameOfLifeGrid[cellXPos][cellYPos]
     }
+
+    def cellEvolution(GameOfLifeCell actualCell) {
+
+        def neighbours = getCellNeighbours(actualCell.cellXPos, actualCell.cellYPos)
+        isAlive(neighbours)? gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos].beAlive() : gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos].beDead()
+        return gameOfLifeGrid[actualCell.cellXPos][actualCell.cellYPos]
+
+    }
+
+
+
 
     private boolean isAlive(neighbours) {
         livingNeighboursNr(neighbours) >= MINIMUM_LIVE_NEIGHBOURS && livingNeighboursNr(neighbours) <= MAXIMUM_LIVE_NEIGHBOURS

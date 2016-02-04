@@ -86,6 +86,36 @@ class GameOfLifeTest {
     }
 
     @Test
+    void "the bottom left corner living cell with less than 2 living neighbours dies"() {
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
+        def cornerCell = gridOfCells.gameOfLifeGrid[0][0]
+        cornerCell.cellXPos = 2
+        cornerCell.cellYPos = 0
+        def actualCell = gridOfCells.cellEvolution(cornerCell)
+        assert GameOfLifeCell.dead == actualCell.aliveState
+
+    }
+
+
+    @Test
+    void "the bottom right corner living cell with less than 2 living neighbours dies"() {
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
+        def cornerCell = gridOfCells.gameOfLifeGrid[0][0]
+        cornerCell.cellXPos = 2
+        cornerCell.cellYPos = 2
+        def actualCell = gridOfCells.cellEvolution(cornerCell)
+        assert GameOfLifeCell.dead == actualCell.aliveState
+
+    }
+
+
+
+
+    @Test
     void "test out of bounds for groovy grid"() {
         def grid = [[0, 1], [0, 0]]
         assert 0 == grid[-1][0]

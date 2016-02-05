@@ -11,10 +11,8 @@ class GameOfLifeCell {
     def cellXPos
     def cellYPos
     def aliveState
+    def type
 
-    GameOfLifeCell(Boolean state){
-        this.state = state
-    }
 
     GameOfLifeCell(int aliveState) {
         this.aliveState = aliveState

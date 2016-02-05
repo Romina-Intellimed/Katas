@@ -4,7 +4,6 @@
 
 
 class GridOfCells {
-    //GameOfLifeCell[][] gameOfLifeGrid
     public static final int MINIMUM_LIVE_NEIGHBOURS = 2
     public static final int MAXIMUM_LIVE_NEIGHBOURS = 3
     def gameOfLifeGrid = []

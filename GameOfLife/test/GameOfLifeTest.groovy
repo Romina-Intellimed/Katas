@@ -1,5 +1,4 @@
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 
 /**
@@ -15,9 +14,9 @@ class GameOfLifeTest {
     }
 
     def resetGrid() {
-        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
-                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
-                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
+        gridOfCells.gameOfLifeGrid = [[new Cell(Cell.dead), new Cell(Cell.dead), new Cell(Cell.dead)],
+                                      [new Cell(Cell.dead), new Cell(Cell.dead), new Cell(Cell.dead)],
+                                      [new Cell(Cell.dead), new Cell(Cell.dead), new Cell(Cell.dead)]]
     }
 
     @Test
@@ -27,7 +26,7 @@ class GameOfLifeTest {
 
         Object actualCell = actualCellEvolution(gridOfCells, 1, 1)
 
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
     @Test
@@ -37,7 +36,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 0)
         Object actualCell = actualCellEvolution(gridOfCells, 1, 1)
 
-        assert GameOfLifeCell.alive == actualCell.aliveState
+        assert Cell.alive == actualCell.aliveState
     }
 
     @Test
@@ -49,7 +48,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 1)
 
         Object actualCell = actualCellEvolution(gridOfCells, 1, 1)
-        assert GameOfLifeCell.alive == actualCell.aliveState
+        assert Cell.alive == actualCell.aliveState
     }
 
     @Test
@@ -62,7 +61,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 1)
 
         Object actualCell = actualCellEvolution(gridOfCells, 1, 1)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
 
     }
 
@@ -71,7 +70,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 0)
 
         Object actualCell = actualCellEvolution(gridOfCells, 0, 0)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
 
     }
 
@@ -84,7 +83,7 @@ class GameOfLifeTest {
         setInGridALiveCell(2, 0)
 
         Object actualCell = actualCellEvolution(gridOfCells, 2, 0)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
 
@@ -93,7 +92,7 @@ class GameOfLifeTest {
         setInGridALiveCell(2, 2)
 
         Object actualCell = actualCellEvolution(gridOfCells, 2, 2)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
     @Test
@@ -101,7 +100,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 2)
 
         Object actualCell = actualCellEvolution(gridOfCells, 0, 2)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
 
@@ -110,7 +109,7 @@ class GameOfLifeTest {
         setInGridALiveCell(0, 1)
 
         Object actualCell = actualCellEvolution(gridOfCells, 0, 1)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
     @Test
@@ -118,7 +117,7 @@ class GameOfLifeTest {
         setInGridALiveCell(1, 0)
         setInGridALiveCell(1, 1)
         Object actualCell = actualCellEvolution(gridOfCells, 1, 0)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
     @Test
@@ -126,7 +125,7 @@ class GameOfLifeTest {
         
         setInGridALiveCell(2, 1)
         Object actualCell = actualCellEvolution(gridOfCells, 2, 1)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
 
@@ -134,7 +133,7 @@ class GameOfLifeTest {
     void "the right middle edge living cell with less than 2 living neighbours dies"() {
         setInGridALiveCell(1, 2)
         Object actualCell = actualCellEvolution(gridOfCells, 1, 2)
-        assert GameOfLifeCell.dead == actualCell.aliveState
+        assert Cell.dead == actualCell.aliveState
     }
 
     def setInGridALiveCell(x, y) {

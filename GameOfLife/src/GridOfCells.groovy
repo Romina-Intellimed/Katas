@@ -8,7 +8,7 @@ class GridOfCells {
     public static final int MAXIMUM_LIVE_NEIGHBOURS = 3
     def gameOfLifeGrid = []
 
-    def cellEvolution(GameOfLifeCell actualCell) {
+    def cellEvolution(Cell actualCell) {
 
         def neighbours = getCellNeighbours(actualCell)
         isAlive(neighbours) ? actualCell.beAlive() : actualCell.beDead()

@@ -1,7 +1,7 @@
 /**
  * Created by romina on 03.02.2016.
  */
-class GameOfLifeCell {
+class Cell {
 
     def state
     static int alive = 1
@@ -12,7 +12,7 @@ class GameOfLifeCell {
     def type
 
 
-    GameOfLifeCell(int aliveState) {
+    Cell(int aliveState) {
         this.aliveState = aliveState
     }
 
@@ -26,11 +26,11 @@ class GameOfLifeCell {
     }
 
     def beAlive(){
-        this.aliveState = GameOfLifeCell.alive
+        this.aliveState = Cell.alive
     }
 
     def beDead() {
-        this.aliveState = GameOfLifeCell.dead
+        this.aliveState = Cell.dead
     }
 
 }

@@ -24,7 +24,7 @@ class GameOfLifeTest {
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
 
-        Object actualCell = testCell(gridOfCells,1,1)
+        Object actualCell = actualCell(gridOfCells,1,1)
 
         assert GameOfLifeCell.dead == actualCell.aliveState
     }
@@ -34,7 +34,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,1,1)
+        Object actualCell = actualCell(gridOfCells,1,1)
 
         assert GameOfLifeCell.alive == actualCell.aliveState
     }
@@ -44,7 +44,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,1,1)
+        Object actualCell = actualCell(gridOfCells,1,1)
 
         assert GameOfLifeCell.alive == actualCell.aliveState
     }
@@ -54,7 +54,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.alive)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,1,1)
+        Object actualCell = actualCell(gridOfCells,1,1)
 
         assert GameOfLifeCell.dead == actualCell.aliveState
 
@@ -65,7 +65,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,0,0)
+        Object actualCell = actualCell(gridOfCells,0,0)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -75,7 +75,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,2,0)
+        Object actualCell = actualCell(gridOfCells,2,0)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -86,7 +86,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,2,2)
+        Object actualCell = actualCell(gridOfCells,2,2)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -96,7 +96,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,0,2)
+        Object actualCell = actualCell(gridOfCells,0,2)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -107,7 +107,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,0,1)
+        Object actualCell = actualCell(gridOfCells,0,1)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -117,7 +117,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,1,0)
+        Object actualCell = actualCell(gridOfCells,1,0)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -127,7 +127,7 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,2,1)
+        Object actualCell = actualCell(gridOfCells,2,1)
         assert GameOfLifeCell.dead == actualCell.aliveState
 
     }
@@ -137,17 +137,22 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = testCell(gridOfCells,1,2)
+        Object actualCell = actualCell(gridOfCells,1,2)
         assert GameOfLifeCell.dead == actualCell.aliveState
     }
 
-    private Object testCell(gridOfCells,x,y) {
+    private Object actualCell(gridOfCells, x, y) {
         def testedCell = gridOfCells.gameOfLifeGrid[x][y]
         testedCell.cellXPos = x
         testedCell.cellYPos = y
         def actualCell = gridOfCells.cellEvolution(testedCell)
         actualCell
     }
+
+
+
+
+
 
 
     @Test

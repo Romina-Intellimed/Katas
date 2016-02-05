@@ -148,21 +148,20 @@ class GameOfLifeTest {
         assert GameOfLifeCell.dead == actualCell.aliveState
     }
 
+
+    @Test
+    void "the right middle edge living cell with less than 2 living neighbours dies"() {
+        def newGrid = resetGrid()
+        setInGridALiveCell(newGrid, 1, 2)
+        Object actualCell = actualCellEvolution(gridOfCells, 1, 2)
+        assert GameOfLifeCell.dead == actualCell.aliveState
+    }
+
     def setInGridALiveCell(newGrid, x, y) {
 
         newGrid[x][y] = new GameOfLifeCell(GameOfLifeCell.alive)
         return newGrid
     }
-
-    @Test
-    void "the right middle edge living cell with less than 2 living neighbours dies"() {
-        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
-                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
-                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        Object actualCell = actualCellEvolution(gridOfCells, 1, 2)
-        assert GameOfLifeCell.dead == actualCell.aliveState
-    }
-
 
     private Object actualCellEvolution(gridOfCells, x, y) {
         def testedCell = gridOfCells.gameOfLifeGrid[x][y]
@@ -179,7 +178,7 @@ class GameOfLifeTest {
     }
 
     @Test
-    @Ignore
+
     void "for a 2x2 grid of cells with no live cell next generation grid has only dead cells(has 4 dead cells)"() {
         gridOfCells.gameOfLifeGrid[0] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]
         gridOfCells.gameOfLifeGrid[1] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]

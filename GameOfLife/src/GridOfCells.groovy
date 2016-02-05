@@ -8,12 +8,6 @@ class GridOfCells {
     public static final int MINIMUM_LIVE_NEIGHBOURS = 2
     public static final int MAXIMUM_LIVE_NEIGHBOURS = 3
     def gameOfLifeGrid = []
-    def liveCells = 0;
-    def deadCells = 0;
-    static def MIN_X = 0
-    static def MIN_Y = 0
-    def MAX_X = gameOfLifeGrid.size()
-    def MAX_Y = gameOfLifeGrid.size()
 
     def cellEvolution(GameOfLifeCell actualCell) {
 
@@ -77,7 +71,11 @@ class GridOfCells {
     }
 
     private boolean isRightMiddleEdgeCell(yNextPos) {
-        yNextPos > (gameOfLifeGrid.size() - 1)
+        yNextPos > (getGridSize() - 1)
+    }
+
+    private int getGridSize() {
+        gameOfLifeGrid.size()
     }
 
 

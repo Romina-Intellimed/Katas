@@ -125,9 +125,8 @@ class GameOfLifeTest {
     void "the middle left edge living cell with less than 2 living neighbours dies"() {
        def newGrid = resetGrid()
 
-        setInGridALiveCell(newGrid,1,0)
-        //setInGridALiveCell(1,1)
-       // setInGridALiveCell(0,1)
+        newGrid = setInGridALiveCell(newGrid,1,0)
+        newGrid = setInGridALiveCell(newGrid,1,1)
         Object actualCell = actualCell(gridOfCells,1,0)
         assert GameOfLifeCell.dead == actualCell.aliveState
 

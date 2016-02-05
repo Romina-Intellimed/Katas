@@ -171,6 +171,19 @@ class GameOfLifeTest {
         actualCell
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Test
     void "test out of bounds for groovy grid"() {
         def grid = [[0, 1], [0, 0]]
@@ -178,7 +191,6 @@ class GameOfLifeTest {
     }
 
     @Test
-
     void "for a 2x2 grid of cells with no live cell next generation grid has only dead cells(has 4 dead cells)"() {
         gridOfCells.gameOfLifeGrid[0] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]
         gridOfCells.gameOfLifeGrid[1] = [new GameOfLifeCell(false), new GameOfLifeCell(false)]
@@ -205,7 +217,6 @@ class GameOfLifeTest {
 
     }
 
-
     @Test
     void "for a 2x2 grid of cells with two live cell next generation grid has only dead cells(has 4 dead cells)"() {
         /*   gridOfCells.gameOfLifeGrid[0]  = [ new GameOfLifeCell(true ), new GameOfLifeCell(true)]
@@ -213,7 +224,6 @@ class GameOfLifeTest {
            gridOfCells.gridEvolution()
            assert gridOfCells.liveCells == 0
            assert gridOfCells.deadCells == 4*/
-
     }
 
     @Test

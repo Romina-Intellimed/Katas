@@ -92,27 +92,27 @@ class GridOfCells {
         xNextPos > gameOfLifeGrid.size() - 1
     }
 
-    private ArrayList<List> neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos) {
+    private def neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos],
          gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos]]
     }
 
-    private ArrayList<List> neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos) {
+    private def neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yNextPos], gameOfLifeGrid[xPreviousPos][yNextPos],
          gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos]]
     }
 
-    private ArrayList<List> neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos) {
+    private def neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yNextPos], gameOfLifeGrid[xPreviousPos][yNextPos],
          gameOfLifeGrid[xNextPos][yNextPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos]]
     }
 
-    private ArrayList<List> neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos) {
+    private def neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[actualCell.cellXPos][yNextPos],
          gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][yNextPos]]
     }
 
-    private ArrayList<List> neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos) {
+    private def neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos],
          gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yPreviousPos]]
     }

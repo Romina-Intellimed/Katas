@@ -170,13 +170,17 @@ class GameOfLifeTest {
         gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
                                       [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
-        def cornerCell = gridOfCells.gameOfLifeGrid[1][2]
-        cornerCell.cellXPos = 1
-        cornerCell.cellYPos = 2
+        Object cornerCell = testCell(gridOfCells,1,2)
         def actualCell = gridOfCells.cellEvolution(cornerCell)
         assert GameOfLifeCell.dead == actualCell.aliveState
     }
 
+    private Object testCell(gridOfCells,x,y) {
+        def cornerCell = gridOfCells.gameOfLifeGrid[x][y]
+        cornerCell.cellXPos = x
+        cornerCell.cellYPos = y
+        cornerCell
+    }
 
 
     @Test

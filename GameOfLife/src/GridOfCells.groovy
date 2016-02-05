@@ -40,7 +40,7 @@ class GridOfCells {
             neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos)
         } else if(isRightMiddleEdgeCell(yNextPos)){
             neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos)
-        } else if (isTopLeftCornerCell(xPreviousPos, yPreviousPos)) {
+        } else if (actualCell.isTopLeftCornerCell()) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
         } else if (isBottmLeftCorner(yPreviousPos, xNextPos)) {
             neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
@@ -53,9 +53,6 @@ class GridOfCells {
         }
     }
 
-    private boolean isTopLeftCornerCell(xPreviousPos, yPreviousPos) {
-        xPreviousPos < 0 && yPreviousPos < 0
-    }
 
     private boolean isLeftMiddleEdgeCell(yPreviousPos) {
         yPreviousPos < 0

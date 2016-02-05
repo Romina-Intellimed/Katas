@@ -16,16 +16,20 @@ class Cell {
         this.aliveState = aliveState
     }
 
+    boolean isTopLeftCornerCell() {
+        (cellXPos - 1) < 0 && (cellYPos - 1) < 0
+    }
+
     boolean isTopMiddleEdgeCell() {
-        def xPreviousPos = cellXPos -1
+        def xPreviousPos = cellXPos - 1
         xPreviousPos < 0
     }
 
     String toString() {
-        state? "true" : "false"
+        state ? "true" : "false"
     }
 
-    def beAlive(){
+    def beAlive() {
         this.aliveState = Cell.alive
     }
 

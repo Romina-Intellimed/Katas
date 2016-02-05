@@ -20,8 +20,6 @@ class GameOfLifeTest {
                                       [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
     }
 
-
-
     @Test
     void "a middle living cell with fewer than 2 live neighbours dies"() {
         setInGridALiveCell(1, 1)
@@ -56,7 +54,6 @@ class GameOfLifeTest {
 
     @Test
     void "a middle living cell with 4 live neighbours dies"() {
-
         setInGridALiveCell(1, 1)
 
         setInGridALiveCell(1, 0)

@@ -43,11 +43,11 @@ class GridOfCells {
             neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos)
         } else if (isMiddleCell(xPreviousPos, yPreviousPos, xNextPos, yNextPos)) {
             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
-        } else if (isMiddleBottomEdgeCell(xNextPos)) {
+        } else if (isBottomMiddleEdgeCell(xNextPos)) {
             neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos)
-        } else if(isMiddleRightEdgeCell(yNextPos)){
+        } else if(isRightMiddleEdgeCell(yNextPos)){
             neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos)
-        } else if (isTopLeftCorner(xPreviousPos, yPreviousPos)) {
+        } else if (isTopLeftCornerCell(xPreviousPos, yPreviousPos)) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
         } else if (isBottmLeftCorner(yPreviousPos, xNextPos)) {
             neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
@@ -62,35 +62,46 @@ class GridOfCells {
     private boolean isTopMiddleEdgeCell(xPreviousPos) {
         xPreviousPos < 0
     }
+
+    private boolean isTopLeftCornerCell(xPreviousPos, yPreviousPos) {
+        xPreviousPos < 0 && yPreviousPos < 0
+    }
+
+
+
     private boolean isLeftMiddleEdgeCell(yPreviousPos) {
         yPreviousPos < 0
     }
-    private boolean isMiddleRightEdgeCell(yNextPos) {
+
+
+    private boolean isBottomMiddleEdgeCell(xNextPos) {
+        xNextPos > ( gameOfLifeGrid.size() - 1 )
+    }
+
+    private boolean isRightMiddleEdgeCell(yNextPos) {
         yNextPos > (gameOfLifeGrid.size() - 1)
     }
+
+
     private boolean isTopRightCornerCell(xPreviousPos, yNextPos) {
         xPreviousPos < 0 && yNextPos > (gameOfLifeGrid.size() - 1)
     }
-
-    private boolean isBottomRightCorner(yNextPos, xNextPos) {
-        yNextPos > (gameOfLifeGrid.size() - 1) && xNextPos > (gameOfLifeGrid.size() - 1)
-    }
-
-    private boolean isBottmLeftCorner(yPreviousPos, xNextPos) {
+    private boolean isBottmLeftCorner(xNextPos,yPreviousPos) {
         yPreviousPos < 0 && xNextPos > (gameOfLifeGrid.size() - 1)
     }
 
-    private boolean isTopLeftCorner(xPreviousPos, yPreviousPos) {
-        xPreviousPos < 0 && yPreviousPos < 0
+    private boolean isBottomRightCorner( xNextPos,yNextPos) {
+        yNextPos > (gameOfLifeGrid.size() - 1) && xNextPos > (gameOfLifeGrid.size() - 1)
     }
+
 
     private boolean isMiddleCell(xPreviousPos, yPreviousPos, xNextPos, yNextPos) {
         xPreviousPos >= 0 && yPreviousPos >= 0 && (xNextPos <= (gameOfLifeGrid.size()-1)) && (yNextPos <= (gameOfLifeGrid.size() -1))
     }
 
-    private boolean isMiddleBottomEdgeCell(xNextPos) {
-        xNextPos > gameOfLifeGrid.size() - 1
-    }
+
+
+
 
     private def neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos],

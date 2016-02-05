@@ -41,7 +41,11 @@ class GridOfCells {
 
         if (isBottomRightCorner(yNextPos, xNextPos)) {
             neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos)
-        } else if (isMiddleCell(xPreviousPos, yPreviousPos)) {
+
+        }else if(isMiddleBottomEdgeCell(xNextPos)){
+            neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos)
+        }
+        else if (isMiddleCell(xPreviousPos, yPreviousPos)) {
             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
         } else if (isTopLeftCorner(xPreviousPos, yPreviousPos)) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
@@ -54,6 +58,15 @@ class GridOfCells {
         } else if(isLeftMiddleEdgeCell(yPreviousPos)){
             neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos)
         }
+    }
+
+    private ArrayList<List> neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos) {
+        [gameOfLifeGrid[actualCell.cellXPos][yNextPos], gameOfLifeGrid[xPreviousPos][yNextPos],
+         gameOfLifeGrid[actualCell.cellYPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos]]
+    }
+
+    private boolean isMiddleBottomEdgeCell(xNextPos) {
+        xNextPos > gameOfLifeGrid.size() - 1
     }
 
     private ArrayList<List> neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos) {

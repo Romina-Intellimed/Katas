@@ -152,6 +152,18 @@ class GameOfLifeTest {
 
     }
 
+    @Test
+    void "the bottom middle edge living cell with less than 2 living neighbours dies"() {
+        gridOfCells.gameOfLifeGrid = [[new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)],
+                                      [new GameOfLifeCell(GameOfLifeCell.alive), new GameOfLifeCell(GameOfLifeCell.dead), new GameOfLifeCell(GameOfLifeCell.dead)]]
+        def cornerCell = gridOfCells.gameOfLifeGrid[2][1]
+        cornerCell.cellXPos = 2
+        cornerCell.cellYPos = 1
+        def actualCell = gridOfCells.cellEvolution(cornerCell)
+        assert GameOfLifeCell.dead == actualCell.aliveState
+
+    }
 
 
 

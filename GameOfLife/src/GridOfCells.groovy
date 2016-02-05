@@ -67,8 +67,6 @@ class GridOfCells {
         xPreviousPos < 0 && yPreviousPos < 0
     }
 
-
-
     private boolean isLeftMiddleEdgeCell(yPreviousPos) {
         yPreviousPos < 0
     }
@@ -98,10 +96,6 @@ class GridOfCells {
     private boolean isMiddleCell(xPreviousPos, yPreviousPos, xNextPos, yNextPos) {
         xPreviousPos >= 0 && yPreviousPos >= 0 && (xNextPos <= (gameOfLifeGrid.size()-1)) && (yNextPos <= (gameOfLifeGrid.size() -1))
     }
-
-
-
-
 
     private def neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos],
@@ -150,62 +144,6 @@ class GridOfCells {
     private def neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos) {
         [gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][yPreviousPos],
          gameOfLifeGrid[actualCell.cellXPos][yPreviousPos]]
-    }
-
-    def countNeighboursLiveCells(thisPosX, thisPosY) {
-        def neighboursLiveCells = 0
-        int startPosX = (thisPosX - 1 < MIN_X) ? thisPosX : thisPosX - 1;
-        int startPosY = (thisPosY - 1 < MIN_Y) ? thisPosY : thisPosY - 1;
-        int endPosX = (thisPosX + 1 > MAX_X) ? thisPosX : thisPosX + 1;
-        int endPosY = (thisPosY + 1 > MAX_Y) ? thisPosY : thisPosY + 1;
-        println " thisPosX = ${thisPosX} and thisPosY=${thisPosY}"
-
-        for (int rowNum = startPosX; rowNum <= endPosX; rowNum++) {
-            for (int colNum = startPosY; colNum <= endPosY; colNum++) {
-                println " cell with rowNum = ${rowNum} and colNum=${colNum} is ${gameOfLifeGrid[rowNum][colNum]}"
-                if (gameOfLifeGrid[rowNum][colNum].state == true)
-                    neighboursLiveCells++
-
-            }
-        }
-
-        return neighboursLiveCells
-
-    }
-
-    def gridEvolution() {
-        println "grid: ${gameOfLifeGrid}"
-        (gameOfLifeGrid.size()).times { i ->
-            (gameOfLifeGrid.size()).times { j ->
-                println " liveCells = ${liveCells} and deadCells=${deadCells} "
-                if (gameOfLifeGrid[i][j].state == true && (countNeighboursLiveCells(i, j) == 2 || countNeighboursLiveCells(i, j) == 3)) {
-                    gameOfLifeGrid[i][j].state == true
-                    println "neighbours live cells: ${countNeighboursLiveCells(i, j)}"
-                } else if (gameOfLifeGrid[i][j].state == true && countNeighboursLiveCells(i, j) < 2) {
-                    gameOfLifeGrid[i][j].state == false
-                } else if (gameOfLifeGrid[i][j].state == true && countNeighboursLiveCells(i, j) > 3) {
-                    gameOfLifeGrid[i][j].state == false
-                } else if (gameOfLifeGrid[i][j].state == false && countNeighboursLiveCells(i, j) == 3) {
-                    gameOfLifeGrid[i][j].state == true
-                } else if (gameOfLifeGrid[i][j].state == false && (countNeighboursLiveCells(i, j) < 2 || countNeighboursLiveCells(i, j) > 3)) {
-                    gameOfLifeGrid[i][j].state == false
-
-                }
-            }
-        }
-        println "grid: ${gameOfLifeGrid}"
-        return gameOfLifeGrid;
-    }
-
-    def countTypeOfCells() {
-        gameOfLifeGrid.size().times { i ->
-            gameOfLifeGrid.size().times { j ->
-                if (gameOfLifeGrid[i][j].state == false)
-                    deadCells++
-                else if (gameOfLifeGrid[i][j].state == true)
-                    liveCells++
-            }
-        }
     }
 
 

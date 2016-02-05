@@ -162,8 +162,7 @@ class GameOfLifeTest {
     }
 
     def setInGridALiveCell(newGrid, x, y) {
-
-        newGrid[x][y] = new GameOfLifeCell(GameOfLifeCell.alive)
+        newGrid[x][y].beAlive()
         return newGrid
     }
 

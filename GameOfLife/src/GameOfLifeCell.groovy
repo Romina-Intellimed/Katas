@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 /**
  * Created by romina on 03.02.2016.
  */
@@ -18,6 +16,11 @@ class GameOfLifeCell {
         this.aliveState = aliveState
     }
 
+    boolean isTopMiddleEdgeCell() {
+        def xPreviousPos = cellXPos -1
+        xPreviousPos < 0
+    }
+
     String toString() {
         state? "true" : "false"
     }
@@ -29,4 +32,5 @@ class GameOfLifeCell {
     def beDead() {
         this.aliveState = GameOfLifeCell.dead
     }
+
 }

@@ -37,9 +37,9 @@ class GameOfLifeEvolution {
         } else if (actualCell.isMiddleCell(gridSize)) {
             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
         } else if (actualCell.isBottomMiddleEdgeCell(getGridSize())) {
-            neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos)
+           actualCell.neighboursMiddleBottomEdgeCell(gameOfLifeGrid)
         } else if(actualCell.isRightMiddleEdgeCell(getGridSize())){
-            neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos)
+            actualCell.neighboursMiddleRightEdgeCell(gameOfLifeGrid)
         } else if (actualCell.isTopLeftCornerCell()) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
         } else if (actualCell.isBottmLeftCorner(getGridSize())) {
@@ -49,7 +49,7 @@ class GameOfLifeEvolution {
         } else if (actualCell.isTopMiddleEdgeCell()) {
             neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos)
         } else if (actualCell.isLeftMiddleEdgeCell()) {
-            neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos)
+            actualCell.neighboursLeftMiddleEdgeCell(gameOfLifeGrid)
         }
     }
 
@@ -58,21 +58,6 @@ class GameOfLifeEvolution {
         gameOfLifeGrid.size()
     }
 
-
-    private def neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos) {
-        [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos],
-         gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yPreviousPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos]]
-    }
-
-    private def neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos) {
-        [gameOfLifeGrid[actualCell.cellXPos][yNextPos], gameOfLifeGrid[xPreviousPos][yNextPos],
-         gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][yPreviousPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos]]
-    }
-
-    private def neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos) {
-        [gameOfLifeGrid[actualCell.cellXPos][yNextPos], gameOfLifeGrid[xPreviousPos][yNextPos],
-         gameOfLifeGrid[xNextPos][yNextPos], gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][actualCell.cellYPos]]
-    }
 
     private def neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yPreviousPos], gameOfLifeGrid[actualCell.cellXPos][yNextPos],

@@ -25,12 +25,6 @@ class GameOfLifeEvolution {
     }
 
     private def getCellNeighbours(actualCell) {
-        def cellPositionIncrement = 1
-
-        def xPreviousPos = actualCell.cellXPos - cellPositionIncrement
-        def yPreviousPos = actualCell.cellYPos - cellPositionIncrement
-        def yNextPos = actualCell.cellYPos + cellPositionIncrement
-        def xNextPos = actualCell.cellXPos + cellPositionIncrement
 
         if (actualCell.isBottomRightCorner(getGridSize())) {
             actualCell.neighboursBottomRightCornerCell(gameOfLifeGrid)

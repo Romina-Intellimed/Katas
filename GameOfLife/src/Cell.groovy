@@ -9,12 +9,36 @@ class Cell {
     def cellXPos
     def cellYPos
     def aliveState
+
+
+    def cellXPrev
+    def cellYPrev
+    def cellXNext
+    def cellYNext
     def type
 
 
     Cell(int aliveState) {
         this.aliveState = aliveState
     }
+
+
+    def getCellXPrev() {
+        cellXPrev= cellXPos - 1
+    }
+
+    def getCellYPrev() {
+        cellYPrev= cellYPos-1
+    }
+
+    def getCellXNext() {
+        cellXNext=cellXPos+1
+    }
+
+    def getCellYNext() {
+        cellYNext= cellYPos+1
+    }
+
 
     def neighboursMiddleCell(gameOfLifeGrid) {
         def allNeighbours = [] as Set
@@ -26,76 +50,76 @@ class Cell {
     }
 
     def neighboursBottomRightCornerCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos-1][cellYPos], gameOfLifeGrid[cellXPos-1][cellYPos-1],
-         gameOfLifeGrid[cellXPos][cellYPos-1]]
+        [gameOfLifeGrid[getCellXPrev()][cellYPos], gameOfLifeGrid[getCellXPrev()][getCellYPrev()],
+         gameOfLifeGrid[cellXPos][getCellYPrev()]]
     }
 
     def neighboursTopLeftCornerCell(gameOfLifeGrid) {
         [gameOfLifeGrid[cellXPos][cellYPos+1],
-         gameOfLifeGrid[cellXPos+1][cellYPos], gameOfLifeGrid[cellXPos+1][cellYPos+1]]
+         gameOfLifeGrid[getCellXNext()][cellYPos], gameOfLifeGrid[getCellXNext()][getCellYNext()]]
     }
 
     def neighboursBottomLeftCornerCell(gameOfLifeGrid ) {
-        [gameOfLifeGrid[cellXPos - 1][cellYPos], gameOfLifeGrid[cellXPos - 1][cellYPos+1],
-         gameOfLifeGrid[cellXPos][cellYPos+1]]
+        [gameOfLifeGrid[getCellXPrev()][cellYPos], gameOfLifeGrid[getCellXPrev()][getCellYNext()],
+         gameOfLifeGrid[cellXPos][getCellYNext()]]
     }
 
     def neighboursTopRightCornerCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos][cellYPos - 1],
-         gameOfLifeGrid[cellXPos + 1][cellYPos], gameOfLifeGrid[cellXPos + 1][cellYPos - 1]]
+        [gameOfLifeGrid[cellXPos][getCellYPrev()],
+         gameOfLifeGrid[getCellXNext()][cellYPos], gameOfLifeGrid[getCellXNext()][getCellYPrev()]]
     }
 
     def neighboursTopMiddleEdgeCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos][cellYPos - 1], gameOfLifeGrid[cellXPos][cellYPos + 1],
-         gameOfLifeGrid[cellXPos + 1][cellYPos], gameOfLifeGrid[cellXPos + 1][cellYPos - 1], gameOfLifeGrid[cellXPos + 1][cellYPos + 1]]
+        [gameOfLifeGrid[cellXPos][getCellYPrev()], gameOfLifeGrid[cellXPos][getCellYNext()],
+         gameOfLifeGrid[getCellXNext()][cellYPos], gameOfLifeGrid[getCellXNext()][getCellYPrev()], gameOfLifeGrid[getCellXNext()][getCellYNext()]]
     }
 
     def neighboursLeftMiddleEdgeCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos][cellYPos + 1], gameOfLifeGrid[cellXPos - 1][cellYPos + 1],
-         gameOfLifeGrid[cellXPos + 1][cellYPos + 1], gameOfLifeGrid[cellXPos + 1][cellYPos], gameOfLifeGrid[cellXPos - 1][cellYPos]]
+        [gameOfLifeGrid[cellXPos][getCellYNext()], gameOfLifeGrid[getCellXPrev()][getCellYNext()],
+         gameOfLifeGrid[getCellXNext()][getCellYNext()], gameOfLifeGrid[getCellXNext()][cellYPos], gameOfLifeGrid[getCellXPrev()][cellYPos]]
     }
 
     def neighboursMiddleBottomEdgeCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos][(cellYPos + 1)], gameOfLifeGrid[cellXPos - 1][cellYPos + 1],
-         gameOfLifeGrid[cellXPos][cellYPos - 1], gameOfLifeGrid[cellXPos - 1][cellXPos - 1], gameOfLifeGrid[cellXPos - 1][cellYPos]]
+        [gameOfLifeGrid[cellXPos][(getCellYNext())], gameOfLifeGrid[getCellXPrev()][getCellYNext()],
+         gameOfLifeGrid[cellXPos][getCellYPrev()], gameOfLifeGrid[getCellXPrev()][getCellXPrev()], gameOfLifeGrid[getCellXPrev()][cellYPos]]
     }
 
     boolean isMiddleCell(gridSize) {
-        (cellXPos - 1) >= 0 && (cellYPos - 1) >= 0 && ((cellXPos + 1) <= (gridSize - 1)) && ((cellYPos + 1) <= (gridSize - 1))
+        (getCellXPrev()) >= 0 && (getCellYPrev()) >= 0 && ((getCellXNext()) <= (gridSize - 1)) && ((getCellYNext()) <= (gridSize - 1))
 
     }
 
     boolean isBottomRightCorner(gridSize) {
-        (cellYPos + 1) > (gridSize - 1) && (cellXPos + 1) > (gridSize - 1)
+        (getCellYNext()) > (gridSize - 1) && (getCellXNext()) > (gridSize - 1)
     }
 
     boolean isBottmLeftCorner(gridSize) {
-        (cellYPos - 1) < 0 && (cellXPos + 1) > (gridSize - 1)
+        (getCellYPrev()) < 0 && (getCellXNext()) > (gridSize - 1)
     }
 
     boolean isTopRightCornerCell(gridSize) {
-        (cellXPos - 1) < 0 && (cellYPos + 1) > (gridSize - 1)
+        (getCellXPrev()) < 0 && (getCellYNext()) > (gridSize - 1)
     }
 
     boolean isRightMiddleEdgeCell(gridSize) {
-        (cellYPos + 1) > (gridSize - 1)
+        (getCellYNext()) > (gridSize - 1)
     }
 
     boolean isBottomMiddleEdgeCell(gridSize) {
-        (cellXPos + 1) > (gridSize - 1)
+        (getCellXNext()) > (gridSize - 1)
     }
 
     boolean isLeftMiddleEdgeCell() {
-        (cellYPos - 1) < 0
+        (getCellYPrev()) < 0
 
     }
 
     boolean isTopLeftCornerCell() {
-        (cellXPos - 1) < 0 && (cellYPos - 1) < 0
+        (getCellXPrev()) < 0 && (getCellYPrev()) < 0
     }
 
     boolean isTopMiddleEdgeCell() {
-        def xPreviousPos = cellXPos - 1
+        def xPreviousPos = getCellXPrev()
         xPreviousPos < 0
     }
 
@@ -114,8 +138,8 @@ class Cell {
 
     def neighboursMiddleRightEdgeCell(gameOfLifeGrid) {
 
-        [gameOfLifeGrid[cellXPos][(cellYPos - 1)], gameOfLifeGrid[(cellXPos - 1)][(cellYPos - 1)],
-         gameOfLifeGrid[(cellXPos - 1)][cellYPos], gameOfLifeGrid[(cellXPos + 1)][(cellYPos - 1)], gameOfLifeGrid[(cellXPos + 1)][cellYPos]]
+        [gameOfLifeGrid[cellXPos][(getCellYPrev())], gameOfLifeGrid[(getCellXPrev())][(getCellYPrev())],
+         gameOfLifeGrid[(getCellXPrev())][cellYPos], gameOfLifeGrid[(getCellXNext())][(getCellYPrev())], gameOfLifeGrid[(getCellXNext())][cellYPos]]
 
 
     }

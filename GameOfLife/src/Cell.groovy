@@ -16,7 +16,12 @@ class Cell {
         this.aliveState = aliveState
     }
 
-     boolean isBottomRightCorner(gridSize) {
+    boolean isMiddleCell(gridSize) {
+        (cellXPos - 1) >= 0 && (cellYPos - 1) >= 0 && ((cellXPos + 1) <= (gridSize-1)) && ((cellYPos + 1) <= (gridSize -1))
+
+    }
+
+    boolean isBottomRightCorner(gridSize) {
          (cellYPos + 1)>(gridSize -1) && (cellXPos + 1) > (gridSize - 1)
     }
 

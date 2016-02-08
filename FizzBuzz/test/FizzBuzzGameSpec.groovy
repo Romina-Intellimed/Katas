@@ -108,8 +108,10 @@ class FizzBuzzGameSpec extends Specification {
         fizzBuzz.printResult("")
     }
 
+    @FailsWith(IllegalInputException)
     void "for negative number return error input is a positive number"() {
-
+        expect:
+        fizzBuzz.printResult(-1)
     }
 
     void "for string input return error input should be a number"() {

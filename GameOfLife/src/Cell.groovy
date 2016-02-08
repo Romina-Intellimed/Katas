@@ -16,7 +16,12 @@ class Cell {
         this.aliveState = aliveState
     }
 
-  def neighboursLeftMiddleEdgeCell(gameOfLifeGrid) {
+    def neighboursTopMiddleEdgeCell(gameOfLifeGrid) {
+        [gameOfLifeGrid[cellXPos][cellYPos-1], gameOfLifeGrid[cellXPos][cellYPos+1],
+         gameOfLifeGrid[cellXPos+1][cellYPos], gameOfLifeGrid[cellXPos+1][cellYPos-1], gameOfLifeGrid[cellXPos+1][cellYPos+1]]
+    }
+
+    def neighboursLeftMiddleEdgeCell(gameOfLifeGrid) {
         [gameOfLifeGrid[cellXPos][cellYPos+1], gameOfLifeGrid[cellXPos-1][cellYPos+1],
          gameOfLifeGrid[cellXPos+1][cellYPos+1], gameOfLifeGrid[cellXPos+1][cellYPos], gameOfLifeGrid[cellXPos-1][cellYPos]]
     }

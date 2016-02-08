@@ -9,18 +9,49 @@ class Cell {
     def cellXPos
     def cellYPos
     def aliveState
-
-
     def cellXPrev
     def cellYPrev
     def cellXNext
     def cellYNext
-    def type
+    TypeOfCell type
+
 
 
     Cell(int aliveState) {
         this.aliveState = aliveState
     }
+
+
+    def getNeighboursCoordinates(){
+        switch(type) {
+            case TypeOfCell.bottomRightCorner:
+                return []
+            case TypeOfCell.bottomMiddleEdge:
+                return []
+            case TypeOfCell.bottomLeftCorner:
+                return []
+            case TypeOfCell.topLefCorner:
+                return []
+            case TypeOfCell.topMiddleEdge:
+                return []
+            case TypeOfCell.topRightCorner:
+                return []
+            case TypeOfCell.rightMiddleEdge:
+                return []
+            case TypeOfCell.leftMiddleEdge:
+                return []
+            case TypeOfCell.middle:
+                return []
+
+
+
+        }
+
+
+    }
+
+
+
 
 
     def getCellXPrev() {

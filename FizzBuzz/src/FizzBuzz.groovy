@@ -10,7 +10,8 @@ class FizzBuzz {
             throw new IllegalInputException("The input should be a positive number")
         if(inputNumber instanceof String)
             throw new IllegalInputException("The input should be a positive number")
-
+        if(inputNumber>100)
+            throw new IllegalInputException("The input should be a positive number smaller than 100")
         if (isDivisibleOnlyByThree(inputNumber))
            return  "Fizz"
         if (isDivisibleOnlyByFive(inputNumber))

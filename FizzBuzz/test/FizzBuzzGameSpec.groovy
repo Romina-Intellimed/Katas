@@ -120,9 +120,10 @@ class FizzBuzzGameSpec extends Specification {
         fizzBuzz.printResult("1")
 
     }
-
+    @FailsWith(IllegalInputException)
     void "for number bigger than 100 return error input should be smaller than 100"() {
-
+        expect:
+        fizzBuzz.printResult(300)
     }
 
 

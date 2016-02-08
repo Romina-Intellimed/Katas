@@ -16,6 +16,15 @@ class Cell {
         this.aliveState = aliveState
     }
 
+    def neighboursMiddleCell(gameOfLifeGrid) {
+        def allNeighbours = [] as Set
+        allNeighbours.addAll(neighboursBottomLeftCornerCell(gameOfLifeGrid))
+        allNeighbours.addAll(neighboursBottomRightCornerCell(gameOfLifeGrid))
+        allNeighbours.addAll(neighboursTopLeftCornerCell(gameOfLifeGrid))
+        allNeighbours.addAll(neighboursTopRightCornerCell(gameOfLifeGrid))
+        return allNeighbours
+    }
+
     def neighboursBottomRightCornerCell(gameOfLifeGrid) {
         [gameOfLifeGrid[cellXPos-1][cellYPos], gameOfLifeGrid[cellXPos-1][cellYPos-1],
          gameOfLifeGrid[cellXPos][cellYPos-1]]

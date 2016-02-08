@@ -46,11 +46,11 @@ class FizzBuzzGameSpec extends Specification {
     }
 
     void "for 6 return Fizz"(){
-
+        expect:
+        "Fizz"==fizzBuzz.printResult(6)
     }
 
     void "for 7 return 7"(){
-
     }
 
     void "for 9 return Fizz"(){

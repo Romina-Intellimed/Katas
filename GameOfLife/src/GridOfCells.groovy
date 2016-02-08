@@ -44,7 +44,7 @@ class GridOfCells {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
         } else if (isBottmLeftCorner(yPreviousPos, xNextPos)) {
             neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
-        } else if (isTopRightCornerCell(xPreviousPos, yNextPos)) {
+        } else if (actualCell.isTopRightCornerCell(getGridSize())) {
             neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos)
         } else if (actualCell.isTopMiddleEdgeCell()) {
             neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos)
@@ -59,10 +59,7 @@ class GridOfCells {
     }
 
 
-    private boolean isTopRightCornerCell(xPreviousPos, yNextPos) {
-        xPreviousPos < 0 && yNextPos > (gameOfLifeGrid.size() - 1)
-    }
-    private boolean isBottmLeftCorner(xNextPos,yPreviousPos) {
+    private boolean isBottmLeftCorner(xNextPos, yPreviousPos) {
         yPreviousPos < 0 && xNextPos > (gameOfLifeGrid.size() - 1)
     }
 

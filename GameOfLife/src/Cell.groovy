@@ -47,8 +47,7 @@ class Cell {
             case TypeOfCell.middle:
                 return [new Coordinates(getCellXPrev(),getCellYPrev()),new Coordinates(getCellXPrev(),cellYPos),new Coordinates(getCellYPrev(),getCellYNext()),
                         new Coordinates(cellXPos,getCellYPrev()),new Coordinates(cellXPos,getCellYNext()),new Coordinates(getCellXNext(),getCellYPrev()),
-                        new Coordinates(getCellXNext(),cellYPos),new Coordinates(getCellXNext(),getCellYNext())
-                ]
+                        new Coordinates(getCellXNext(),cellYPos),new Coordinates(getCellXNext(),getCellYNext())]
         }
     }
 
@@ -84,7 +83,7 @@ class Cell {
     }
 
     def neighboursTopLeftCornerCell(gameOfLifeGrid) {
-        [gameOfLifeGrid[cellXPos][cellYPos+1],
+        [gameOfLifeGrid[cellXPos][getCellYNext()],
          gameOfLifeGrid[getCellXNext()][cellYPos], gameOfLifeGrid[getCellXNext()][getCellYNext()]]
     }
 

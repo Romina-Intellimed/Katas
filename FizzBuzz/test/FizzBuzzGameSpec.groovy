@@ -114,7 +114,10 @@ class FizzBuzzGameSpec extends Specification {
         fizzBuzz.printResult(-1)
     }
 
+    @FailsWith(IllegalInputException)
     void "for string input return error input should be a number"() {
+        expect:
+        fizzBuzz.printResult("1")
 
     }
 

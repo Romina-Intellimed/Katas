@@ -9,7 +9,7 @@ class GameOfLifeTest {
 
     @Before
     void setup() {
-        gridOfCells = new GridOfCells()
+        gridOfCells = new GameOfLifeEvolution()
         resetGrid()
     }
 

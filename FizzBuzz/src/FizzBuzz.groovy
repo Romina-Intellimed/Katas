@@ -3,7 +3,10 @@
  */
 class FizzBuzz {
 
-    def printResult(int inputNumber) {
+    def printResult(inputNumber)   {
+        if(inputNumber=="")
+            throw  new IllegalInputException("The input should not be empty")
+
         if (isDivisibleOnlyByThree(inputNumber))
            return  "Fizz"
         if (isDivisibleOnlyByFive(inputNumber))

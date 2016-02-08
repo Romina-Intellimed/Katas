@@ -25,34 +25,32 @@ class Cell {
     def getNeighboursCoordinates(){
         switch(type) {
             case TypeOfCell.bottomRightCorner:
-                return [[getCellXPrev(),cellYPos]]
+                return [new Coordinates(getCellXPrev(),cellYPos),new Coordinates(getCellXPrev(),getCellYPrev()),new Coordinates(cellXPos,getCellYPrev())]
             case TypeOfCell.bottomMiddleEdge:
-                return []
+                return [new Coordinates(cellXPos,(getCellYNext())), new Coordinates(getCellXPrev(),getCellYNext()), new Coordinates(cellXPos,getCellYPrev()),
+                new Coordinates(getCellXPrev(),getCellYPrev()), new Coordinates(getCellXPrev(),cellYPos)]
             case TypeOfCell.bottomLeftCorner:
-                return []
+                return [new Coordinates(getCellXPrev(), cellYPos),new Coordinates(getCellXPrev(),getCellYNext()), new Coordinates(cellXPos,getCellYNext())]
             case TypeOfCell.topLefCorner:
-                return []
+                return [new Coordinates(cellXPos,getCellYNext()), new Coordinates(getCellXNext(),cellYPos),new Coordinates(getCellXNext(),getCellYNext())]
             case TypeOfCell.topMiddleEdge:
-                return []
+                return [new Coordinates(cellXPos,getCellYPrev()),new Coordinates(cellXPos,getCellYNext()),
+                new Coordinates(getCellXNext(),cellYPos), new Coordinates(getCellXNext(),getCellYPrev()),new Coordinates(getCellXNext(),getCellYNext())]
             case TypeOfCell.topRightCorner:
-                return []
+                return [new Coordinates(cellXPos,getCellYPrev()), new Coordinates(getCellXNext(),cellYPos), new Coordinates(getCellXNext(),getCellYPrev())]
             case TypeOfCell.rightMiddleEdge:
-                return []
+                return [new Coordinates(cellXPos,getCellYPrev()),new Coordinates(getCellXPrev(),getCellYPrev()),
+                 new Coordinates(getCellXPrev(),cellYPos),new Coordinates(getCellXNext(),getCellYPrev(), new Coordinates(getCellXNext(),cellYPos))]
             case TypeOfCell.leftMiddleEdge:
-                return []
+                return [new Coordinates(cellXPos,getCellXNext()),new Coordinates(getCellXPrev(),getCellYNext()),new Coordinates(getCellXNext(),getCellYNext()),
+                new Coordinates(getCellXNext(),cellYPos), new Coordinates(getCellXPrev(),cellYPos)]
             case TypeOfCell.middle:
-                return []
-
-
-
+                return [new Coordinates(getCellXPrev(),getCellYPrev()),new Coordinates(getCellXPrev(),cellYPos),new Coordinates(getCellYPrev(),getCellYNext()),
+                        new Coordinates(cellXPos,getCellYPrev()),new Coordinates(cellXPos,getCellYNext()),new Coordinates(getCellXNext(),getCellYPrev()),
+                        new Coordinates(getCellXNext(),cellYPos),new Coordinates(getCellXNext(),getCellYNext())
+                ]
         }
-
-
     }
-
-
-
-
 
     def getCellXPrev() {
         cellXPrev= cellXPos - 1
@@ -112,7 +110,15 @@ class Cell {
 
     def neighboursMiddleBottomEdgeCell(gameOfLifeGrid) {
         [gameOfLifeGrid[cellXPos][(getCellYNext())], gameOfLifeGrid[getCellXPrev()][getCellYNext()],
-         gameOfLifeGrid[cellXPos][getCellYPrev()], gameOfLifeGrid[getCellXPrev()][getCellXPrev()], gameOfLifeGrid[getCellXPrev()][cellYPos]]
+         gameOfLifeGrid[cellXPos][getCellYPrev()], gameOfLifeGrid[getCellXPrev()][getCellYPrev()], gameOfLifeGrid[getCellXPrev()][cellYPos]]
+    }
+
+    def neighboursMiddleRightEdgeCell(gameOfLifeGrid) {
+
+        [gameOfLifeGrid[cellXPos][(getCellYPrev())], gameOfLifeGrid[(getCellXPrev())][(getCellYPrev())],
+         gameOfLifeGrid[(getCellXPrev())][cellYPos], gameOfLifeGrid[(getCellXNext())][(getCellYPrev())], gameOfLifeGrid[(getCellXNext())][cellYPos]]
+
+
     }
 
     boolean isMiddleCell(gridSize) {
@@ -167,11 +173,5 @@ class Cell {
     }
 
 
-    def neighboursMiddleRightEdgeCell(gameOfLifeGrid) {
 
-        [gameOfLifeGrid[cellXPos][(getCellYPrev())], gameOfLifeGrid[(getCellXPrev())][(getCellYPrev())],
-         gameOfLifeGrid[(getCellXPrev())][cellYPos], gameOfLifeGrid[(getCellXNext())][(getCellYPrev())], gameOfLifeGrid[(getCellXNext())][cellYPos]]
-
-
-    }
 }

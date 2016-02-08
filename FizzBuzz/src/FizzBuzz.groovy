@@ -4,14 +4,22 @@
 class FizzBuzz {
 
     def printResult(int inputNumber) {
-        if (inputNumber % 3 == 0)
+        if (isDivisibleByThree(inputNumber))
            return  "Fizz"
 
-        if (inputNumber % 5 == 0)
+        if (isDivisibleByFive(inputNumber))
             return "Buzz"
 
         return inputNumber.toString()
 
+    }
+
+    private boolean isDivisibleByFive(int inputNumber) {
+        inputNumber % 5 == 0
+    }
+
+    private boolean isDivisibleByThree(int inputNumber) {
+        inputNumber % 3 == 0
     }
 
 }

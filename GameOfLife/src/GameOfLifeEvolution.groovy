@@ -43,7 +43,7 @@ class GameOfLifeEvolution {
         } else if (actualCell.isTopLeftCornerCell()) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
         } else if (actualCell.isBottmLeftCorner(getGridSize())) {
-            neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
+          actualCell.neighboursBottomLeftCornerCell(gameOfLifeGrid)
         } else if (actualCell.isTopRightCornerCell(getGridSize())) {
             actualCell.neighboursTopRightCornerCell(gameOfLifeGrid)
         } else if (actualCell.isTopMiddleEdgeCell()) {
@@ -59,11 +59,6 @@ class GameOfLifeEvolution {
     }
 
 
-    private def neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos) {
-        [gameOfLifeGrid[xPreviousPos][actualCell.cellYPos], gameOfLifeGrid[xPreviousPos][yNextPos],
-         gameOfLifeGrid[actualCell.cellXPos][yNextPos]]
-    }
-
     private def neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos) {
         [gameOfLifeGrid[actualCell.cellXPos][yNextPos],
          gameOfLifeGrid[xNextPos][actualCell.cellYPos], gameOfLifeGrid[xNextPos][yNextPos]]
@@ -71,7 +66,7 @@ class GameOfLifeEvolution {
 
     private def neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos) {
         def allNeighbours = [] as Set
-        allNeighbours.addAll(neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos))
+        allNeighbours.addAll(actualCell.neighboursBottomLeftCornerCell(gameOfLifeGrid))
         allNeighbours.addAll(neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos))
         allNeighbours.addAll(neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos))
         allNeighbours.addAll(actualCell.neighboursTopRightCornerCell(gameOfLifeGrid))

@@ -25,7 +25,7 @@ class Cell {
     def getNeighboursCoordinates(){
         switch(type) {
             case TypeOfCell.bottomRightCorner:
-                return []
+                return [[getCellXPrev(),cellYPos]]
             case TypeOfCell.bottomMiddleEdge:
                 return []
             case TypeOfCell.bottomLeftCorner:

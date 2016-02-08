@@ -48,14 +48,9 @@ class GridOfCells {
             neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos)
         } else if (actualCell.isTopMiddleEdgeCell()) {
             neighboursTopMiddleEdgeCell(actualCell, yPreviousPos, yNextPos, xNextPos)
-        } else if (isLeftMiddleEdgeCell(yPreviousPos)) {
+        } else if (actualCell.isLeftMiddleEdgeCell()) {
             neighboursLeftMiddleEdgeCell(actualCell, yNextPos, xPreviousPos, xNextPos)
         }
-    }
-
-
-    private boolean isLeftMiddleEdgeCell(yPreviousPos) {
-        yPreviousPos < 0
     }
 
 

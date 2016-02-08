@@ -16,6 +16,11 @@ class Cell {
         this.aliveState = aliveState
     }
 
+    boolean isLeftMiddleEdgeCell() {
+        (cellYPos - 1) < 0
+
+    }
+
     boolean isTopLeftCornerCell() {
         (cellXPos - 1) < 0 && (cellYPos - 1) < 0
     }

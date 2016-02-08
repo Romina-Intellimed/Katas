@@ -96,6 +96,10 @@ class FizzBuzzGameSpec extends Specification {
         "FizzBuzz" == fizzBuzz.printResult(30)
     }
 
+    void "for 90 return FizzBuzz"() {
+        expect:
+        "FizzBuzz" == fizzBuzz.printResult(90)
+    }
 
     void "for empty string return error input should not be empty"() {
 

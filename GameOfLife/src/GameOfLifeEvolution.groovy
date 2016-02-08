@@ -58,6 +58,14 @@ class GameOfLifeEvolution {
         }
     }
 
+    private getCellsForCoordinates(coordinates) {
+        def cells = []
+        coordinates.each {currentCoordinates ->
+            cells.add(gameOfLifeGrid[currentCoordinates.xPos][currentCoordinates.yPos])
+        }
+        return cells
+    }
+
 
     private int getGridSize() {
         gameOfLifeGrid.size()

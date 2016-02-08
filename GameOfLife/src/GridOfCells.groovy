@@ -32,7 +32,7 @@ class GridOfCells {
         def yNextPos = actualCell.cellYPos + cellPositionIncrement
         def xNextPos = actualCell.cellXPos + cellPositionIncrement
 
-        if (isBottomRightCorner(yNextPos, xNextPos)) {
+        if (actualCell.isBottomRightCorner(getGridSize())) {
             neighboursBottomRightCornerCell(xPreviousPos, actualCell, yPreviousPos)
         } else if (isMiddleCell(xPreviousPos, yPreviousPos, xNextPos, yNextPos)) {
             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
@@ -42,7 +42,7 @@ class GridOfCells {
             neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos)
         } else if (actualCell.isTopLeftCornerCell()) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
-        } else if (isBottmLeftCorner(yPreviousPos, xNextPos)) {
+        } else if (actualCell.isBottmLeftCorner(getGridSize())) {
             neighboursBottomLeftCornerCell(xPreviousPos, actualCell, yNextPos)
         } else if (actualCell.isTopRightCornerCell(getGridSize())) {
             neighboursTopRightCornerCell(actualCell, yPreviousPos, xNextPos)
@@ -56,15 +56,6 @@ class GridOfCells {
 
     private int getGridSize() {
         gameOfLifeGrid.size()
-    }
-
-
-    private boolean isBottmLeftCorner(xNextPos, yPreviousPos) {
-        yPreviousPos < 0 && xNextPos > (gameOfLifeGrid.size() - 1)
-    }
-
-    private boolean isBottomRightCorner( xNextPos,yNextPos) {
-        yNextPos > (gameOfLifeGrid.size() - 1) && xNextPos > (gameOfLifeGrid.size() - 1)
     }
 
 

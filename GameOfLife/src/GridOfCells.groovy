@@ -38,7 +38,7 @@ class GridOfCells {
             neighboursMiddleCell(xPreviousPos, yPreviousPos, actualCell, yNextPos, xNextPos)
         } else if (actualCell.isBottomMiddleEdgeCell(getGridSize())) {
             neighboursMiddleBottomEdgeCell(actualCell, yNextPos, xPreviousPos, yPreviousPos)
-        } else if(isRightMiddleEdgeCell(yNextPos)){
+        } else if(actualCell.isRightMiddleEdgeCell(getGridSize())){
             neighboursMiddleRightEdgeCell(actualCell, yPreviousPos, xPreviousPos, xNextPos)
         } else if (actualCell.isTopLeftCornerCell()) {
             neighboursTopLeftCornerCell(actualCell, yNextPos, xNextPos)
@@ -53,10 +53,6 @@ class GridOfCells {
         }
     }
 
-
-    private boolean isRightMiddleEdgeCell(yNextPos) {
-        yNextPos > (getGridSize() - 1)
-    }
 
     private int getGridSize() {
         gameOfLifeGrid.size()

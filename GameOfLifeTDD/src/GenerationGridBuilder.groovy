@@ -20,7 +20,7 @@ class GenerationGridBuilder {
         grid
     }
 
-    static def theDefault() {
+    static def grid2x2WithAllCellsDead() {
         aGenerationGridBuilder().build()
     }
 }

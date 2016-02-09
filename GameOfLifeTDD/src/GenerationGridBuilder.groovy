@@ -4,16 +4,16 @@
 class GenerationGridBuilder {
 
     def size
-    def xPos
-    def yPos
+    def aliveXPositions
+    def aliveYPositions
 
     static GenerationGridBuilder aGenerationGridBuilder() {
-        new GenerationGridBuilder(size: 2)
+        new GenerationGridBuilder(size: 2, aliveYPositions: [], aliveXPositions: [])
     }
 
     def withAliveCell(xPos, yPos) {
-        this.xPos = xPos
-        this.yPos = yPos
+        aliveXPositions.add(xPos)
+        aliveYPositions.add(yPos)
         return this
     }
 
@@ -22,7 +22,7 @@ class GenerationGridBuilder {
         size.times { rowIndex ->
             grid[rowIndex] = []
             size.times { colIndex ->
-                if (xPos == rowIndex && yPos == colIndex) grid[rowIndex][colIndex] = CellType.alive
+                if (rowIndex in aliveXPositions && colIndex in aliveYPositions) grid[rowIndex][colIndex] = CellType.alive
                 else grid[rowIndex][colIndex] = CellType.dead
             }
         }

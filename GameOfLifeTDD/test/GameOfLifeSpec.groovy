@@ -65,22 +65,10 @@ class GameOfLifeSpec extends Specification {
     }
 
     private def grid2x2OneCellDead(){
-        [rowWith2LiveCells(), rowWithFirstCellAliveOutOf2()]
+        GenerationGridBuilder.aGenerationGridBuilder().withAliveCell(0,0).withAliveCell(0,1).withAliveCell(1,0).build()
     }
     private def grid2x2FirstLineAlive() {
-        [rowWith2LiveCells(), rowWith2DeadCells()]
-    }
-
-    private def rowWithFirstCellAliveOutOf2() {
-        [CellType.alive, CellType.dead]
-    }
-
-    private def rowWith2DeadCells() {
-        [CellType.dead, CellType.dead]
-    }
-
-    private def rowWith2LiveCells() {
-        [CellType.alive, CellType.alive]
+        GenerationGridBuilder.aGenerationGridBuilder().withAliveCell(0,0).withAliveCell(0,1).build()
     }
 
     private def grid2x2WithDeadCells() {

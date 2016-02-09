@@ -40,11 +40,22 @@ class GameOfLifeSpec extends Specification {
 
     }
 
+    void "a 2x2 grid with three live cells will have four live cells in next generation"() {
+        given:
+        def actualGrid = grid2x2OneCellDead()
+        when:
+        def expectedGrid = gameOfLife.generationGridEvolutionWithLiveCells(actualGrid)
+        then:
+        expectedGrid == grid2x2WithLiveCells()
+    }
+
     private def grid2x2FirstCellAlive() {
         [rowWithFirstCellAliveOutOf2(), rowWith2DeadCells()]
     }
 
-
+    private def grid2x2OneCellDead(){
+        [rowWith2LiveCells(), rowWithFirstCellAliveOutOf2()]
+    }
     private def grid2x2FirstLineAlive() {
         [rowWith2LiveCells(), rowWith2DeadCells()]
     }
@@ -56,6 +67,7 @@ class GameOfLifeSpec extends Specification {
     private def rowWith2DeadCells() {
         [CellType.dead, CellType.dead]
     }
+
     private def rowWith2LiveCells() {
         [CellType.alive, CellType.alive]
     }
@@ -64,11 +76,8 @@ class GameOfLifeSpec extends Specification {
         [rowWith2DeadCells(), rowWith2DeadCells()]
     }
 
-
-
-
-    void "a 2x2 grid with three live cells will have four live cells in next generation"() {
-
+    private def grid2x2WithLiveCells() {
+        [rowWith2LiveCells(), rowWith2LiveCells()]
     }
 
 

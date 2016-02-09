@@ -4,17 +4,11 @@
 class GameOfLife {
 
 
-    def generationGridEvolution(grid){
-
-
-       [[CellType.dead,CellType.dead],[CellType.dead,CellType.dead]]
-    }
-
-
-
-    def generationGridEvolutionWithLiveCells(grid){
-        if(countLiveCells(grid)==3)
-            [[CellType.alive,CellType.alive],[CellType.alive,CellType.alive]]
+    def generationGridEvolution(grid) {
+        if (countLiveCells(grid) == 3)
+            [[CellType.alive, CellType.alive], [CellType.alive, CellType.alive]]
+        else
+            [[CellType.dead, CellType.dead], [CellType.dead, CellType.dead]]
     }
 
     private int countLiveCells(grid) {

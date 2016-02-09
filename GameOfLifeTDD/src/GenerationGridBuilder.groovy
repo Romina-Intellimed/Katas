@@ -11,10 +11,15 @@ class GenerationGridBuilder {
         new GenerationGridBuilder(size: 2, aliveYPositions: [], aliveXPositions: [])
     }
 
+    def withSize(size) {
+        this.size = size
+        this
+    }
+
     def withAliveCell(xPos, yPos) {
         aliveXPositions.add(xPos)
         aliveYPositions.add(yPos)
-        return this
+        this
     }
 
     def build() {

@@ -31,11 +31,19 @@ class GameOfLifeSpec extends Specification {
     }
 
     private def grid2x2FirstCellAlive() {
-        [[CellType.alive, CellType.dead], [CellType.dead, CellType.dead]]
+        [rowWithFirstCellAliveOutOf2(), rowWith2DeadCells()]
+    }
+
+    private def rowWithFirstCellAliveOutOf2() {
+        [CellType.alive, CellType.dead]
+    }
+
+    private def rowWith2DeadCells() {
+        [CellType.dead, CellType.dead]
     }
 
     private def grid2x2WithDeadCells() {
-        [[CellType.dead, CellType.dead], [CellType.dead, CellType.dead]]
+        [rowWith2DeadCells(), rowWith2DeadCells()]
     }
 
 

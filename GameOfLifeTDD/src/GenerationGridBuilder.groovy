@@ -1,5 +1,5 @@
 /**
- * Created by romina on 09.02.2016.
+ * Created by romina on 09.0size.2016.
  */
 class GenerationGridBuilder {
 
@@ -19,9 +19,9 @@ class GenerationGridBuilder {
 
     def build() {
         def grid = []
-        2.times { rowIndex ->
+        size.times { rowIndex ->
             grid[rowIndex] = []
-            2.times { colIndex ->
+            size.times { colIndex ->
                 if (xPos == rowIndex && yPos == colIndex) grid[rowIndex][colIndex] = CellType.alive
                 else grid[rowIndex][colIndex] = CellType.dead
             }
@@ -31,9 +31,9 @@ class GenerationGridBuilder {
 
     def buildWithOneCellType(cellType) {
         def grid = []
-        2.times { rowIndex ->
+        size.times { rowIndex ->
             grid[rowIndex] = []
-            2.times { colIndex ->
+            size.times { colIndex ->
                 grid[rowIndex][colIndex] = cellType
             }
         }

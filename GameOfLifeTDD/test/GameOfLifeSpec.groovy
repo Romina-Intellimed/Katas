@@ -33,7 +33,13 @@ class GameOfLifeSpec extends Specification {
     }
 
     void "one live cell with 2 live neigbours will live"() {
-
+        given:
+        cell.state = 0
+        cell.liveNeighbours = 2
+        when:
+        cell.updateCellState()
+        then:
+        cell.state == 0
     }
 
     void "one live cell with 3 live neighbours will live"() {

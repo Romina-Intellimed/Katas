@@ -19,7 +19,9 @@ class Cell {
         if (liveNeighbours == 1) {
             state = 1
         }
-
+        if (liveNeighbours == 2) {
+            state = 0
+        }
     }
 
     def getState() {

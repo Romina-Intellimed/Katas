@@ -1,7 +1,7 @@
 import spock.lang.Specification
 
 /**
- * Created by romina on 09.02.2016.
+ * Created by romina on CellType.dead9.CellType.dead2.2CellType.deadCellType.alive6.
  */
 class GameOfLifeSpec extends Specification {
 
@@ -12,21 +12,21 @@ class GameOfLifeSpec extends Specification {
 
     void "a 2x2 grid with no live cells will have no live cell in next generation"(){
         given:
-        def actualGrid=[[0,0],[0,0]]
+        def actualGrid=[[CellType.dead,CellType.dead],[CellType.dead,CellType.dead]]
         when:
         def expectedGrid= gameOfLife.generationGridEvolution(actualGrid)
         then:
-        expectedGrid == [[0,0],[0,0]]
+        expectedGrid == [[CellType.dead,CellType.dead],[CellType.dead,CellType.dead]]
     }
 
 
     void "a 2x2 grid with one live cells will have no live cell in next generation"(){
         given:
-        def actualGrid=[[1,0],[0,0]]
+        def actualGrid=[[CellType.alive,CellType.dead],[CellType.dead,CellType.dead]]
         when:
         def expectedGrid= gameOfLife.generationGridEvolution(actualGrid)
         then:
-        expectedGrid == [[0,0],[0,0]]
+        expectedGrid == [[CellType.dead,CellType.dead],[CellType.dead,CellType.dead]]
     }
 
 
@@ -57,15 +57,15 @@ class GameOfLifeSpec extends Specification {
 
 
 
-    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(0,2) will have one live cell in next generation"(){
+    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.dead,2) will have one live cell in next generation"(){
 
     }
 
-    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,0) will have four live cells in next generation"(){
+    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.alive,CellType.dead) will have four live cells in next generation"(){
 
     }
 
-    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,1) will have six live cells in next generation"(){
+    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.alive,CellType.alive) will have six live cells in next generation"(){
 
     }
 

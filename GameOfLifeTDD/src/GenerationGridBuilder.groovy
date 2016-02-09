@@ -4,12 +4,32 @@
 class GenerationGridBuilder {
 
     def size
+    def xPos
+    def yPos
 
     static GenerationGridBuilder aGenerationGridBuilder() {
         new GenerationGridBuilder(size: 2)
     }
 
-    def build(cellType) {
+    def withAliveCell(xPos, yPos) {
+        this.xPos = xPos
+        this.yPos = yPos
+        return this
+    }
+
+    def build() {
+        def grid = []
+        2.times { rowIndex ->
+            grid[rowIndex] = []
+            2.times { colIndex ->
+                if (xPos == rowIndex && yPos == colIndex) grid[rowIndex][colIndex] = CellType.alive
+                else grid[rowIndex][colIndex] = CellType.dead
+            }
+        }
+        grid
+    }
+
+    def buildWithOneCellType(cellType) {
         def grid = []
         2.times { rowIndex ->
             grid[rowIndex] = []
@@ -21,10 +41,10 @@ class GenerationGridBuilder {
     }
 
     static def grid2x2WithAllCellsDead() {
-        aGenerationGridBuilder().build(CellType.dead)
+        aGenerationGridBuilder().buildWithOneCellType(CellType.dead)
     }
 
-    static def grid2x2WithAllCellsAlive(){
-        aGenerationGridBuilder().build(CellType.alive)
+    static def grid2x2WithAllCellsAlive() {
+        aGenerationGridBuilder().buildWithOneCellType(CellType.alive)
     }
 }

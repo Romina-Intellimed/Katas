@@ -13,10 +13,7 @@ class Cell {
     }
 
     def updateCellState() {
-        if (liveNeighbours == 0) {
-            state = 1
-        }
-        if (liveNeighbours == 1) {
+        if (liveNeighbours < 2) {
             state = 1
         }
         if (liveNeighbours == 2) {

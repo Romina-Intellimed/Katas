@@ -5,6 +5,6 @@ class GameOfLife {
 
 
     def generationGridEvolution(grid){
-       grid
+       [[0,0],[0,0]]
     }
 }

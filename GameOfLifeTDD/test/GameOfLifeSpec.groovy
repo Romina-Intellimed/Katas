@@ -23,11 +23,15 @@ class GameOfLifeSpec extends Specification {
 
     void "a 2x2 grid with one live cells will have no live cell in next generation"() {
         given:
-        def actualGrid = [[CellType.alive, CellType.dead], [CellType.dead, CellType.dead]]
+        def actualGrid = grid2x2FirstCellAlive()
         when:
         def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
         then:
         expectedGrid == grid2x2WithDeadCells()
+    }
+
+    private def grid2x2FirstCellAlive() {
+        [[CellType.alive, CellType.dead], [CellType.dead, CellType.dead]]
     }
 
     private def grid2x2WithDeadCells() {

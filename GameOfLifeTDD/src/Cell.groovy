@@ -7,10 +7,6 @@ class Cell {
     def liveNeighbours;
 
 
-    def getLiveNeighbours() {
-        liveNeighbours = 0
-        return liveNeighbours
-    }
 
     def updateCellState() {
         if (liveNeighbours < 2) {

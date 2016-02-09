@@ -3,7 +3,7 @@
  */
 class Cell {
 
-    def state = 0;
+    def state;
     def liveNeighbours;
 
 

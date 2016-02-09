@@ -9,18 +9,22 @@ class GenerationGridBuilder {
         new GenerationGridBuilder(size: 2)
     }
 
-    def build() {
+    def build(cellType) {
         def grid = []
         2.times { rowIndex ->
             grid[rowIndex] = []
             2.times { colIndex ->
-                grid[rowIndex][colIndex] = CellType.dead
+                grid[rowIndex][colIndex] = cellType
             }
         }
         grid
     }
 
     static def grid2x2WithAllCellsDead() {
-        aGenerationGridBuilder().build()
+        aGenerationGridBuilder().build(CellType.dead)
+    }
+
+    static def grid2x2WithAllCellsAlive(){
+        aGenerationGridBuilder().build(CellType.alive)
     }
 }

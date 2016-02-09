@@ -6,7 +6,7 @@ class GameOfLife {
 
     def generationGridEvolution(grid) {
         if (countLiveCells(grid) >= 3)
-            [[CellType.alive, CellType.alive], [CellType.alive, CellType.alive]]
+            GenerationGridBuilder.grid2x2WithAllCellsAlive()
         else
             GenerationGridBuilder.grid2x2WithAllCellsDead()
     }

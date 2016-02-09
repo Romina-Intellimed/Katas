@@ -13,49 +13,49 @@ class GameOfLifeSpec extends Specification {
 
     void "a 2x2 grid with no live cells will have no live cell in next generation"() {
         given:
-        def actualGrid = grid2x2WithDeadCells()
+        def initialGrid = grid2x2WithDeadCells()
         when:
-        def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
         then:
-        expectedGrid == grid2x2WithDeadCells()
+        actualGrid == grid2x2WithDeadCells()
     }
 
 
     void "a 2x2 grid with one live cells will have no live cell in next generation"() {
         given:
-        def actualGrid = grid2x2FirstCellAlive()
+        def initialGrid = grid2x2FirstCellAlive()
         when:
-        def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
         then:
-        expectedGrid == grid2x2WithDeadCells()
+        actualGrid == grid2x2WithDeadCells()
     }
 
     void "a 2x2 grid with two live cells will have no live cell in next generation"() {
         given:
-        def actualGrid = grid2x2FirstLineAlive()
+        def initialGrid = grid2x2FirstLineAlive()
         when:
-        def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
         then:
-        expectedGrid == grid2x2WithDeadCells()
+        actualGrid == grid2x2WithDeadCells()
 
     }
 
     void "a 2x2 grid with three live cells will have four live cells in next generation"() {
         given:
-        def actualGrid = grid2x2OneCellDead()
+        def initialGrid = grid2x2OneCellDead()
         when:
-        def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
         then:
-        expectedGrid == grid2x2WithLiveCells()
+        actualGrid == grid2x2WithLiveCells()
     }
 
     void "a 2x2 grid with four live cells will have no live cells in next generation"() {
         given:
-        def actualGrid = grid2x2WithLiveCells()
+        def initialGrid = grid2x2WithLiveCells()
         when:
-        def expectedGrid = gameOfLife.generationGridEvolution(actualGrid)
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
         then:
-        expectedGrid == grid2x2WithLiveCells()
+        actualGrid == grid2x2WithLiveCells()
     }
 
 
@@ -84,6 +84,10 @@ class GameOfLifeSpec extends Specification {
     }
 
 
+
+    void "a 3x3 grid with no live cells will have no live cell in next generation"() {
+
+    }
     void "a 3x3 grid with one live cells will have no live cell in next generation"() {
 
     }
@@ -94,17 +98,64 @@ class GameOfLifeSpec extends Specification {
     }
 
 
-    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.dead,2) will have one live cell in next generation"() {
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(0,2) will have one live cell in next generation"() {
 
     }
 
-    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.alive,CellType.dead) will have four live cells in next generation"() {
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,0) will have four live cells in next generation"() {
 
     }
 
-    void "a 3x3 grid with three live cells on the position: (CellType.dead,CellType.dead),(CellType.dead,CellType.alive),(CellType.alive,CellType.alive) will have six live cells in next generation"() {
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,1) will have four live cells in next generation"() {
 
     }
 
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,2) will have one live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,0) will have no live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,1) will have no live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,2) will have no live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (1,0),(1,1),(1,2) will have three live cells in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (2,0),(2,1),(2,2) will have one live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,1),(1,1),(2,1) will have three live cells in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,2),(1,2),(2,2) will have two live cells in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(1,0),(2,0) will have two live cells in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(1,1),(2,2) will have one live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (2,0),(1,1),(0,2) will have one live cell in next generation"() {
+
+    }
+
+    private def grid3x3WithOneLiveCell(){
+        GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0,0).build()
+    }
 
 }

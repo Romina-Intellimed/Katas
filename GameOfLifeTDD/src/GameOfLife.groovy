@@ -5,9 +5,9 @@ class GameOfLife {
 
 
     def generationGridEvolution(grid) {
-        if (countLiveCells(grid) >= 3)
-            GenerationGridBuilder.grid2x2WithAllCellsAlive()
-        else
+        if (countLiveCells(grid) >= 3 && grid.size==2)
+            nextGenerationGridWithAllCellsAlive(grid)
+        else if(grid.size==2)
             GenerationGridBuilder.grid2x2WithAllCellsDead()
     }
 
@@ -22,4 +22,24 @@ class GameOfLife {
         }
         liveCells
     }
+
+    def nextGenerationGridWithAllCellsAlive(grid) {
+        (grid.size()).times { x ->
+            (grid.size()).times { y ->
+                grid[x][y] == CellType.alive
+            }
+        }
+        grid
+    }
+
+    def nextGenerationGridWithAllCellsDead(grid) {
+        (grid.size()).times { x ->
+            (grid.size()).times { y ->
+                grid[x][y] == CellType.dead
+            }
+        }
+        grid
+    }
+
+
 }

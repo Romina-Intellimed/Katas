@@ -8,7 +8,7 @@ class GameOfLife {
         if (countLiveCells(grid) >= 3)
             [[CellType.alive, CellType.alive], [CellType.alive, CellType.alive]]
         else
-            [[CellType.dead, CellType.dead], [CellType.dead, CellType.dead]]
+            GenerationGridBuilder.theDefault()
     }
 
     private int countLiveCells(grid) {

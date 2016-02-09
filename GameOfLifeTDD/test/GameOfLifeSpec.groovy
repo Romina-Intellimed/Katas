@@ -84,7 +84,7 @@ class GameOfLifeSpec extends Specification {
     }
 
     private def grid2x2WithDeadCells() {
-        [rowWith2DeadCells(), rowWith2DeadCells()]
+        GenerationGridBuilder.theDefault()
     }
 
     private def grid2x2WithLiveCells() {

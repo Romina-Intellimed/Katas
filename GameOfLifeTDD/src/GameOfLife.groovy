@@ -15,21 +15,28 @@ class GameOfLife {
             (grid.size()).times { y ->
                 def aliveNeighbours = Grid.countAliveCellNeighbours(grid, x + 1, y + 1)
                 if (grid[x][y] == CellType.alive) {
-                    if (aliveNeighbours < 2)
-                        newGrid[x][y] = CellType.dead
-                    if (aliveNeighbours == 2 || aliveNeighbours == 3)
-                        newGrid[x][y] = CellType.alive
-                    if (aliveNeighbours > 3)
-                        newGrid[x][y] = CellType.dead
+                    newGrid[x][y] = updateAliveCellState(aliveNeighbours)
                 } else {
-                    if (aliveNeighbours == 3) {
-                        newGrid[x][y] = CellType.alive
-                    } else
-                        newGrid[x][y] = CellType.dead
+                   newGrid[x][y]=updateDeadCellState(aliveNeighbours)
                 }
             }
         }
         newGrid
+    }
+
+
+    def static updateAliveCellState(aliveNeigbours) {
+        if (aliveNeigbours < 2 || aliveNeigbours > 3)
+            return CellType.dead
+        if (aliveNeigbours == 2 || aliveNeigbours == 3)
+            return CellType.alive
+    }
+
+    def static updateDeadCellState(aliveNeighbours){
+        if (aliveNeighbours == 3)
+            return CellType.alive
+        else
+            return CellType.dead
     }
 
 

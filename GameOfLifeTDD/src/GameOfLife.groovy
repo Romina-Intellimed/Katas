@@ -39,7 +39,7 @@ class GameOfLife {
     def nextGenerationGridWithDifferentTypeCells(grid) {
         (grid.size()).times { x ->
             (grid.size()).times { y ->
-                def result = countAliveCellNeighbours(grid, x, y)
+                def result = Grid.countAliveCellNeighbours(grid, x, y)
                 //grid[x][y] = cellType
                 println(result)
             }
@@ -47,19 +47,6 @@ class GameOfLife {
         grid
     }
 
-
-    def countAliveCellNeighbours(grid, xPos, yPos) {
-        def aliveNeighbours=0
-        def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
-        def surroundedGrid = Grid.surroundGridwithDeadCells(grid)
-
-        neighbours.size().times { it->
-            if(surroundedGrid[neighbours[it][0]][neighbours[it][1]]==CellType.alive)
-                aliveNeighbours++
-
-        }
-        aliveNeighbours
-    }
 
 }
 

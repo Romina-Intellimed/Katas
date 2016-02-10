@@ -22,12 +22,12 @@ class GameOfLife {
 
 
 
-    def static updateCellState(aliveNeighbours, cellType) {
-        if ((aliveNeighbours < 2 || aliveNeighbours > 3) && isAlive(cellType))
+    def static updateCellState(aliveNeighbours, cell) {
+        if ((aliveNeighbours < 2 || aliveNeighbours > 3) && isAlive(cell))
             return CellType.dead
-        if ((aliveNeighbours == 2 || aliveNeighbours == 3) && isAlive(cellType))
+        if ((aliveNeighbours == 2 || aliveNeighbours == 3) && isAlive(cell))
             return CellType.alive
-        if (aliveNeighbours == 3 && !isAlive(cellType))
+        if (aliveNeighbours == 3 && !isAlive(cell))
             return CellType.alive
         else
             return CellType.dead

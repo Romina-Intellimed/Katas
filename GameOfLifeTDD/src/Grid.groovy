@@ -33,13 +33,4 @@ class Grid {
         }
         aliveNeighbours
     }
-
-    def static nextGenerationGridWithTheSameTypeCells(grid, cellType) {
-        (grid.size()).times { x ->
-            (grid.size()).times { y ->
-                grid[x][y] = cellType
-            }
-        }
-        grid
-    }
 }

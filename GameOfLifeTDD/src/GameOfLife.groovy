@@ -9,8 +9,9 @@ class GameOfLife {
             Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.alive)
         else if (grid.size == 2)
             Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
-        else if (grid.size > 2)
+        else if (grid.size > 2 && countLiveCells(grid)<=2)
             Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
+
     }
 
     private int countLiveCells(grid) {

@@ -199,7 +199,7 @@ class GameOfLifeSpec extends Specification {
         given:
         def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).build()
         when:
-        def newGrid = Grid.surroundGridwithDeadCells(initialGrid)
+        def newGrid = NextGenerationGridBuilder.surroundGridwithDeadCells(initialGrid)
         then:
         newGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(5).withAliveCell(1, 2).build()
     }
@@ -208,7 +208,7 @@ class GameOfLifeSpec extends Specification {
         given:
         def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).build()
         when:
-        def numberOfDeadNeigbours = Grid.countAliveCellNeighbours(initialGrid, 1, 2)
+        def numberOfDeadNeigbours = NextGenerationGridBuilder.countAliveCellNeighbours(initialGrid, 1, 2)
         then:
         numberOfDeadNeigbours == 0
     }

@@ -2,30 +2,21 @@
  * Created by romina on 09.02.2016.
  */
 class GameOfLife {
-
+    def newGrid = []
 
     def generationGridEvolution(grid) {
         nextGenerationGridWithDifferentTypeCells(grid)
     }
 
-    def static nextGenerationGridWithDifferentTypeCells(grid) {
-        def newGrid = []
+    def nextGenerationGridWithDifferentTypeCells(grid) {
         (grid.size()).times { x ->
             newGrid[x] = []
             (grid.size()).times { y ->
-                def aliveNeighbours = Grid.countAliveCellNeighbours(grid, x + 1, y + 1)
+                def aliveNeighbours = NextGenerationGridBuilder.countAliveCellNeighbours(grid, x + 1, y + 1)
                 if (grid[x][y] == CellType.alive) {
-                    if (aliveNeighbours < 2)
-                        newGrid[x][y] = CellType.dead
-                    if (aliveNeighbours == 2 || aliveNeighbours == 3)
-                        newGrid[x][y] = CellType.alive
-                    if (aliveNeighbours > 3)
-                        newGrid[x][y] = CellType.dead
+                    updateNextGenerationStateForAliveCell(aliveNeighbours, x, y)
                 } else {
-                    if (aliveNeighbours == 3) {
-                        newGrid[x][y] = CellType.alive
-                    } else
-                        newGrid[x][y] = CellType.dead
+                    updateNextGenerationStateForDeadCell(aliveNeighbours, x, y)
                 }
             }
         }
@@ -33,6 +24,19 @@ class GameOfLife {
     }
 
 
+    def updateNextGenerationStateForAliveCell(aliveNeighbours, x, y) {
+        if (aliveNeighbours < 2 || aliveNeighbours > 3)
+            newGrid[x][y] = CellType.dead
+        if (aliveNeighbours == 2 || aliveNeighbours == 3)
+            newGrid[x][y] = CellType.alive
+    }
+
+    def updateNextGenerationStateForDeadCell(aliveNeighbours, x, y) {
+        if (aliveNeighbours == 3) {
+            newGrid[x][y] = CellType.alive
+        } else
+            newGrid[x][y] = CellType.dead
+    }
 }
 
 

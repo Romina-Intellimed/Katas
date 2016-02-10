@@ -1,7 +1,7 @@
 /**
  * Created by romina on 10.02.2016.
  */
-class Grid {
+class NextGenerationGridBuilder {
 
 
     def static surroundGridwithDeadCells(grid) {
@@ -24,7 +24,7 @@ class Grid {
     def static countAliveCellNeighbours(grid, xPos, yPos) {
         def aliveNeighbours=0
         def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
-        def surroundedGrid = Grid.surroundGridwithDeadCells(grid)
+        def surroundedGrid = NextGenerationGridBuilder.surroundGridwithDeadCells(grid)
 
         neighbours.size().times { it->
             if(surroundedGrid[neighbours[it][0]][neighbours[it][1]]==CellType.alive)

@@ -28,11 +28,10 @@ class NextGenerationGridBuilder {
         (grid.size()).times { x ->
             newGrid[x] = []
             (grid.size()).times { y ->
-                def aliveNeighbours = CellManager.countAliveCellNeighbours(grid, x + 1, y + 1)
                 if (grid[x][y] == CellType.alive) {
-                    CellManager.updateNextGenerationStateForAliveCell(aliveNeighbours, x, y)
+                    CellManager.updateNextGenerationStateForAliveCell(grid, x, y)
                 } else {
-                    CellManager.updateNextGenerationStateForDeadCell(aliveNeighbours, x, y)
+                    CellManager.updateNextGenerationStateForDeadCell(grid, x, y)
                 }
             }
         }

@@ -4,14 +4,16 @@
 class CellManager {
 
 
-    def static updateNextGenerationStateForAliveCell(aliveNeighbours, x, y) {
+    def static updateNextGenerationStateForAliveCell(grid, x, y) {
+        def aliveNeighbours=countAliveCellNeighbours(grid, x+1, y+1)
         if (aliveNeighbours < 2 || aliveNeighbours > 3)
             NextGenerationGridBuilder.newGrid[x][y] = CellType.dead
         if (aliveNeighbours == 2 || aliveNeighbours == 3)
             NextGenerationGridBuilder.newGrid[x][y] = CellType.alive
     }
 
-    def static updateNextGenerationStateForDeadCell(aliveNeighbours, x, y) {
+    def static updateNextGenerationStateForDeadCell(grid, x, y) {
+       def aliveNeighbours=countAliveCellNeighbours(grid, x+1, y+1)
         if (aliveNeighbours == 3) {
             NextGenerationGridBuilder.newGrid[x][y] = CellType.alive
         } else

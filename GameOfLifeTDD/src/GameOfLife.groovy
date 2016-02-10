@@ -4,7 +4,7 @@
 class GameOfLife {
 
     def generationGridEvolution(grid) {
-        NextGenerationGridBuilder.nextGenerationGridWithDifferentTypeCells(grid)
+        GridBuilder.nextGenerationGridWithDifferentTypeCells(grid)
     }
 
 

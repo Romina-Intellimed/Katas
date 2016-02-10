@@ -7,9 +7,7 @@ class GameOfLife {
     def generationGridEvolution(grid) {
         if (countLiveCells(grid) >= 3 && grid.size == 2)
             Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.alive)
-        else if (grid.size == 2)
-            Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
-        else if (grid.size > 2 && countLiveCells(grid)<=2)
+        else if (grid.size >= 2 && countLiveCells(grid)<=2)
             Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
 
     }

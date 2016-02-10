@@ -5,10 +5,10 @@ import spock.lang.Specification
  */
 class CellSpec extends Specification {
 
-    Cell cell;
+    CellManager cell;
 
     void setup() {
-        cell = new Cell()
+        cell = new CellManager()
     }
 
 

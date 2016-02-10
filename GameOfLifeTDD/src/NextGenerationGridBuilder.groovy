@@ -23,45 +23,21 @@ class NextGenerationGridBuilder {
         gridToCheck
     }
 
-    def static countAliveCellNeighbours(grid, xPos, yPos) {
-        def aliveNeighbours=0
-        def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
-        def surroundedGrid = NextGenerationGridBuilder.surroundGridwithDeadCells(grid)
-
-        neighbours.size().times { it->
-            if(surroundedGrid[neighbours[it][0]][neighbours[it][1]]==CellType.alive)
-                aliveNeighbours++
-
-        }
-        aliveNeighbours
-    }
 
     def static nextGenerationGridWithDifferentTypeCells(grid) {
         (grid.size()).times { x ->
             newGrid[x] = []
             (grid.size()).times { y ->
-                def aliveNeighbours = NextGenerationGridBuilder.countAliveCellNeighbours(grid, x + 1, y + 1)
+                def aliveNeighbours = CellManager.countAliveCellNeighbours(grid, x + 1, y + 1)
                 if (grid[x][y] == CellType.alive) {
-                    updateNextGenerationStateForAliveCell(aliveNeighbours, x, y)
+                    CellManager.updateNextGenerationStateForAliveCell(aliveNeighbours, x, y)
                 } else {
-                    updateNextGenerationStateForDeadCell(aliveNeighbours, x, y)
+                    CellManager.updateNextGenerationStateForDeadCell(aliveNeighbours, x, y)
                 }
             }
         }
         newGrid
     }
 
-    def static updateNextGenerationStateForAliveCell(aliveNeighbours, x, y) {
-        if (aliveNeighbours < 2 || aliveNeighbours > 3)
-            newGrid[x][y] = CellType.dead
-        if (aliveNeighbours == 2 || aliveNeighbours == 3)
-            newGrid[x][y] = CellType.alive
-    }
 
-    def static updateNextGenerationStateForDeadCell(aliveNeighbours, x, y) {
-        if (aliveNeighbours == 3) {
-            newGrid[x][y] = CellType.alive
-        } else
-            newGrid[x][y] = CellType.dead
-    }
 }

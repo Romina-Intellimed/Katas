@@ -6,12 +6,11 @@ class GameOfLife {
 
     def generationGridEvolution(grid) {
         if (countLiveCells(grid) >= 3 && grid.size == 2)
-            nextGenerationGridWithTheSameTypeCells(grid, CellType.alive)
+            Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.alive)
         else if (grid.size == 2)
-            nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
+            Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
         else if (grid.size > 2)
-       //     nextGenerationGridWithDifferentTypeCells(grid)
-           nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
+            Grid.nextGenerationGridWithTheSameTypeCells(grid, CellType.dead)
     }
 
     private int countLiveCells(grid) {
@@ -26,17 +25,8 @@ class GameOfLife {
         liveCells
     }
 
-    def nextGenerationGridWithTheSameTypeCells(grid, cellType) {
-        (grid.size()).times { x ->
-            (grid.size()).times { y ->
-                grid[x][y] = cellType
-            }
-        }
-        grid
-    }
 
-
-    def nextGenerationGridWithDifferentTypeCells(grid) {
+    def static nextGenerationGridWithDifferentTypeCells(grid) {
         (grid.size()).times { x ->
             (grid.size()).times { y ->
                 def result = Grid.countAliveCellNeighbours(grid, x, y)

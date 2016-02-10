@@ -3,21 +3,5 @@
  */
 class Cell {
 
-    def state;
-    def liveNeighbours;
 
-
-
-    def updateCellState() {
-        if (liveNeighbours < 2) {
-            state = 1
-        }
-        if (liveNeighbours == 2) {
-            state = 0
-        }
-    }
-
-    def getState() {
-        return state
-    }
 }

@@ -11,7 +11,7 @@ class Cell {
             return CellType.alive
         if (aliveNeighbours == 3 && !isAlive(cell))
             return CellType.alive
-        else
+        if (aliveNeighbours != 3 && !isAlive(cell))
             return CellType.dead
 
     }

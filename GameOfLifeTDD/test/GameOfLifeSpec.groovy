@@ -145,18 +145,42 @@ class GameOfLifeSpec extends Specification {
     }
 
     void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(1,2) will have one live cell in next generation"() {
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(0, 0).withAliveCellArray(0,1).withAliveCellArray(1, 2).buildWithArray()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withAliveCellArray(0, 1).withAliveCellArray(1,1).withSize(3).buildWithArray()
 
     }
 
     void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,0) will have no live cell in next generation"() {
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(0, 0).withAliveCellArray(0,1).withAliveCellArray(2, 0).buildWithArray()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(1, 0).withAliveCellArray(1,1).buildWithArray()
 
     }
 
     void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,1) will have no live cell in next generation"() {
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(0, 0).withAliveCellArray(0,1).withAliveCellArray(2, 1).buildWithArray()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(1, 0).withAliveCellArray(1,1).buildWithArray()
 
     }
 
     void "a 3x3 grid with three live cells on the position: (0,0),(0,1),(2,2) will have no live cell in next generation"() {
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(0, 0).withAliveCellArray(0,1).withAliveCellArray(2, 2).buildWithArray()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCellArray(1,1).buildWithArray()
 
     }
 
@@ -221,6 +245,18 @@ class GameOfLifeSpec extends Specification {
         def numberOfDeadNeigbours = GridBuilder.countAliveCellNeighbours(initialGrid, 1, 2)
         then:
         numberOfDeadNeigbours == 0
+    }
+
+
+    void "test adding positions to array"(){
+        given:
+        def initialArray=[]
+        when:
+        initialArray.add([1,2])
+        initialArray.add([2,3])
+        def finalArray=initialArray
+        then:
+        finalArray == [[1,2],[2,3]]
     }
 
 }

@@ -11,8 +11,7 @@ class GameOfLifeMocksAndStubsSpec extends Specification {
         def grid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).build()
 
         def gridBuilderMock = Mock(GridBuilder)
-        def gameOfLife = new GameOfLife()
-        gameOfLife.gridBuilder = gridBuilderMock
+        def gameOfLife = new GameOfLife(gridBuilder: gridBuilderMock)
 
         when:
         gameOfLife.generationGridEvolution(grid)
@@ -25,22 +24,19 @@ class GameOfLifeMocksAndStubsSpec extends Specification {
     def "test stub for grid"() {
         given:
         def grid = []
-        def evolvedGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0,1).build()
+        def evolvedGrid = ["irrelevant"]
 
         def gridStub = Mock(GridBuilder) {
             nextGenerationGrid(grid) >> evolvedGrid
         }
 
-
-        def gameOfLife = new GameOfLife()
-
-
+        def gameOfLife = new GameOfLife(gridBuilder: gridStub)
 
         when:
-        gameOfLife.generationGridEvolution(grid)
+        def newGrid=gameOfLife.generationGridEvolution(grid)
 
         then:
-        gridStub.nextGenerationGrid(grid) == evolvedGrid
+        newGrid == evolvedGrid
 
     }
 }

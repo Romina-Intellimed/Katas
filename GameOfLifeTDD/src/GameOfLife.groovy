@@ -3,11 +3,7 @@
  */
 class GameOfLife {
 
-    GridBuilder gridBuilder;
-
-    GameOfLife(){
-        gridBuilder=new GridBuilder()
-    }
+    GridBuilder gridBuilder = new GridBuilder()
 
     def generationGridEvolution(grid) {
         gridBuilder.nextGenerationGrid(grid)

@@ -3,8 +3,14 @@
  */
 class GameOfLife {
 
+    GridBuilder gridBuilder;
+
+    GameOfLife(){
+        gridBuilder=new GridBuilder()
+    }
     def generationGridEvolution(grid) {
-        GridBuilder.nextGenerationGridWithDifferentTypeCells(grid)
+
+        gridBuilder.nextGenerationGridWithDifferentTypeCells(grid)
     }
 
 

@@ -195,14 +195,30 @@ class GameOfLifeSpec extends Specification {
     }
 
     void "a 3x3 grid with three live cells on the position: (2,0),(2,1),(2,2) will have one live cell in next generation"() {
-
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(2, 0).withAliveCell(2,1).withAliveCell(2, 2).build()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(1,1).withAliveCell(2,1).build()
     }
 
     void "a 3x3 grid with three live cells on the position: (0,1),(1,1),(2,1) will have three live cells in next generation"() {
-
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).withAliveCell(2,1).withAliveCell(1, 1).build()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(1,1).withAliveCell(1,0).withAliveCell(1,2).build()
     }
 
     void "a 3x3 grid with three live cells on the position: (0,2),(1,2),(2,2) will have two live cells in next generation"() {
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).withAliveCell(2,1).withAliveCell(1, 1).build()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(1,1).withAliveCell(1,0).withAliveCell(1,2).build()
 
     }
 
@@ -234,7 +250,7 @@ class GameOfLifeSpec extends Specification {
         result
     }
 
-
+    @Ignore
     void "test surounded grid with dead cells"() {
         given:
         def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).build()
@@ -244,6 +260,7 @@ class GameOfLifeSpec extends Specification {
         newGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(5).withAliveCell(1, 2).build()
     }
 
+    @Ignore
     void "test number of dead neighbours cells"() {
         given:
         def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 1).build()

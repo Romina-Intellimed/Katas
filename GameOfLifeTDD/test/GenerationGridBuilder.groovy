@@ -18,30 +18,11 @@ class GenerationGridBuilder {
     }
 
     def withAliveCell(xPos, yPos) {
-        aliveXPositions.add(xPos)
-        aliveYPositions.add(yPos)
-        this
-    }
-
-    def withAliveCellArray(xPos, yPos) {
         positions.add([xPos, yPos])
         this
     }
 
     def build() {
-        def grid = []
-        size.times { rowIndex ->
-            grid[rowIndex] = []
-            size.times { colIndex ->
-                if (rowIndex in aliveXPositions && colIndex in aliveYPositions) grid[rowIndex][colIndex] = CellType.alive
-                else grid[rowIndex][colIndex] = CellType.dead
-            }
-        }
-        grid
-    }
-
-
-    def buildWithArray() {
         def grid = []
         size.times { rowIndex ->
             grid[rowIndex] = []

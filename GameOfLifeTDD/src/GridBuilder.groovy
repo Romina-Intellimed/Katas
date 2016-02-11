@@ -5,7 +5,7 @@ class GridBuilder {
 
 
 
-    def nextGenerationGridWithDifferentTypeCells(grid) {
+    def nextGenerationGrid(grid) {
         Cell cellManager=new Cell();
         def newGrid = []
         (grid.size()).times { x ->

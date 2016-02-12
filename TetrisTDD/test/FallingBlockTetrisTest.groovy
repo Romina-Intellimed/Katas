@@ -35,8 +35,13 @@ class FallingBlockTetrisTest extends Specification {
 
     }
 
-    def "Block "(){
+    def "Block falls one time a line "(){
+        when:
+        gameBoard.dropBlock()
+        gameBoard.blockIsFalling()
 
+        then:
+        gameBoard.hasFallingBlocks() == true
     }
 
 

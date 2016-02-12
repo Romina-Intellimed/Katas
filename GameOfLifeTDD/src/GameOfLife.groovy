@@ -3,7 +3,7 @@
  */
 class GameOfLife {
 
-    GridBuilder gridBuilder = new GridBuilder()
+    GridBuilder gridBuilder = new GridBuilder();
 
     def generationGridEvolution(grid) {
         gridBuilder.nextGenerationGrid(grid)

@@ -7,4 +7,10 @@ class Board {
     def isEmpty(){
         return true
     }
+
+
+    def hasFallingBlocks(){
+        return true
+    }
+
 }

@@ -3,7 +3,7 @@
  */
 class GridBuilder {
 
-    Cell cellManager;
+    CellManager cellManager;
 
     def nextGenerationGrid(grid) {
 

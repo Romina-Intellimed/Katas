@@ -45,6 +45,9 @@ class FallingBlockTetrisTest extends Specification {
     }
 
 
+    def "Block has arrived at the bottom"(){
+
+    }
 
 
 }

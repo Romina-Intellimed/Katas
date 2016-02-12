@@ -1,7 +1,7 @@
 /**
  * Created by romina on 09.02.2016.
  */
-class Cell {
+class CellManager {
 
 
     def updateCellState(aliveNeighbours, cellState) {
@@ -16,7 +16,7 @@ class Cell {
 
     }
 
-    def isAlive(cellType) {
+    private isAlive(cellType) {
         cellType == CellType.alive
     }
 }

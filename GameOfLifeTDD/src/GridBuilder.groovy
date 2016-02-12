@@ -3,7 +3,7 @@
  */
 class GridBuilder {
 
-    CellManager cellManager;
+    CellManager cellManager=new CellManager();
 
     def nextGenerationGrid(grid) {
 
@@ -18,7 +18,7 @@ class GridBuilder {
         newGrid
     }
 
-    def countAliveCellNeighbours(grid, xPos, yPos) {
+    private def countAliveCellNeighbours(grid, xPos, yPos) {
         def aliveNeighbours=0
         def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
         def surroundedGrid = surroundGridwithDeadCells(grid)
@@ -31,7 +31,7 @@ class GridBuilder {
         aliveNeighbours
     }
 
-    def surroundGridwithDeadCells(grid) {
+    private def surroundGridwithDeadCells(grid) {
         def gridToCheck = []
         (grid.size()+2).times { x ->
             gridToCheck[x]=[]

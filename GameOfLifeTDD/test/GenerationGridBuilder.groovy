@@ -19,6 +19,7 @@ class GenerationGridBuilder {
 
     def withAliveCell(xPos, yPos) {
         positions.add([xPos, yPos])
+
         this
     }
 

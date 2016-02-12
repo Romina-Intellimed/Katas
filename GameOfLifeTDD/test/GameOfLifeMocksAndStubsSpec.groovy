@@ -1,3 +1,4 @@
+import spock.lang.Ignore
 import spock.lang.Specification
 
 /**
@@ -56,7 +57,7 @@ class GameOfLifeMocksAndStubsSpec extends Specification {
     }
 
 
-
+    @Ignore
     void "a next generation 3x3 grid with three live cells on the position: (0,0),(1,1),(2,2) will cll 3 times isAlive "() {
         given:
         def grid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0,0).withAliveCell(1,1).withAliveCell(2,2).build()

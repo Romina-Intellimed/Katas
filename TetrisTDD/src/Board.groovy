@@ -5,7 +5,7 @@ class Board {
 
 
     def isEmpty(){
-        return true
+        [0,0,0]
     }
 
 

@@ -12,13 +12,13 @@ class FallingBlockTest extends Specification {
     }
 
 
-    void "Board with no falling piece is empty"(){
+    def "Board with no falling piece is empty"(){
         expect:
-        gameBoard.isEmpty() == true
+        gameBoard.isEmpty() == [0,0,0]
 
     }
 
-    void "Board has no falling blocks"(){
+    def "Board has no falling blocks"(){
         expect:
         !(gameBoard.hasFallingBlocks()) == false
     }

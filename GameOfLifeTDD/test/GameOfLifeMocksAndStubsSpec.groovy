@@ -39,4 +39,28 @@ class GameOfLifeMocksAndStubsSpec extends Specification {
         newGrid == evolvedGrid
 
     }
+
+
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(1,0),(2,0) will have two live cells in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (0,0),(1,1),(2,2) will have one live cell in next generation"() {
+
+    }
+
+    void "a 3x3 grid with three live cells on the position: (2,0),(1,1),(0,2) will have one live cell in next generation"() {
+
+    }
+
+
+
+
+
+
+
+
+
+
 }

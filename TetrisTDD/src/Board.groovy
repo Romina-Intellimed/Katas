@@ -5,12 +5,16 @@ class Board {
 
 
     def isEmpty(){
-        [0,0,0]
+        [[0,0,0],[0,0,0],[0,0,0]]
     }
 
 
     def hasFallingBlocks(){
         return true
+    }
+
+    def dropBlock(){
+
     }
 
 }

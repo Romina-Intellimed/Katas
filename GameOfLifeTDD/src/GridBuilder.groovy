@@ -3,10 +3,10 @@
  */
 class GridBuilder {
 
-
+    Cell cellManager;
 
     def nextGenerationGrid(grid) {
-        Cell cellManager=new Cell();
+
         def newGrid = []
         (grid.size()).times { x ->
             newGrid[x] = []

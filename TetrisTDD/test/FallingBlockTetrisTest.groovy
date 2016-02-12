@@ -14,24 +14,28 @@ class FallingBlockTetrisTest extends Specification {
 
     def "Board with no falling piece is empty"(){
         expect:
-        gameBoard.isEmpty() == [[0,0,0],[0,0,0],[0,0,0]]
+        gameBoard.isEmpty() == true
 
     }
 
-    def "Board has no falling blocks"(){
-        expect:
-        !(gameBoard.hasFallingBlocks()) == false
+    def "Board has no falling block"(){
+      expect:
+        gameBoard.hasFallingBlocks() == false
+
     }
+
 
     def "Board has one falling block"(){
-        given:
-        def block=new BlockTetris()
 
         when:
-        gameBoard.dropBlock(block)
+        gameBoard.dropBlock()
 
         then:
         gameBoard.hasFallingBlocks() == true
+
+    }
+
+    def "Block "(){
 
     }
 

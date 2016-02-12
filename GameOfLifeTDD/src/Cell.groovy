@@ -16,7 +16,7 @@ class Cell {
 
     }
 
-    private boolean isAlive(cellType) {
+    def isAlive(cellType) {
         cellType == CellType.alive
     }
 }

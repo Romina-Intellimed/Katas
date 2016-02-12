@@ -3,18 +3,24 @@
  */
 class Board {
 
+    def board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
-    def isEmpty(){
-        [[0,0,0],[0,0,0],[0,0,0]]
+    def isEmpty() {
+       true
     }
 
 
-    def hasFallingBlocks(){
-        return true
+    def hasFallingBlocks() {
+        if (board[0][1] == 1)
+            return true
+        else
+            false
     }
 
-    def dropBlock(){
-
+    def dropBlock() {
+        board[0][1] = 1
+        return board
     }
+
 
 }

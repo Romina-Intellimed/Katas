@@ -46,8 +46,15 @@ class FallingBlockTetrisTest extends Specification {
 
 
     def "Block has arrived at the bottom"(){
+        when:
+        gameBoard.blockIsFalling()
+        gameBoard.blockIsFalling()
+        gameBoard.blockIsFalling()
 
+        then:
+        gameBoard.hasArrivedAtBottom() == true
     }
+
 
 
 }

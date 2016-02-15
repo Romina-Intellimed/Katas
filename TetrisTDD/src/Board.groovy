@@ -2,7 +2,7 @@
  * Created by romina on 12.02.2016.
  */
 class Board {
-
+    int countFallingLines = 0
     def board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
     def isEmpty() {
@@ -11,7 +11,7 @@ class Board {
 
 
     def hasFallingBlocks() {
-        if (board[0][1] == 1 || board[1][1] == 1)
+        if (board[0][1] == 1 || countFallingLines!=0)
             return true
         else
             false
@@ -24,9 +24,14 @@ class Board {
 
     def blockIsFalling() {
 
-        board[1][1] = 1
-        return board
+       countFallingLines++
     }
 
+    def hasArrivedAtBottom(){
+        if(countFallingLines==board.size())
+            return true
+        else
+            false
+    }
 
 }

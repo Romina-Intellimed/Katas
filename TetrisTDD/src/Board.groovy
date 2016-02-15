@@ -12,7 +12,7 @@ class Board {
 
 
     def hasFallingBlocks() {
-        if (board[0][1] == 1 || fallingBlock.isFalling)
+        if (fallingBlock.isFalling)
             return true
         else
             false

@@ -2,8 +2,9 @@
  * Created by romina on 12.02.2016.
  */
 class Board {
-    int countFallingLines = 0
     def board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    static TetrisBlock fallingBlock =new TetrisBlock()
+
 
     def isEmpty() {
         true
@@ -11,24 +12,28 @@ class Board {
 
 
     def hasFallingBlocks() {
-        if (board[0][1] == 1 || countFallingLines!=0)
+        if (board[0][1] == 1 || fallingBlock.isFalling)
             return true
         else
             false
     }
 
-    def dropBlock() {
+    def dropBlock(TetrisBlock tBlock) {
+        fallingBlock = tBlock
+        fallingBlock.isFalling = true
+        fallingBlock.xPos=0
+        fallingBlock.yPos=board.size()
         board[0][1] = 1
         return board
     }
 
     def blockIsFalling() {
+        fallingBlock.yPos = fallingBlock.yPos -1
 
-       countFallingLines++
     }
 
     def hasArrivedAtBottom(){
-        if(countFallingLines==board.size())
+        if(fallingBlock.yPos==0)
             return true
         else
             false

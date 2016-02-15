@@ -9,7 +9,7 @@ class GenerationGridBuilder {
     def positions = []
 
     static GenerationGridBuilder aGenerationGridBuilder() {
-        new GenerationGridBuilder(size: 2, aliveYPositions: [], aliveXPositions: [])
+        new GenerationGridBuilder(size: 2)
     }
 
     def withSize(size) {
@@ -25,6 +25,7 @@ class GenerationGridBuilder {
 
     def build() {
         def grid = []
+
         size.times { rowIndex ->
             grid[rowIndex] = []
             size.times { colIndex ->
@@ -32,11 +33,11 @@ class GenerationGridBuilder {
             }
         }
 
-        positions.size().times { it ->
-            grid[positions[it][0]][positions[it][1]] = CellType.alive
+        positions.eachWithIndex{ position , index ->
+            grid[position[0]][position[1]] = CellType.alive
         }
-    positions = []
-        grid
+
+       return grid
     }
 
 

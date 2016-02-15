@@ -23,13 +23,16 @@ class Board {
         fallingBlock.isFalling = true
         fallingBlock.xPos=0
         fallingBlock.yPos=board.size()
-        board[0][1] = 1
+        board[0][fallingBlock.yPos] = 1
         return board
     }
 
     def blockIsFalling() {
+        board[0][fallingBlock.yPos]=0
+
         fallingBlock.yPos = fallingBlock.yPos -1
 
+        board[0][fallingBlock.yPos] = 1
     }
 
     def hasArrivedAtBottom(){

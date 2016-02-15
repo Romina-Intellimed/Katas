@@ -6,20 +6,28 @@ class GridBuilder {
     CellManager cellManager = new CellManager();
 
     def nextGenerationGrid(grid) {
-
         def newGrid = []
-        (grid.size()).times { x ->
+        grid.eachWithIndex { row, x ->
             newGrid[x] = []
-            (grid.size()).times { y ->
+            row.eachWithIndex { cellState, y ->
                 def aliveNeighbours = countAliveCellNeighbours(grid, x, y)
-                newGrid[x][y] = cellManager.updateCellState(aliveNeighbours, grid[x][y])
+                newGrid[x][y] = cellManager.updateCellState(aliveNeighbours, cellState)
             }
         }
         return newGrid
     }
 
     private def countAliveCellNeighbours(grid, xPos, yPos) {
-        def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
+        def neighbours = [
+                [xPos - 1, yPos - 1],
+                [xPos - 1, yPos],
+                [xPos - 1, yPos + 1],
+                [xPos, yPos - 1],
+                [xPos, yPos + 1],
+                [xPos + 1, yPos - 1],
+                [xPos + 1, yPos],
+                [xPos + 1, yPos + 1]
+        ]
 
         return neighbours.inject(0) { aliveNeighbours, neighbourPosition ->
             hasNeighbour(grid, neighbourPosition) ? aliveNeighbours + 1 : aliveNeighbours
@@ -29,7 +37,7 @@ class GridBuilder {
     private boolean hasNeighbour(grid, neighbourPosition) {
         def xPosition = neighbourPosition[0]
         def yPosition = neighbourPosition[1]
-        
+
         return isPositionValid(xPosition, grid) &&
                 isPositionValid(yPosition, grid) &&
                 grid[xPosition][yPosition] == CellType.alive

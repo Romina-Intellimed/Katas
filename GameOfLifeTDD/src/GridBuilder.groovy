@@ -20,14 +20,14 @@ class GridBuilder {
 
     private def countAliveCellNeighbours(grid, xPos, yPos) {
         def neighbours = [[xPos - 1, yPos - 1], [xPos - 1, yPos], [xPos - 1, yPos + 1], [xPos, yPos - 1], [xPos, yPos + 1], [xPos + 1, yPos - 1], [xPos + 1, yPos], [xPos + 1, yPos + 1]]
-        def surroundedGrid = surroundGridwithDeadCells(grid)
+        def surroundedGrid = surroundGridWithDeadCells(grid)
 
         return neighbours.inject(0) { aliveNeighbours, neighbourPosition ->
             (surroundedGrid[neighbourPosition[0]][neighbourPosition[1]] == CellType.alive) ? aliveNeighbours + 1 : aliveNeighbours
         }
     }
 
-    private def surroundGridwithDeadCells(grid) {
+    private def surroundGridWithDeadCells(grid) {
         def gridToCheck = []
         (grid.size() + 2).times { x ->
             gridToCheck[x] = []

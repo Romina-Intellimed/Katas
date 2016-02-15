@@ -15,7 +15,7 @@ class GridBuilder {
                 newGrid[x][y] = cellManager.updateCellState(aliveNeighbours, grid[x][y])
             }
         }
-        newGrid
+        return newGrid
     }
 
     private def countAliveCellNeighbours(grid, xPos, yPos) {

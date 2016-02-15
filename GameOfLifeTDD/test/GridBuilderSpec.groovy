@@ -23,26 +23,21 @@ class GridBuilderSpec extends Specification {
         9 * cellMock.updateCellState(*_)
     }
 
-    void "test cell stub and grid state in isolation"() {
+    void "new grid contains cells returned by updateCellState"() {
         given:
-        def grid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 0).withAliveCell(1, 0).withAliveCell(2, 0).build()
-
-        def cellManager = new CellManager()
-        def cellType=CellType.alive
+        def grid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).build()
 
         def cellManagerStub = Mock(CellManager) {
-            updateCellState(3,CellType.alive) >> cellManager
+            updateCellState(*_) >> CellType.alive
         }
 
         def gridBuilder = new GridBuilder(cellManager: cellManagerStub)
 
         when:
-        def newGrid=gridBuilder.nextGenerationGrid(grid)
+        def newGrid = gridBuilder.nextGenerationGrid(grid)
 
         then:
-        newGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(1, 1).withAliveCell(1, 0).build()
+        newGrid == [[CellType.alive] * 3] * 3
     }
-
-
 
 }

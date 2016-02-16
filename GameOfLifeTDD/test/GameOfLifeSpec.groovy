@@ -233,7 +233,12 @@ class GameOfLifeSpec extends Specification {
     }
 
     void "a 3x3 grid with three live cells on the position: (0,0),(1,1),(2,2) will have one live cell in next generation"() {
-
+        given:
+        def initialGrid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 0).withAliveCell(1,1).withAliveCell(2, 2).build()
+        when:
+        def actualGrid = gameOfLife.generationGridEvolution(initialGrid)
+        then:
+        actualGrid == GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(1,1).build()
     }
 
     void "a 3x3 grid with three live cells on the position: (2,0),(1,1),(0,2) will have one live cell in next generation"() {

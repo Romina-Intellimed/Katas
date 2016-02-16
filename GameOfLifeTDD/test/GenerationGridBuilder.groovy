@@ -30,6 +30,8 @@ class GenerationGridBuilder {
             }
         }
 
+       // grid= [[CellType.dead] * size] * size
+
         positions.eachWithIndex{ position , index ->
             grid[position[0]][position[1]] = CellType.alive
         }

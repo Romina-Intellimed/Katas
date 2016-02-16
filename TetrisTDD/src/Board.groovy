@@ -50,4 +50,12 @@ class Board {
         board[fallingBlock.xPos][fallingBlock.yPos-1] = 0
     }
 
+    def blockMovesLeft(){
+        fallingBlock.yPos = fallingBlock.yPos - 1
+        board[fallingBlock.xPos][fallingBlock.yPos] = 1
+        board[fallingBlock.xPos][fallingBlock.yPos+1] = 0
+    }
+
+
+
 }

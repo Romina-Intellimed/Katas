@@ -2,8 +2,8 @@
  * Created by romina on 12.02.2016.
  */
 class Board {
-    def board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-    static TetrisBlock fallingBlock =new TetrisBlock()
+    def board = []
+    static TetrisBlock fallingBlock = new TetrisBlock()
 
 
     def isEmpty() {
@@ -21,25 +21,27 @@ class Board {
     def dropBlock(TetrisBlock tBlock) {
         fallingBlock = tBlock
         fallingBlock.isFalling = true
-        fallingBlock.xPos=0
-        fallingBlock.yPos=board.size()
-        board[0][fallingBlock.yPos] = 1
+        fallingBlock.xPos = 1
+        fallingBlock.yPos = board.size() - 1
+        board[fallingBlock.xPos][fallingBlock.yPos] = 1
         return board
     }
 
     def blockIsFalling() {
-        board[0][fallingBlock.yPos]=0
-
-        fallingBlock.yPos = fallingBlock.yPos -1
-
-        board[0][fallingBlock.yPos] = 1
+        fallingBlock.yPos = fallingBlock.yPos - 1
+        board[fallingBlock.xPos][fallingBlock.yPos] = 1
+        board[fallingBlock.xPos][fallingBlock.yPos + 1] = 0
     }
 
-    def hasArrivedAtBottom(){
-        if(fallingBlock.yPos==0)
+    def hasArrivedAtBottom() {
+        if (fallingBlock.yPos == 0)
             return true
-        else
-            false
+    }
+
+
+    def hasReachedAnotherBlock() {
+        if ((fallingBlock.yPos > 0 && board[0][1] == 1) || (board[1][1] == 1 && fallingBlock.yPos > 1))
+            return true
     }
 
 }

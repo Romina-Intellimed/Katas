@@ -4,8 +4,6 @@
 class GenerationGridBuilder {
 
     def size
-    def aliveXPositions
-    def aliveYPositions
     def positions = []
 
     static GenerationGridBuilder aGenerationGridBuilder() {
@@ -19,7 +17,6 @@ class GenerationGridBuilder {
 
     def withAliveCell(xPos, yPos) {
         positions.add([xPos, yPos])
-
         this
     }
 
@@ -52,9 +49,6 @@ class GenerationGridBuilder {
         grid
     }
 
-    static def grid2x2WithAllCellsDead() {
-        aGenerationGridBuilder().buildWithOneCellType(CellType.dead)
-    }
 
     static def grid2x2WithAllCellsAlive() {
         aGenerationGridBuilder().buildWithOneCellType(CellType.alive)

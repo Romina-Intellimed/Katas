@@ -44,4 +44,10 @@ class Board {
             return true
     }
 
+    def blockMovesRight(){
+        fallingBlock.yPos = fallingBlock.yPos + 1
+        board[fallingBlock.xPos][fallingBlock.yPos] = 1
+        board[fallingBlock.xPos][fallingBlock.yPos-1] = 0
+    }
+
 }

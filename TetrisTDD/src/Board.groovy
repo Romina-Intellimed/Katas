@@ -21,26 +21,26 @@ class Board {
     def dropBlock(TetrisBlock tBlock) {
         fallingBlock = tBlock
         fallingBlock.isFalling = true
-        fallingBlock.xPos = 1
-        fallingBlock.yPos = board.size() - 1
+        fallingBlock.xPos = 0
+        fallingBlock.yPos = 1
         board[fallingBlock.xPos][fallingBlock.yPos] = 1
         return board
     }
 
     def blockIsFalling() {
-        fallingBlock.yPos = fallingBlock.yPos - 1
+        fallingBlock.xPos = fallingBlock.xPos + 1
         board[fallingBlock.xPos][fallingBlock.yPos] = 1
-        board[fallingBlock.xPos][fallingBlock.yPos + 1] = 0
+        board[fallingBlock.xPos-1][fallingBlock.yPos] = 0
     }
 
     def hasArrivedAtBottom() {
-        if (fallingBlock.yPos == 0)
+        if (fallingBlock.xPos == (board.size()-1))
             return true
     }
 
 
     def hasReachedAnotherBlock() {
-        if ((fallingBlock.yPos > 0 && board[0][1] == 1) || (board[1][1] == 1 && fallingBlock.yPos > 1))
+        if ((fallingBlock.xPos < (board.size()-1) && board[1][1] == 1) || (board[2][1] == 1 && fallingBlock.xPos < board.size()-1))
             return true
     }
 

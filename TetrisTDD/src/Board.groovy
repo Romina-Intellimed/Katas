@@ -57,5 +57,13 @@ class Board {
     }
 
 
+    def collaps(){
+
+        board.eachWithIndex { value, index->
+            if (value == [1,1,1])
+                board[index]=[0,0,0]
+        }
+    }
+
 
 }

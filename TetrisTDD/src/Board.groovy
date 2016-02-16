@@ -27,7 +27,7 @@ class Board {
         return board
     }
 
-    def blockIsFalling() {
+    def blockIsFallingOneTimeALine() {
         if (!blockHasReachedAnotherBlock()) {
             fallingBlock.xPos = fallingBlock.xPos + 1
             board[fallingBlock.xPos][fallingBlock.yPos] = 1

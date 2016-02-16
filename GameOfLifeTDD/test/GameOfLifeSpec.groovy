@@ -234,9 +234,6 @@ class GameOfLifeSpec extends Specification {
 
     }
 
-    private def grid3x3WithOneLiveCell() {
-        GenerationGridBuilder.aGenerationGridBuilder().withSize(3).withAliveCell(0, 0).build()
-    }
 
     @Ignore
     void "test system array Copy "() {

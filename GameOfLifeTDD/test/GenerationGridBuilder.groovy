@@ -36,21 +36,4 @@ class GenerationGridBuilder {
 
        return grid
     }
-
-
-    def buildWithOneCellType(cellType) {
-        def grid = []
-        size.times { rowIndex ->
-            grid[rowIndex] = []
-            size.times { colIndex ->
-                grid[rowIndex][colIndex] = cellType
-            }
-        }
-        grid
-    }
-
-
-    static def grid2x2WithAllCellsAlive() {
-        aGenerationGridBuilder().buildWithOneCellType(CellType.alive)
-    }
 }

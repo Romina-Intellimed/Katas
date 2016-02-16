@@ -40,7 +40,7 @@ class Board {
 
 
     def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (board.size()-1) && board[1][fallingBlock.yPos] == 1) || (board[2][fallingBlock.yPos] == 1 && fallingBlock.xPos < board.size()-1))
+        if ((fallingBlock.xPos < (board.size()-1) && board[fallingBlock.xPos+1][fallingBlock.yPos] == 1) )
             return true
     }
 

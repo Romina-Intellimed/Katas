@@ -28,40 +28,42 @@ class Board {
     }
 
     def blockIsFalling() {
-        fallingBlock.xPos = fallingBlock.xPos + 1
-        board[fallingBlock.xPos][fallingBlock.yPos] = 1
-        board[fallingBlock.xPos-1][fallingBlock.yPos] = 0
+        if (!blockHasReachedAnotherBlock()) {
+            fallingBlock.xPos = fallingBlock.xPos + 1
+            board[fallingBlock.xPos][fallingBlock.yPos] = 1
+            board[fallingBlock.xPos - 1][fallingBlock.yPos] = 0
+        }
     }
-
     def blockHasArrivedAtBottom() {
-        if (fallingBlock.xPos == (board.size()-1))
+        if (fallingBlock.xPos == (board.size() - 1))
             return true
     }
 
 
     def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (board.size()-1) && board[fallingBlock.xPos+1][fallingBlock.yPos] == 1) )
+        if ((fallingBlock.xPos < (board.size() - 1) && board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1))
             return true
     }
 
-    def blockMovesRight(){
+    def blockMovesRight() {
         fallingBlock.yPos = fallingBlock.yPos + 1
         board[fallingBlock.xPos][fallingBlock.yPos] = 1
-        board[fallingBlock.xPos][fallingBlock.yPos-1] = 0
+        board[fallingBlock.xPos][fallingBlock.yPos - 1] = 0
     }
 
-    def blockMovesLeft(){
-        fallingBlock.yPos = fallingBlock.yPos - 1
-        board[fallingBlock.xPos][fallingBlock.yPos] = 1
-        board[fallingBlock.xPos][fallingBlock.yPos+1] = 0
+    def blockMovesLeft() {
+
+            fallingBlock.yPos = fallingBlock.yPos - 1
+            board[fallingBlock.xPos][fallingBlock.yPos] = 1
+            board[fallingBlock.xPos][fallingBlock.yPos + 1] = 0
+
     }
 
+    def lineCollaps() {
 
-    def collaps(){
-
-        board.eachWithIndex { value, index->
-            if (value == [1,1,1])
-                board[index]=[0,0,0]
+        board.eachWithIndex { line, index ->
+            if (line == [1, 1, 1])
+                board[index] = [0, 0, 0]
         }
     }
 

@@ -30,10 +30,10 @@ class Board {
     def blockIsFallingOneTimeALine() {
         if (!blockHasReachedAnotherBlock()) {
             fallingBlock.xPos = fallingBlock.xPos + 1
-            board[fallingBlock.xPos][fallingBlock.yPos] = 1
-            board[fallingBlock.xPos - 1][fallingBlock.yPos] = 0
+            board = updateBoard(fallingBlock.xPos, fallingBlock.yPos, PieceOperation.IS_FALLING)
         }
     }
+
     def blockHasArrivedAtBottom() {
         if (fallingBlock.xPos == (board.size() - 1))
             return true
@@ -47,15 +47,15 @@ class Board {
 
     def blockMovesRight() {
         fallingBlock.yPos = fallingBlock.yPos + 1
-        board[fallingBlock.xPos][fallingBlock.yPos] = 1
-        board[fallingBlock.xPos][fallingBlock.yPos - 1] = 0
+        board = updateBoard(fallingBlock.xPos, fallingBlock.yPos, PieceOperation.MOVE_RIGHT)
+
+
     }
 
     def blockMovesLeft() {
 
-            fallingBlock.yPos = fallingBlock.yPos - 1
-            board[fallingBlock.xPos][fallingBlock.yPos] = 1
-            board[fallingBlock.xPos][fallingBlock.yPos + 1] = 0
+        fallingBlock.yPos = fallingBlock.yPos - 1
+        board = updateBoard(fallingBlock.xPos, fallingBlock.yPos, PieceOperation.MOVE_LEFT)
 
     }
 
@@ -65,6 +65,24 @@ class Board {
             if (line == [1, 1, 1])
                 board[index] = [0, 0, 0]
         }
+    }
+
+    def updateBoard(xPos, yPos, operation) {
+        switch (operation) {
+            case PieceOperation.IS_FALLING:
+                board[xPos - 1][yPos] = 0
+                break
+            case PieceOperation.MOVE_LEFT:
+                board[xPos][yPos + 1] = 0
+                break
+            case PieceOperation.MOVE_RIGHT:
+                board[xPos][yPos - 1] = 0
+                break
+        }
+
+        board[xPos][yPos] = 1
+
+        return board;
     }
 
 

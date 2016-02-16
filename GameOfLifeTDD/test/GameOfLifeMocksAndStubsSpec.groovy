@@ -6,7 +6,6 @@ import spock.lang.Specification
  */
 class GameOfLifeMocksAndStubsSpec extends Specification {
 
-    // Strict collaboration test using mock: universe.evolve() calls cell.evolve() only once
     def "universe with a cell delegates evolution to cell"() {
         given:
         def grid = GenerationGridBuilder.aGenerationGridBuilder().withSize(3).build()

@@ -4,17 +4,15 @@
 class Board {
     def board = []
     static TetrisBlock fallingBlock = new TetrisBlock()
-    def SQUARE_FILLED = 1
-    def SQUARE_EMPTY = 0
 
     def generateEmptyBoard(size) {
-        board = [[SQUARE_EMPTY] * size] * size
+        board = [[SquareState.EMPTY] * size] * size
         return board
     }
 
 
     def isEmpty() {
-        if (board == [[SQUARE_EMPTY] * board.size()] * board.size())
+        if (board == [[SquareState.EMPTY] * board.size()] * board.size())
             true
     }
 
@@ -31,7 +29,7 @@ class Board {
         fallingBlock.isFalling = true
         fallingBlock.xPos = 0
         fallingBlock.yPos = 1
-        board[fallingBlock.xPos][fallingBlock.yPos] = SQUARE_FILLED
+        board[fallingBlock.xPos][fallingBlock.yPos] = SquareState.FILLED
         return board
     }
 
@@ -49,7 +47,7 @@ class Board {
 
 
     def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (board.size() - 1)) && (board[fallingBlock.xPos + 1][fallingBlock.yPos] == SQUARE_FILLED))
+        if ((fallingBlock.xPos < (board.size() - 1)) && (board[fallingBlock.xPos + 1][fallingBlock.yPos] == SquareState.FILLED))
             return true
     }
 
@@ -70,25 +68,25 @@ class Board {
     def lineCollaps() {
 
         board.eachWithIndex { line, index ->
-            if (line == [SQUARE_FILLED] * board.size())
-                board[index] = [SQUARE_EMPTY] * board.size()
+            if (line == SquareState.FILLED * board.size())
+                board[index] = [SquareState.EMPTY] * board.size()
         }
     }
 
     def updateBoard(xPos, yPos, operation) {
         switch (operation) {
             case PieceOperation.IS_FALLING:
-                board[xPos - 1][yPos] = SQUARE_EMPTY
+                board[xPos - 1][yPos] = SquareState.EMPTY
                 break
             case PieceOperation.MOVE_LEFT:
-                board[xPos][yPos + 1] = SQUARE_EMPTY
+                board[xPos][yPos + 1] = SquareState.EMPTY
                 break
             case PieceOperation.MOVE_RIGHT:
-                board[xPos][yPos - 1] = SQUARE_EMPTY
+                board[xPos][yPos - 1] = SquareState.EMPTY
                 break
         }
 
-        board[xPos][yPos] = SQUARE_FILLED
+        board[xPos][yPos] = SquareState.FILLED
 
         return board;
     }

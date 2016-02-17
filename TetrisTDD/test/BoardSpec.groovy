@@ -21,7 +21,7 @@ class BoardSpec extends Specification {
         def newBoard = gameBoard.generateEmptyBoard(size)
 
         then:
-        assert newBoard == [[0,0,0],[0,0,0],[0,0,0]]
+        assert newBoard == [[SquareState.EMPTY]*3]*3
     }
 
     def "Board has no falling block"() {

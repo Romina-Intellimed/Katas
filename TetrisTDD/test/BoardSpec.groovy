@@ -12,7 +12,21 @@ class BoardSpec extends Specification {
 
     }
 
-    void "board has only empty squares"(){
+
+    def "Board with no falling piece is empty"() {
+
+        given:
+        def size = 3
+
+        when:
+        gameBoard.board = gameBoard.generateEmptyBoard(size)
+
+        then:
+        gameBoard.isEmpty() == true
+
+    }
+
+    void "Board 3x3 has only empty squares"(){
 
         given:
         def size = 3
@@ -24,7 +38,7 @@ class BoardSpec extends Specification {
         assert newBoard == [[BoardSquare.EMPTY]*3]*3
     }
 
-    def "Board has no falling block"() {
+    def "Board 3x3 has no falling block"() {
         given:
         gameBoard.board=gameBoard.generateEmptyBoard(3)
         expect:
@@ -33,7 +47,7 @@ class BoardSpec extends Specification {
     }
 
 
-    def "Board has one falling block"() {
+    def "Board 3x3 has one falling block"() {
         given:
         TetrisBlock tetrisBlock = new TetrisBlock()
         gameBoard.board=gameBoard.generateEmptyBoard(3)
@@ -44,5 +58,7 @@ class BoardSpec extends Specification {
         gameBoard.hasFallingBlocks() == true
 
     }
+
+
 
 }

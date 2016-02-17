@@ -3,19 +3,19 @@
  */
 class Board {
     def board = []
-    static TetrisBlock fallingBlock = new TetrisBlock()
+    TetrisBlock fallingBlock = new TetrisBlock()
 
     def generateEmptyBoard(size) {
         board = [[BoardSquare.EMPTY] * size] * size
         return board
     }
 
-
     def isEmpty() {
         if (board == [[BoardSquare.EMPTY] * board.size()] * board.size())
             true
+        else
+            false
     }
-
 
     def hasFallingBlocks() {
         if (fallingBlock.isFalling)
@@ -37,18 +37,23 @@ class Board {
         if (!blockHasReachedAnotherBlock()) {
             fallingBlock.xPos = fallingBlock.xPos + 1
             board = updateBoard(fallingBlock.xPos, fallingBlock.yPos, PieceOperation.IS_FALLING)
+
         }
+        return board
     }
 
     def blockHasArrivedAtBottom() {
-        if (fallingBlock.xPos == (board.size() - 1))
+        if (fallingBlock.xPos == (board.size() -1))
             return true
+        else
+            false
     }
-
 
     def blockHasReachedAnotherBlock() {
         if ((fallingBlock.xPos < (board.size() - 1)) && (board[fallingBlock.xPos + 1][fallingBlock.yPos] == BoardSquare.FILLED))
             return true
+        else
+            false
     }
 
     def blockMovesRight() {
@@ -74,6 +79,7 @@ class Board {
     }
 
     def updateBoard(xPos, yPos, operation) {
+        board[xPos][yPos] = BoardSquare.FILLED
         switch (operation) {
             case PieceOperation.IS_FALLING:
                 board[xPos - 1][yPos] = BoardSquare.EMPTY
@@ -86,7 +92,6 @@ class Board {
                 break
         }
 
-        board[xPos][yPos] = BoardSquare.FILLED
 
         return board;
     }

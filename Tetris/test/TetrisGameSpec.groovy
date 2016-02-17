@@ -47,4 +47,15 @@ class TetrisGameSpec extends Specification {
         then:
         assert newBoard == 0
     }
+
+    void "game ends"(){
+        given:
+        tetrisBoard.board = [1]
+        when:
+        def board = tetrisBoard.dropBlock()
+        then:
+        assert tetrisBoard.hasStackUpToTop() == true
+    }
+
+
 }

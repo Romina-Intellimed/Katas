@@ -23,4 +23,9 @@ class Board {
         if(board[board.size()-1]==1)
             board[board.size()-1]=0
     }
+
+
+    def hasStackUpToTop(){
+
+    }
 }

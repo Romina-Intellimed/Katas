@@ -15,9 +15,12 @@ class Board {
     }
 
     def dropBlock(){
-        board.add(1)
+        board[0]=1
         return board
     }
 
-
+    def lineCollaps(){
+        if(board[board.size()-1]==1)
+            board[board.size()-1]=0
+    }
 }

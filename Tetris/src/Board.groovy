@@ -10,7 +10,12 @@ class Board {
     }
 
     def generateEmptyBoard(size){
-        board = [[0]*size]*size
+        board = [0*size]*size
+        return board
+    }
+
+    def dropBlock(){
+        board.add(1)
         return board
     }
 

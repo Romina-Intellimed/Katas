@@ -24,8 +24,17 @@ class TetrisGameSpec extends Specification{
         def oneSquareBoard=tetrisBoard.generateEmptyBoard(1)
 
         then:
-        oneSquareBoard == [[0]]
+        oneSquareBoard == [0]
 
     }
 
-}
+    void "block is droped in one squared board"(){
+
+        when:
+        def board = tetrisBoard.dropBlock()
+
+        then:
+        board ==[1]
+    }
+
+   }

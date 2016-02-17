@@ -9,7 +9,10 @@ class Board {
        return board.isEmpty()
     }
 
-
+    def generateEmptyBoard(size){
+        board = [[0]*size]*size
+        return board
+    }
 
 
 }

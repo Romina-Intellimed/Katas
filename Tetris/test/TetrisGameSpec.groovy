@@ -5,19 +5,27 @@ import spock.lang.Specification
  */
 class TetrisGameSpec extends Specification{
 
+    Board tetrisBoard;
+
     void setup(){
+       tetrisBoard=new Board()
 
     }
 
     void "empty board"(){
-        given:
-        def tetrisBoard=new Board()
 
         expect:
         tetrisBoard.isEmpty()
 
     }
 
+    void "board 1x1 has empty squares"(){
+        when:
+        def oneSquareBoard=tetrisBoard.generateEmptyBoard(1)
 
+        then:
+        oneSquareBoard == [[0]]
+
+    }
 
 }

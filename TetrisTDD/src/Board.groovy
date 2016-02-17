@@ -4,10 +4,18 @@
 class Board {
     def board = []
     static TetrisBlock fallingBlock = new TetrisBlock()
+    def SQUARE_FILLED = 1
+    def SQUARE_EMPTY = 0
+
+    def generateEmptyBoard(size) {
+        board = [[SQUARE_EMPTY] * size] * size
+        return board
+    }
 
 
     def isEmpty() {
-        true
+        if (board == [[SQUARE_EMPTY] * board.size()] * board.size())
+            true
     }
 
 
@@ -23,7 +31,7 @@ class Board {
         fallingBlock.isFalling = true
         fallingBlock.xPos = 0
         fallingBlock.yPos = 1
-        board[fallingBlock.xPos][fallingBlock.yPos] = 1
+        board[fallingBlock.xPos][fallingBlock.yPos] = SQUARE_FILLED
         return board
     }
 
@@ -41,7 +49,7 @@ class Board {
 
 
     def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (board.size() - 1) && board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1))
+        if ((fallingBlock.xPos < (board.size() - 1)) && (board[fallingBlock.xPos + 1][fallingBlock.yPos] == SQUARE_FILLED))
             return true
     }
 
@@ -62,25 +70,25 @@ class Board {
     def lineCollaps() {
 
         board.eachWithIndex { line, index ->
-            if (line == [1, 1, 1])
-                board[index] = [0, 0, 0]
+            if (line == [SQUARE_FILLED] * board.size())
+                board[index] = [SQUARE_EMPTY] * board.size()
         }
     }
 
     def updateBoard(xPos, yPos, operation) {
         switch (operation) {
             case PieceOperation.IS_FALLING:
-                board[xPos - 1][yPos] = 0
+                board[xPos - 1][yPos] = SQUARE_EMPTY
                 break
             case PieceOperation.MOVE_LEFT:
-                board[xPos][yPos + 1] = 0
+                board[xPos][yPos + 1] = SQUARE_EMPTY
                 break
             case PieceOperation.MOVE_RIGHT:
-                board[xPos][yPos - 1] = 0
+                board[xPos][yPos - 1] = SQUARE_EMPTY
                 break
         }
 
-        board[xPos][yPos] = 1
+        board[xPos][yPos] = SQUARE_FILLED
 
         return board;
     }

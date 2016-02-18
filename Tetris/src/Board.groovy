@@ -7,12 +7,11 @@ class Board {
     def size
 
     def isEmpty() {
-
         return board.isEmpty()
     }
 
 
-    def emptyTheBoard(board) {
+    def emptyTheBoard() {
         board.size().times { rowIndex ->
             board.size().times { colIndex ->
                 board[rowIndex][colIndex] = 0

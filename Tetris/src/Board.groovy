@@ -7,15 +7,18 @@ class Board {
     def size
 
     def isEmpty() {
+
         return board.isEmpty()
     }
 
-    static Board aBoard() {
-        new Board(size: 1)
-    }
 
-    def generateEmptyBoard() {
-        board = [0 * size] * size
+    def emptyTheBoard(board) {
+        board.size().times { rowIndex ->
+            board.size().times { colIndex ->
+                board[rowIndex][colIndex] = 0
+            }
+
+        }
         return board
     }
 

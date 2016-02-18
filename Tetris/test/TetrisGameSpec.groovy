@@ -13,25 +13,24 @@ class TetrisGameSpec extends Specification {
     }
 
     void "empty board"() {
-
         expect:
         tetrisBoard.isEmpty()
 
     }
 
-    void "board 1x1 has empty squares"() {
+    void "board 1x1 has empty square"() {
         given:
-        def aBoard=Board.aBoard()
+        def aBoard=BoardBuilder.aBoard().withSize(1).buildBoard()
 
         when:
-        def oneSquareBoard = aBoard.generateEmptyBoard()
+        def oneSquareBoard = tetrisBoard.emptyTheBoard(aBoard)
 
         then:
-        oneSquareBoard == [0]
-
+        oneSquareBoard == [[0]]
     }
 
     void "block is droped in one squared board"() {
+
 
         when:
         def board = tetrisBoard.dropBlock()

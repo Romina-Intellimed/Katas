@@ -21,44 +21,38 @@ class TetrisGameSpec extends Specification {
 
     void "board 1x1 has empty square"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(1).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisBoard.board = aBoard
         when:
-        def oneSquareBoard = tetrisBoard.emptyTheBoard()
-
+        def oneSquareBoard = tetrisBoard.initTheBoard(1,0)
         then:
         oneSquareBoard == aBoard
     }
 
     void "block is droped in one squared board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(1).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisBoard.board = aBoard
 
         when:
         def board = tetrisBoard.dropBlock()
 
         then:
-        assert board == [1]
+        assert board[0] == 1
     }
 
 
     void "line collaps for board 1x1 squared filled"() {
-        given:
-        def aBoard = BoardBuilder.aBoard().withSize(1).buildBoard()
-        tetrisBoard.board = aBoard
-
         when:
         tetrisBoard.dropBlock()
         def newBoard = tetrisBoard.lineCollaps()
-
         then:
-        assert newBoard == 0
+        assert newBoard[0] == 0
     }
 
     void "game ends for board 1x1"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(1).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisBoard.board = aBoard
         when:
         tetrisBoard.dropBlock()
@@ -66,24 +60,31 @@ class TetrisGameSpec extends Specification {
         assert tetrisBoard.hasStackUpToTop() == true
     }
 
+
+    @Ignore
     void "a board 2x2 has empty squares"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisBoard.board = aBoard
         when:
-        def oneSquareBoard = tetrisBoard.emptyTheBoard()
+        def oneSquareBoard = tetrisBoard.initTheBoard(2,2)
 
         then:
         oneSquareBoard == aBoard
+        print oneSquareBoard
     }
 
     @Ignore
     void "a block is droped in a 2x2 board "() {
-        def aBoard = BoardBuilder.aBoard().withSize(2).buildBoard()
+        given:
+        def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisBoard.board = aBoard
 
+        when:
         tetrisBoard.dropBlock()
 
+        then:
+        assert aBoard==1
 
     }
 

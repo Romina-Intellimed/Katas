@@ -4,16 +4,21 @@
 class Board {
 
     def board = []
-    def size
+    def rows = 1
+    def columns = 0
+
 
     def isEmpty() {
         return board.isEmpty()
     }
 
 
-    def emptyTheBoard() {
-        board.size().times { rowIndex ->
-            board.size().times { colIndex ->
+    def initTheBoard(rows, columns) {
+        this.rows = rows
+        this.columns = columns
+        rows.times { rowIndex ->
+            board[rowIndex] = 0
+            columns.times { colIndex ->
                 board[rowIndex][colIndex] = 0
             }
 
@@ -22,13 +27,15 @@ class Board {
     }
 
     def dropBlock() {
+
         board[0] = 1
         return board
     }
 
     def lineCollaps() {
-        if (board[board.size() - 1] == 1)
-            board[board.size() - 1] = 0
+        if (board[rows - 1] == 1)
+            board[rows - 1] = 0
+        return board
     }
 
 

@@ -2,24 +2,26 @@
  * Created by romina on 18.02.2016.
  */
 class BoardBuilder {
+    def lines
+    def columns
 
-    def size
 
 
     static BoardBuilder aBoard() {
-        new BoardBuilder(size: 1)
+        new BoardBuilder(lines: 1, columns:0)
     }
 
-    def withSize(size) {
-        this.size = size
+    def withSize(lines,columns) {
+        this.lines = lines
+        this.columns=columns
         this
     }
 
     def buildBoard() {
         def board = []
-        size.times { rowIndex ->
-            board[rowIndex]=[]
-            size.times { colIndex ->
+        lines.times { rowIndex ->
+            board[rowIndex]=0
+            columns.times { colIndex ->
                 board[rowIndex][colIndex]=0
             }
 

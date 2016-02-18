@@ -64,7 +64,7 @@ class TetrisGameSpec extends Specification {
     @Ignore
     void "a board 2x2 has empty squares"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
+        def aBoardpush = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisBoard.board = aBoard
         when:
         def oneSquareBoard = tetrisBoard.initTheBoard(2,2)

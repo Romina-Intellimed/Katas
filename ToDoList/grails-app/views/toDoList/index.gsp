@@ -8,9 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-  <title></title>
+    <title></title>
 </head>
-<body>
 
+<body>
+${helloString}
+<ul>
+    <g:each in="${todoListItems}" var="item">
+        <li>${item.name}</li>
+    </g:each>
+</ul>
 </body>
 </html>

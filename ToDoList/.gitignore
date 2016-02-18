@@ -31,4 +31,6 @@ target-eclipse/
 build/
 *.log
 *.log.*
-
+*.slcache
+.slcache
+/web-app/WEB-INF/tld/*

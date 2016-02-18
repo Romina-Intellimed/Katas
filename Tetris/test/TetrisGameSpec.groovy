@@ -58,5 +58,41 @@ class TetrisGameSpec extends Specification {
         assert tetrisBoard.hasStackUpToTop() == true
     }
 
+    void "a board 2x2 has empty squares"(){
+
+    }
+
+    void "a block is droped in a 2x2 board "(){
+
+    }
+
+    void "a board 2x2 has one falling block"(){
+
+    }
+
+    void "blocked has arrived at the bottom in a 2x2 board"(){
+
+    }
+
+    void "blocked is moved left in 2x2 board"(){
+
+    }
+
+    void "blocked is moved right in a 2x2 board"(){
+
+    }
+
+    void "line collaps in a 2x2 board"(){
+
+    }
+
+    void "block has arrived on top of another block in a 2x2 board"(){
+
+    }
+
+    void "game over for a 2x2 board"(){
+
+    }
+
 
 }

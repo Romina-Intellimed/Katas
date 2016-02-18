@@ -4,12 +4,16 @@
 class Board {
 
     def board=[]
-
+    def size
     def isEmpty(){
        return board.isEmpty()
     }
 
-    def generateEmptyBoard(size){
+    static Board aBoard(){
+        new Board(size:1)
+    }
+
+    def generateEmptyBoard(){
         board = [0*size]*size
         return board
     }
@@ -26,6 +30,9 @@ class Board {
 
 
     def hasStackUpToTop(){
-
+        if(board[0]==1)
+            return true
+        else
+            false
     }
 }

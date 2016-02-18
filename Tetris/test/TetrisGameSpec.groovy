@@ -20,8 +20,11 @@ class TetrisGameSpec extends Specification {
     }
 
     void "board 1x1 has empty squares"() {
+        given:
+        def aBoard=Board.aBoard()
+
         when:
-        def oneSquareBoard = tetrisBoard.generateEmptyBoard(1)
+        def oneSquareBoard = aBoard.generateEmptyBoard()
 
         then:
         oneSquareBoard == [0]
@@ -38,7 +41,7 @@ class TetrisGameSpec extends Specification {
     }
 
 
-    void "line collaps"() {
+    void "line collaps for board 1x1"() {
         given:
         tetrisBoard.board = [1]
         when:
@@ -48,11 +51,9 @@ class TetrisGameSpec extends Specification {
         assert newBoard == 0
     }
 
-    void "game ends"(){
-        given:
-        tetrisBoard.board = [1]
+    void "game ends for board 1x1"(){
         when:
-        def board = tetrisBoard.dropBlock()
+        tetrisBoard.dropBlock()
         then:
         assert tetrisBoard.hasStackUpToTop() == true
     }

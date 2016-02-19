@@ -15,6 +15,12 @@ class ToDoItemSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test toString"() {
+        when: "a toDo item has a name and a descrption"
+            def toDoItem=new ToDoItem(name: "Groovy", description: "Read Groovy in Action")
+        then: "the toString method will display both name and description"
+
+        toDoItem.toString()=="Groovy, Read Groovy in Action"
+
     }
 }

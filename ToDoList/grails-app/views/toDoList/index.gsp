@@ -18,5 +18,9 @@ ${helloString}
         <li>${item.name}</li>
     </g:each>
 </ul>
+
+Item with name "Learn Grails":
+${learnGrailsItem}
+
 </body>
 </html>

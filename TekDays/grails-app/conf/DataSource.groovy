@@ -4,7 +4,7 @@ dataSource {
     jmxExport = true
     //driverClassName = "org.h2.Driver"
     driverClassName = "com.mysql.jdbc.Driver"
-    username = "intellimedis"
+    username = "root"
     password = "intellimedis"
 }
 hibernate {

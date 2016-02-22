@@ -7,6 +7,7 @@ import spock.lang.*
 
 @TestFor(TekUserController)
 @Mock(TekUser)
+@Ignore
 class TekUserControllerSpec extends Specification {
 
     def populateValidParams(params) {

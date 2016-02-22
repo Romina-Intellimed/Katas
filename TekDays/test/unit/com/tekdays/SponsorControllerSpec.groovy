@@ -7,6 +7,7 @@ import spock.lang.*
 
 @TestFor(SponsorController)
 @Mock(Sponsor)
+@Ignore
 class SponsorControllerSpec extends Specification {
 
     def populateValidParams(params) {

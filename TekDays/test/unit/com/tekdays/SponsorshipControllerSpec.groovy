@@ -5,10 +5,10 @@ package com.tekdays
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(TekEventController)
-@Mock(TekEvent)
+@TestFor(SponsorshipController)
+@Mock(Sponsorship)
 @Ignore
-class TekEventControllerSpec extends Specification {
+class SponsorshipControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -22,8 +22,8 @@ class TekEventControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.tekEventInstanceList
-            model.tekEventInstanceCount == 0
+            !model.sponsorshipInstanceList
+            model.sponsorshipInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -31,7 +31,7 @@ class TekEventControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.tekEventInstance!= null
+            model.sponsorshipInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -39,25 +39,25 @@ class TekEventControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def tekEvent = new TekEvent()
-            tekEvent.validate()
-            controller.save(tekEvent)
+            def sponsorship = new Sponsorship()
+            sponsorship.validate()
+            controller.save(sponsorship)
 
         then:"The create view is rendered again with the correct model"
-            model.tekEventInstance!= null
+            model.sponsorshipInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            tekEvent = new TekEvent(params)
+            sponsorship = new Sponsorship(params)
 
-            controller.save(tekEvent)
+            controller.save(sponsorship)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/tekEvent/show/1'
+            response.redirectedUrl == '/sponsorship/show/1'
             controller.flash.message != null
-            TekEvent.count() == 1
+            Sponsorship.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -69,11 +69,11 @@ class TekEventControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def tekEvent = new TekEvent(params)
-            controller.show(tekEvent)
+            def sponsorship = new Sponsorship(params)
+            controller.show(sponsorship)
 
         then:"A model is populated containing the domain instance"
-            model.tekEventInstance == tekEvent
+            model.sponsorshipInstance == sponsorship
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -85,11 +85,11 @@ class TekEventControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def tekEvent = new TekEvent(params)
-            controller.edit(tekEvent)
+            def sponsorship = new Sponsorship(params)
+            controller.edit(sponsorship)
 
         then:"A model is populated containing the domain instance"
-            model.tekEventInstance == tekEvent
+            model.sponsorshipInstance == sponsorship
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -99,28 +99,28 @@ class TekEventControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/tekEvent/index'
+            response.redirectedUrl == '/sponsorship/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def tekEvent = new TekEvent()
-            tekEvent.validate()
-            controller.update(tekEvent)
+            def sponsorship = new Sponsorship()
+            sponsorship.validate()
+            controller.update(sponsorship)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.tekEventInstance == tekEvent
+            model.sponsorshipInstance == sponsorship
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            tekEvent = new TekEvent(params).save(flush: true)
-            controller.update(tekEvent)
+            sponsorship = new Sponsorship(params).save(flush: true)
+            controller.update(sponsorship)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/tekEvent/show/$tekEvent.id"
+            response.redirectedUrl == "/sponsorship/show/$sponsorship.id"
             flash.message != null
     }
 
@@ -131,23 +131,23 @@ class TekEventControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/tekEvent/index'
+            response.redirectedUrl == '/sponsorship/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def tekEvent = new TekEvent(params).save(flush: true)
+            def sponsorship = new Sponsorship(params).save(flush: true)
 
         then:"It exists"
-            TekEvent.count() == 1
+            Sponsorship.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(tekEvent)
+            controller.delete(sponsorship)
 
         then:"The instance is deleted"
-            TekEvent.count() == 0
-            response.redirectedUrl == '/tekEvent/index'
+            Sponsorship.count() == 0
+            response.redirectedUrl == '/sponsorship/index'
             flash.message != null
     }
 }

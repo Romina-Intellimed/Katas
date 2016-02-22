@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites />
+<testsuites>
+  <testsuite errors="1" failures="0" hostname="romina-Latitude-E5550" id="0" name="TaskServiceSpec" package="com.tekdays" tests="1" time="11.601" timestamp="2016-02-22T13:22:55">
+      <properties />
+
+      <testcase classname="com.tekdays.TaskServiceSpec" name="test addDefaultTasks" time="10.503">
+          <error message="Method on class [com.tekdays.TekUser] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [com.tekdays.TekUser] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
+	at com.tekdays.TaskServiceSpec.setup(TaskServiceSpec.groovy:14)
+</error>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from test addDefaultTasks--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from test addDefaultTasks--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

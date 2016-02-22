@@ -4602,3 +4602,4 @@ n:3050:org/apache/http/conn/EofSensorInputStream
 n:2376:org/eclipse/aether/transfer/ArtifactNotFoundException
 n:2662:org/eclipse/aether/transfer/ArtifactTransferException
 n:4381:org/eclipse/aether/util/ChecksumUtils
+n:2188:org/codehaus/groovy/grails/commons/GrailsApplication$addArtefact$0

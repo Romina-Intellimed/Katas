@@ -11,19 +11,23 @@ class TekEventController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond TekEvent.list(params), model:[tekEventInstanceCount: TekEvent.count()]
+        //respond TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()]
+        return [tekEventInstanceCount: TekEvent.count(), tekEventInstanceList:TekEvent.list(params)]
     }
 
     def show(TekEvent tekEventInstance) {
-        respond tekEventInstance
+        //respond tekEventInstance
+        return [tekEventInstance: tekEventInstance]
     }
 
     def create() {
+        println "+++++++++++ ${params}"
         respond new TekEvent(params)
     }
 
     @Transactional
-    def save(TekEvent tekEventInstance) {
+        def save(TekEvent tekEventInstance) {
+        println "+++++++++++ ${params}"
         if (tekEventInstance == null) {
             notFound()
             return

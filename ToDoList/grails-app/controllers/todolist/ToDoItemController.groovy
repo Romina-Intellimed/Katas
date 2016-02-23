@@ -4,7 +4,9 @@ import grails.transaction.Transactional
 
 class ToDoItemController {
     def index() {
-        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.list(), learnGrailsItem: ToDoItem.findByNameLike("Learn Grails%").name]
+        def item = ToDoItem.findByNameLike("Learn Grails%")
+        return [helloString    : "In Show ToDoList page", todoListItems: ToDoItem.list(),
+                learnGrailsItem: item ? item?.name : "Not found"]
     }
 
     def create() {

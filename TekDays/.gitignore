@@ -34,3 +34,4 @@ build/
 *.slcache
 .slcache
 /web-app/WEB-INF/tld/*
+target/*

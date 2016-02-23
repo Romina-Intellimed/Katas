@@ -14,4 +14,16 @@ class ToDoItemController {
         new ToDoItem(name: newItemName).save(failOnError: true)
         redirect action: "index"
     }
+
+
+
+    def show(Long id){
+        def toDoItemInstance = ToDoItem.get(id)
+        if(!toDoItemInstance){
+            redirect(action: "index")
+        }
+
+
+    }
+
 }

@@ -14,6 +14,14 @@ class SponsorControllerSpec extends Specification {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+        params['name'] = 'Vodafone'
+        params['website'] ='http://www.vodafone.com'
+        params['description'] = 'Telecom Compnay'
+/*
+        def s1 = new Sponsor(name: 'Contegix',
+                website: 'http://www.contegix.com',
+                description: 'Beyond Managed Hosting for your Enterprise').save()*/
+
     }
 
     void "Test the index action returns the correct model"() {

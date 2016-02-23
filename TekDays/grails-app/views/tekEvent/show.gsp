@@ -101,18 +101,7 @@
             </li>
         </g:if>
 
-        <g:if test="${tekEventInstance?.tasks}">
-            <li class="fieldcontain">
-                <span id="tasks-label" class="property-label"><g:message code="tekEvent.tasks.label"
-                                                                         default="Tasks"/></span>
 
-                <g:each in="${tekEventInstance.tasks}" var="t">
-                    <span class="property-value" aria-labelledby="tasks-label"><g:link controller="task" action="show"
-                                                                                       id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-                </g:each>
-
-            </li>
-        </g:if>
 
         <g:if test="${tekEventInstance?.messages}">
             <li class="fieldcontain">

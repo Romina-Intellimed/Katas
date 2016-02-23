@@ -50,8 +50,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed',
-        'error')} ">
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed','error')} ">
     <label for="completed">
         <g:message code="task.completed.label" default="Completed"/>
     </label>

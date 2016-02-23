@@ -1,8 +1,10 @@
 package todolist
 
+import grails.transaction.Transactional
+
 class ToDoItemController {
     def index() {
-        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.list(), learnGrailsItem: ToDoItem.findByNameLike("Learn Grails").name]
+        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.list(), learnGrailsItem: ToDoItem.findByNameLike("Learn Grails%").name]
     }
 
     def create() {
@@ -34,6 +36,7 @@ class ToDoItemController {
         [toDoItemInstance:toDoItemInstance]
     }
 
+    @Transactional
     def save(){
         def toDoItemInstance = ToDoItem.findById(params.id)
         println( "++++++++"+params.name)

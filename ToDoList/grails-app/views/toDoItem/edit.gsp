@@ -8,10 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Edit item</title>
 </head>
 
 <body>
-
+<g:form controller="toDoItem" action="save" method="PUT" >
+    <g:hiddenField name="id" value="${toDoItemInstance.id}" />
+    <label>Modify name for the item</label>
+    <g:textField name="name" value="${toDoItemInstance.name}"/>
+    <br/>
+    <g:actionSubmit value="save"/>
+</g:form>
 </body>
 </html>

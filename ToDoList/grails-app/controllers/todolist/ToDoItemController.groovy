@@ -33,4 +33,19 @@ class ToDoItemController {
         }
         [toDoItemInstance:toDoItemInstance]
     }
+
+    def save(){
+        def toDoItemInstance = ToDoItem.findById(params.id)
+        println( "++++++++"+params.name)
+        println("+++++"+toDoItemInstance.name)
+        toDoItemInstance.setName(params.name)
+        println("+++++"+toDoItemInstance.name)
+
+        toDoItemInstance.save(failOnError: true)
+        redirect action: "index"
+
+//        [toDoItemInstance:toDoItemInstance]
+    }
+
+
 }

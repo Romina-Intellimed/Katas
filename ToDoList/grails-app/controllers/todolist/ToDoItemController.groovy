@@ -18,12 +18,19 @@ class ToDoItemController {
 
 
     def show(Long id){
-        def toDoItemInstance = ToDoItem.get(id)
+        def toDoItemInstance = ToDoItem.findById(id)
         if(!toDoItemInstance){
             redirect(action: "index")
         }
-
-
+        [toDoItemInstance:toDoItemInstance]
     }
 
+
+    def edit(Long id){
+        def toDoItemInstance = ToDoItem.findById(id)
+        if(!toDoItemInstance){
+            redirect(action: "index")
+        }
+        [toDoItemInstance:toDoItemInstance]
+    }
 }

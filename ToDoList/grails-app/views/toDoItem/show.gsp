@@ -14,9 +14,7 @@
 
 <body>
     <div>
-        <g:if test="${toDoItemInstance?.id}">
-            <span><g:fieldValue bean="${toDoItemInstance}" field="name"></g:fieldValue></span>
-        </g:if>
+            <span>${toDoItemInstance?.name}</span>
     </div>
 
 </body>

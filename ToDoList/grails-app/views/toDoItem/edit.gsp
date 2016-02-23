@@ -12,12 +12,12 @@
 </head>
 
 <body>
-<g:form controller="toDoItem" action="save" method="PUT" >
+<g:form controller="toDoItem" action="save">
     <g:hiddenField name="id" value="${toDoItemInstance.id}" />
     <label>Modify name for the item</label>
     <g:textField name="name" value="${toDoItemInstance.name}"/>
     <br/>
-    <g:actionSubmit value="save"/>
+    <input type="submit" name="_action_save" value="save">
 </g:form>
 </body>
 </html>

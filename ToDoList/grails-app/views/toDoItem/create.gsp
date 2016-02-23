@@ -8,13 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="main"/>
     <title>Create new ToDo Item</title>
 </head>
 
 <body>
-<g:form name="createNewToDoItem" url="[controller: 'toDoItem', action: 'addNew']">
-    <label>Enter name for new item</label><input type="text" value="" name="itemName"> </input>
-    <input type="submit" value="Add new"> </input>
-</g:form>
+<div>
+    <g:form name="createNewToDoItem" url="[controller: 'toDoItem', action: 'addNew']">
+        <label>Enter name for new item</label><input type="text" value="" name="itemName"> </input>
+        <input type="submit" value="Add new"> </input>
+    </g:form>
+</div>
 </body>
 </html>

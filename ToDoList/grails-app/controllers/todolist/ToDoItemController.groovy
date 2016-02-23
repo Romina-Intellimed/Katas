@@ -2,7 +2,7 @@ package todolist
 
 class ToDoItemController {
     def index() {
-
+        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.list(), learnGrailsItem: ToDoItem.findByNameLike("Learn Grails").name]
     }
 
     def create() {
@@ -12,6 +12,6 @@ class ToDoItemController {
     def addNew() {
         def newItemName = params.itemName
         new ToDoItem(name: newItemName).save(failOnError: true)
-        redirect controller: "toDoList"
+        redirect action: "index"
     }
 }

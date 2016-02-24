@@ -3,13 +3,12 @@
  */
 class TetrisGame {
 
+    TetrisBoard tetrisBoard=new TetrisBoard()
+
     def board = []
     def rows = 1
     def columns = 0
 
-    def isEmpty() {
-        return board.isEmpty()
-    }
 
     def initTheBoard(rows, columns) {
         this.rows = rows

@@ -11,7 +11,7 @@ class TetrisGameSpec extends Specification {
 
     void "empty board"() {
         expect:
-        tetrisGame.isEmpty()
+        tetrisGame.tetrisBoard.isEmpty()
 
     }
 

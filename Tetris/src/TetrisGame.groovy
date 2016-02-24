@@ -3,37 +3,33 @@
  */
 class TetrisGame {
 
-    TetrisBoard tetrisBoard=new TetrisBoard()
+    TetrisBoard tetrisBoard = new TetrisBoard()
     TetrisBlock fallingBlock
 
-
-
-
-    def hasOneFallingBlock(){
-        if(dropBlock())
+    def hasOneFallingBlock() {
+        if (dropBlock())
             return true
         else
             return false
     }
 
-    def blockFallsOneTimeAline(){
-        if(fallingBlock.isFalling){
-            tetrisBoard.removeBlock(fallingBlock.xPos,fallingBlock.yPos)
-            fallingBlock.xPos=fallingBlock.xPos+1
-            tetrisBoard.addBlock(fallingBlock.xPos,fallingBlock.yPos)
+    def blockFallsOneTimeAline() {
+        if (fallingBlock.isFalling) {
+            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
+            fallingBlock.xPos = fallingBlock.xPos + 1
+            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
         }
     }
 
 
-
     def dropBlock() {
-        fallingBlock=new TetrisBlock()
+        fallingBlock = new TetrisBlock()
 
-        fallingBlock.isFalling=true
+        fallingBlock.isFalling = true
 
-        fallingBlock.xPos=0
-        fallingBlock.yPos=0
-        tetrisBoard.addBlock(fallingBlock.xPos,fallingBlock.yPos)
+        fallingBlock.xPos = 0
+        fallingBlock.yPos = 0
+        tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
 
         return tetrisBoard.board
     }
@@ -45,6 +41,13 @@ class TetrisGame {
             false
     }
 
+    def moveBlockLeft(){
+        if (fallingBlock.isFalling) {
+            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
+            fallingBlock.yPos = fallingBlock.yPos + 1
+            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
+        }
+    }
 
 
 

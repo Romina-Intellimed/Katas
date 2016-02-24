@@ -87,8 +87,25 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
         tetrisGame.blockFallsOneTimeAline()
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 0
+        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
         assert tetrisGame.tetrisBoard.getBlock(1, 0) == 1
+    }
+
+
+    void "blocked is moved left in 2x2 board"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2, 2)
+        when:
+        tetrisGame.dropBlock()
+        tetrisGame.moveBlockLeft()
+        then:
+        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
+        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 1
+
+    }
+
+    void "blocked is moved right in a 2x2 board"() {
+
     }
 
 
@@ -101,14 +118,6 @@ class TetrisGameSpec extends Specification {
 
     }
 
-
-    void "blocked is moved left in 2x2 board"() {
-
-    }
-
-    void "blocked is moved right in a 2x2 board"() {
-
-    }
 
     void "line collaps in a 2x2 board"() {
 

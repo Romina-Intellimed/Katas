@@ -104,4 +104,44 @@ class CollectiveDatatypesSpec extends Specification {
     }
 
 
+    void "test control structures"(){
+        given:
+        myList=['a','b','c']
+        def expr=''
+
+        expect:
+        assert myList.isCase('a')
+        assert 'b' in myList
+
+
+        when:
+        def candidate='c'
+
+        then:
+        switch (candidate){
+            case myList: assert true; break
+            default: assert false
+        }
+        assert ['x','a','z'].grep(myList)==['a']
+
+        when:
+        myList=[]
+        then:
+        if(myList) assert false
+
+       when:
+       for(i in [1,'*',5]){
+            expr+=i
+        }
+        then:
+        assert expr=='1*5'
+
+    }
+
+
+
+
+
+
+
 }

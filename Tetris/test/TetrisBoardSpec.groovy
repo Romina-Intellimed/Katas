@@ -12,6 +12,30 @@ class TetrisBoardSpec extends Specification {
     }
 
 
+    void "test add block to a 1x1 board"(){
+        given:
+        tetrisBoard.initTheBoard(1,0)
+        when:
+        tetrisBoard.addBlock(0,0)
+        then:
+        assert tetrisBoard.board[0][0]==1
+    }
 
+
+    void "test delete block from a 1x1 board"(){
+        given:
+        tetrisBoard.initTheBoard(1,0)
+        when:
+        tetrisBoard.addBlock(0,0)
+        then:
+        assert tetrisBoard.board[0][0]==1
+
+        when:
+        tetrisBoard.removeBlock(0,0)
+        then:
+        assert tetrisBoard.board[0][0]==0
+
+
+    }
 
 }

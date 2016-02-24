@@ -61,10 +61,10 @@ class TetrisGameSpec extends Specification {
     }
 
 
-    @Ignore
+
     void "a board 2x2 has empty squares"() {
         given:
-        def aBoardpush = BoardBuilder.aBoard().withSize(2,2).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisBoard.board = aBoard
         when:
         def oneSquareBoard = tetrisBoard.initTheBoard(2,2)
@@ -92,9 +92,14 @@ class TetrisGameSpec extends Specification {
 
     }
 
-    void "blocked has arrived at the bottom in a 2x2 board"() {
+    void "blocked has arrived at the bottom right corner in a 2x2 board"() {
 
     }
+
+    void "block has arrived at the bootom left corner in a 2x2 board "(){
+
+    }
+
 
     void "blocked is moved left in 2x2 board"() {
 
@@ -116,5 +121,45 @@ class TetrisGameSpec extends Specification {
 
     }
 
+    void "in a 3x3 board there is one falling block"(){
 
+    }
+
+    void "in a 3x3 board a block falls starting at the middle top of the board"(){
+
+    }
+
+    void "in a 3x3 board block falls one time a line in a 3x3 board"(){
+
+    }
+
+    void "in a 3x3 board blocks moves at the right"(){
+
+    }
+
+
+    void "in a 3x3 board blocks moves at the left"(){
+
+    }
+
+    void "in a 3x3 board block hits another block"(){
+
+
+    }
+
+
+    void "in a 3x3 board a block arrives at the bottom"(){
+
+    }
+
+    void "in a 3x3 block a bottom line collapses"(){
+
+    }
+
+    void "in a 3x3 block a line collapses"(){
+
+    }
+    void "in a 3x3 block games arrives to end"(){
+
+    }
 }

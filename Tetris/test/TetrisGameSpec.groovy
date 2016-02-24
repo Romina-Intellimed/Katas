@@ -20,27 +20,24 @@ class TetrisGameSpec extends Specification {
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisGame.board = aBoard
         when:
-        def oneSquareBoard = tetrisGame.initTheBoard(1,0)
+        def oneSquareBoard = tetrisGame.tetrisBoard.initTheBoard(1,0)
         then:
         oneSquareBoard == aBoard
     }
 
     void "block is droped in 1x1 board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisGame.board = aBoard
-
+        tetrisGame.tetrisBoard.initTheBoard(1,0)
         when:
-        def board = tetrisGame.dropBlock()
+        tetrisGame.dropBlock()
 
         then:
-        assert board[0][0] == 1
+        assert tetrisGame.tetrisBoard.getBlock(0,1) == 1
     }
 
     void "game ends for board 1x1"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisGame.board = aBoard
+        tetrisGame.tetrisBoard.initTheBoard(1,0)
         when:
         tetrisGame.dropBlock()
         then:
@@ -54,7 +51,7 @@ class TetrisGameSpec extends Specification {
         def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisGame.board = aBoard
         when:
-        def oneSquareBoard = tetrisGame.initTheBoard(2,2)
+        def oneSquareBoard = tetrisGame.tetrisBoard.initTheBoard(2,2)
 
         then:
         oneSquareBoard == aBoard

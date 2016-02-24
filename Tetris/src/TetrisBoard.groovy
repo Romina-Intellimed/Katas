@@ -13,7 +13,7 @@ class TetrisBoard {
 
 
     def initTheBoard(rows, columns) {
-        rows.times { rowIndex ->
+        rows.times  { rowIndex ->
             board[rowIndex]=[]
             columns.times { colIndex ->
                 board[rowIndex][colIndex] = 0

@@ -139,7 +139,10 @@ class CollectiveDatatypesSpec extends Specification {
     }
 
 
+    void "test quick sort list"(){
 
+
+    }
 
 
 

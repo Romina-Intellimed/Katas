@@ -174,10 +174,15 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
         expect:
         assert tetrisGame.blockHasReachedAnotherBlock() == true
-
     }
 
     void "game over for a 2x2 board"() {
+        given:
+        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).buildBoard()
+        tetrisGame.tetrisBoard.board = aBoard
+        tetrisGame.dropBlock()
+        expect:
+        assert tetrisGame.hasStackUpToTop() == true
 
     }
 

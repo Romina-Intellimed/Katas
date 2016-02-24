@@ -60,22 +60,47 @@ class CollectiveDatatypesSpec extends Specification {
 
 
         when:
-        myList[0..2]=['x','y','z']
+        myList[0..2] = ['x', 'y', 'z']
         then:
-        assert myList == ['x','y','z','d', 'e', 'f']
+        assert myList == ['x', 'y', 'z', 'd', 'e', 'f']
 
         when:
-        myList[3..5]=[]
+        myList[3..5] = []
         then:
-        assert myList==['x','y','z']
+        assert myList == ['x', 'y', 'z']
 
 
         when:
-        myList[1..1]=[0,1,2]
+        myList[1..1] = [0, 1, 2]
         then:
-        assert myList==['x',0,1,2,'z']
+        assert myList == ['x', 0, 1, 2, 'z']
 
 
+    }
+
+
+    void "test add remove items"() {
+        given:
+        myList = []
+        when:
+        myList += 'a'
+        then:
+        assert myList == ['a']
+
+
+        when:
+        myList += ['b', 'c']
+        then:
+        assert myList == ['a', 'b', 'c']
+
+
+        when:
+        myList = []
+        myList << 'a' << 'b'
+        then:
+        assert myList==['a','b']
+        assert myList - 'b'==['a']
+        assert myList*2==['a','b','a','b']
     }
 
 

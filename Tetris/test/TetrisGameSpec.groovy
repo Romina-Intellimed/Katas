@@ -157,7 +157,7 @@ class TetrisGameSpec extends Specification {
     }
 
 
-    void "line collaps in a 2x2 board"() {
+    void "line dissapears in a 2x2 board"() {
 
     }
 

@@ -58,22 +58,26 @@ class TetrisGameSpec extends Specification {
         print oneSquareBoard
     }
 
-    @Ignore
     void "a block is droped in a 2x2 board "() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
-        tetrisGame.board = aBoard
+        tetrisGame.tetrisBoard.initTheBoard(2,2)
 
         when:
         tetrisGame.dropBlock()
 
         then:
-        assert aBoard==1
-
+        assert tetrisGame.tetrisBoard.getBlock(0,1)==1
     }
 
     void "a board 2x2 has one falling block"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2,2)
 
+        when:
+        tetrisGame.dropBlock()
+
+        then:
+        assert tetrisGame.hasOneFallingBlock()==true
     }
 
     void "blocked has arrived at the bottom right corner in a 2x2 board"() {

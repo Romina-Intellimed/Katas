@@ -8,6 +8,14 @@ class TetrisGame {
     def board = []
 
 
+
+    def hasOneFallingBlock(){
+        if(dropBlock())
+            return true
+        else
+            return false
+    }
+
     def dropBlock() {
         tetrisBoard.addBlock(0,1)
         return tetrisBoard.board
@@ -19,4 +27,8 @@ class TetrisGame {
         else
             false
     }
+
+
+
+
 }

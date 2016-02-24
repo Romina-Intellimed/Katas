@@ -20,7 +20,7 @@ class BoardBuilder {
     def buildBoard() {
         def board = []
         lines.times { rowIndex ->
-            board[rowIndex]=0
+            board[rowIndex] = []
             columns.times { colIndex ->
                 board[rowIndex][colIndex]=0
             }

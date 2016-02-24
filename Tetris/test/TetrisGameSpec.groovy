@@ -7,7 +7,6 @@ class TetrisGameSpec extends Specification {
 
     void setup() {
         tetrisGame = new TetrisGame()
-
     }
 
     void "empty board"() {
@@ -16,7 +15,7 @@ class TetrisGameSpec extends Specification {
 
     }
 
-    void "board 1x1 has empty square"() {
+    void "board 1x1 has empty squares after init"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisGame.board = aBoard
@@ -35,7 +34,7 @@ class TetrisGameSpec extends Specification {
         def board = tetrisGame.dropBlock()
 
         then:
-        assert board[0] == 1
+        assert board[0][0] == 1
     }
 
     void "game ends for board 1x1"() {
@@ -50,7 +49,7 @@ class TetrisGameSpec extends Specification {
 
 
 
-    void "a board 2x2 has empty squares"() {
+    void "a board 2x2 has empty squares after init"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
         tetrisGame.board = aBoard

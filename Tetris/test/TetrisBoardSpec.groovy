@@ -73,13 +73,13 @@ class TetrisBoardSpec extends Specification {
         assert tetrisBoard.board[0][1]==0
     }
 
-    @Ignore
+
     void "test get clok from a 2x2 board"(){
         given:
         tetrisBoard.initTheBoard(2,2)
         when:
-        tetrisBoard.addBlock(2,2)
-        def block = tetrisBoard.getBlock(2,2)
+        tetrisBoard.addBlock(1,1)
+        def block = tetrisBoard.getBlock(1,1)
         then:
         assert block==1
 

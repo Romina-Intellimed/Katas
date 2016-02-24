@@ -4,8 +4,8 @@
 class TetrisGame {
 
     TetrisBoard tetrisBoard=new TetrisBoard()
+    TetrisBlock tetrisBlock=new TetrisBlock()
 
-    def board = []
 
 
 

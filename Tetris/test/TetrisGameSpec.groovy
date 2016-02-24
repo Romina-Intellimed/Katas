@@ -18,7 +18,7 @@ class TetrisGameSpec extends Specification {
     void "board 1x1 has empty squares after init"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisGame.board = aBoard
+        tetrisGame.tetrisBoard.board = aBoard
         when:
         def oneSquareBoard = tetrisGame.tetrisBoard.initTheBoard(1,0)
         then:
@@ -49,7 +49,7 @@ class TetrisGameSpec extends Specification {
     void "a board 2x2 has empty squares after init"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
-        tetrisGame.board = aBoard
+        tetrisGame.tetrisBoard.board = aBoard
         when:
         def oneSquareBoard = tetrisGame.tetrisBoard.initTheBoard(2,2)
 

@@ -127,6 +127,15 @@ class TetrisGameSpec extends Specification {
 
 
     void "blocked has arrived at the bottom right corner in a 2x2 board"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2, 2)
+        when:
+        tetrisGame.dropBlock()
+        tetrisGame.moveBlockRight()
+        tetrisGame.blockFallsOneTimeAline()
+
+        then:
+        assert tetrisGame.tetrisBoard.getBlock(1, 1) == 1
 
 
     }

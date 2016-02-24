@@ -32,7 +32,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 1
+        assert getBlockAt(0, 0) == 1
     }
 
     void "game ends for board 1x1"() {
@@ -65,7 +65,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 1
+        assert getBlockAt(0, 0) == 1
     }
 
     void "a board 2x2 has one falling block"() {
@@ -87,8 +87,8 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
         tetrisGame.blockFallsOneTimeAline()
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
-        assert tetrisGame.tetrisBoard.getBlock(1, 0) == 1
+        assert getBlockAt(0, 0) == 0
+        assert getBlockAt(1, 0) == 1
     }
 
 
@@ -99,8 +99,8 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
         tetrisGame.moveBlockLeft()
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
-        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 1
+        assert getBlockAt(0, 0) == 0
+        assert getBlockAt(0, 1) == 1
 
     }
 
@@ -112,15 +112,15 @@ class TetrisGameSpec extends Specification {
         tetrisGame.moveBlockLeft()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
-        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 1
+        assert getBlockAt(0, 0) == 0
+        assert getBlockAt(0, 1) == 1
 
         when:
         tetrisGame.moveBlockRight()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 1
-        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 0
+        assert getBlockAt(0, 0) == 1
+        assert getBlockAt(0, 1) == 0
 
 
     }
@@ -135,7 +135,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.blockFallsOneTimeAline()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(1, 1) == 1
+        assert getBlockAt(1, 1) == 1
 
 
     }
@@ -148,8 +148,12 @@ class TetrisGameSpec extends Specification {
         tetrisGame.blockFallsOneTimeAline()
 
         then:
-        assert tetrisGame.tetrisBoard.getBlock(1, 0) == 1
+        assert getBlockAt(1, 0) == 1
 
+    }
+
+    def getBlockAt(row, col) {
+        tetrisGame.tetrisBoard.getBlock(row, col)
     }
 
 

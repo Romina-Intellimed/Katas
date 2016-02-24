@@ -16,6 +16,12 @@ class TetrisGame {
             return false
     }
 
+    def blockFallOneTimeAline(){
+
+    }
+
+
+
     def dropBlock() {
         tetrisBoard.addBlock(0,1)
         return tetrisBoard.board

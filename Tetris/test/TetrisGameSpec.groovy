@@ -80,7 +80,21 @@ class TetrisGameSpec extends Specification {
         assert tetrisGame.hasOneFallingBlock()==true
     }
 
+
+    @Ignore
+    void "in a 2x2board a block is falling one time a line"(){
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2,2)
+        when:
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallOneTimeAline()
+        then:
+        assert tetrisGame.board[1][1]==1
+    }
+
+
     void "blocked has arrived at the bottom right corner in a 2x2 board"() {
+
 
     }
 

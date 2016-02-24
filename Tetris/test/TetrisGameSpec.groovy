@@ -29,7 +29,7 @@ class TetrisGameSpec extends Specification {
         oneSquareBoard == aBoard
     }
 
-    void "block is droped in one squared board"() {
+    void "block is droped in 1x1 board"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
         tetrisBoard.board = aBoard
@@ -39,15 +39,6 @@ class TetrisGameSpec extends Specification {
 
         then:
         assert board[0] == 1
-    }
-
-
-    void "line collaps for board 1x1 squared filled"() {
-        when:
-        tetrisBoard.dropBlock()
-        def newBoard = tetrisBoard.lineCollaps()
-        then:
-        assert newBoard[0] == 0
     }
 
     void "game ends for board 1x1"() {

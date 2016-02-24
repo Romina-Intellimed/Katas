@@ -4,7 +4,7 @@
 class TetrisGame {
 
     TetrisBoard tetrisBoard=new TetrisBoard()
-    TetrisBlock tetrisBlock=new TetrisBlock()
+    TetrisBlock fallingBlock
 
 
 
@@ -16,19 +16,30 @@ class TetrisGame {
             return false
     }
 
-    def blockFallOneTimeAline(){
-
+    def blockFallsOneTimeAline(){
+        if(fallingBlock.isFalling){
+            tetrisBoard.removeBlock(fallingBlock.xPos,fallingBlock.yPos)
+            fallingBlock.xPos=fallingBlock.xPos+1
+            tetrisBoard.addBlock(fallingBlock.xPos,fallingBlock.yPos)
+        }
     }
 
 
 
     def dropBlock() {
-        tetrisBoard.addBlock(0,1)
+        fallingBlock=new TetrisBlock()
+
+        fallingBlock.isFalling=true
+
+        fallingBlock.xPos=0
+        fallingBlock.yPos=0
+        tetrisBoard.addBlock(fallingBlock.xPos,fallingBlock.yPos)
+
         return tetrisBoard.board
     }
 
     def hasStackUpToTop() {
-        if (tetrisBoard.board[0].get(1) == 1)
+        if (tetrisBoard.board[0].get(0) == 1)
             return true
         else
             false

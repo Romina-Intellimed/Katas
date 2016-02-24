@@ -158,7 +158,13 @@ class TetrisGameSpec extends Specification {
 
 
     void "line dissapears in a 2x2 board"() {
-
+        given:
+        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).buildBoard()
+        tetrisGame.tetrisBoard.board = aBoard
+        when:
+        tetrisGame.bottomLineDissapears()
+        then:
+        assert tetrisGame.tetrisBoard.hasEmptySquares() == true
     }
 
     void "block has arrived on top of another block in a 2x2 board"() {

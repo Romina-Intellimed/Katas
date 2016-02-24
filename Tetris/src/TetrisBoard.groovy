@@ -11,10 +11,22 @@ class TetrisBoard {
         return board.isEmpty()
     }
 
+    def hasEmptySquares() {
+        board.size().times { rowIndex ->
+            board[rowIndex] = []
+            board.size().times { colIndex ->
+                if (board[rowIndex][colIndex] != 0)
+                    return false
+            }
+        }
+        return true
+    }
 
     def initTheBoard(rows, columns) {
-        rows.times  { rowIndex ->
-            board[rowIndex]=[]
+        boardRows = rows
+        boardColumns = columns
+        rows.times { rowIndex ->
+            board[rowIndex] = []
             columns.times { colIndex ->
                 board[rowIndex][colIndex] = 0
             }
@@ -24,20 +36,18 @@ class TetrisBoard {
     }
 
 
-    def addBlock(xPos,yPos){
-        board[xPos][yPos]=1
+    def addBlock(xPos, yPos) {
+        board[xPos][yPos] = 1
 
     }
 
-    def removeBlock(xPos,yPos){
-        board[xPos][yPos]=0
+    def removeBlock(xPos, yPos) {
+        board[xPos][yPos] = 0
     }
 
-    def getBlock(xPos,yPos){
+    def getBlock(xPos, yPos) {
         return board[xPos][yPos]
     }
-
-
 
 
 }

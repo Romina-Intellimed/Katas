@@ -41,7 +41,7 @@ class TetrisGame {
             false
     }
 
-    def moveBlockLeft(){
+    def moveBlockLeft() {
         if (fallingBlock.isFalling) {
             tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
             fallingBlock.yPos = fallingBlock.yPos + 1
@@ -49,7 +49,7 @@ class TetrisGame {
         }
     }
 
-    def moveBlockRight(){
+    def moveBlockRight() {
         if (fallingBlock.isFalling) {
             tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
             fallingBlock.yPos = fallingBlock.yPos - 1
@@ -58,9 +58,11 @@ class TetrisGame {
     }
 
 
-    def updateBoard(){
-
+    def bottomLineDissapears() {
+        if (tetrisBoard.board[1][0] == 1 && tetrisBoard.board[1][0] == 1) {
+            tetrisBoard.board[1][1] = 0
+            tetrisBoard.board[1][0] = 0
+        }
     }
-
 
 }

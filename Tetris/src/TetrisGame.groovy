@@ -65,4 +65,13 @@ class TetrisGame {
         }
     }
 
+    def blockHasReachedAnotherBlock() {
+        if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1))
+            return true
+        else
+            false
+    }
+
+
+
 }

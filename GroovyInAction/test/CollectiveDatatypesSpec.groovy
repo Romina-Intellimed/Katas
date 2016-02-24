@@ -6,6 +6,7 @@ import spock.lang.Specification
 class CollectiveDatatypesSpec extends Specification {
 
     List myList
+
     def setup() {
         myList = [1, 2, 3]
     }
@@ -26,27 +27,56 @@ class CollectiveDatatypesSpec extends Specification {
 
     }
 
-    void "test other type of lists"(){
+    void "test other type of lists"() {
         when:
-        List longList=(0..1000).toList()
-        List explicitList=new ArrayList()
+        List longList = (0..1000).toList()
+        List explicitList = new ArrayList()
         explicitList.addAll(myList)
-        explicitList[0]=10
+        explicitList[0] = 10
 
 
         then:
-        assert longList[555]==555
-        assert explicitList.size()==3
-        assert explicitList[0]==10
+        assert longList[555] == 555
+        assert explicitList.size() == 3
+        assert explicitList[0] == 10
 
 
         when:
-        explicitList=new LinkedList(myList)
-        explicitList[0]=10
+        explicitList = new LinkedList(myList)
+        explicitList[0] = 10
         then:
-        assert explicitList.size()==3
-        assert explicitList[0]==10
+        assert explicitList.size() == 3
+        assert explicitList[0] == 10
 
     }
+
+
+    void "test list operators"() {
+        given:
+        def myList = ['a', 'b', 'c', 'd', 'e', 'f']
+        expect:
+        assert myList[0..2] == ['a', 'b', 'c']
+        assert myList[0, 2, 4] == ['a', 'c', 'e']
+
+
+        when:
+        myList[0..2]=['x','y','z']
+        then:
+        assert myList == ['x','y','z','d', 'e', 'f']
+
+        when:
+        myList[3..5]=[]
+        then:
+        assert myList==['x','y','z']
+
+
+        when:
+        myList[1..1]=[0,1,2]
+        then:
+        assert myList==['x',0,1,2,'z']
+
+
+    }
+
 
 }

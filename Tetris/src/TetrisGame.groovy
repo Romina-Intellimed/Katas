@@ -1,7 +1,7 @@
 /**
  * Created by romina on 17.02.2016.
  */
-class Board {
+class TetrisGame {
 
     def board = []
     def rows = 1

@@ -1,30 +1,27 @@
 import spock.lang.Ignore
 import spock.lang.Specification
 
-/**
- * Created by romina on 17.02.2016.
- */
 class TetrisGameSpec extends Specification {
 
-    Board tetrisBoard;
+    TetrisGame tetrisGame;
 
     void setup() {
-        tetrisBoard = new Board()
+        tetrisGame = new TetrisGame()
 
     }
 
     void "empty board"() {
         expect:
-        tetrisBoard.isEmpty()
+        tetrisGame.isEmpty()
 
     }
 
     void "board 1x1 has empty square"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisBoard.board = aBoard
+        tetrisGame.board = aBoard
         when:
-        def oneSquareBoard = tetrisBoard.initTheBoard(1,0)
+        def oneSquareBoard = tetrisGame.initTheBoard(1,0)
         then:
         oneSquareBoard == aBoard
     }
@@ -32,10 +29,10 @@ class TetrisGameSpec extends Specification {
     void "block is droped in 1x1 board"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisBoard.board = aBoard
+        tetrisGame.board = aBoard
 
         when:
-        def board = tetrisBoard.dropBlock()
+        def board = tetrisGame.dropBlock()
 
         then:
         assert board[0] == 1
@@ -44,11 +41,11 @@ class TetrisGameSpec extends Specification {
     void "game ends for board 1x1"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(1,0).buildBoard()
-        tetrisBoard.board = aBoard
+        tetrisGame.board = aBoard
         when:
-        tetrisBoard.dropBlock()
+        tetrisGame.dropBlock()
         then:
-        assert tetrisBoard.hasStackUpToTop() == true
+        assert tetrisGame.hasStackUpToTop() == true
     }
 
 
@@ -56,9 +53,9 @@ class TetrisGameSpec extends Specification {
     void "a board 2x2 has empty squares"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
-        tetrisBoard.board = aBoard
+        tetrisGame.board = aBoard
         when:
-        def oneSquareBoard = tetrisBoard.initTheBoard(2,2)
+        def oneSquareBoard = tetrisGame.initTheBoard(2,2)
 
         then:
         oneSquareBoard == aBoard
@@ -69,10 +66,10 @@ class TetrisGameSpec extends Specification {
     void "a block is droped in a 2x2 board "() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(2,2).buildBoard()
-        tetrisBoard.board = aBoard
+        tetrisGame.board = aBoard
 
         when:
-        tetrisBoard.dropBlock()
+        tetrisGame.dropBlock()
 
         then:
         assert aBoard==1

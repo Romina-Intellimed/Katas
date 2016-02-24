@@ -105,6 +105,23 @@ class TetrisGameSpec extends Specification {
     }
 
     void "blocked is moved right in a 2x2 board"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2, 2)
+        when:
+        tetrisGame.dropBlock()
+        tetrisGame.moveBlockLeft()
+
+        then:
+        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 0
+        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 1
+
+        when:
+        tetrisGame.moveBlockRight()
+
+        then:
+        assert tetrisGame.tetrisBoard.getBlock(0, 0) == 1
+        assert tetrisGame.tetrisBoard.getBlock(0, 1) == 0
+
 
     }
 

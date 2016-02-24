@@ -49,6 +49,12 @@ class TetrisGame {
         }
     }
 
-
+    def moveBlockRight(){
+        if (fallingBlock.isFalling) {
+            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
+            fallingBlock.yPos = fallingBlock.yPos - 1
+            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
+        }
+    }
 
 }

@@ -52,5 +52,19 @@ class ToDoItemController {
 //        [toDoItemInstance:toDoItemInstance]
     }
 
+    def search(){
+
+        def itemsContainingWord=ToDoItem.findAllByNameIlike("${params.entry}%")
+
+        if(!itemsContainingWord){
+            redirect(action: "index")
+        }
+        [itemsContainingWord: itemsContainingWord]
+      }
+
+    def displayResults(){
+
+    }
+
 
 }

@@ -24,5 +24,13 @@
     Item with name "Learn Grails":
     ${learnGrailsItem}
 </div>
+
+<br/>
+Search entries by name
+<g:form name="searchItems" url="[controller: 'toDoItem', action: 'search']">
+    <label>Enter name for the searched item</label><input type="text" value="" name="entry"> </input>
+    <input type="submit" value="Search Items"> </input>
+</g:form>
+
 </body>
 </html>

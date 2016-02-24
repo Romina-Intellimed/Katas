@@ -141,6 +141,14 @@ class TetrisGameSpec extends Specification {
     }
 
     void "block has arrived at the bootom left corner in a 2x2 board "() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2, 2)
+        when:
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallsOneTimeAline()
+
+        then:
+        assert tetrisGame.tetrisBoard.getBlock(1, 0) == 1
 
     }
 

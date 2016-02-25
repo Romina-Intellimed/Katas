@@ -7,72 +7,44 @@ class TetrisGame {
     public static final int isFilled = 1
     TetrisBoard tetrisBoard = new TetrisBoard()
     TetrisBlock fallingBlock
-    def countFallingBlocks=0
-
-    def hasOneFallingBlock() {
-        if (countFallingBlocks==1)
-            return true
-        else
-            return false
-    }
-
-    def blockFallsOneTimeAline() {
-            updateBoard(BlockState.IS_FALLING)
-    }
+    def countFallingBlocks = 0
 
 
     def dropBlock() {
-        if(countFallingBlocks<1){
+        if (countFallingBlocks < 1) {
             fallingBlock = new TetrisBlock()
-            countFallingBlocks++
+
             fallingBlock.isFalling = true
+            countFallingBlocks++
 
             fallingBlock.xPos = 0
-            fallingBlock.yPos = tetrisBoard.board.size()%2
+            fallingBlock.yPos = tetrisBoard.board.size() % 2
+
             tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
 
             return tetrisBoard.board
         }
     }
 
-    def hasStackUpToTop() {
-        if (tetrisBoard.board[0].get(1) == isFilled)
+    def hasOneFallingBlock() {
+        if (countFallingBlocks == 1)
             return true
         else
-            false
+            return false
+    }
+
+    def blockFallsOneTimeAline() {
+        updateBoard(BlockState.IS_FALLING)
     }
 
     def moveBlockLeft() {
-            updateBoard(BlockState.MOVE_LEFT)
+        updateBoard(BlockState.MOVE_LEFT)
     }
 
     def moveBlockRight() {
-            updateBoard(BlockState.MOVE_RIGHT)
+        updateBoard(BlockState.MOVE_RIGHT)
     }
 
-
-    def blockHasReachedTheBottom() {
-        if (fallingBlock.xPos == (tetrisBoard.board.size() - 1))
-            return true
-        else
-            false
-    }
-
-    def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1)) {
-            fallingBlock.isFalling = false
-            return true
-        } else
-            false
-    }
-
-    def bottomLineDissapears() {
-        tetrisBoard.board.size().times{colIndex->
-            if(tetrisBoard.board[tetrisBoard.board.size()-1][colIndex]==isFilled)
-                tetrisBoard.board[tetrisBoard.board.size()-1][colIndex]=isEmpty
-        }
-
-    }
 
     def updateBoard(operation) {
         if (fallingBlock.isFalling) {
@@ -92,5 +64,38 @@ class TetrisGame {
         tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
         return tetrisBoard.board;
     }
+
+
+    def blockHasReachedTheBottom() {
+        if (fallingBlock.xPos == (tetrisBoard.board.size() - 1))
+            return true
+        else
+            false
+    }
+
+
+    def blockHasReachedAnotherBlock() {
+        if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1)) {
+            fallingBlock.isFalling = false
+            return true
+        } else
+            false
+    }
+
+    def bottomLineDissapears() {
+        tetrisBoard.board.size().times { colIndex ->
+            if (tetrisBoard.board[tetrisBoard.board.size() - 1][colIndex] == isFilled)
+                tetrisBoard.board[tetrisBoard.board.size() - 1][colIndex] = isEmpty
+        }
+
+    }
+
+    def hasStackUpToTop() {
+        if (tetrisBoard.board[0].get(1) == isFilled)
+            return true
+        else
+            false
+    }
+
 
 }

@@ -260,8 +260,6 @@ class TetrisGameSpec extends Specification {
 
         expect:
         assert tetrisGame.blockHasReachedAnotherBlock() == true
-
-
     }
 
 

@@ -7,7 +7,7 @@ class TetrisGame {
     TetrisBlock fallingBlock
 
     def hasOneFallingBlock() {
-        if (dropBlock())
+        if (fallingBlock.isFalling)
             return true
         else
             return false

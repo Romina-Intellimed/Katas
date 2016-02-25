@@ -98,16 +98,16 @@ class CollectiveDatatypesSpec extends Specification {
         myList = []
         myList << 'a' << 'b'
         then:
-        assert myList==['a','b']
-        assert myList - 'b'==['a']
-        assert myList*2==['a','b','a','b']
+        assert myList == ['a', 'b']
+        assert myList - 'b' == ['a']
+        assert myList * 2 == ['a', 'b', 'a', 'b']
     }
 
 
-    void "test control structures"(){
+    void "test control structures"() {
         given:
-        myList=['a','b','c']
-        def expr=''
+        myList = ['a', 'b', 'c']
+        def expr = ''
 
         expect:
         assert myList.isCase('a')
@@ -115,33 +115,164 @@ class CollectiveDatatypesSpec extends Specification {
 
 
         when:
-        def candidate='c'
+        def candidate = 'c'
 
         then:
-        switch (candidate){
+        switch (candidate) {
             case myList: assert true; break
             default: assert false
         }
-        assert ['x','a','z'].grep(myList)==['a']
+        assert ['x', 'a', 'z'].grep(myList) == ['a']
 
         when:
-        myList=[]
+        myList = []
         then:
-        if(myList) assert false
+        if (myList) assert false
 
-       when:
-       for(i in [1,'*',5]){
-            expr+=i
+        when:
+        for (i in [1, '*', 5]) {
+            expr += i
         }
         then:
-        assert expr=='1*5'
+        assert expr == '1*5'
+
+    }
+
+    void "test map"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        def emptyMap = [:]
+        def explicitMap = new TreeMap()
+        explicitMap.putAll(myMap)
+        def composed = [x: 'y', *: myMap]
+
+        expect:
+        assert myMap instanceof LinkedHashMap
+        assert myMap.size() == 3
+        assert myMap['a'] == 1
+        assert emptyMap.size() == 0
+        assert explicitMap['a'] == 1
+        assert composed == [x: 'y', a: 1, b: 2, c: 3]
+    }
+
+    void "test querry methods on maps"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        def other = [b: 2, c: 3, a: 1]
+        expect:
+        assert myMap == other
+        assert !myMap.isEmpty()
+        assert myMap.size() == 3
+        assert myMap.containsKey('a')
+        assert myMap.containsValue(1)
+        assert myMap.entrySet() instanceof Collection
+
+        assert myMap.any { entry -> entry.value > 2 }
+
+        assert myMap.every { entry -> entry.key < 'd' }
+        assert myMap.keySet() == ['a', 'b', 'c'] as Set
+        assert myMap.values().toList() == [1, 2, 3]
+    }
+
+
+    void "iterating over maps"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        def store = ''
+
+        when:
+        myMap.each { entry ->
+            store += entry.key
+            store += entry.value
+        }
+        then:
+        assert store == 'a1b2c3'
+
+        when:
+        store = ''
+        myMap.each { key, value ->
+            store += key
+            store += value
+
+        }
+        then:
+        assert store == 'a1b2c3'
+
+        when:
+        store = ''
+        for (key in myMap.keySet()) {
+            store += key
+        }
+        then:
+        assert store == 'abc'
+
+
+        when:
+        store = ''
+        for (value in myMap.values()) {
+            store += value
+        }
+        then:
+        assert store == "123"
 
     }
 
 
+    void "test change map empty content"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        when:
+        myMap.clear()
+        then:
+        assert myMap.isEmpty()
 
 
+    }
+
+    void "test remove from map"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        when:
+        myMap.remove('a')
+        then:
+        assert myMap.size() == 2
+        assert [a: 1] + [b: 2] == [a: 1, b: 2]
+    }
 
 
+    void "test create a view into original map"() {
+        given:
+        def myMap = [a: 1, b: 2, c: 3]
+        def abMap = myMap.subMap(['a', 'b'])
+        expect:
+        assert abMap.size() == 2
+
+        when:
+        abMap = myMap.findAll { entry -> entry.value < 3 }
+        then:
+        assert abMap.size() == 2
+        assert abMap.a == 1
+
+        when:
+        def found = myMap.find { entry -> entry.value < 2 }
+        then:
+        assert found.key == 'a'
+        assert found.value == 1
+
+
+        when:
+        def doubled = myMap.collect { entry -> entry.value *= 2 }
+        then:
+        assert doubled instanceof List
+        assert doubled.every { item -> item % 2 == 0 }
+
+        when:
+        def addTo = []
+        myMap.collect(addTo) { entry -> entry.value *= 2 }
+        then:
+        assert addTo instanceof List
+        assert addTo.every { item -> item % 2 == 0 }
+
+    }
 
 }

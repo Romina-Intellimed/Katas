@@ -207,8 +207,9 @@ class TetrisGameSpec extends Specification {
     void "in a 3x3 board a block falls starting at the middle top of the board"() {
         given:
         tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        when:
         tetrisGame.dropBlock()
-        expect:
+        then:
         assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 1).buildBoard()
     }
 
@@ -216,18 +217,29 @@ class TetrisGameSpec extends Specification {
         given:
         tetrisGame.tetrisBoard.initTheBoard(3, 3)
         tetrisGame.dropBlock()
+
+        when:
         tetrisGame.blockFallsOneTimeAline()
 
-        expect:
+        then:
         assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(1, 1).buildBoard()
     }
 
-    void "in a 3x3 board blocks moves at the right"() {
+    void "in a 3x3 board block moves at the right"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        tetrisGame.dropBlock()
+
+        when:
+        tetrisGame.moveBlockRight()
+
+        then:
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 2).buildBoard()
 
     }
 
 
-    void "in a 3x3 board blocks moves at the left"() {
+    void "in a 3x3 board block moves at the left"() {
 
     }
 

@@ -82,10 +82,10 @@ class TetrisGame {
                     fallingBlock.xPos = fallingBlock.xPos + 1
                     break
                 case BlockState.MOVE_LEFT:
-                    fallingBlock.yPos = fallingBlock.yPos + 1
+                    fallingBlock.yPos = fallingBlock.yPos - 1
                     break
                 case BlockState.MOVE_RIGHT:
-                    fallingBlock.yPos = fallingBlock.yPos - 1
+                    fallingBlock.yPos = fallingBlock.yPos + 1
                     break
             }
         }

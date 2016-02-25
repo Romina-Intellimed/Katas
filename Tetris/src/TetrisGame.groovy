@@ -58,18 +58,26 @@ class TetrisGame {
     }
 
 
+    def blockHasReachedTheBottom(){
+        if (fallingBlock.xPos == (tetrisBoard.board.size() -1))
+            return true
+        else
+            false
+    }
+
+    def blockHasReachedAnotherBlock() {
+        if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1)) {
+            fallingBlock.isFalling=false
+            return true
+        } else
+            false
+    }
+
     def bottomLineDissapears() {
         if (tetrisBoard.board[1][0] == 1 && tetrisBoard.board[1][0] == 1) {
             tetrisBoard.board[1][1] = 0
             tetrisBoard.board[1][0] = 0
         }
-    }
-
-    def blockHasReachedAnotherBlock() {
-        if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1))
-            return true
-        else
-            false
     }
 
 

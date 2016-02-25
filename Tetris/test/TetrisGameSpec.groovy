@@ -176,6 +176,15 @@ class TetrisGameSpec extends Specification {
         assert tetrisGame.blockHasReachedAnotherBlock() == true
     }
 
+    void "block has reached the bottom in a 2x2 board"(){
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(2,2)
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallsOneTimeAline()
+        expect:
+        tetrisGame.blockHasReachedTheBottom()
+    }
+
     void "game over for a 2x2 board"() {
         given:
         def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).buildBoard()

@@ -196,7 +196,12 @@ class TetrisGameSpec extends Specification {
     }
 
     void "in a 3x3 board there is one falling block"() {
-
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(3,3)
+        tetrisGame.dropBlock()
+        tetrisGame.dropBlock()
+        expect:
+        assert tetrisGame.hasOneFallingBlock()==true
     }
 
     void "in a 3x3 board a block falls starting at the middle top of the board"() {

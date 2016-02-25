@@ -5,9 +5,10 @@ class TetrisGame {
 
     TetrisBoard tetrisBoard = new TetrisBoard()
     TetrisBlock fallingBlock
+    def countFallingBlocks=0
 
     def hasOneFallingBlock() {
-        if (fallingBlock.isFalling)
+        if (countFallingBlocks==1)
             return true
         else
             return false
@@ -23,15 +24,17 @@ class TetrisGame {
 
 
     def dropBlock() {
-        fallingBlock = new TetrisBlock()
+        if(countFallingBlocks<1){
+            fallingBlock = new TetrisBlock()
+            countFallingBlocks++
+            fallingBlock.isFalling = true
 
-        fallingBlock.isFalling = true
+            fallingBlock.xPos = 0
+            fallingBlock.yPos = 0
+            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
 
-        fallingBlock.xPos = 0
-        fallingBlock.yPos = 0
-        tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
-
-        return tetrisBoard.board
+            return tetrisBoard.board
+        }
     }
 
     def hasStackUpToTop() {
@@ -58,8 +61,8 @@ class TetrisGame {
     }
 
 
-    def blockHasReachedTheBottom(){
-        if (fallingBlock.xPos == (tetrisBoard.board.size() -1))
+    def blockHasReachedTheBottom() {
+        if (fallingBlock.xPos == (tetrisBoard.board.size() - 1))
             return true
         else
             false
@@ -67,7 +70,7 @@ class TetrisGame {
 
     def blockHasReachedAnotherBlock() {
         if ((fallingBlock.xPos < (tetrisBoard.board.size() - 1)) && (tetrisBoard.board[fallingBlock.xPos + 1][fallingBlock.yPos] == 1)) {
-            fallingBlock.isFalling=false
+            fallingBlock.isFalling = false
             return true
         } else
             false
@@ -79,7 +82,6 @@ class TetrisGame {
             tetrisBoard.board[1][0] = 0
         }
     }
-
 
 
 }

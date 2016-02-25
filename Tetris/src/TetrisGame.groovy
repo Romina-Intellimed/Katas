@@ -16,12 +16,12 @@ class TetrisGame {
             fallingBlock = new TetrisBlock()
 
             fallingBlock.isFalling = true
-            countFallingBlocks++
 
             fallingBlock.xPos = 0
             fallingBlock.yPos = tetrisBoard.board.size() % 2
 
             tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
+            countFallingBlocks++
 
             return tetrisBoard.board
         }

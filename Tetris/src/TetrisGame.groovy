@@ -3,6 +3,8 @@
  */
 class TetrisGame {
 
+    public static final int isEmpty = 0
+    public static final int isFilled = 1
     TetrisBoard tetrisBoard = new TetrisBoard()
     TetrisBlock fallingBlock
     def countFallingBlocks=0
@@ -38,7 +40,7 @@ class TetrisGame {
     }
 
     def hasStackUpToTop() {
-        if (tetrisBoard.board[0].get(0) == 1)
+        if (tetrisBoard.board[0].get(0) == isFilled)
             return true
         else
             false
@@ -77,11 +79,16 @@ class TetrisGame {
     }
 
     def bottomLineDissapears() {
-        if (tetrisBoard.board[1][0] == 1 && tetrisBoard.board[1][0] == 1) {
-            tetrisBoard.board[1][1] = 0
-            tetrisBoard.board[1][0] = 0
+        if (tetrisBoard.board[1][0] == isFilled && tetrisBoard.board[1][0] == isFilled){
+            tetrisBoard.board[1][1] = isEmpty
+            tetrisBoard.board[1][0] = isEmpty
         }
     }
+
+    def updateBoard(){
+
+    }
+
 
 
 }

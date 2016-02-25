@@ -94,6 +94,11 @@ class TetrisGame {
             false
     }
 
+    def gameEnd(){
+        if(hasStackUpToTop())
+            tetrisBoard.initTheBoard(3, 3)
+    }
+
 
     def isLineFilled() {
         tetrisBoard.board.size().times { rowIndex ->

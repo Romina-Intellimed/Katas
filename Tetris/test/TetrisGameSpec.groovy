@@ -213,7 +213,13 @@ class TetrisGameSpec extends Specification {
     }
 
     void "in a 3x3 board block falls one time a line in a 3x3 board"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallsOneTimeAline()
 
+        expect:
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(1, 1).buildBoard()
     }
 
     void "in a 3x3 board blocks moves at the right"() {

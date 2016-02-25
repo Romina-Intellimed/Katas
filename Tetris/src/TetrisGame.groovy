@@ -85,10 +85,6 @@ class TetrisGame {
         }
     }
 
-    def updateBoard(){
-
-    }
-
 
 
 }

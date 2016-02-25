@@ -285,6 +285,13 @@ class TetrisGameSpec extends Specification {
     }
 
     void "in a 3x3 block a line collapses"() {
+        given:
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).withFilledSquares(1,2).buildBoard()
+        println tetrisGame.tetrisBoard.board
+        when:
+        tetrisGame.bottomLineDissapears()
+        then:
+        assert tetrisGame.tetrisBoard.board==BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).buildBoard()
 
     }
 

@@ -83,10 +83,7 @@ class TetrisGame {
     }
 
     def bottomLineDissapears() {
-        tetrisBoard.board.size().times { colIndex ->
-            if (tetrisBoard.board[tetrisBoard.board.size() - 1][colIndex] == isFilled)
-                tetrisBoard.board[tetrisBoard.board.size() - 1][colIndex] = isEmpty
-        }
+         isLineFilled()
 
     }
 
@@ -98,4 +95,23 @@ class TetrisGame {
     }
 
 
+    def isLineFilled() {
+        tetrisBoard.board.size().times { rowIndex ->
+            def sumFilledSquares = 0
+            tetrisBoard.board.size().times { colIndex ->
+                if (tetrisBoard.board[rowIndex][colIndex] == isFilled)
+                    sumFilledSquares++
+            }
+            if (sumFilledSquares == tetrisBoard.board.size()) {
+                tetrisBoard.board.size().times { colIndex ->
+                    tetrisBoard.board[rowIndex][colIndex] = tetrisBoard.board[rowIndex-1 ][colIndex]
+                    tetrisBoard.board[rowIndex ][colIndex-1]=isEmpty
+                }
+                return true
+            }
+
+        }
+    return false
+
+    }
 }

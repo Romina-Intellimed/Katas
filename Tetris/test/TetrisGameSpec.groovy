@@ -129,12 +129,11 @@ class TetrisGameSpec extends Specification {
     void "blocked has arrived at the bottom right corner in a 2x2 board"() {
         given:
         tetrisGame.tetrisBoard.initTheBoard(2, 2)
-        when:
         tetrisGame.dropBlock()
         tetrisGame.moveBlockRight()
         tetrisGame.blockFallsOneTimeAline()
 
-        then:
+        expect:
         assert getBlockAt(1, 1) == 1
 
 
@@ -143,8 +142,9 @@ class TetrisGameSpec extends Specification {
     void "block has arrived at the bootom left corner in a 2x2 board "() {
         given:
         tetrisGame.tetrisBoard.initTheBoard(2, 2)
-        when:
         tetrisGame.dropBlock()
+
+        when:
         tetrisGame.blockFallsOneTimeAline()
 
         then:
@@ -159,8 +159,7 @@ class TetrisGameSpec extends Specification {
 
     void "line dissapears in a 2x2 board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).buildBoard()
-        tetrisGame.tetrisBoard.board = aBoard
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).buildBoard()
         when:
         tetrisGame.bottomLineDissapears()
         then:
@@ -169,10 +168,10 @@ class TetrisGameSpec extends Specification {
 
     void "block has reached another block in a 2x2 board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).buildBoard()
-        tetrisGame.tetrisBoard.board = aBoard
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).buildBoard()
+        when:
         tetrisGame.dropBlock()
-        expect:
+        then:
         assert tetrisGame.blockHasReachedAnotherBlock() == true
     }
 
@@ -187,8 +186,7 @@ class TetrisGameSpec extends Specification {
 
     void "game over for a 2x2 board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(0, 1).buildBoard()
-        tetrisGame.tetrisBoard.board = aBoard
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(0, 1).buildBoard()
         tetrisGame.dropBlock()
         expect:
         assert tetrisGame.hasStackUpToTop() == true

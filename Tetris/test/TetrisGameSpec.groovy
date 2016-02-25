@@ -197,27 +197,23 @@ class TetrisGameSpec extends Specification {
 
     void "in a 3x3 board there is one falling block"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        boardHasADropedBlock()
+        when:
         tetrisGame.dropBlock()
-        tetrisGame.dropBlock()
-        expect:
+        then:
         assert tetrisGame.hasOneFallingBlock() == true
     }
 
     void "in a 3x3 board a block falls starting at the middle top of the board"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3, 3)
-        when:
-        tetrisGame.dropBlock()
-        then:
+        boardHasADropedBlock()
+        expect:
         assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(0, 1).buildBoard()
     }
 
     void "in a 3x3 board block falls one time a line in a 3x3 board"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3, 3)
-        tetrisGame.dropBlock()
-
+        boardHasADropedBlock()
         when:
         tetrisGame.blockFallsOneTimeAline()
 
@@ -227,9 +223,7 @@ class TetrisGameSpec extends Specification {
 
     void "in a 3x3 board block moves at the right"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3, 3)
-        tetrisGame.dropBlock()
-
+        boardHasADropedBlock()
         when:
         tetrisGame.moveBlockRight()
 
@@ -241,9 +235,7 @@ class TetrisGameSpec extends Specification {
 
     void "in a 3x3 board block moves at the left"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3, 3)
-        tetrisGame.dropBlock()
-
+        boardHasADropedBlock()
         when:
         tetrisGame.moveBlockLeft()
 
@@ -271,7 +263,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.blockFallsOneTimeAline()
 
         expect:
-        assert tetrisGame.blockHasReachedTheBottom()==true
+        assert tetrisGame.blockHasReachedTheBottom() == true
     }
 
     void "in a 3x3 block a bottom line collapses"() {
@@ -281,16 +273,16 @@ class TetrisGameSpec extends Specification {
         when:
         tetrisGame.bottomLineDissapears()
         then:
-        assert tetrisGame.tetrisBoard.hasEmptySquares()==true
+        assert tetrisGame.tetrisBoard.hasEmptySquares() == true
     }
 
     void "in a 3x3 block a line collapses"() {
         given:
-        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).withFilledSquares(1,2).buildBoard()
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).withFilledSquares(1, 2).buildBoard()
         when:
         tetrisGame.bottomLineDissapears()
         then:
-        assert tetrisGame.tetrisBoard.board==BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).buildBoard()
 
     }
 
@@ -301,7 +293,16 @@ class TetrisGameSpec extends Specification {
         when:
         tetrisGame.gameEnd()
         then:
-        assert tetrisGame.tetrisBoard.board==BoardBuilder.aBoard().withSize(3, 3).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).buildBoard()
 
     }
+
+
+    void boardHasADropedBlock() {
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        tetrisGame.dropBlock()
+
+    }
+
+
 }

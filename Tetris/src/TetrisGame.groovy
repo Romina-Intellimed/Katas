@@ -5,6 +5,7 @@ class TetrisGame {
 
     public static final int isEmpty = 0
     public static final int isFilled = 1
+    public static final int MAX_FALLING_BLOCKS = 1
     TetrisBoard tetrisBoard = new TetrisBoard()
     TetrisBlock fallingBlock
     def countFallingBlocks = 0
@@ -27,7 +28,7 @@ class TetrisGame {
     }
 
     def hasOneFallingBlock() {
-        if (countFallingBlocks == 1)
+        if (countFallingBlocks == MAX_FALLING_BLOCKS)
             return true
         else
             return false
@@ -96,7 +97,7 @@ class TetrisGame {
 
     def gameEnd(){
         if(hasStackUpToTop())
-            tetrisBoard.initTheBoard(3, 3)
+            tetrisBoard.initTheBoard(tetrisBoard.board.size(), tetrisBoard.board.size())
     }
 
 

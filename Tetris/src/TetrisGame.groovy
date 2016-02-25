@@ -28,7 +28,7 @@ class TetrisGame {
             fallingBlock.isFalling = true
 
             fallingBlock.xPos = 0
-            fallingBlock.yPos = 0
+            fallingBlock.yPos = tetrisBoard.board.size()%2
             tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
 
             return tetrisBoard.board
@@ -36,7 +36,7 @@ class TetrisGame {
     }
 
     def hasStackUpToTop() {
-        if (tetrisBoard.board[0].get(0) == isFilled)
+        if (tetrisBoard.board[0].get(1) == isFilled)
             return true
         else
             false
@@ -67,10 +67,11 @@ class TetrisGame {
     }
 
     def bottomLineDissapears() {
-        if (tetrisBoard.board[1][0] == isFilled && tetrisBoard.board[1][0] == isFilled){
-            tetrisBoard.board[1][1] = isEmpty
-            tetrisBoard.board[1][0] = isEmpty
+        tetrisBoard.board.size().times{colIndex->
+            if(tetrisBoard.board[tetrisBoard.board.size()-1][colIndex]==isFilled)
+                tetrisBoard.board[tetrisBoard.board.size()-1][colIndex]=isEmpty
         }
+
     }
 
     def updateBoard(operation) {

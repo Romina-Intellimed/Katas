@@ -32,7 +32,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.dropBlock()
 
         then:
-        assert getBlockAt(0, 0) == 1
+        assert getBlockAt(0, 1) == 1
     }
 
     void "game ends for board 1x1"() {
@@ -176,9 +176,9 @@ class TetrisGameSpec extends Specification {
         assert tetrisGame.blockHasReachedAnotherBlock() == true
     }
 
-    void "block has reached the bottom in a 2x2 board"(){
+    void "block has reached the bottom in a 2x2 board"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(2,2)
+        tetrisGame.tetrisBoard.initTheBoard(2, 2)
         tetrisGame.dropBlock()
         tetrisGame.blockFallsOneTimeAline()
         expect:
@@ -187,7 +187,7 @@ class TetrisGameSpec extends Specification {
 
     void "game over for a 2x2 board"() {
         given:
-        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(1, 0).buildBoard()
+        def aBoard = BoardBuilder.aBoard().withSize(2, 2).withFilledSquares(0, 1).buildBoard()
         tetrisGame.tetrisBoard.board = aBoard
         tetrisGame.dropBlock()
         expect:
@@ -197,15 +197,19 @@ class TetrisGameSpec extends Specification {
 
     void "in a 3x3 board there is one falling block"() {
         given:
-        tetrisGame.tetrisBoard.initTheBoard(3,3)
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
         tetrisGame.dropBlock()
         tetrisGame.dropBlock()
         expect:
-        assert tetrisGame.hasOneFallingBlock()==true
+        assert tetrisGame.hasOneFallingBlock() == true
     }
 
     void "in a 3x3 board a block falls starting at the middle top of the board"() {
-
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        tetrisGame.dropBlock()
+        expect:
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 1).buildBoard()
     }
 
     void "in a 3x3 board block falls one time a line in a 3x3 board"() {

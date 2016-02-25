@@ -23,6 +23,10 @@ class TetrisGameColabSpec extends Specification {
         1 * boardMock.addBlock(*_)
     }
 
+
+
+
+
     void "test tetrisGame in isolation"() {
 
         given:

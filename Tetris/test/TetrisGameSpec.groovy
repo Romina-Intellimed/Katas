@@ -210,7 +210,7 @@ class TetrisGameSpec extends Specification {
         when:
         tetrisGame.dropBlock()
         then:
-        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 1).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(0, 1).buildBoard()
     }
 
     void "in a 3x3 board block falls one time a line in a 3x3 board"() {
@@ -222,7 +222,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.blockFallsOneTimeAline()
 
         then:
-        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(1, 1).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(1, 1).buildBoard()
     }
 
     void "in a 3x3 board block moves at the right"() {
@@ -234,7 +234,7 @@ class TetrisGameSpec extends Specification {
         tetrisGame.moveBlockRight()
 
         then:
-        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 2).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(0, 2).buildBoard()
 
     }
 
@@ -248,11 +248,18 @@ class TetrisGameSpec extends Specification {
         tetrisGame.moveBlockLeft()
 
         then:
-        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 0).buildBoard()
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(0, 0).buildBoard()
 
     }
 
     void "in a 3x3 board block hits another block"() {
+        given:
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).buildBoard()
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallsOneTimeAline()
+
+        expect:
+        assert tetrisGame.blockHasReachedAnotherBlock() == true
 
 
     }

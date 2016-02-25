@@ -17,11 +17,7 @@ class TetrisGame {
     }
 
     def blockFallsOneTimeAline() {
-        if (fallingBlock.isFalling) {
-            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
-            fallingBlock.xPos = fallingBlock.xPos + 1
-            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
-        }
+            updateBoard(BlockState.IS_FALLING)
     }
 
 
@@ -47,19 +43,11 @@ class TetrisGame {
     }
 
     def moveBlockLeft() {
-        if (fallingBlock.isFalling) {
-            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
-            fallingBlock.yPos = fallingBlock.yPos + 1
-            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
-        }
+            updateBoard(BlockState.MOVE_LEFT)
     }
 
     def moveBlockRight() {
-        if (fallingBlock.isFalling) {
-            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
-            fallingBlock.yPos = fallingBlock.yPos - 1
-            tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
-        }
+            updateBoard(BlockState.MOVE_RIGHT)
     }
 
 
@@ -85,28 +73,22 @@ class TetrisGame {
         }
     }
 
-    def updateBoard(xPos, yPos, operation) {
-
-        tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
-        switch (operation){
-
+    def updateBoard(operation) {
+        if (fallingBlock.isFalling) {
+            tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
+            switch (operation) {
+                case BlockState.IS_FALLING:
+                    fallingBlock.xPos = fallingBlock.xPos + 1
+                    break
+                case BlockState.MOVE_LEFT:
+                    fallingBlock.yPos = fallingBlock.yPos + 1
+                    break
+                case BlockState.MOVE_RIGHT:
+                    fallingBlock.yPos = fallingBlock.yPos - 1
+                    break
+            }
         }
-
-       /* tetrisBoard.board[xPos][yPos] = isFilled
-
-        switch (operation) {
-            case PieceOperation.IS_FALLING:
-                tetrisBoard.board[xPos - 1][yPos] = isEmpty
-                break
-            case PieceOperation.MOVE_LEFT:
-                tetrisBoard.board[xPos][yPos + 1] = isEmpty
-                break
-            case PieceOperation.MOVE_RIGHT:
-                tetrisBoard.board[xPos][yPos - 1] = isEmpty
-                break
-        }*/
-
-
+        tetrisBoard.addBlock(fallingBlock.xPos, fallingBlock.yPos)
         return tetrisBoard.board;
     }
 

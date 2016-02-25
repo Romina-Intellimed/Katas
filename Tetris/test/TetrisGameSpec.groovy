@@ -264,7 +264,14 @@ class TetrisGameSpec extends Specification {
 
 
     void "in a 3x3 board a block arrives at the bottom"() {
+        given:
+        tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).buildBoard()
+        tetrisGame.dropBlock()
+        tetrisGame.blockFallsOneTimeAline()
+        tetrisGame.blockFallsOneTimeAline()
 
+        expect:
+        assert tetrisGame.blockHasReachedTheBottom()==true
     }
 
     void "in a 3x3 block a bottom line collapses"() {

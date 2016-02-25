@@ -85,6 +85,29 @@ class TetrisGame {
         }
     }
 
+    def updateBoard(xPos, yPos, operation) {
 
+        tetrisBoard.removeBlock(fallingBlock.xPos, fallingBlock.yPos)
+        switch (operation){
+
+        }
+
+       /* tetrisBoard.board[xPos][yPos] = isFilled
+
+        switch (operation) {
+            case PieceOperation.IS_FALLING:
+                tetrisBoard.board[xPos - 1][yPos] = isEmpty
+                break
+            case PieceOperation.MOVE_LEFT:
+                tetrisBoard.board[xPos][yPos + 1] = isEmpty
+                break
+            case PieceOperation.MOVE_RIGHT:
+                tetrisBoard.board[xPos][yPos - 1] = isEmpty
+                break
+        }*/
+
+
+        return tetrisBoard.board;
+    }
 
 }

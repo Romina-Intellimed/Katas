@@ -240,6 +240,15 @@ class TetrisGameSpec extends Specification {
 
 
     void "in a 3x3 board block moves at the left"() {
+        given:
+        tetrisGame.tetrisBoard.initTheBoard(3, 3)
+        tetrisGame.dropBlock()
+
+        when:
+        tetrisGame.moveBlockLeft()
+
+        then:
+        assert tetrisGame.tetrisBoard.board == BoardBuilder.aBoard().withSize(3,3).withFilledSquares(0, 0).buildBoard()
 
     }
 

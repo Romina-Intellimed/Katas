@@ -15,7 +15,39 @@
 <body>
 <div>
     <g:form name="createNewToDoItem" url="[controller: 'toDoItem', action: 'addNew']">
-        <label>Enter name for new item</label><input type="text" value="" name="itemName"> </input>
+        <h1>Enter details for the new Task</h1>
+        <p>
+        <label>Name</label><input type="text" value="" name="itemName"> </input>
+        <br/>
+        </p>
+        <p>
+        <label>Description</label><input type="text" value="" name="itemDescription"> </input>
+        <br/>
+        </p>
+        <p>
+        <label>Location</label><input type="text" value="" name="itemLocation"> </input>
+        </p>
+        <label>Start Date</label><g:datePicker name="itemStartDate" value="${new Date()}"
+                      precision="day" years="${2016..2070}"/>
+        <p>
+        <label>End Date</label><g:datePicker name="itemEndDate" value="${new Date()}"
+                                                       precision="day" years="${2016..2070}"/>
+        </p>
+        <p>
+        <label>Repeat</label><g:checkBox name="itemRepeat" value="${false}" />
+        </p>
+
+        <p>
+            <label>Remind Date</label><g:datePicker name="itemRemindDate" value="${new Date()}"
+                                                 precision="day" years="${2016..2070}"/>
+        </p>
+        <p>
+        <label>Priority</label><input type="text" value="" name="itemPriority"> </input>
+        <br/>
+        </p>
+
+        <br/>
+
         <input type="submit" value="Add new"> </input>
     </g:form>
 </div>

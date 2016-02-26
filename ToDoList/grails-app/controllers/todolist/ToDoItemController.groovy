@@ -17,6 +17,8 @@ class ToDoItemController {
     def addNew() {
         def newItemName = params.itemName
         new ToDoItem(name: newItemName).save(failOnError: true)
+        //new ToDoItem(description: newDescription).save(failOnError: true)
+
         redirect action: "index"
     }
 

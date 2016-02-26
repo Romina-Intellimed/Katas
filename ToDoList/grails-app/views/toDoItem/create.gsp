@@ -42,7 +42,8 @@
                                                  precision="day" years="${2016..2070}"/>
         </p>
         <p>
-        <label>Priority</label><input type="text" value="" name="itemPriority"> </input>
+        <label>Priority</label>
+        <g:select name="itemPriority" id="itemPrioriy" from="${todolist.PriorityType.values()}" value="${todolist.PriorityType}"  optionValue="id"></g:select>
         <br/>
         </p>
 

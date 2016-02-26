@@ -1,5 +1,6 @@
 package todolist
 
+
 class ToDoItem {
 
     String name
@@ -9,7 +10,8 @@ class ToDoItem {
     Boolean repeat
     String location
     Date remind
-    String priority
+
+    PriorityType priority
 
 
     static constraints = {

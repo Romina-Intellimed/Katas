@@ -11,7 +11,6 @@ class ToDoItemController {
     }
 
     def create() {
-
     }
 
     def addNew() {

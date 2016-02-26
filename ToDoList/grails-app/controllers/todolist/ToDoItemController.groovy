@@ -3,6 +3,7 @@ package todolist
 import grails.transaction.Transactional
 
 class ToDoItemController {
+
     def index() {
         def item = ToDoItem.findByNameLike("Learn Grails%")
         return [helloString    : "In Show ToDoList page", todoListItems: ToDoItem.list(),
@@ -62,9 +63,6 @@ class ToDoItemController {
         [itemsContainingWord: itemsContainingWord]
       }
 
-    def displayResults(){
-
-    }
 
 
 }

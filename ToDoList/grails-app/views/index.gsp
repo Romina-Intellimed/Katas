@@ -89,6 +89,9 @@
     <ul>
         <g:each in="${todoListItems}" var="item">
             <li>${item.name}</li>
+            <li>${item?.description}</li>
+            <li>${item?.startDate}</li>
+            <li>${item?.endDate}</li>
         </g:each>
     </ul>
 </div>

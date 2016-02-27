@@ -56,4 +56,24 @@ class MultiMethodSpec extends Specification {
     }
 
 
+    void "test execution time for closures"() {
+        given:
+        def slow = benchmark(10000) { (int) it / 2 }
+        def fast = benchmark(10000) { it.intdiv(2) }
+
+        expect:
+        assert fast * 2 < slow
+    }
+
+
+    def benchmark(int repeat, Closure worker) {
+        def start = System.nanoTime()
+
+        repeat.times { worker(it) }
+
+        def stop = System.nanoTime()
+        return stop - start
+    }
+
+
 }

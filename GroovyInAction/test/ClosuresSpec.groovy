@@ -30,8 +30,54 @@ class ClosuresSpec extends Specification {
         def words = ['long string', 'medium', 'short', 'tiny']
 
         expect:
-        assert 'medium'==words.find(sizeUpTo6)
-        assert 'short'==words.find(filter5.&sizeUpTo)
+        assert 'medium' == words.find(sizeUpTo6)
+        assert 'short' == words.find(filter5.&sizeUpTo)
     }
+
+
+    void curryingTest() {
+
+        given:
+        def configurator = { format, filter, line ->
+            filter(line) ? format(line) : null
+
+        }
+
+        def appender = { config, append, line ->
+            def out = config(line)
+            if (out) append out
+        }
+
+        def dateFormatter = { line -> "${new Date()}:$line" }
+        def debugFilter = { line -> line.contains('debug') }
+        def consoleAppender = { line -> println line }
+
+        def myConf = configurator.curry(dateFormatter, debugFilter)
+        def myLog = appender.curry(myConf, consoleAppender)
+
+        myLog('here is some debug message')
+        myLog('this will not be printed')
+    }
+
+    void "test closure scope"() {
+        given:
+        Mother julia = new Mother()
+        def closure = julia.birth('param')
+
+        when:
+        def context = closure.call()
+
+        then:
+        assert context[0] == julia
+        assert context[1, 2] == ['prop', 'method']
+        assert context[3, 4] == ['local', 'param']
+
+        assert closure.thisObject == julia
+        assert closure.owner == julia
+        assert closure.delegate == julia
+        assert closure.resolveStrategy == Closure.OWNER_FIRST
+
+    }
+
 
 }

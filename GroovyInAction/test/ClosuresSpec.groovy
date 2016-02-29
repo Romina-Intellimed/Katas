@@ -80,4 +80,17 @@ class ClosuresSpec extends Specification {
     }
 
 
+    void "test accumulations"() {
+
+        given:
+        Mother motherAccumulators=new Mother()
+
+        when:
+        def accumulator = motherAccumulators.foo(1)
+
+        then:
+        assert accumulator(2) == 3
+        assert accumulator(1) == 4
+    }
+
 }

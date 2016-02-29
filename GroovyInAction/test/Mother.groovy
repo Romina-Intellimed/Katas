@@ -13,4 +13,8 @@ class Mother {
         }
         return closure
     }
+
+    public def foo(n) {
+        return { n += it }
+    }
 }

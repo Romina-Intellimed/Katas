@@ -52,11 +52,16 @@ class ToDoItemController {
     def save(){
         def toDoItemInstance = ToDoItem.findById(params.id)
         toDoItemInstance.setName(params.name)
-
+        toDoItemInstance.setDescription(params.description)
+        toDoItemInstance.setLocation(params.location)
+        toDoItemInstance.setStartDate(params.startDate)
+        toDoItemInstance.setEndDate(params.endDate)
+//        toDoItemInstance.setRepeat(params.repeat)
+        toDoItemInstance.setRemindDate(params.remindDate)
+  //      toDoItemInstance.setPriority(params.priority)
         toDoItemInstance.save(failOnError: true)
         redirect action: "index"
 
-//        [toDoItemInstance:toDoItemInstance]
     }
 
     def search(){

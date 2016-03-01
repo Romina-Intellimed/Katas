@@ -83,10 +83,6 @@ class TetrisGame {
             false
     }
 
-    def bottomLineDissapears() {
-        isLineFilled()
-
-    }
 
     def hasStackUpToTop() {
         if (tetrisBoard.board[0].get(1) == isFilled)
@@ -101,7 +97,7 @@ class TetrisGame {
     }
 
 
-    def isLineFilled() {
+    def bottomLineDissapears (){
         tetrisBoard.board.size().times { rowIndex ->
             if (countFilledSquared(rowIndex) == tetrisBoard.board.size()) {
                 linesMoveDown(rowIndex)

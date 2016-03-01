@@ -18,15 +18,10 @@
         <a href="<g:createLink action="create"/>"> <g:img dir="images" file="add.png" width="30" height="30"/></a>
         New Task
     </p>
-%{--<g:form name="searchItems" url="[controller: 'toDoItem', action: 'search']">--}%
     <g:form action="search" method="GET">
         <g:img dir="images" file="search.png" width="30" height="30"/>
         <g:textField name="entry" value="Type the searched entry"></g:textField>
     </g:form>
-
-%{-- </g:form>
- <a href="<g:createLink action="search" method="GET"/>"> <g:img dir="images" file="search.png" width="30" height="30" /></a> <input type="text" value="" name="entry"> </input>
- <input type="submit" value="Search Items"> </input>--}%
 
     <table>
         <tr>

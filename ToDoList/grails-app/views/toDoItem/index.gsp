@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div id="page-body">
+<div>
     <p>
         <a href="<g:createLink action="create"/>"> <g:img dir="images" file="add.png" width="30" height="30"/></a>
         New Task
@@ -43,10 +43,10 @@
             <tr onclick='document.location = "<g:createLink action='show' id='${item.id}'/>" '>
                 <td>${item?.name}</td>
                 <td>${item?.description}</td>
-                <td><g:formatDate date="${item.startDate}" format="yyyy-MM-dd"/></td>
-                <td>${item?.endDate}</td>
+                <td><g:formatDate date="${item?.startDate}" format="yyyy-MM-dd"/></td>
+                <td><g:formatDate date="${item?.endDate}" format="yyyy-MM-dd"/></td>
                 <td>${item?.repeat ? "Yes" : "No"}</td>
-                <td>${item?.remindDate}</td>
+                <td><g:formatDate date="${item?.remindDate}" format="yyyy-MM-dd"/></td>
                 <td>${item?.priority}</td>
                 <td>
                     <a href="<g:createLink action="edit" id='${item.id}'/>"><g:img dir="images" file="edit.jpg"

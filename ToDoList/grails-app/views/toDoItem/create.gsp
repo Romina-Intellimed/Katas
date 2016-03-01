@@ -13,11 +13,11 @@
 </head>
 
 <body>
-<div>
+<div class="fields">
     <g:form name="createNewToDoItem" url="[controller: 'toDoItem', action: 'addNew']">
         <h1>Enter details for the new Task</h1>
         <p>
-        <label>Name</label><input type="text" value="" name="itemName"> </input>
+        <label >Name</label><input type="text" value="" name="itemName"/>
         <br/>
         </p>
         <p>

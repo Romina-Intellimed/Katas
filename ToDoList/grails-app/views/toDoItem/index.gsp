@@ -15,9 +15,19 @@
 <body>
 <div id="page-body">
     <p>
-        <a href="<g:createLink action="create"/>"> <g:img dir="images" file="add.png" width="30" height="30" /></a>
+        <a href="<g:createLink action="create"/>"> <g:img dir="images" file="add.png" width="30" height="30"/></a>
         New Task
     </p>
+%{--<g:form name="searchItems" url="[controller: 'toDoItem', action: 'search']">--}%
+    <g:form action="search" method="GET">
+        <g:img dir="images" file="search.png" width="30" height="30"/>
+        <g:textField name="entry" value="Type the searched entry"></g:textField>
+    </g:form>
+
+%{-- </g:form>
+ <a href="<g:createLink action="search" method="GET"/>"> <g:img dir="images" file="search.png" width="30" height="30" /></a> <input type="text" value="" name="entry"> </input>
+ <input type="submit" value="Search Items"> </input>--}%
+
     <table>
         <tr>
             <th>Name</th>
@@ -33,30 +43,28 @@
             <tr onclick='document.location = "<g:createLink action='show' id='${item.id}'/>" '>
                 <td>${item?.name}</td>
                 <td>${item?.description}</td>
-                <td><g:formatDate date="${item.startDate}" format="yyyy-MM-dd"/> </td>
+                <td><g:formatDate date="${item.startDate}" format="yyyy-MM-dd"/></td>
                 <td>${item?.endDate}</td>
-                <td>${item?.repeat? "Yes" : "No"}</td>
+                <td>${item?.repeat ? "Yes" : "No"}</td>
                 <td>${item?.remindDate}</td>
                 <td>${item?.priority}</td>
                 <td>
-                    <a href="<g:createLink action="edit"  id='${item.id}'/>"> <g:img dir="images" file="edit.jpg" width="30" height="30" /></a>
-                    <a href="<g:createLink action="delete" id='${item.id}'/>"> <g:img dir="images" file="delete.jpg" width="30" height="30" /></a>
+                    <a href="<g:createLink action="edit" id='${item.id}'/>"><g:img dir="images" file="edit.jpg"
+                                                                                   width="30" height="30"/></a>
+                    <a href="<g:createLink action="delete" id='${item.id}'/>"><g:img dir="images" file="delete.jpg"
+                                                                                     width="30" height="30"/></a>
                 </td>
             </tr>
         </g:each>
     </table>
 
-</div>
+    </div>
 
-<br/>
-<br/>
+    <br/>
+    <br/>
 
-<p>
+    <p>
 
-<g:form name="searchItems" url="[controller: 'toDoItem', action: 'search']">
-    Search by task name <input type="text" value="" name="entry"> </input>
-    <input type="submit" value="Search Items"> </input>
-</g:form>
-</p>
-</body>
-</html>
+    </p>
+    </body>
+    </html>

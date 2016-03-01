@@ -15,7 +15,16 @@ class ToDoItemController {
 
     def addNew() {
         def newItemName = params.itemName
-        new ToDoItem(name: newItemName).save(failOnError: true)
+        def newItemDescription=params.itemDescription
+        def newItemLocation=params.itemLocation
+        def newItemStartDate=params.itemStartDate
+        def newItemEndDate=params.itemEndDate
+        def newItemRepeat=params.itemRepeat
+        def newItemRemindDate=params.itemsRemindDate
+        def newItemPriority=params.itemPriority
+
+        new ToDoItem(name: newItemName, description: newItemDescription, location: newItemLocation, startDate: newItemStartDate, endDate: newItemEndDate,
+        repeat: newItemRepeat, remind: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
         //new ToDoItem(description: newDescription).save(failOnError: true)
 
         redirect action: "index"

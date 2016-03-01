@@ -84,7 +84,7 @@ class TetrisGame {
     }
 
     def bottomLineDissapears() {
-         isLineFilled()
+        isLineFilled()
 
     }
 
@@ -95,29 +95,39 @@ class TetrisGame {
             false
     }
 
-    def gameEnd(){
-        if(hasStackUpToTop())
+    def gameEnd() {
+        if (hasStackUpToTop())
             tetrisBoard.initTheBoard(tetrisBoard.board.size(), tetrisBoard.board.size())
     }
 
 
     def isLineFilled() {
         tetrisBoard.board.size().times { rowIndex ->
-            def sumFilledSquares = 0
-            tetrisBoard.board.size().times { colIndex ->
-                if (tetrisBoard.board[rowIndex][colIndex] == isFilled)
-                    sumFilledSquares++
-            }
-            if (sumFilledSquares == tetrisBoard.board.size()) {
-                tetrisBoard.board.size().times { colIndex ->
-                    tetrisBoard.board[rowIndex][colIndex] = tetrisBoard.board[rowIndex-1 ][colIndex]
-                    tetrisBoard.board[rowIndex ][colIndex-1]=isEmpty
-                }
+            if (countFilledSquared(rowIndex) == tetrisBoard.board.size()) {
+                linesMoveDown(rowIndex)
                 return true
             }
 
         }
-    return false
+        return false
 
     }
+
+    def countFilledSquared(rowIndex) {
+        def sumFilledSquares = 0
+        tetrisBoard.board.size().times { colIndex ->
+            if (tetrisBoard.board[rowIndex][colIndex] == isFilled)
+                sumFilledSquares++
+        }
+        return sumFilledSquares
+    }
+
+    def linesMoveDown(rowIndex) {
+        tetrisBoard.board.size().times { colIndex ->
+            tetrisBoard.board[rowIndex][colIndex] = tetrisBoard.board[rowIndex - 1][colIndex]
+            tetrisBoard.board[rowIndex][colIndex - 1] = isEmpty
+        }
+    }
+
+
 }

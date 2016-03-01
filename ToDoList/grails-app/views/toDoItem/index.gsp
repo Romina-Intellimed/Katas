@@ -15,14 +15,33 @@
 <body>
 <div id="page-body">
     ${helloString}
-    <ul>
-        <g:each in="${todoListItems}" var="item">
-            <li>${item.name}</li>
-        </g:each>
-    </ul>
 
-    Item with name "Learn Grails":
-    ${learnGrailsItem}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Decription</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Repeat</th>
+            <th>Remind Date</th>
+            <th>Priority</th>
+        </tr>
+    <g:each in="${todoListItems}" var="item">
+        <tr>
+
+                <td>${item?.name}</td>
+                <td>${item?.description}</td>
+                <td>${item?.startDate}</td>
+                <td>${item?.endDate}</td>
+                <td>${item?.repeat}</td>
+                <td>${item?.remind}</td>
+                <td>${item?.priority}</td>
+
+        </tr>
+    </g:each>
+    </table>
+
+
 </div>
 
 <br/>

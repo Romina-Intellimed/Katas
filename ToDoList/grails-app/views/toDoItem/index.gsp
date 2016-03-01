@@ -26,9 +26,9 @@
             <th>Remind Date</th>
             <th>Priority</th>
         </tr>
-    <g:each in="${todoListItems}" var="item">
-        <tr onclick='document.location = "<g:createLink action='edit' id='${item.id}'/>" ' >
-                       <td>${item?.name}</td>
+        <g:each in="${todoListItems}" var="item">
+            <tr onclick='document.location = "<g:createLink action='edit' id='${item.id}'/>" '>
+                <td>${item?.name}</td>
                 <td>${item?.description}</td>
                 <td>${item?.startDate}</td>
                 <td>${item?.endDate}</td>
@@ -36,10 +36,9 @@
                 <td>${item?.remindDate}</td>
                 <td>${item?.priority}</td>
 
-        </tr>
-    </g:each>
+            </tr>
+        </g:each>
     </table>
-
 
 </div>
 

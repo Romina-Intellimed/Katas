@@ -27,9 +27,8 @@
             <th>Priority</th>
         </tr>
     <g:each in="${todoListItems}" var="item">
-        <tr>
-
-                <td>${item?.name}</td>
+        <tr onclick='document.location = "<g:createLink action='edit' id='${item.id}'/>" ' >
+                       <td>${item?.name}</td>
                 <td>${item?.description}</td>
                 <td>${item?.startDate}</td>
                 <td>${item?.endDate}</td>

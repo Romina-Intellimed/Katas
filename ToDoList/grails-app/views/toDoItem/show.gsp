@@ -15,7 +15,7 @@
 <body>
     <div>
             <span>${toDoItemInstance?.name}</span>
+        <span>${toDoItemInstance?.description}</span>
     </div>
-
 </body>
 </html>

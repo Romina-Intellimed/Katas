@@ -30,12 +30,12 @@
             <th>More Actions</th>
         </tr>
         <g:each in="${todoListItems}" var="item">
-            <tr onclick='document.location = "<g:createLink action='edit' id='${item.id}'/>" '>
+            <tr onclick='document.location = "<g:createLink action='show' id='${item.id}'/>" '>
                 <td>${item?.name}</td>
                 <td>${item?.description}</td>
-                <td>${item?.startDate} </td>
+                <td><g:formatDate date="${item.startDate}" format="yyyy-MM-dd"/> </td>
                 <td>${item?.endDate}</td>
-                <td>${item?.repeat}</td>
+                <td>${item?.repeat? "Yes" : "No"}</td>
                 <td>${item?.remindDate}</td>
                 <td>${item?.priority}</td>
                 <td>

@@ -50,15 +50,16 @@ class ToDoItemController {
 
     @Transactional
     def save(){
+        println(params)
         def toDoItemInstance = ToDoItem.findById(params.id)
         toDoItemInstance.setName(params.name)
         toDoItemInstance.setDescription(params.description)
         toDoItemInstance.setLocation(params.location)
         toDoItemInstance.setStartDate(params.startDate)
         toDoItemInstance.setEndDate(params.endDate)
-//        toDoItemInstance.setRepeat(params.repeat)
+        toDoItemInstance.setRepeat(params.repeat? true: false)
         toDoItemInstance.setRemindDate(params.remindDate)
-  //      toDoItemInstance.setPriority(params.priority)
+        toDoItemInstance.setPriority(PriorityType.valueOf(params.priority))
         toDoItemInstance.save(failOnError: true)
         redirect action: "index"
 

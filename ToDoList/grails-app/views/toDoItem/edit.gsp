@@ -25,23 +25,20 @@
     <g:textField name="location" value="${toDoItemInstance.location}"/>
     <br/>
     <label>Start Date</label>
-    <g:datePicker name="startDate" value="${toDoItemInstance.startDate}"/>
+    <g:datePicker precision="day" name="startDate" value="${toDoItemInstance.startDate}"/>
     <br/>
     <label>End Date</label>
-    <g:datePicker name="endDate" value="${toDoItemInstance.endDate}"/>
+    <g:datePicker precision="day" name="endDate" value="${toDoItemInstance.endDate}"/>
     <br/>
     <label>Repeat</label>
     <g:checkBox name="repeat" value="${toDoItemInstance.repeat}"/>
     <br/>
     <label>Remind Date</label>
-    <g:datePicker name="remindDate" value="${toDoItemInstance.remindDate}"/>
+    <g:datePicker precision="day" name="remindDate" value="${toDoItemInstance.remindDate}"/>
     <br/>
     <label>Prioriy</label>
     <g:select name="itemPriority" id="itemPrioriy" from="${todolist.PriorityType.values()}" value="${toDoItemInstance.priority}"  optionValue="id"></g:select>
     <br/>
-
-
-
 
     <input type="submit" name="_action_save" value="save">
 </g:form>

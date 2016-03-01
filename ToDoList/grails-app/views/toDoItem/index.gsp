@@ -34,7 +34,7 @@
                 <td>${item?.startDate}</td>
                 <td>${item?.endDate}</td>
                 <td>${item?.repeat}</td>
-                <td>${item?.remind}</td>
+                <td>${item?.remindDate}</td>
                 <td>${item?.priority}</td>
 
         </tr>

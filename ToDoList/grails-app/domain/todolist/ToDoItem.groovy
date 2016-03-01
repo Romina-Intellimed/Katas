@@ -9,7 +9,7 @@ class ToDoItem {
     Date endDate
     Boolean repeat
     String location
-    Date remind
+    Date remindDate
 
     PriorityType priority
 
@@ -20,7 +20,7 @@ class ToDoItem {
         endDate nullable: true
         repeat nullable: true
         location nullable: true
-        remind nullable: true
+        remindDate nullable: true
         priority nullable: true
     }
 

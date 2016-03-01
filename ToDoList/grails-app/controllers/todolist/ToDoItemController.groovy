@@ -20,12 +20,11 @@ class ToDoItemController {
         def newItemStartDate=params.itemStartDate
         def newItemEndDate=params.itemEndDate
         def newItemRepeat=params.itemRepeat
-        def newItemRemindDate=params.itemsRemindDate
+        def newItemRemindDate=params.itemRemindDate
         def newItemPriority=params.itemPriority
 
         new ToDoItem(name: newItemName, description: newItemDescription, location: newItemLocation, startDate: newItemStartDate, endDate: newItemEndDate,
-        repeat: newItemRepeat, remind: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
-        //new ToDoItem(description: newDescription).save(failOnError: true)
+        repeat: newItemRepeat, remindDate: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
 
         redirect action: "index"
     }
@@ -70,6 +69,11 @@ class ToDoItemController {
         [itemsContainingWord: itemsContainingWord]
       }
 
+    def delete(Long id){
+        def toDoItemInstace=ToDoItem.findById(id)
+        toDoItemInstace.delete(flush: true)
 
+            redirect(action: "index")
+    }
 
 }

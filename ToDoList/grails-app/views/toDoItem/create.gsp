@@ -48,7 +48,7 @@
         </p>
 
         <br/>
-
+        <g:actionSubmit value="Cancel" action="index"/>
         <input type="submit" value="Add new"> </input>
     </g:form>
 </div>

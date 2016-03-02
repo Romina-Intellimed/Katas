@@ -44,7 +44,9 @@
         </tr>
     </g:each>
 </table>
-
+<g:form controller="toDoItem">
+    <g:actionSubmit value="Cancel" action="index"/>
+</g:form>
 </body>
 
 </html>

@@ -30,7 +30,7 @@
 </br>
 <table>
     <tr>
-        <th>Name</th>
+        <th><a href="<g:createLink action="sort" />">Name</a></th>
         <th>Decription</th>
         <th>Start Date</th>
         <th>End Date</th>

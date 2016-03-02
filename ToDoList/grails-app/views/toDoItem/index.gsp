@@ -15,14 +15,19 @@
 <body>
 
 <p>
-    <a href="<g:createLink action="create"/>"><g:img dir="images" file="add.png" width="30" height="30"/></a>
-    New Task
+    <a href="<g:createLink action="create"/>"><g:img dir="images" file="add.png" width="25" height="25" /></a>
+   <span class="newTaskField"> New Task</span>
 </p>
+</br>
+<div>
+<p>
 <g:form name="searchItem" url="[controller: 'toDoItem', action: 'search']">
-    <input type="submit" class="search"/>
+    <input type="submit" class="search" value="" />
     <g:textField name="entry" value="Type the searched entry" var="searchedItem"></g:textField>
 </g:form>
-
+</p>
+</div>
+</br>
 <table>
     <tr>
         <th>Name</th>

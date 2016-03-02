@@ -13,15 +13,24 @@
 </head>
 
 <body>
-    <div>
-        <p>Task Name: ${toDoItemInstance?.name}</p>
-        <p>Task Description: ${toDoItemInstance?.description}</p>
-        <p>Location: ${toDoItemInstance?.location}</p>
-        <p>Start Date: ${toDoItemInstance?.startDate}</p>
-        <p>End Date: ${toDoItemInstance?.endDate}</p>
-        <p>Repeat Task: ${toDoItemInstance?.repeat}</p>
-        <p>Remind Date: ${toDoItemInstance?.remindDate}</p>
-        <p>Task Priority: ${toDoItemInstance?.priority}</p>
-    </div>
-</body>
+<div>
+    <p>Task Name: ${toDoItemInstance?.name}</p>
+
+    <p>Task Description: ${toDoItemInstance?.description}</p>
+
+    <p>Location: ${toDoItemInstance?.location}</p>
+
+    <p>Start Date: ${toDoItemInstance?.startDate}</p>
+
+    <p>End Date: ${toDoItemInstance?.endDate}</p>
+
+    <p>Repeat Task: ${toDoItemInstance?.repeat}</p>
+
+    <p>Remind Date: ${toDoItemInstance?.remindDate}</p>
+
+    <p>Task Priority: ${toDoItemInstance?.priority}</p>
+</div>
+<g:form controller="toDoItem">
+    <g:actionSubmit value="Cancel" action="index"/>
+</g:form>
 </html>

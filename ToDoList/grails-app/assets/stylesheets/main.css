@@ -601,6 +601,15 @@ a.skip {
 
 .search{
     background: url(../images/search.png);
+    background-size: 40px 30px;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+}
+
+.newTaskField{
+    text-align: center;
+    margin: auto;
 }
 
 .textField.left {

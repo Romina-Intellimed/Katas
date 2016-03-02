@@ -598,6 +598,11 @@ a.skip {
 }
 
 /* Text fields alignment*/
+
+.search{
+    background: url(../images/search.png);
+}
+
 .textField.left {
     width: 30%;
     float: left;

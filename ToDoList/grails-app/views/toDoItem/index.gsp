@@ -19,7 +19,7 @@
         New Task
     </p>
     <g:form action="search" method="GET">
-        <g:img dir="images" file="search.png" width="30" height="30"/>
+        <a href="<g:createLink action="search" />"><g:img dir="images" file="search.png" width="30" height="30"/></a>
         <g:textField name="entry" value="Type the searched entry"></g:textField>
     </g:form>
 

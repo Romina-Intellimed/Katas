@@ -245,10 +245,12 @@ class TetrisGameSpec extends Specification {
     void "in a 3x3 board block hits another block"() {
         given:
         tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).buildBoard()
+
+        when:
         tetrisGame.dropBlock()
         tetrisGame.blockFallsOneTimeAline()
 
-        expect:
+        then:
         assert tetrisGame.blockHasReachedAnotherBlock() == true
     }
 
@@ -274,7 +276,7 @@ class TetrisGameSpec extends Specification {
         assert tetrisGame.tetrisBoard.hasEmptySquares() == true
     }
 
-    void "in a 3x3 block a line collapses"() {
+    void "in a 3x3 block a floating top line collapses"() {
         given:
         tetrisGame.tetrisBoard.board = BoardBuilder.aBoard().withSize(3, 3).withFilledSquares(2, 1).withFilledSquares(2, 2).withFilledSquares(1, 0).withFilledSquares(1, 1).withFilledSquares(1, 2).buildBoard()
         when:

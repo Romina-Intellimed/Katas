@@ -31,12 +31,13 @@ class TetrisGameColabSpec extends Specification {
     void "test tetrisGame in isolation"() {
         given:
         def boardStub = Mock(TetrisBoard)
-        boardStub.initTheBoard(*_) >> BoardBuilder.aBoard().withSize(2, 2).buildBoard()
+        def expectedBoard = BoardBuilder.aBoard().withSize(2, 2).buildBoard()
+        boardStub.initTheBoard(*_) >> expectedBoard
         def tetrisGame = new TetrisGame(tetrisBoard: boardStub)
         when:
         def board= tetrisGame.tetrisBoard.initTheBoard(2,2)
         then:
-        assert board == BoardBuilder.aBoard().withSize(2, 2).buildBoard()
+        assert board == expectedBoard
     }
 
 

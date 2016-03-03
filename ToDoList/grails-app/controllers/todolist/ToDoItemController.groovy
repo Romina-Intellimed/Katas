@@ -4,16 +4,8 @@ import grails.transaction.Transactional
 
 class ToDoItemController {
 
-    def todoListItems
-    def order=false
-
     def index() {
-        def item = ToDoItem.findAll()
-        if(!order) {
-            todoListItems = ToDoItem.findAll()
-        }
-        return [helloString    : "In Show ToDoList page", todoListItems: todoListItems,todoList:ToDoItem.list(),
-                learnGrailsItem: item ? item?.name : "Not found"]
+        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.findAll()]
     }
 
     def create() {
@@ -21,41 +13,40 @@ class ToDoItemController {
 
     def addNew() {
         def newItemName = params.itemName
-        def newItemDescription=params.itemDescription
-        def newItemLocation=params.itemLocation
-        def newItemStartDate=params.itemStartDate
-        def newItemEndDate=params.itemEndDate
-        def newItemRepeat=params.itemRepeat
-        def newItemRemindDate=params.itemRemindDate
-        def newItemPriority=params.itemPriority
+        def newItemDescription = params.itemDescription
+        def newItemLocation = params.itemLocation
+        def newItemStartDate = params.itemStartDate
+        def newItemEndDate = params.itemEndDate
+        def newItemRepeat = params.itemRepeat
+        def newItemRemindDate = params.itemRemindDate
+        def newItemPriority = params.itemPriority
 
         new ToDoItem(name: newItemName, description: newItemDescription, location: newItemLocation, startDate: newItemStartDate, endDate: newItemEndDate,
-        repeat: newItemRepeat, remindDate: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
+                repeat: newItemRepeat, remindDate: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
 
         redirect action: "index"
     }
 
 
-
-    def show(Long id){
+    def show(Long id) {
         def toDoItemInstance = ToDoItem.findById(id)
-        if(!toDoItemInstance){
+        if (!toDoItemInstance) {
             redirect(action: "index")
         }
-        [toDoItemInstance:toDoItemInstance]
+        [toDoItemInstance: toDoItemInstance]
     }
 
 
-    def edit(Long id){
+    def edit(Long id) {
         def toDoItemInstance = ToDoItem.findById(id)
-        if(!toDoItemInstance){
+        if (!toDoItemInstance) {
             redirect(action: "index")
         }
-        [toDoItemInstance:toDoItemInstance]
+        [toDoItemInstance: toDoItemInstance]
     }
 
     @Transactional
-    def save(){
+    def save() {
         println(params)
         def toDoItemInstance = ToDoItem.findById(params.id)
         toDoItemInstance.setName(params.name)
@@ -63,7 +54,7 @@ class ToDoItemController {
         toDoItemInstance.setLocation(params.location)
         toDoItemInstance.setStartDate(params.startDate)
         toDoItemInstance.setEndDate(params.endDate)
-        toDoItemInstance.setRepeat(params.repeat? true: false)
+        toDoItemInstance.setRepeat(params.repeat ? true : false)
         toDoItemInstance.setRemindDate(params.remindDate)
         toDoItemInstance.setPriority(PriorityType.valueOf(params.priority))
         toDoItemInstance.save(failOnError: true)
@@ -71,46 +62,64 @@ class ToDoItemController {
 
     }
 
-    def search(){
+    def search() {
 
-        def itemsContainingWord=ToDoItem.findAllByNameIlike("${params.entry}%")
+        def itemsContainingWord = ToDoItem.findAllByNameIlike("${params.entry}%")
 
-        if(!itemsContainingWord){
+        if (!itemsContainingWord) {
             redirect(action: "index")
         }
         [itemsContainingWord: itemsContainingWord]
-      }
+    }
 
-    def delete(Long id){
-        def toDoItemInstace=ToDoItem.findById(id)
+    def delete(Long id) {
+        def toDoItemInstace = ToDoItem.findById(id)
         toDoItemInstace.delete(flush: true)
 
-            redirect(action: "index")
+        redirect(action: "index")
     }
 
 
-    def sort_byName(){
-        todoListItems= ToDoItem.findAll().sort{it.name}
-        order=true
-        redirect(action: "index", params: [todoListItems:todoListItems])
+    def sort_byName() {
+        def todoListItems = ToDoItem.findAll().sort { it.name }
+        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 
-    def sort_byStartDate(){
-        todoListItems= ToDoItem.findAll().sort{it.startDate}
-        order=true
-        redirect(action: "index", params: [todoListItems:todoListItems])
+    def sort_byStartDate() {
+        def todoListItems = ToDoItem.findAll().sort { it.startDate }
+        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 
-    def sort_byEndDate(){
-        todoListItems= ToDoItem.findAll().sort{it.endDate}
-        order=true
-        redirect(action: "index", params: [todoListItems:todoListItems])
+    def sort_byEndDate() {
+        def todoListItems = ToDoItem.findAll().sort { it.endDate }
+        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 
-    def sort_byRemindDate(){
-        todoListItems= ToDoItem.findAll().sort{it.remindDate}
-        order=true
-        redirect(action: "index", params: [todoListItems:todoListItems])
+    def sort_byRemindDate() {
+        def todoListItems = ToDoItem.findAll().sort { it.remindDate }
+        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+    }
+
+    def sort() {
+        def todoListItems
+        print "${params.name}"
+        switch ("${params.name}") {
+            case 'name':
+                todoListItems = ToDoItem.findAll().sort { it.name }
+                break;
+            case 'startDate':
+                todoListItems = ToDoItem.findAll().sort { it.startDate }
+                break
+            case 'endDate':
+                todoListItems = ToDoItem.findAll().sort { it.endDate }
+                break
+            case 'remindDate':
+                todoListItems = ToDoItem.findAll().sort { it.remindDate }
+                break
+            default:
+                todoListItems=ToDoItem.findAll()
+        }
+
     }
 
 }

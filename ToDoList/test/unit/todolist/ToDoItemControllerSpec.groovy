@@ -37,7 +37,7 @@ class ToDoItemControllerSpec extends Specification {
         assert [todoItem, todoItem2] == actualListItems
     }
 
-    void "test index return model"() {
+    void "test index returns model"() {
         when:
         def toDoItemModel = controller.index()
         then:

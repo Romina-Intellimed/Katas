@@ -31,6 +31,6 @@
     <p>Task Priority: ${toDoItemInstance?.priority}</p>
 </div>
 <g:form controller="toDoItem">
-    <g:actionSubmit value="Cancel" action="index"/>
+    <g:actionSubmit value="Back" action="index"/>
 </g:form>
 </html>

@@ -86,7 +86,6 @@ class ToDoItemController {
     }
 
     private renderIndex( todoListItems) {
-
         render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 

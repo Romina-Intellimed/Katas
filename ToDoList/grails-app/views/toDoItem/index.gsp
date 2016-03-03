@@ -23,7 +23,7 @@
 <p>
 <g:form name="searchItem" url="[controller: 'toDoItem', action: 'search']">
     <input type="submit" class="search" value="" />
-    <g:textField name="entry" value="Type the searched entry" var="searchedItem"></g:textField>
+    <g:textField name="entry" placeholder="Type the searched entry" var="searchedItem"></g:textField>
     %{--<g:select name="orderBy" from="${todoList}" value="${todoList}"/>--}%
 </g:form>
 </p>

@@ -90,8 +90,32 @@ class ToDoItemController {
     }
 
 
-    def sort(){
+    def sort_byName(){
         todoListItems= ToDoItem.findAll().sort{it.name}
+        order=true
+        println todoListItems
+        println toDoItemFields
+        redirect(action: "index", params: [todoListItems:todoListItems])
+    }
+
+    def sort_byStartDate(){
+        todoListItems= ToDoItem.findAll().sort{it.startDate}
+        order=true
+        println todoListItems
+        println toDoItemFields
+        redirect(action: "index", params: [todoListItems:todoListItems])
+    }
+
+    def sort_byEndDate(){
+        todoListItems= ToDoItem.findAll().sort{it.endDate}
+        order=true
+        println todoListItems
+        println toDoItemFields
+        redirect(action: "index", params: [todoListItems:todoListItems])
+    }
+
+    def sort_byRemindDate(){
+        todoListItems= ToDoItem.findAll().sort{it.remindDate}
         order=true
         println todoListItems
         println toDoItemFields

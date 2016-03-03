@@ -31,12 +31,12 @@
 </br>
 <table>
     <tr>
-        <th><a href="<g:createLink action="sort" id=""/>">Name</a></th>
+        <th><a href="<g:createLink action="sort_byName" id=""/>">Name</a></th>
         <th>Description</th>
-        <th>Start Date</th>
-        <th>End Date</th>
+        <th><a href="<g:createLink action="sort_byStartDate" id=""/>">Start Date</a></th>
+        <th><a href="<g:createLink action="sort_byEndDate" id=""/>">End Date</a></th>
         <th>Repeat</th>
-        <th>Remind Date</th>
+        <th><a href="<g:createLink action="sort_byRemindDate" id=""/>">Remind Date</a></th>
         <th>Priority</th>
         <th>More Actions</th>
     </tr>

@@ -62,4 +62,16 @@ class ToDoItemControllerSpec extends Specification {
         assert [] == model.todoListItems
 
     }
+
+    void "save calls corresponding service method"() {
+        given:
+        params.priority = "NORMAL"
+        controller.toDoItemService = Mock(ToDoItemService)
+
+        when:
+        controller.save()
+
+        then:
+        1*controller.toDoItemService.save(*_)
+    }
 }

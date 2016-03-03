@@ -21,6 +21,6 @@ class ToDoItemSpec extends Specification {
         then: "the toString method will display both name and description"
 
         toDoItem.toString()=="Groovy, Read Groovy in Action"
-
+        toDoItem.getProperties()
     }
 }

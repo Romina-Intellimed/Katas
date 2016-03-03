@@ -5,15 +5,15 @@ import grails.transaction.Transactional
 class ToDoItemController {
 
     def todoListItems
-    def order='asc'
+    def order=false
+    def toDoItemFields=ToDoItem.declaredFields.each {it->it.name}
+
     def index() {
-        //def item = ToDoItem.findByNameLike("Learn Grails%")
         def item = ToDoItem.findAll()
-        if(order=='asc') {
+        if(!order) {
             todoListItems = ToDoItem.findAll()
         }
-
-        return [helloString    : "In Show ToDoList page", todoListItems: todoListItems,
+        return [helloString    : "In Show ToDoList page", todoListItems: todoListItems,todoList:ToDoItem.list(),
                 learnGrailsItem: item ? item?.name : "Not found"]
     }
 
@@ -92,12 +92,10 @@ class ToDoItemController {
 
     def sort(){
         todoListItems= ToDoItem.findAll().sort{it.name}
-        //def items=ToDoItem.findAll().sort {it.name}
-        //[items:items]
-        order=''
-        print todoListItems
+        order=true
+        println todoListItems
+        println toDoItemFields
         redirect(action: "index", params: [todoListItems:todoListItems])
-        //render todoListItems
     }
 
 }

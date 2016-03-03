@@ -24,14 +24,15 @@
 <g:form name="searchItem" url="[controller: 'toDoItem', action: 'search']">
     <input type="submit" class="search" value="" />
     <g:textField name="entry" value="Type the searched entry" var="searchedItem"></g:textField>
+    %{--<g:select name="orderBy" from="${todoList}" value="${todoList}"/>--}%
 </g:form>
 </p>
 </div>
 </br>
 <table>
     <tr>
-        <th><a href="<g:createLink action="sort" />">Name</a></th>
-        <th>Decription</th>
+        <th><a href="<g:createLink action="sort" id=""/>">Name</a></th>
+        <th>Description</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Repeat</th>

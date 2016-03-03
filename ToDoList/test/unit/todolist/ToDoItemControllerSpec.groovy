@@ -18,7 +18,7 @@ class ToDoItemControllerSpec extends Specification {
     }
 
     void "index returns empty list when no to do items"() {
-       when:
+        when:
         def actualListItems = controller.index().todoListItems
 
         then:
@@ -36,4 +36,14 @@ class ToDoItemControllerSpec extends Specification {
         then:
         assert [todoItem, todoItem2] == actualListItems
     }
+
+    void "test toDoItem model"() {
+        when:
+        def toDoItemmodel=controller.index()
+        then:
+        assert toDoItemmodel.helloString=="In Show ToDoList page"
+        assert toDoItemmodel.todoListItems == []
+
+    }
+
 }

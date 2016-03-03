@@ -37,13 +37,29 @@ class ToDoItemControllerSpec extends Specification {
         assert [todoItem, todoItem2] == actualListItems
     }
 
-    void "test toDoItem model"() {
+    void "test index return model"() {
         when:
-        def toDoItemmodel=controller.index()
+        def toDoItemModel = controller.index()
         then:
-        assert toDoItemmodel.helloString=="In Show ToDoList page"
-        assert toDoItemmodel.todoListItems == []
+        assert "In Show ToDoList page" == toDoItemModel.helloString
+        assert [] == toDoItemModel.todoListItems
 
     }
 
+    void "sort_byName renders corresponding view"() {
+        when:
+        controller.sort_byName()
+        then:
+        assert "/toDoItem/index" == view
+
+    }
+
+
+    void "sort_byName renders corresponding model"() {
+        when:
+        controller.sort_byName()
+        then:
+        assert [] == model.todoListItems
+
+    }
 }

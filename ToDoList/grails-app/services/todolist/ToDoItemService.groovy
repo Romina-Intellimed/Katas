@@ -5,7 +5,9 @@ import grails.transaction.Transactional
 @Transactional
 class ToDoItemService {
 
-    def serviceMethod() {
-
+    def save(toDoItemId, toDoItemData) {
+        def toDoItemInstance = ToDoItem.findById(toDoItemId)
+        toDoItemInstance.properties = toDoItemData
+        toDoItemInstance.save(failOnError: true)
     }
 }

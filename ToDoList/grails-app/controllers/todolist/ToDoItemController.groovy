@@ -4,6 +4,8 @@ import grails.transaction.Transactional
 
 class ToDoItemController {
 
+    def toDoItemService
+
     def index() {
         return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.findAll()]
     }
@@ -45,19 +47,17 @@ class ToDoItemController {
         [toDoItemInstance: toDoItemInstance]
     }
 
-    @Transactional
     def save() {
-        println(params)
-        def toDoItemInstance = ToDoItem.findById(params.id)
-        toDoItemInstance.setName(params.name)
-        toDoItemInstance.setDescription(params.description)
-        toDoItemInstance.setLocation(params.location)
-        toDoItemInstance.setStartDate(params.startDate)
-        toDoItemInstance.setEndDate(params.endDate)
-        toDoItemInstance.setRepeat(params.repeat ? true : false)
-        toDoItemInstance.setRemindDate(params.remindDate)
-        toDoItemInstance.setPriority(PriorityType.valueOf(params.priority))
-        toDoItemInstance.save(failOnError: true)
+        def toDoItemData = [:]
+        toDoItemData.name = params.name
+        toDoItemData.description = params.description
+        toDoItemData.location = params.location
+        toDoItemData.startDate = params.startDate
+        toDoItemData.endDate = params.endDate
+        toDoItemData.repeat = params.repeat ? true : false
+        toDoItemData.remindDate = params.remindDate
+        toDoItemData.priority = PriorityType.valueOf(params.priority)
+        toDoItemService.save(params.id, toDoItemData)
         redirect action: "index"
 
     }

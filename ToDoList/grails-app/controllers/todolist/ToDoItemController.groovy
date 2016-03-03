@@ -14,17 +14,22 @@ class ToDoItemController {
     }
 
     def addNew() {
-        def newItemName = params.itemName
-        def newItemDescription = params.itemDescription
-        def newItemLocation = params.itemLocation
-        def newItemStartDate = params.itemStartDate
-        def newItemEndDate = params.itemEndDate
-        def newItemRepeat = params.itemRepeat
-        def newItemRemindDate = params.itemRemindDate
-        def newItemPriority = params.itemPriority
+        def toDoItemData=[:]
 
+        toDoItemData.name = params.itemName
+        toDoItemData.description = params.itemDescription
+        toDoItemData.location = params.itemLocation
+        toDoItemData.startDate = params.itemStartDate
+        toDoItemData.endDate = params.itemEndDate
+        toDoItemData.repeat = params.itemRepeat
+        toDoItemData.remindDate = params.itemRemindDate
+        toDoItemData.priority = params.itemPriority
+
+        toDoItemService.addNew(toDoItemData)
+/*
         new ToDoItem(name: newItemName, description: newItemDescription, location: newItemLocation, startDate: newItemStartDate, endDate: newItemEndDate,
                 repeat: newItemRepeat, remindDate: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
+*/
 
         redirect action: "index"
     }

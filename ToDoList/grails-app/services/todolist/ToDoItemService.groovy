@@ -10,4 +10,11 @@ class ToDoItemService {
         toDoItemInstance.properties = toDoItemData
         toDoItemInstance.save(failOnError: true)
     }
+
+
+    def addNew(toDoItemData){
+        def toDoItemInstance=new ToDoItem()
+        toDoItemInstance.properties=toDoItemData
+        toDoItemInstance.save(failOnError: true)
+    }
 }

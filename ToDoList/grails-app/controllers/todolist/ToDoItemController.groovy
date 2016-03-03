@@ -81,9 +81,7 @@ class ToDoItemController {
 
 
     def sort_byName() {
-       // def todoListItems=ToDoItem.list(sort:'name')
-        //def todoListItems = ToDoItem.findAll().sort { it.name }
-        def todoListItems=ToDoItem.findAll(" from ToDoItem as item order by item.name")
+       def todoListItems=ToDoItem.list(sort:'name')
         renderIndex(todoListItems)
     }
 
@@ -92,17 +90,17 @@ class ToDoItemController {
     }
 
     def sort_byStartDate() {
-        def todoListItems = ToDoItem.findAll(" from ToDoItem as item order by item.startDate")
+        def todoListItems=ToDoItem.list(sort:'startDate')
         renderIndex(todoListItems)
     }
 
     def sort_byEndDate() {
-        def todoListItems = ToDoItem.findAll(" from ToDoItem as item order by item.endDate")
+        def todoListItems=ToDoItem.list(sort:'endDate')
         renderIndex(todoListItems)
     }
 
     def sort_byRemindDate() {
-        def todoListItems =  ToDoItem.findAll(" from ToDoItem as item order by item.remindDate")
+        def todoListItems=ToDoItem.list(sort:'remindDate')
         renderIndex(todoListItems)
     }
 

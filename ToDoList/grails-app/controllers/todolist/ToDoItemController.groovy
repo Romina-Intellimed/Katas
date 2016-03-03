@@ -100,26 +100,6 @@ class ToDoItemController {
         render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 
-    def sort() {
-        def todoListItems
-        print "${params.name}"
-        switch ("${params.name}") {
-            case 'name':
-                todoListItems = ToDoItem.findAll().sort { it.name }
-                break;
-            case 'startDate':
-                todoListItems = ToDoItem.findAll().sort { it.startDate }
-                break
-            case 'endDate':
-                todoListItems = ToDoItem.findAll().sort { it.endDate }
-                break
-            case 'remindDate':
-                todoListItems = ToDoItem.findAll().sort { it.remindDate }
-                break
-            default:
-                todoListItems=ToDoItem.findAll()
-        }
 
-    }
 
 }

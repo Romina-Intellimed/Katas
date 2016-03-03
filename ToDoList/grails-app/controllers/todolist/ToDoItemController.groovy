@@ -82,22 +82,27 @@ class ToDoItemController {
 
     def sort_byName() {
         def todoListItems = ToDoItem.findAll().sort { it.name }
+        renderIndex(todoListItems)
+    }
+
+    private renderIndex( todoListItems) {
+
         render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
     }
 
     def sort_byStartDate() {
         def todoListItems = ToDoItem.findAll().sort { it.startDate }
-        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+        renderIndex(todoListItems)
     }
 
     def sort_byEndDate() {
         def todoListItems = ToDoItem.findAll().sort { it.endDate }
-        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+        renderIndex(todoListItems)
     }
 
     def sort_byRemindDate() {
         def todoListItems = ToDoItem.findAll().sort { it.remindDate }
-        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+        renderIndex(todoListItems)
     }
 
 

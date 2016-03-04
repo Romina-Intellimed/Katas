@@ -78,8 +78,8 @@ class ToDoItemControllerSpec extends Specification {
     void "save calls corresponding service method with the right params"() {
         given:
         controller.toDoItemService = Mock(ToDoItemService)
-        saveRequestParamsReceived()
-        def expectedToDoItemData = buildExpectedToDoItemDataForSave()
+        requestParamsReceived()
+        def expectedToDoItemData = buildExpectedToDoItemData()
 
         when:
         controller.save()
@@ -91,8 +91,8 @@ class ToDoItemControllerSpec extends Specification {
     void "add calls corresponding service method with the right params"(){
         given:
         controller.toDoItemService=Mock(ToDoItemService)
-        addNewRequestParamsReceived()
-        def expectedToDoItemData=buildExpectedToDoItemDataForAddNew()
+        requestParamsReceived()
+        def expectedToDoItemData=buildExpectedToDoItemData()
         println expectedToDoItemData
 
         when:
@@ -102,20 +102,7 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.addNew(expectedToDoItemData)
     }
 
-    private buildExpectedToDoItemDataForSave() {
-        def expectedToDoItemData = [:]
-        expectedToDoItemData.name = params.name
-        expectedToDoItemData.description = params.description
-        expectedToDoItemData.location = params.location
-        expectedToDoItemData.startDate = params.startDate
-        expectedToDoItemData.endDate = params.endDate
-        expectedToDoItemData.repeat = params.repeat
-        expectedToDoItemData.remindDate = params.remindDate
-        expectedToDoItemData.priority = PriorityType.NORMAL
-        expectedToDoItemData
-    }
-
-    private buildExpectedToDoItemDataForAddNew() {
+    private buildExpectedToDoItemData() {
         def expectedToDoItemData = [:]
         expectedToDoItemData.name = params.name
         expectedToDoItemData.description = params.description
@@ -128,7 +115,7 @@ class ToDoItemControllerSpec extends Specification {
         expectedToDoItemData
     }
 
-    private void addNewRequestParamsReceived() {
+    private void requestParamsReceived() {
         params.id = "22"
         params.name = "name"
         params.description = "description"
@@ -138,18 +125,5 @@ class ToDoItemControllerSpec extends Specification {
         params.repeat = true
         params.remindDate = new Date()
         params.priority = PriorityType.NORMAL
-    }
-
-    private void saveRequestParamsReceived() {
-        params.id = "22"
-        params.name = "name"
-        params.description = "description"
-        params.location = "location"
-        params.startDate = new Date()
-        params.endDate = new Date()
-        params.repeat = true
-        params.remindDate = new Date()
-        params.priority = PriorityType.NORMAL
-
     }
 }

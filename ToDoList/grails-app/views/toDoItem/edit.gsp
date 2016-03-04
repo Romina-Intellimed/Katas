@@ -50,7 +50,7 @@
 
     <p>
         <label>Repeat</label>
-        <g:checkBox name="repeat" value="${toDoItemInstance.repeat}"/>
+        <g:checkBox name="repeat" value="${toDoItemInstance.repeat? true: false}"/>
 
     </p>
     <br/>

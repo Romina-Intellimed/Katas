@@ -72,9 +72,9 @@ class ToDoItemControllerSpec extends Specification {
         controller.save()
 
         then:
-        1*controller.toDoItemService.save(*_)
+        1 * controller.toDoItemService.save(*_)
     }
-    
+
     void "save calls corresponding service method with the right params"() {
         given:
         controller.toDoItemService = Mock(ToDoItemService)
@@ -83,9 +83,9 @@ class ToDoItemControllerSpec extends Specification {
 
         when:
         controller.save()
-        
+
         then:
-        1*controller.toDoItemService.save(params.id, expectedToDoItemData)
+        1 * controller.toDoItemService.save(params.id, expectedToDoItemData)
     }
 
 
@@ -97,20 +97,20 @@ class ToDoItemControllerSpec extends Specification {
         controller.addNew()
 
         then:
-        1*controller.toDoItemService.addNew(*_)
+        1 * controller.toDoItemService.addNew(*_)
     }
 
-    void "add calls corresponding service method with the right params"(){
+    void "add calls corresponding service method with the right params"() {
         given:
-        controller.toDoItemService=Mock(ToDoItemService)
+        controller.toDoItemService = Mock(ToDoItemService)
         requestParamsReceived()
-        def expectedToDoItemData=buildExpectedToDoItemData()
+        def expectedToDoItemData = buildExpectedToDoItemData()
 
         when:
         controller.addNew()
 
         then:
-        1*controller.toDoItemService.addNew(expectedToDoItemData)
+        1 * controller.toDoItemService.addNew(expectedToDoItemData)
     }
 
     private buildExpectedToDoItemData() {
@@ -139,15 +139,24 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
-    void "test delete calls corresponding service method"(){
+    void "test delete calls corresponding service method"() {
         given:
-        def id=params.id
-        controller.toDoItemService=Mock(ToDoItemService)
+        def id = params.id
+        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.delete(id)
         then:
-        1*controller.toDoItemService.delete(*_)
+        1 * controller.toDoItemService.delete(*_)
     }
 
+    void "test delete called with tight params calls corresponding service method"() {
+        given:
+        Long id = 22
+        controller.toDoItemService = Mock(ToDoItemService)
+        when:
+        controller.delete(id)
+        then:
+        1 * controller.toDoItemService.delete(id)
+    }
 
 }

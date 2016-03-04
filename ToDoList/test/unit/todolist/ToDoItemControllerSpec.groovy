@@ -149,7 +149,7 @@ class ToDoItemControllerSpec extends Specification {
         params.endDate = new Date()
         params.repeat = true
         params.remindDate = new Date()
-        params.priority = "NORMAL"
+        params.priority = PriorityType.NORMAL
 
     }
 }

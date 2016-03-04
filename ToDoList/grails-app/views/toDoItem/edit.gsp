@@ -65,7 +65,7 @@
     <p>
         <label>Prioriy</label>
         <g:select name="priority" id="itemPrioriy" from="${todolist.PriorityType.values()}"
-                  value="${toDoItemInstance.priority}" optionValue="id"></g:select>
+                  value="${toDoItemInstance.priority}"></g:select>
     </p>
     <br/>
     <g:actionSubmit value="Cancel" action="index"/>

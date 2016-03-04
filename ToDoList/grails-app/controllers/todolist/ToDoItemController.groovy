@@ -57,7 +57,7 @@ class ToDoItemController {
         toDoItemData.endDate = params.endDate
         toDoItemData.repeat = params.repeat
         toDoItemData.remindDate = params.remindDate
-        toDoItemData.priority = PriorityType.valueOf(params.priority)
+        toDoItemData.priority = params.priority
         toDoItemService.save(params.id, toDoItemData)
         redirect action: "index"
 

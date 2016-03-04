@@ -12,6 +12,8 @@ import spock.lang.Specification
 class ToDoItemControllerSpec extends Specification {
 
     def setup() {
+        controller.toDoItemService = Mock(ToDoItemService)
+
     }
 
     def cleanup() {
@@ -56,6 +58,8 @@ class ToDoItemControllerSpec extends Specification {
 
 
     void "sort_byName renders corresponding model"() {
+        given:
+        controller.toDoItemService.sort_byName()>>[]
         when:
         controller.sort_byName()
         then:
@@ -66,7 +70,6 @@ class ToDoItemControllerSpec extends Specification {
     void "save calls corresponding service method"() {
         given:
         params.priority = "NORMAL"
-        controller.toDoItemService = Mock(ToDoItemService)
 
         when:
         controller.save()
@@ -77,7 +80,6 @@ class ToDoItemControllerSpec extends Specification {
 
     void "save calls corresponding service method with the right params"() {
         given:
-        controller.toDoItemService = Mock(ToDoItemService)
         requestParamsReceived()
         def expectedToDoItemData = buildExpectedToDoItemData()
 
@@ -90,8 +92,6 @@ class ToDoItemControllerSpec extends Specification {
 
 
     void "add calls corresponding service method"() {
-        given:
-        controller.toDoItemService = Mock(ToDoItemService)
 
         when:
         controller.addNew()
@@ -102,7 +102,6 @@ class ToDoItemControllerSpec extends Specification {
 
     void "add calls corresponding service method with the right params"() {
         given:
-        controller.toDoItemService = Mock(ToDoItemService)
         requestParamsReceived()
         def expectedToDoItemData = buildExpectedToDoItemData()
 

@@ -66,7 +66,7 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
-    void "save fails for an inexistant item"(){
+    void "does not update an inexistant item"(){
         given:
         def todoItem=new ToDoItem()
         def todoItemData=buildToDoItemData()

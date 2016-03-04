@@ -31,7 +31,7 @@ class ToDoItemController {
 
 
     def show(Long id) {
-        def toDoItemInstance = ToDoItem.findById(id)
+        def toDoItemInstance = toDoItemService.show(id)
         if (!toDoItemInstance) {
             redirect(action: "index")
         }
@@ -40,7 +40,7 @@ class ToDoItemController {
 
 
     def edit(Long id) {
-        def toDoItemInstance = ToDoItem.findById(id)
+        def toDoItemInstance = toDoItemService.edit(id)
         if (!toDoItemInstance) {
             redirect(action: "index")
         }
@@ -62,9 +62,15 @@ class ToDoItemController {
 
     }
 
+    def delete(Long id) {
+        toDoItemService.delete(id)
+        redirect(action: "index")
+    }
+
+
     def search() {
 
-        def itemsContainingWord = ToDoItem.findAllByNameIlike("${params.entry}%")
+        def itemsContainingWord = toDoItemService.search("${params.entry}%")
 
         if (!itemsContainingWord) {
             redirect(action: "index")
@@ -72,30 +78,26 @@ class ToDoItemController {
         [itemsContainingWord: itemsContainingWord]
     }
 
-    def delete(Long id) {
-        toDoItemService.delete(id)
-        redirect(action: "index")
-    }
 
 
     def sort_byName() {
-       def todoListItems=ToDoItem.list(sort:'name')
+        def todoListItems=toDoItemService.sort_byName()
         renderIndex(todoListItems)
     }
 
 
     def sort_byStartDate() {
-        def todoListItems=ToDoItem.list(sort:'startDate')
+        def todoListItems=toDoItemService.sort_byStartDate()
         renderIndex(todoListItems)
     }
 
     def sort_byEndDate() {
-        def todoListItems=ToDoItem.list(sort:'endDate')
+        def todoListItems=toDoItemService.sort_byEndDate()
         renderIndex(todoListItems)
     }
 
     def sort_byRemindDate() {
-        def todoListItems=ToDoItem.list(sort:'remindDate')
+        def todoListItems=toDoItemService.sort_byRemindDate()
         renderIndex(todoListItems)
     }
 

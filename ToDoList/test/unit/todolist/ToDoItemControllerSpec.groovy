@@ -137,4 +137,17 @@ class ToDoItemControllerSpec extends Specification {
         params.remindDate = new Date()
         params.priority = PriorityType.NORMAL
     }
+
+
+    void "test delete calls corresponding service method"(){
+        given:
+        def id=params.id
+        controller.toDoItemService=Mock(ToDoItemService)
+        when:
+        controller.delete(id)
+        then:
+        1*controller.toDoItemService.delete(*_)
+    }
+
+
 }

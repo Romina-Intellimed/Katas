@@ -19,7 +19,7 @@ class ToDoItemService {
     }
 
 
-    def delete(Long id){
+    def delete(id){
         def toDoItemInstace = ToDoItem.findById(id)
         toDoItemInstace.delete(flush: true)
 

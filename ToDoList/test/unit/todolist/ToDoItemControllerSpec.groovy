@@ -88,6 +88,19 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.save(params.id, expectedToDoItemData)
     }
 
+    void "add calls corresponding service method with the right params"(){
+        given:
+        controller.toDoItemService=Mock(ToDoItemService)
+        saveRequestParamsReceived()
+        //def expectedToDoItemData=buildExpectedToDoItemDataForSave()
+
+        when:
+        controller.addNew()
+
+        then:
+        1*controller.toDoItemService.addNew(params)
+    }
+
     private buildExpectedToDoItemDataForSave() {
         def expectedToDoItemData = [:]
         expectedToDoItemData.name = params.name
@@ -111,5 +124,6 @@ class ToDoItemControllerSpec extends Specification {
         params.repeat = "on"
         params.remindDate = new Date()
         params.priority = "NORMAL"
+
     }
 }

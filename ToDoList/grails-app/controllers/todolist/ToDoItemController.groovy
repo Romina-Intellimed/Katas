@@ -26,10 +26,6 @@ class ToDoItemController {
         toDoItemData.priority = params.itemPriority
 
         toDoItemService.addNew(toDoItemData)
-/*
-        new ToDoItem(name: newItemName, description: newItemDescription, location: newItemLocation, startDate: newItemStartDate, endDate: newItemEndDate,
-                repeat: newItemRepeat, remindDate: newItemRemindDate, priority: newItemPriority).save(failOnError: true)
-*/
 
         redirect action: "index"
     }
@@ -78,9 +74,7 @@ class ToDoItemController {
     }
 
     def delete(Long id) {
-        def toDoItemInstace = ToDoItem.findById(id)
-        toDoItemInstace.delete(flush: true)
-
+        toDoItemService.delete(id)
         redirect(action: "index")
     }
 

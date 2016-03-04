@@ -16,14 +16,14 @@ class ToDoItemController {
     def addNew() {
         def toDoItemData=[:]
 
-        toDoItemData.name = params.itemName
-        toDoItemData.description = params.itemDescription
-        toDoItemData.location = params.itemLocation
-        toDoItemData.startDate = params.itemStartDate
-        toDoItemData.endDate = params.itemEndDate
-        toDoItemData.repeat = params.itemRepeat
-        toDoItemData.remindDate = params.itemRemindDate
-        toDoItemData.priority = params.itemPriority
+        toDoItemData.name = params.name
+        toDoItemData.description = params.description
+        toDoItemData.location = params.location
+        toDoItemData.startDate = params.startDate
+        toDoItemData.endDate = params.endDate
+        toDoItemData.repeat = params.repeat
+        toDoItemData.remindDate = params.remindDate
+        toDoItemData.priority = params.priority
 
         toDoItemService.addNew(toDoItemData)
 
@@ -84,9 +84,6 @@ class ToDoItemController {
         renderIndex(todoListItems)
     }
 
-    private renderIndex( todoListItems) {
-        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
-    }
 
     def sort_byStartDate() {
         def todoListItems=ToDoItem.list(sort:'startDate')
@@ -103,6 +100,9 @@ class ToDoItemController {
         renderIndex(todoListItems)
     }
 
+    private renderIndex( todoListItems) {
+        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+    }
 
 
 }

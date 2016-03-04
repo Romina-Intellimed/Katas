@@ -17,33 +17,33 @@
     <g:form name="createNewToDoItem" url="[controller: 'toDoItem', action: 'addNew']">
         <h1>Enter details for the new Task</h1>
         <p>
-        <label >Name</label><input type="text" value="" name="itemName"/>
+        <label >Name</label><input type="text" value="" name="name"/>
         <br/>
         </p>
         <p>
-        <label>Description</label><input type="text" value="" name="itemDescription"> </input>
+        <label>Description</label><input type="text" value="" name="description"> </input>
         <br/>
         </p>
         <p>
-        <label>Location</label><input type="text" value="" name="itemLocation"> </input>
+        <label>Location</label><input type="text" value="" name="location"> </input>
         </p>
-        <label>Start Date</label><g:datePicker name="itemStartDate" value="${new Date()}"
+        <label>Start Date</label><g:datePicker name="startDate" value="${new Date()}"
                       precision="day" years="${2016..2070}"/>
         <p>
-        <label>End Date</label><g:datePicker name="itemEndDate" value="${new Date()}"
+        <label>End Date</label><g:datePicker name="endDate" value="${new Date()}"
                                                        precision="day" years="${2016..2070}"/>
         </p>
         <p>
-        <label>Repeat</label><g:checkBox name="itemRepeat" value="${false}" />
+        <label>Repeat</label><g:checkBox name="repeat" value="${false}" />
         </p>
 
         <p>
-            <label>Remind Date</label><g:datePicker name="itemRemindDate" value="${new Date()}"
+            <label>Remind Date</label><g:datePicker name="remindDate" value="${new Date()}"
                                                  precision="day" years="${2016..2070}"/>
         </p>
         <p>
         <label>Priority</label>
-        <g:select name="itemPriority" id="itemPrioriy" from="${todolist.PriorityType.values()}" value="${todolist.PriorityType}"  optionValue="id"></g:select>
+        <g:select name="itemPriority" id="prioriy" from="${todolist.PriorityType.values()}" value="${todolist.PriorityType}"  optionValue="id"></g:select>
         <br/>
         </p>
 

@@ -2,6 +2,7 @@ package todolist
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import spock.lang.IgnoreRest
 import spock.lang.Specification
 
 /**
@@ -88,17 +89,19 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.save(params.id, expectedToDoItemData)
     }
 
+    @IgnoreRest
     void "add calls corresponding service method with the right params"(){
         given:
         controller.toDoItemService=Mock(ToDoItemService)
         saveRequestParamsReceived()
-        //def expectedToDoItemData=buildExpectedToDoItemDataForSave()
+        def expectedToDoItemData=buildExpectedToDoItemDataForSave()
+        println expectedToDoItemData
 
         when:
         controller.addNew()
 
         then:
-        1*controller.toDoItemService.addNew(params)
+        1*controller.toDoItemService.addNew(expectedToDoItemData)
     }
 
     private buildExpectedToDoItemDataForSave() {

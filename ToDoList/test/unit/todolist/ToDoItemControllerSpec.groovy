@@ -93,7 +93,6 @@ class ToDoItemControllerSpec extends Specification {
         controller.toDoItemService=Mock(ToDoItemService)
         requestParamsReceived()
         def expectedToDoItemData=buildExpectedToDoItemData()
-        println expectedToDoItemData
 
         when:
         controller.addNew()

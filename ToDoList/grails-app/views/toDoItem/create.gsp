@@ -43,7 +43,8 @@
         </p>
         <p>
         <label>Priority</label>
-        <g:select name="priority" id="itemPrioriy" from="${todolist.PriorityType.values()}" value="${todolist.PriorityType}"  optionValue="id"></g:select>
+        <g:select name="priority" id="itemPrioriy" from="${todolist.PriorityType.values()}" value=""
+                  optionValue="id" noSelection="${['':'Select One...']}"></g:select>
         <br/>
         </p>
 

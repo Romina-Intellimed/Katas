@@ -7,8 +7,11 @@ class ToDoItemService {
 
     def save(toDoItemId, toDoItemData) {
         def toDoItemInstance = ToDoItem.findById(toDoItemId)
+        if(toDoItemInstance!=null){
         toDoItemInstance.properties = toDoItemData
         toDoItemInstance.save(failOnError: true)
+        }
+        return toDoItemInstance
     }
 
 

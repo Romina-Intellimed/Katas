@@ -2,6 +2,8 @@ package todolist
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import grails.validation.ValidationException
+import spock.lang.FailsWith
 import spock.lang.Specification
 
 /**
@@ -48,4 +50,35 @@ class ToDoItemServiceSpec extends Specification {
         toDoItemData.priority = PriorityType.NORMAL
         toDoItemData
     }
+
+    @FailsWith(ValidationException)
+    void "save fails when received name is null"(){
+        given:
+        def todoItem=new ToDoItem(name:"initial name").save(failOnError: true)
+        def todoItemData=buildToDoItemData()
+        todoItemData.name=null
+
+        when:
+        def actualToDoItem=service.save(todoItem.id,todoItemData)
+
+        then:
+        assert actualToDoItem == todoItem
+    }
+
+
+    void "save fails for an inexistant item"(){
+        given:
+        def todoItem=new ToDoItem()
+        def todoItemData=buildToDoItemData()
+        when:
+
+        def actualToDoItem=service.save(todoItem.id,todoItemData)
+
+        then:
+        assert actualToDoItem == null
+    }
+
+
+
+
 }

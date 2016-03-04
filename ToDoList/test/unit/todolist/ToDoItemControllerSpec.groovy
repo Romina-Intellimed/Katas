@@ -88,6 +88,18 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.save(params.id, expectedToDoItemData)
     }
 
+
+    void "add calls corresponding service method"() {
+        given:
+        controller.toDoItemService = Mock(ToDoItemService)
+
+        when:
+        controller.addNew()
+
+        then:
+        1*controller.toDoItemService.addNew(*_)
+    }
+
     void "add calls corresponding service method with the right params"(){
         given:
         controller.toDoItemService=Mock(ToDoItemService)

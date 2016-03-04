@@ -88,7 +88,7 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.save(params.id, expectedToDoItemData)
     }
 
-    private void buildExpectedToDoItemDataForSave() {
+    private buildExpectedToDoItemDataForSave() {
         def expectedToDoItemData = [:]
         expectedToDoItemData.name = params.name
         expectedToDoItemData.description = params.description

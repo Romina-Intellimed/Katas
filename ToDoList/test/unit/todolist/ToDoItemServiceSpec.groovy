@@ -97,13 +97,12 @@ class ToDoItemServiceSpec extends Specification {
         assert actualToDoItem.priority == PriorityType.NORMAL
 
     }
+
     @FailsWith(ValidationException)
     void "add fails when received name is null"() {
-
         given:
         def todoItemData = buildToDoItemData()
-        todoItemData.name=null
-
+        todoItemData.name = null
         when:
         def actualToDoItem = service.addNew(todoItemData)
         then:
@@ -111,7 +110,18 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
+    void "delete deletes an item with a given id"() {
+        given:
+        def todoItemData = buildToDoItemData()
+        def actualToDoItem = service.addNew(todoItemData)
 
+        when:
+        def result=service.delete(actualToDoItem.id)
+
+        then:
+        assert result == true
+
+    }
 
 
 }

@@ -27,7 +27,7 @@
         <th>More Actions</th>
     </tr>
 
-       <g:render template="/toDoItem/toDoItemsTable" model="${[itemsContainingWord: itemsContainingWord]}"/>
+       <g:render template="/toDoItem/toDoItemsTable" model="[toDoListItems: itemsContainingWord]"/>
 </table>
 <g:form controller="toDoItem">
     <g:actionSubmit value="Back" action="index"/>

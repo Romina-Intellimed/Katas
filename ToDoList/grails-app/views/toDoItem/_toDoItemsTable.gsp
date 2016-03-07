@@ -1,4 +1,4 @@
-<g:each in="${itemsContainingWord}" var="item">
+<g:each in="${toDoListItems}" var="item">
     <tr onclick='document.location = "<g:createLink action='show' id='${item.id}'/>" '>
         <td>${item?.name}</td>
         <td>${item?.description}</td>

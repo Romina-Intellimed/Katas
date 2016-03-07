@@ -78,6 +78,17 @@ class ToDoItemServiceSpec extends Specification {
         assert actualToDoItem == null
     }
 
+    void "add adds a new item"(){
+        given:
+        def todoItemData = buildToDoItemData()
+
+        when:
+        def actualToDoItem = service.addNew(todoItemData)
+
+        then:
+        assert  actualToDoItem.id !=null
+
+    }
 
 
 

@@ -124,4 +124,11 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
+    void "delete fails when given id does not exist"(){
+        when:
+        def result=service.delete(22)
+        then:
+        assert result==null
+    }
+
 }

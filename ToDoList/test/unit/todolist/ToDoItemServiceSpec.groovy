@@ -13,8 +13,10 @@ import spock.lang.Specification
 @Mock([ToDoItem])
 class ToDoItemServiceSpec extends Specification {
     def id
+    def todoItemData
     def setup() {
         id = 22
+        todoItemData=buildToDoItemData()
     }
 
     def cleanup() {
@@ -23,7 +25,6 @@ class ToDoItemServiceSpec extends Specification {
     void "save updates properties of item with given id"() {
         given:
         def todoItem = new ToDoItem(name: "initial name").save(failOnError: true)
-        def todoItemData = buildToDoItemData()
 
         when:
         def actualToDoItem = service.save(todoItem.id, todoItemData)
@@ -56,7 +57,6 @@ class ToDoItemServiceSpec extends Specification {
     void "save fails when received name is null"() {
         given:
         def todoItem = new ToDoItem(name: "initial name").save(failOnError: true)
-        def todoItemData = buildToDoItemData()
         todoItemData.name = null
 
         when:
@@ -70,7 +70,6 @@ class ToDoItemServiceSpec extends Specification {
     void "does not update an inexistant item"() {
         given:
         def todoItem = new ToDoItem()
-        def todoItemData = buildToDoItemData()
         when:
 
         def actualToDoItem = service.save(todoItem.id, todoItemData)
@@ -80,9 +79,6 @@ class ToDoItemServiceSpec extends Specification {
     }
 
     void "add adds a new item"() {
-        given:
-        def todoItemData = buildToDoItemData()
-
         when:
         def actualToDoItem = service.addNew(todoItemData)
 
@@ -102,7 +98,6 @@ class ToDoItemServiceSpec extends Specification {
     @FailsWith(ValidationException)
     void "add fails when received name is null"() {
         given:
-        def todoItemData = buildToDoItemData()
         todoItemData.name = null
         when:
         def actualToDoItem = service.addNew(todoItemData)
@@ -113,7 +108,6 @@ class ToDoItemServiceSpec extends Specification {
 
     void "delete deletes an item with a given id"() {
         given:
-        def todoItemData = buildToDoItemData()
         def actualToDoItem = service.addNew(todoItemData)
 
         when:

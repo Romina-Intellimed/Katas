@@ -166,37 +166,67 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
-    void createListOfItems(){
-        new ToDoItem(name: "A",startDate: new Date(), endDate: new Date(),priority: PriorityType.HIGH,remindDate: new Date()).save(failOnError: true)
-        new ToDoItem(name: "B",startDate: new Date(), endDate: new Date(),priority: PriorityType.NORMAL,remindDate: new Date()).save(failOnError: true)
-        new ToDoItem(name: "C",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
-        new ToDoItem(name: "AC",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
-        new ToDoItem(name: "BC",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
-
+    def createListOfItems() {
+        List listOfItems = []
+        listOfItems.add(new ToDoItem(name: "A", startDate: new Date(), endDate: new Date(), priority: PriorityType.HIGH, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "B", startDate: new Date(), endDate: new Date(), priority: PriorityType.NORMAL, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "C", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "AC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "BC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
+        return listOfItems
     }
 
-    void "search return the items with name like given word"(){
+    void "search return the items with name like given word"() {
         given:
-        createListOfItems()
-        def entry="A"
+        def listOfItems = createListOfItems()
+        def entry = "A"
 
         when:
-        def listOfItems=service.search(entry)
+        def actuallistOfItems = service.search(entry)
 
         then:
-        assert listOfItems.size()==1
-        assert listOfItems.get(0).name=="A"
+        assert actuallistOfItems.size() == 1
+        assert actuallistOfItems.get(0).name == "A"
     }
-    void "search return empty list if there is no item name like given word"(){
+
+    void "search return empty list if there is no item name like given word"() {
         given:
         createListOfItems()
-        def entry="D"
+        def entry = "D"
 
         when:
-        def listOfItems=service.search(entry)
+        def listOfItems = service.search(entry)
 
         then:
-        assert listOfItems.size()==0
+        assert listOfItems.size() == 0
     }
+
+    void "sort_ByName returns an ordered list by name"() {
+        given:
+        createListOfItems()
+        when:
+        def listOfItems = service.sort_byName()
+        then:
+        assert listOfItems.get(0).name == 'A'
+        assert listOfItems.get(1).name == 'AC'
+        assert listOfItems.get(2).name == 'B'
+        assert listOfItems.get(3).name == 'BC'
+        assert listOfItems.get(4).name == 'C'
+    }
+
+
+    void "sort_ByStartDate returns an ordered list by startDate"() {
+        given:
+        createListOfItems()
+        when:
+        def listOfItems = service.sort_byStartDate()
+        then:
+        assert listOfItems.get(0).name == 'A'
+        assert listOfItems.get(1).name == 'B'
+        assert listOfItems.get(2).name == 'C'
+        assert listOfItems.get(3).name == 'AC'
+        assert listOfItems.get(4).name == 'BC'
+    }
+
 
 }

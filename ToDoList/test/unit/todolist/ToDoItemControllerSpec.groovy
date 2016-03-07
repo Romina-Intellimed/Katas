@@ -168,6 +168,37 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.show(*_)
     }
 
+    void "test show called with tight params calls corresponding service method"() {
+        given:
+        Long id = 22
+        controller.toDoItemService = Mock(ToDoItemService)
+        when:
+        controller.show(id)
+        then:
+        1 * controller.toDoItemService.show(id)
+    }
+
+
+
+    void "test edit called with tight params calls corresponding service method"() {
+        given:
+        Long id = 22
+        controller.toDoItemService = Mock(ToDoItemService)
+        when:
+        controller.edit(id)
+        then:
+        1 * controller.toDoItemService.edit(id)
+    }
+
+    void "test edit calls corresponding service method"(){
+        given:
+        def id = params.id
+        controller.toDoItemService = Mock(ToDoItemService)
+        when:
+        controller.edit(id)
+        then:
+        1 * controller.toDoItemService.edit(*_)
+    }
 
 
 

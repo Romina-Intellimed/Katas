@@ -12,8 +12,9 @@ import spock.lang.Specification
 @TestFor(ToDoItemService)
 @Mock([ToDoItem])
 class ToDoItemServiceSpec extends Specification {
-
+    def id
     def setup() {
+        id = 22
     }
 
     def cleanup() {
@@ -126,7 +127,7 @@ class ToDoItemServiceSpec extends Specification {
 
     void "delete fails when given id does not exist"(){
         when:
-        def result=service.delete(22)
+        def result=service.delete(id)
         then:
         assert result==null
     }
@@ -149,12 +150,12 @@ class ToDoItemServiceSpec extends Specification {
     }
 
     void "show return null if given id does not exist"() {
-        given:
-        def id = 22
         when:
         def actualToDoItemInstance=service.show(id)
         then:
         assert actualToDoItemInstance==null
     }
+
+
 
 }

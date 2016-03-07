@@ -272,11 +272,40 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
+    void "test sortByStartDate renders the right view"(){
+        given:
+        def toDoSortByStartDateItems
+        controller.toDoItemService.sort_byStartDate()>>toDoSortByStartDateItems
+
+        when:
+        controller.sort_byStartDate()
+
+        then:
+        view=="/toDoItem/index"
+        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByStartDateItems]
+
+    }
+
     void "test sortByEndDate calls correponding service method"() {
         when:
         controller.sort_byEndDate()
         then:
         1 * controller.toDoItemService.sort_byEndDate()
+    }
+
+
+    void "test sortByEndDate renders the right view"(){
+        given:
+        def toDoSortByEndDateItems
+        controller.toDoItemService.sort_byEndDate()>>toDoSortByEndDateItems
+
+        when:
+        controller.sort_byEndDate()
+
+        then:
+        view=="/toDoItem/index"
+        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByEndDateItems]
+
     }
 
 

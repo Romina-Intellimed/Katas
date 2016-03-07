@@ -87,6 +87,14 @@ class ToDoItemServiceSpec extends Specification {
 
         then:
         assert  actualToDoItem.id !=null
+        assert actualToDoItem.name=="new name"
+        assert actualToDoItem.description=="description"
+        assert actualToDoItem.location == "location"
+        assert actualToDoItem.startDate == new Date()
+        assert actualToDoItem.endDate == new Date()
+        assert actualToDoItem.repeat == true
+        assert actualToDoItem.remindDate == new Date()
+        assert actualToDoItem.priority == PriorityType.NORMAL
 
     }
 

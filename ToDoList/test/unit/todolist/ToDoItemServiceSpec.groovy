@@ -147,4 +147,14 @@ class ToDoItemServiceSpec extends Specification {
         assert actualToDoItemInstance.remindDate==toDoItem.remindDate
         assert actualToDoItemInstance.repeat==toDoItem.repeat
     }
+
+    void "show return null if given id does not exist"() {
+        given:
+        def id = 22
+        when:
+        def actualToDoItemInstance=service.show(id)
+        then:
+        assert actualToDoItemInstance==null
+    }
+
 }

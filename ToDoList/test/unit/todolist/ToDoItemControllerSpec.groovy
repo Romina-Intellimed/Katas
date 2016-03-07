@@ -251,18 +251,13 @@ class ToDoItemControllerSpec extends Specification {
         given:
         def toDoSortByNameItems
         controller.toDoItemService.sort_byName()>>toDoSortByNameItems
-
         when:
         controller.sort_byName()
-
         then:
         view=="/toDoItem/index"
         model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByNameItems]
 
     }
-
-
-
 
     void "test sortByStartDate calls correponding service method"() {
         when:

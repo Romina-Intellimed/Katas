@@ -21,6 +21,30 @@ class ToDoItemSpec extends Specification {
         then: "the toString method will display both name and description"
 
         toDoItem.toString()=="Groovy, Read Groovy in Action"
-        toDoItem.getProperties()
     }
+
+    void "a toDoItem with non empty name is valid"() {
+        given:
+        def toDoItem=new ToDoItem(name: "Groovy", description: "Read Groovy in Action")
+
+        expect:
+        toDoItem.validate()
+    }
+
+    void "a toDoItem with no name is invalid"() {
+        given:
+        def toDoItem=new ToDoItem()
+
+        expect:
+        toDoItem.validate() == false
+    }
+
+    void "a toDoItem with no desciption is valid"() {
+        given:
+        def toDoItem=new ToDoItem(name: "Default")
+
+        expect:
+        toDoItem.validate() == true
+    }
+
 }

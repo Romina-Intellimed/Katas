@@ -84,14 +84,14 @@ class ToDoItemServiceSpec extends Specification {
 
         then:
         assert actualToDoItem.id != null
-        assert actualToDoItem.name == "new name"
-        assert actualToDoItem.description == "description"
-        assert actualToDoItem.location == "location"
+        assert actualToDoItem.name == todoItemData.name
+        assert actualToDoItem.description == todoItemData.description
+        assert actualToDoItem.location == todoItemData.location
         assert actualToDoItem.startDate == todoItemData.startDate
         assert actualToDoItem.endDate == todoItemData.endDate
-        assert actualToDoItem.repeat == true
+        assert actualToDoItem.repeat == todoItemData.repeat
         assert actualToDoItem.remindDate == todoItemData.remindDate
-        assert actualToDoItem.priority == PriorityType.NORMAL
+        assert actualToDoItem.priority == todoItemData.priority
 
     }
 
@@ -111,10 +111,10 @@ class ToDoItemServiceSpec extends Specification {
         def actualToDoItem = service.addNew(todoItemData)
 
         when:
-        def result=service.delete(actualToDoItem.id)
+        service.delete(actualToDoItem.id)
 
         then:
-        assert result == true
+        assert ToDoItem.findById(actualToDoItem.id)==null
 
     }
 
@@ -129,7 +129,6 @@ class ToDoItemServiceSpec extends Specification {
 
     void "show returns a ToDoItem Instance for a given id"(){
         given:
-        def todoItemData = buildToDoItemData()
         def toDoItem = service.addNew(todoItemData)
         when:
         def actualToDoItemInstance=service.show(toDoItem.id)
@@ -149,6 +148,7 @@ class ToDoItemServiceSpec extends Specification {
         then:
         assert actualToDoItemInstance==null
     }
+
 
 
 

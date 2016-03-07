@@ -25,7 +25,6 @@ class ToDoItemService {
         def toDoItemInstace = ToDoItem.findById(id)
         if (toDoItemInstace != null) {
             toDoItemInstace.delete(flush: true)
-            return true
         }
 
     }

@@ -316,5 +316,18 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.sort_byRemindDate()
     }
 
+    void "test sortByRemindDate renders the right view"(){
+        given:
+        def toDoSortByRemindDateItems
+        controller.toDoItemService.sort_byRemindDate()>>toDoSortByRemindDateItems
+
+        when:
+        controller.sort_byRemindDate()
+
+        then:
+        view=="/toDoItem/index"
+        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByRemindDateItems]
+
+    }
 
 }

@@ -207,4 +207,30 @@ class ToDoItemControllerSpec extends Specification {
         1*controller.toDoItemService.sort_byName()
     }
 
+
+    void "test sortByStartDate calls correponding service method"(){
+        when:
+        controller.sort_byStartDate()
+        then:
+        1*controller.toDoItemService.sort_byStartDate()
+    }
+
+
+    void "test sortByEndDate calls correponding service method"(){
+        when:
+        controller.sort_byEndDate()
+        then:
+        1*controller.toDoItemService.sort_byEndDate()
+    }
+
+
+    void "test sortByRemindDate calls correponding service method"(){
+        when:
+        controller.sort_byRemindDate()
+        then:
+        1*controller.toDoItemService.sort_byRemindDate()
+    }
+
+
+
 }

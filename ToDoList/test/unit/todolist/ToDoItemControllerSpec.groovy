@@ -199,4 +199,12 @@ class ToDoItemControllerSpec extends Specification {
 
     }
 
+
+    void "test sortByName calls correponding service method"(){
+        when:
+        controller.sort_byName()
+        then:
+        1*controller.toDoItemService.sort_byName()
+    }
+
 }

@@ -191,6 +191,12 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.edit(*_)
     }
 
+    void "test search calls corresponding service method"(){
+        when:
+        controller.search()
+        then:
+        1*controller.toDoItemService.search(*_)
 
+    }
 
 }

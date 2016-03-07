@@ -178,7 +178,7 @@ class ToDoItemServiceSpec extends Specification {
 
     void "search return the items with name like given word"() {
         given:
-        def listOfItems = createListOfItems()
+        createListOfItems()
         def entry = "A"
 
         when:
@@ -203,55 +203,43 @@ class ToDoItemServiceSpec extends Specification {
 
     void "sort_ByName returns an ordered list by name"() {
         given:
-        createListOfItems()
+        def items=createListOfItems()
+        def expectedItems=items.sort{it.name}
         when:
         def listOfItems = service.sort_byName()
         then:
-        assert listOfItems.get(0).name == 'A'
-        assert listOfItems.get(1).name == 'AC'
-        assert listOfItems.get(2).name == 'B'
-        assert listOfItems.get(3).name == 'BC'
-        assert listOfItems.get(4).name == 'C'
+        assert expectedItems==listOfItems
     }
 
 
     void "sort_ByStartDate returns an ordered list by startDate"() {
         given:
-        createListOfItems()
+        def items=createListOfItems()
+        def expectedItems=items.sort{it.startDate}
         when:
         def listOfItems = service.sort_byStartDate()
         then:
-        assert listOfItems.get(0).name == 'A'
-        assert listOfItems.get(1).name == 'B'
-        assert listOfItems.get(2).name == 'C'
-        assert listOfItems.get(3).name == 'AC'
-        assert listOfItems.get(4).name == 'BC'
+        assert expectedItems==listOfItems
     }
 
 
     void "sort_ByEndDate returns an ordered list by endDate"() {
         given:
-        createListOfItems()
+        def items=createListOfItems()
+        def expectedItems=items.sort{it.endDate}
         when:
         def listOfItems = service.sort_byEndDate()
         then:
-        assert listOfItems.get(0).name == 'B'
-        assert listOfItems.get(1).name == 'C'
-        assert listOfItems.get(2).name == 'AC'
-        assert listOfItems.get(3).name == 'BC'
-        assert listOfItems.get(4).name == 'A'
+        assert expectedItems==listOfItems
     }
 
     void "sort_ByRemindDate returns an ordered list by remindDate"() {
         given:
-        createListOfItems()
+        def items=createListOfItems()
+        def expectedItems=items.sort{it.remindDate}
         when:
         def listOfItems = service.sort_byRemindDate()
         then:
-        assert listOfItems.get(0).name == 'B'
-        assert listOfItems.get(1).name == 'C'
-        assert listOfItems.get(2).name == 'A'
-        assert listOfItems.get(3).name == 'AC'
-        assert listOfItems.get(4).name == 'BC'
+        assert expectedItems==listOfItems
     }
 }

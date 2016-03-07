@@ -154,6 +154,15 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.delete(id)
     }
 
+    void "test delete calls redirects to the right page"(){
+        when:
+        controller.delete(id)
+
+        then:
+        response.redirectedUrl == "/toDoItem/index"
+    }
+
+
     void "test show calls corresponding service method"(){
         given:
         def id = params.id

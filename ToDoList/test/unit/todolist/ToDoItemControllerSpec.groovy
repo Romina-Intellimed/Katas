@@ -22,7 +22,7 @@ class ToDoItemControllerSpec extends Specification {
 
     void "index returns empty list when no to do items"() {
         when:
-        def actualListItems = controller.index().todoListItems
+        def actualListItems = controller.index().toDoListItems
 
         then:
         assert [] == actualListItems
@@ -34,7 +34,7 @@ class ToDoItemControllerSpec extends Specification {
         def todoItem2 = new ToDoItem(name: "something 2").save()
 
         when:
-        def actualListItems = controller.index().todoListItems
+        def actualListItems = controller.index().toDoListItems
 
         then:
         assert [todoItem, todoItem2] == actualListItems
@@ -45,7 +45,7 @@ class ToDoItemControllerSpec extends Specification {
         def toDoItemModel = controller.index()
         then:
         assert "In Show ToDoList page" == toDoItemModel.helloString
-        assert [] == toDoItemModel.todoListItems
+        assert [] == toDoItemModel.toDoListItems
 
     }
 
@@ -64,7 +64,7 @@ class ToDoItemControllerSpec extends Specification {
         when:
         controller.sort_byName()
         then:
-        assert [] == model.todoListItems
+        assert [] == model.toDoListItems
 
     }
 
@@ -255,7 +255,7 @@ class ToDoItemControllerSpec extends Specification {
         controller.sort_byName()
         then:
         view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByNameItems]
+        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByNameItems]
 
     }
 
@@ -277,7 +277,7 @@ class ToDoItemControllerSpec extends Specification {
 
         then:
         view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByStartDateItems]
+        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByStartDateItems]
 
     }
 
@@ -299,7 +299,7 @@ class ToDoItemControllerSpec extends Specification {
 
         then:
         view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByEndDateItems]
+        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByEndDateItems]
 
     }
 
@@ -321,7 +321,7 @@ class ToDoItemControllerSpec extends Specification {
 
         then:
         view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByRemindDateItems]
+        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByRemindDateItems]
 
     }
 

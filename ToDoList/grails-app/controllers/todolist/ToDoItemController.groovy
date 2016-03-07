@@ -6,7 +6,7 @@ class ToDoItemController {
     def toDoItemService
 
     def index() {
-        return [helloString: "In Show ToDoList page", todoListItems: ToDoItem.findAll()]
+        return [helloString: "In Show ToDoList page", toDoListItems: ToDoItem.findAll()]
     }
 
     def create() {
@@ -101,7 +101,7 @@ class ToDoItemController {
     }
 
     private renderIndex( todoListItems) {
-        render view: "index", model: [helloString: "In Show ToDoList page", todoListItems: todoListItems]
+        render view: "index", model: [helloString: "In Show ToDoList page", toDoListItems: todoListItems]
     }
 
 

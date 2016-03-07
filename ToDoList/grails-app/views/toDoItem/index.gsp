@@ -39,7 +39,7 @@
         <th>Priority</th>
         <th>More Actions</th>
     </tr>
-    <g:render template="/toDoItem/toDoItemsTable" model="[toDoListItems: todoListItems]"/>
+    <g:render template="/toDoItem/toDoItemsTable" model="[toDoListItems: toDoListItems]"/>
 
 </table>
 

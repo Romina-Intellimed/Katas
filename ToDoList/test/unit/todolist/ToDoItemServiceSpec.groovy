@@ -143,4 +143,27 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
+    void "edit returns a ToDoItem Instance for a given id"() {
+        given:
+        def toDoItem = service.addNew(todoItemData)
+        when:
+        def actualToDoItemInstance = service.edit(toDoItem.id)
+        then:
+        assert actualToDoItemInstance.name == toDoItem.name
+        assert actualToDoItemInstance.description == toDoItem.description
+        assert actualToDoItemInstance.startDate == toDoItem.startDate
+        assert actualToDoItemInstance.endDate == toDoItem.endDate
+        assert actualToDoItemInstance.priority == toDoItem.priority
+        assert actualToDoItemInstance.remindDate == toDoItem.remindDate
+        assert actualToDoItemInstance.repeat == toDoItem.repeat
+    }
+
+    void "edit return null if given id does not exist"() {
+        when:
+        def actualToDoItemInstance = service.edit(id)
+        then:
+        actualToDoItemInstance == null
+    }
+
+
 }

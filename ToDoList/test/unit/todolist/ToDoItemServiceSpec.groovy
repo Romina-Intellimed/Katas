@@ -168,11 +168,11 @@ class ToDoItemServiceSpec extends Specification {
 
     def createListOfItems() {
         List listOfItems = []
-        listOfItems.add(new ToDoItem(name: "A", startDate: new Date(), endDate: new Date(), priority: PriorityType.HIGH, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "A", startDate: new Date(), endDate: new Date()+1, priority: PriorityType.HIGH, remindDate: new Date()+1).save(failOnError: true))
         listOfItems.add(new ToDoItem(name: "B", startDate: new Date(), endDate: new Date(), priority: PriorityType.NORMAL, remindDate: new Date()).save(failOnError: true))
         listOfItems.add(new ToDoItem(name: "C", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
-        listOfItems.add(new ToDoItem(name: "AC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
-        listOfItems.add(new ToDoItem(name: "BC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "AC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()+1).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "BC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()+2).save(failOnError: true))
         return listOfItems
     }
 
@@ -235,11 +235,11 @@ class ToDoItemServiceSpec extends Specification {
         when:
         def listOfItems = service.sort_byEndDate()
         then:
-        assert listOfItems.get(0).name == 'A'
-        assert listOfItems.get(1).name == 'B'
-        assert listOfItems.get(2).name == 'C'
-        assert listOfItems.get(3).name == 'AC'
-        assert listOfItems.get(4).name == 'BC'
+        assert listOfItems.get(0).name == 'B'
+        assert listOfItems.get(1).name == 'C'
+        assert listOfItems.get(2).name == 'AC'
+        assert listOfItems.get(3).name == 'BC'
+        assert listOfItems.get(4).name == 'A'
     }
 
     void "sort_ByRemindDate returns an ordered list by remindDate"() {
@@ -248,9 +248,9 @@ class ToDoItemServiceSpec extends Specification {
         when:
         def listOfItems = service.sort_byRemindDate()
         then:
-        assert listOfItems.get(0).name == 'A'
-        assert listOfItems.get(1).name == 'B'
-        assert listOfItems.get(2).name == 'C'
+        assert listOfItems.get(0).name == 'B'
+        assert listOfItems.get(1).name == 'C'
+        assert listOfItems.get(2).name == 'A'
         assert listOfItems.get(3).name == 'AC'
         assert listOfItems.get(4).name == 'BC'
     }

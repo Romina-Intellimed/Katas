@@ -11,6 +11,7 @@ import spock.lang.Specification
 @Mock([ToDoItem])
 class ToDoItemControllerSpec extends Specification {
     Long id
+
     def setup() {
         controller.toDoItemService = Mock(ToDoItemService)
         id = 22
@@ -59,7 +60,7 @@ class ToDoItemControllerSpec extends Specification {
 
     void "sort_byName renders corresponding model"() {
         given:
-        controller.toDoItemService.sort_byName()>>[]
+        controller.toDoItemService.sort_byName() >> []
         when:
         controller.sort_byName()
         then:
@@ -154,7 +155,7 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.delete(id)
     }
 
-    void "test delete calls redirects to the right page"(){
+    void "test delete calls redirects to the right page"() {
         when:
         controller.delete(id)
 
@@ -170,39 +171,39 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.show(id)
     }
 
-    void "test show called of inexistant item redirect to the right page"(){
+    void "test show called of inexistant item redirect to the right page"() {
         when:
         controller.show(id)
         then:
         response.redirectedUrl == "/toDoItem/index"
     }
 
-    void "test show called with existant item id returns the right model"(){
+    void "test show called with existant item id returns the right model"() {
         given:
-        def toDoItemInstance = new ToDoItem(name:"default")
+        def toDoItemInstance = new ToDoItem(name: "default")
         controller.toDoItemService.show(*_) >> toDoItemInstance
         when:
-        def actualShowModel=controller.show(0)
+        def actualShowModel = controller.show(0)
         then:
-        toDoItemInstance==actualShowModel.toDoItemInstance
+        toDoItemInstance == actualShowModel.toDoItemInstance
     }
 
 
-    void "test edit called of inexistant item redirect to the right page"(){
+    void "test edit called of inexistant item redirect to the right page"() {
         when:
         controller.edit(id)
         then:
         response.redirectedUrl == "/toDoItem/index"
     }
 
-    void "test edit called with existant item id returns the right model"(){
+    void "test edit called with existant item id returns the right model"() {
         given:
-        def toDoItemInstance = new ToDoItem(name:"default")
+        def toDoItemInstance = new ToDoItem(name: "default")
         controller.toDoItemService.edit(*_) >> toDoItemInstance
         when:
-        def actualShowModel=controller.edit(0)
+        def actualShowModel = controller.edit(0)
         then:
-        toDoItemInstance==actualShowModel.toDoItemInstance
+        toDoItemInstance == actualShowModel.toDoItemInstance
     }
 
     void "test edit called with tight params calls corresponding service method"() {
@@ -212,26 +213,26 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.edit(id)
     }
 
-    void "test search calls corresponding service method"(){
+    void "test search calls corresponding service method"() {
         when:
         controller.search()
         then:
-        1*controller.toDoItemService.search(*_)
+        1 * controller.toDoItemService.search(*_)
 
     }
 
 
-    void "test search called with right params returns the right model"(){
+    void "test search called with right params returns the right model"() {
         given:
         def toDoItems
         controller.toDoItemService.search(*_) >> toDoItems
         when:
-        def actualItems=controller.search()
+        def actualItems = controller.search()
         then:
-        toDoItems==actualItems.itemsContainingWord
+        toDoItems == actualItems.itemsContainingWord
     }
 
-    void "test search called of inexistant items redirect to the right page"(){
+    void "test search called of inexistant items redirect to the right page"() {
         when:
         controller.search()
         then:
@@ -239,37 +240,52 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
-    void "test sortByName calls correponding service method"(){
+    void "test sortByName calls correponding service method"() {
         when:
         controller.sort_byName()
         then:
-        1*controller.toDoItemService.sort_byName()
+        1 * controller.toDoItemService.sort_byName()
+    }
+
+    void "test sortByName renders the right view"(){
+        given:
+        def toDoSortByNameItems
+        controller.toDoItemService.sort_byName()>>toDoSortByNameItems
+
+        when:
+        controller.sort_byName()
+
+        then:
+        view=="/toDoItem/index"
+        model==[helloString: "In Show ToDoList page", todoListItems: toDoSortByNameItems]
+
     }
 
 
-    void "test sortByStartDate calls correponding service method"(){
+
+
+    void "test sortByStartDate calls correponding service method"() {
         when:
         controller.sort_byStartDate()
         then:
-        1*controller.toDoItemService.sort_byStartDate()
+        1 * controller.toDoItemService.sort_byStartDate()
     }
 
 
-    void "test sortByEndDate calls correponding service method"(){
+    void "test sortByEndDate calls correponding service method"() {
         when:
         controller.sort_byEndDate()
         then:
-        1*controller.toDoItemService.sort_byEndDate()
+        1 * controller.toDoItemService.sort_byEndDate()
     }
 
 
-    void "test sortByRemindDate calls correponding service method"(){
+    void "test sortByRemindDate calls correponding service method"() {
         when:
         controller.sort_byRemindDate()
         then:
-        1*controller.toDoItemService.sort_byRemindDate()
+        1 * controller.toDoItemService.sort_byRemindDate()
     }
-
 
 
 }

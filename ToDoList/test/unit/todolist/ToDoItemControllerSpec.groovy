@@ -163,24 +163,31 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
-    void "test show calls corresponding service method"(){
-        given:
-        def id = params.id
-        when:
-        controller.show(id)
-        then:
-        1 * controller.toDoItemService.show(*_)
-    }
-
     void "test show called with tight params calls corresponding service method"() {
-        given:
-
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.show(id)
         then:
         1 * controller.toDoItemService.show(id)
     }
+
+    void "test show called of inexistant item redirect to the right page"(){
+        when:
+        controller.show(id)
+        then:
+        response.redirectedUrl == "/toDoItem/index"
+    }
+
+    void "test show called with existant item id returns the right model"(){
+        given:
+        def toDoItemInstance = new ToDoItem(name:"default")
+        controller.toDoItemService.show(*_) >> toDoItemInstance
+        when:
+        def actualShowModel=controller.show(0)
+        then:
+        toDoItemInstance==actualShowModel.toDoItemInstance
+    }
+
+
 
 
 

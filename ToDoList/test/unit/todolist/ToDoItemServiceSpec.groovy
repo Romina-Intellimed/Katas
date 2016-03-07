@@ -14,9 +14,10 @@ import spock.lang.Specification
 class ToDoItemServiceSpec extends Specification {
     def id
     def todoItemData
+
     def setup() {
         id = 22
-        todoItemData=buildToDoItemData()
+        todoItemData = buildToDoItemData()
     }
 
     def cleanup() {
@@ -114,42 +115,32 @@ class ToDoItemServiceSpec extends Specification {
         service.delete(actualToDoItem.id)
 
         then:
-        assert ToDoItem.findById(actualToDoItem.id)==null
+        assert ToDoItem.findById(actualToDoItem.id) == null
 
     }
 
 
-    void "delete fails when given id does not exist"(){
-        when:
-        def result=service.delete(id)
-        then:
-        assert result==null
-    }
-
-
-    void "show returns a ToDoItem Instance for a given id"(){
+    void "show returns a ToDoItem Instance for a given id"() {
         given:
         def toDoItem = service.addNew(todoItemData)
         when:
-        def actualToDoItemInstance=service.show(toDoItem.id)
+        def actualToDoItemInstance = service.show(toDoItem.id)
         then:
-        assert actualToDoItemInstance.name==toDoItem.name
-        assert actualToDoItemInstance.description==toDoItem.description
-        assert actualToDoItemInstance.startDate==toDoItem.startDate
-        assert actualToDoItemInstance.endDate==toDoItem.endDate
-        assert actualToDoItemInstance.priority==toDoItem.priority
-        assert actualToDoItemInstance.remindDate==toDoItem.remindDate
-        assert actualToDoItemInstance.repeat==toDoItem.repeat
+        assert actualToDoItemInstance.name == toDoItem.name
+        assert actualToDoItemInstance.description == toDoItem.description
+        assert actualToDoItemInstance.startDate == toDoItem.startDate
+        assert actualToDoItemInstance.endDate == toDoItem.endDate
+        assert actualToDoItemInstance.priority == toDoItem.priority
+        assert actualToDoItemInstance.remindDate == toDoItem.remindDate
+        assert actualToDoItemInstance.repeat == toDoItem.repeat
     }
 
     void "show return null if given id does not exist"() {
         when:
-        def actualToDoItemInstance=service.show(id)
+        def actualToDoItemInstance = service.show(id)
         then:
-        assert actualToDoItemInstance==null
+        actualToDoItemInstance == null
     }
-
-
 
 
 }

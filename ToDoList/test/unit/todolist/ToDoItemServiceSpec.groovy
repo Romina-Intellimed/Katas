@@ -229,4 +229,29 @@ class ToDoItemServiceSpec extends Specification {
     }
 
 
+    void "sort_ByEndDate returns an ordered list by endDate"() {
+        given:
+        createListOfItems()
+        when:
+        def listOfItems = service.sort_byEndDate()
+        then:
+        assert listOfItems.get(0).name == 'A'
+        assert listOfItems.get(1).name == 'B'
+        assert listOfItems.get(2).name == 'C'
+        assert listOfItems.get(3).name == 'AC'
+        assert listOfItems.get(4).name == 'BC'
+    }
+
+    void "sort_ByRemindDate returns an ordered list by remindDate"() {
+        given:
+        createListOfItems()
+        when:
+        def listOfItems = service.sort_byRemindDate()
+        then:
+        assert listOfItems.get(0).name == 'A'
+        assert listOfItems.get(1).name == 'B'
+        assert listOfItems.get(2).name == 'C'
+        assert listOfItems.get(3).name == 'AC'
+        assert listOfItems.get(4).name == 'BC'
+    }
 }

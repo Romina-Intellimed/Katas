@@ -158,6 +158,16 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.delete(id)
     }
 
+    void "test show calls corresponding service method"(){
+        given:
+        def id = params.id
+        controller.toDoItemService = Mock(ToDoItemService)
+        when:
+        controller.show(id)
+        then:
+        1 * controller.toDoItemService.show(*_)
+    }
+
 
 
 

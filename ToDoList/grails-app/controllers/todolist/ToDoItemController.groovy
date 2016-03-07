@@ -1,6 +1,5 @@
 package todolist
 
-import grails.transaction.Transactional
 
 class ToDoItemController {
 

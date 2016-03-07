@@ -167,9 +167,11 @@ class ToDoItemServiceSpec extends Specification {
 
 
     void createListOfItems(){
-        def firstToDoItem = new ToDoItem(name: "A",startDate: new Date(), endDate: new Date(),priority: PriorityType.HIGH,remindDate: new Date()).save(failOnError: true)
-        def secondToDoItem = new ToDoItem(name: "B",startDate: new Date(), endDate: new Date(),priority: PriorityType.NORMAL,remindDate: new Date()).save(failOnError: true)
-        def thirdToDoItem = new ToDoItem(name: "C",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
+        new ToDoItem(name: "A",startDate: new Date(), endDate: new Date(),priority: PriorityType.HIGH,remindDate: new Date()).save(failOnError: true)
+        new ToDoItem(name: "B",startDate: new Date(), endDate: new Date(),priority: PriorityType.NORMAL,remindDate: new Date()).save(failOnError: true)
+        new ToDoItem(name: "C",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
+        new ToDoItem(name: "AC",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
+        new ToDoItem(name: "BC",startDate: new Date(), endDate: new Date(),priority: PriorityType.LOW,remindDate: new Date()).save(failOnError: true)
 
     }
 
@@ -184,7 +186,17 @@ class ToDoItemServiceSpec extends Specification {
         then:
         assert listOfItems.size()==1
         assert listOfItems.get(0).name=="A"
+    }
+    void "search return empty list if there is no item name like given word"(){
+        given:
+        createListOfItems()
+        def entry="D"
 
+        when:
+        def listOfItems=service.search(entry)
+
+        then:
+        assert listOfItems.size()==0
     }
 
 }

@@ -10,10 +10,10 @@ import spock.lang.Specification
 @TestFor(ToDoItemController)
 @Mock([ToDoItem])
 class ToDoItemControllerSpec extends Specification {
-
+    Long id
     def setup() {
         controller.toDoItemService = Mock(ToDoItemService)
-
+        id = 22
     }
 
     def cleanup() {
@@ -141,7 +141,6 @@ class ToDoItemControllerSpec extends Specification {
     void "test delete calls corresponding service method"() {
         given:
         def id = params.id
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.delete(id)
         then:
@@ -149,9 +148,6 @@ class ToDoItemControllerSpec extends Specification {
     }
 
     void "test delete called with tight params calls corresponding service method"() {
-        given:
-        Long id = 22
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.delete(id)
         then:
@@ -161,7 +157,6 @@ class ToDoItemControllerSpec extends Specification {
     void "test show calls corresponding service method"(){
         given:
         def id = params.id
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.show(id)
         then:
@@ -170,7 +165,7 @@ class ToDoItemControllerSpec extends Specification {
 
     void "test show called with tight params calls corresponding service method"() {
         given:
-        Long id = 22
+
         controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.show(id)
@@ -181,9 +176,6 @@ class ToDoItemControllerSpec extends Specification {
 
 
     void "test edit called with tight params calls corresponding service method"() {
-        given:
-        Long id = 22
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.edit(id)
         then:
@@ -193,7 +185,6 @@ class ToDoItemControllerSpec extends Specification {
     void "test edit calls corresponding service method"(){
         given:
         def id = params.id
-        controller.toDoItemService = Mock(ToDoItemService)
         when:
         controller.edit(id)
         then:

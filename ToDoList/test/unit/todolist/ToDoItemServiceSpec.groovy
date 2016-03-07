@@ -23,7 +23,7 @@ class ToDoItemServiceSpec extends Specification {
         given:
         def todoItem = new ToDoItem(name: "initial name").save(failOnError: true)
         def todoItemData = buildToDoItemData()
-        
+
         when:
         def actualToDoItem = service.save(todoItem.id, todoItemData)
 
@@ -37,7 +37,7 @@ class ToDoItemServiceSpec extends Specification {
         todoItemData.remindDate == actualToDoItem.remindDate
         todoItemData.priority == actualToDoItem.priority
     }
-    
+
     private def buildToDoItemData() {
         def toDoItemData = [:]
         toDoItemData.name = "new name"
@@ -52,33 +52,33 @@ class ToDoItemServiceSpec extends Specification {
     }
 
     @FailsWith(ValidationException)
-    void "save fails when received name is null"(){
+    void "save fails when received name is null"() {
         given:
-        def todoItem=new ToDoItem(name:"initial name").save(failOnError: true)
-        def todoItemData=buildToDoItemData()
-        todoItemData.name=null
+        def todoItem = new ToDoItem(name: "initial name").save(failOnError: true)
+        def todoItemData = buildToDoItemData()
+        todoItemData.name = null
 
         when:
-        def actualToDoItem=service.save(todoItem.id,todoItemData)
+        def actualToDoItem = service.save(todoItem.id, todoItemData)
 
         then:
         assert actualToDoItem == todoItem
     }
 
 
-    void "does not update an inexistant item"(){
+    void "does not update an inexistant item"() {
         given:
-        def todoItem=new ToDoItem()
-        def todoItemData=buildToDoItemData()
+        def todoItem = new ToDoItem()
+        def todoItemData = buildToDoItemData()
         when:
 
-        def actualToDoItem=service.save(todoItem.id,todoItemData)
+        def actualToDoItem = service.save(todoItem.id, todoItemData)
 
         then:
         assert actualToDoItem == null
     }
 
-    void "add adds a new item"(){
+    void "add adds a new item"() {
         given:
         def todoItemData = buildToDoItemData()
 
@@ -86,18 +86,28 @@ class ToDoItemServiceSpec extends Specification {
         def actualToDoItem = service.addNew(todoItemData)
 
         then:
-        assert  actualToDoItem.id !=null
-        assert actualToDoItem.name=="new name"
-        assert actualToDoItem.description=="description"
+        assert actualToDoItem.id != null
+        assert actualToDoItem.name == "new name"
+        assert actualToDoItem.description == "description"
         assert actualToDoItem.location == "location"
-        assert actualToDoItem.startDate == new Date()
-        assert actualToDoItem.endDate == new Date()
+        assert actualToDoItem.startDate == todoItemData.startDate
+        assert actualToDoItem.endDate == todoItemData.endDate
         assert actualToDoItem.repeat == true
-        assert actualToDoItem.remindDate == new Date()
+        assert actualToDoItem.remindDate == todoItemData.remindDate
         assert actualToDoItem.priority == PriorityType.NORMAL
 
     }
+    @FailsWith(ValidationException)
+    void "add fails when received name is null"() {
 
+        given:
+        def todoItemData = buildToDoItemData()
+        todoItemData.name=null
 
+        when:
+        def actualToDoItem = service.addNew(todoItemData)
+        then:
+        assert actualToDoItem == null
+    }
 
 }

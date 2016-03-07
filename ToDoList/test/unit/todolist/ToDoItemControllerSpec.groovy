@@ -188,6 +188,27 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
+    void "test edit called of inexistant item redirect to the right page"(){
+        when:
+        controller.edit(id)
+        then:
+        response.redirectedUrl == "/toDoItem/index"
+    }
+
+    void "test edit called with existant item id returns the right model"(){
+        given:
+        def toDoItemInstance = new ToDoItem(name:"default")
+        controller.toDoItemService.edit(*_) >> toDoItemInstance
+        when:
+        def actualShowModel=controller.edit(0)
+        then:
+        toDoItemInstance==actualShowModel.toDoItemInstance
+    }
+
+
+
+
+
 
 
 
@@ -198,14 +219,7 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.edit(id)
     }
 
-    void "test edit calls corresponding service method"(){
-        given:
-        def id = params.id
-        when:
-        controller.edit(id)
-        then:
-        1 * controller.toDoItemService.edit(*_)
-    }
+
 
     void "test search calls corresponding service method"(){
         when:

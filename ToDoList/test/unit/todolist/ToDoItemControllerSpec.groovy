@@ -44,7 +44,6 @@ class ToDoItemControllerSpec extends Specification {
         when:
         def toDoItemModel = controller.index()
         then:
-        assert "In Show ToDoList page" == toDoItemModel.helloString
         assert [] == toDoItemModel.toDoListItems
 
     }

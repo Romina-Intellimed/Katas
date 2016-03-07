@@ -6,7 +6,7 @@ class ToDoItemController {
     def toDoItemService
 
     def index() {
-        return [helloString: "In Show ToDoList page", toDoListItems: ToDoItem.findAll()]
+        return [toDoListItems: ToDoItem.findAll()]
     }
 
     def create() {

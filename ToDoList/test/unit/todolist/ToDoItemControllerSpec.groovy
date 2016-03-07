@@ -205,13 +205,6 @@ class ToDoItemControllerSpec extends Specification {
         toDoItemInstance==actualShowModel.toDoItemInstance
     }
 
-
-
-
-
-
-
-
     void "test edit called with tight params calls corresponding service method"() {
         when:
         controller.edit(id)
@@ -219,14 +212,30 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.edit(id)
     }
 
-
-
     void "test search calls corresponding service method"(){
         when:
         controller.search()
         then:
         1*controller.toDoItemService.search(*_)
 
+    }
+
+
+    void "test search called with right params returns the right model"(){
+        given:
+        def toDoItems
+        controller.toDoItemService.search(*_) >> toDoItems
+        when:
+        def actualItems=controller.search()
+        then:
+        toDoItems==actualItems.itemsContainingWord
+    }
+
+    void "test search called of inexistant items redirect to the right page"(){
+        when:
+        controller.search()
+        then:
+        response.redirectedUrl == "/toDoItem/index"
     }
 
 

@@ -5,7 +5,11 @@
         <td><g:formatDate date="${item?.startDate}" format="yyyy-MM-dd"/></td>
         <td><g:formatDate date="${item?.endDate}" format="yyyy-MM-dd"/></td>
         <td>${item?.repeat ? "Yes" : "No"}</td>
-        <td>${item?.participant.name}</td>
+        <td>
+            <g:each in="${item?.participants}" var="participant">
+                <li>${participant?.name}</li>
+            </g:each>
+        </td>
         <td><g:formatDate date="${item?.remindDate}" format="yyyy-MM-dd"/></td>
         <td>${item?.priority}</td>
         <td>

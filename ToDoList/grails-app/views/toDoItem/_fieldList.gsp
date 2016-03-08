@@ -48,6 +48,14 @@
 
 
 <p>
+    <label>Participants</label>
+    <g:select name="participants" id ="itemParticipant" from="${todolist.ToDoParticipant.list()}" multiple="multiple" optionKey="id" size="5" value="${toDoItemInstance?.participants*.name}"/>
+
+</p>
+<br/>
+
+
+<p>
     <label>Remind Date</label>
     <g:datePicker precision="day" name="remindDate" value="${toDoItemInstance?.remindDate}"/>
 

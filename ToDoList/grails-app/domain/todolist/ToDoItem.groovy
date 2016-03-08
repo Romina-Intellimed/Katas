@@ -13,6 +13,7 @@ class ToDoItem {
     ToDoParticipant participant
     PriorityType priority
 
+    static hasMany = [participants:ToDoParticipant]
 
     static constraints = {
         description nullable: true
@@ -23,6 +24,7 @@ class ToDoItem {
         remindDate nullable: true
         priority nullable: true
         participant nullable: true
+        participants nullable: true
     }
 
     String toString(){

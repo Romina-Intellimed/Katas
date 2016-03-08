@@ -79,4 +79,12 @@ class ToDoItemService {
         def toDoItems = ToDoItem.findAll()
         return toDoItems
     }
+
+    def getToDoParticipants(participantsId){
+        def participantsList=[]
+        participantsId.each{
+            participantsList.add(ToDoParticipant.findById(it))
+        }
+        return participantsList
+    }
 }

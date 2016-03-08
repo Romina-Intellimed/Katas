@@ -38,15 +38,6 @@
 </p>
 <br/>
 
-
-<p>
-    <label>Participant</label>
-    <g:select name="participant" id ="itemParticipant" from="${todolist.ToDoParticipant.list()}" value="${toDoItemInstance?.participant?.name}"/>
-
-</p>
-<br/>
-
-
 <p>
     <label>Participants</label>
     <g:select name="participants" id ="itemParticipant" from="${todolist.ToDoParticipant.list()}" multiple="multiple" optionKey="id" size="5" value="${toDoItemInstance?.participants*.name}"/>

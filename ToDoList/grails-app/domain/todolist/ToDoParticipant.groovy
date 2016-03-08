@@ -4,9 +4,9 @@ class ToDoParticipant {
 
     String name
     Integer age
-    String emailAdress
+    String emailAddress
     static constraints = {
         age nullable: true
-        emailAdress nullable: true
+        emailAddress nullable: true
     }
 }

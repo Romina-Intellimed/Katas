@@ -59,10 +59,34 @@ class UserCanAddMoreParticipantsToAToDoItemSpec extends IntegrationSpec {
     }
 
     void "user can add more participants to an existing to do item"() {
+        given:
+        def participantsList = []
+        def participant1 = ToDoParticipant.list()[0]
+        def participant2 = ToDoParticipant.list()[1]
+        participantsList.add(participant1)
+        participantsList.add(participant2)
+        buildRequestParams(participantsList)
 
+        when:
+        controller.save()
+        def actualItem = ToDoItem.findByName(controller.params.name)
+
+        then:
+        participantsList == actualItem.participants
     }
 
     void "user can add one participant to an existing to do item"() {
+        given:
+        def participant = ToDoParticipant.list()[0]
+        def participantsList = []
+        participantsList.add(participant)
+        buildRequestParams(participantsList)
 
+        when:
+        controller.save()
+        def actualItem = ToDoItem.findByName(controller.params.name)
+
+        then:
+        participant == actualItem.participants.get(0)
     }
 }

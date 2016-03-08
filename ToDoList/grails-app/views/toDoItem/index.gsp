@@ -16,11 +16,11 @@
 
 <p>
     <a href="<g:createLink action="create"/>"><g:img dir="images" file="add.png" width="25" height="25" /></a>
-   <span class="newTaskField"> New Task</span>
+   <span class="newToDoField"> New ToDo Item</span>
 </p>
 <p>
     <a href="<g:createLink controller="toDoParticipant" action="create"/>"><g:img dir="images" file="add.png" width="25" height="25" /></a>
-    <span class="newTaskField"> New Participant</span>
+    <span class="newToDoField"> New Participant</span>
 </p>
 </br>
 <div>

@@ -5,8 +5,18 @@ import grails.transaction.Transactional
 @Transactional
 class ToDoItemService {
 
-    def save(toDoItemId, toDoItemData) {
+    def save(toDoItemId, params) {
         def toDoItemInstance = ToDoItem.findById(toDoItemId)
+        def toDoItemData = [:]
+        toDoItemData.name = params.name
+        toDoItemData.description = params.description
+        toDoItemData.location = params.location
+        toDoItemData.startDate = params.startDate
+        toDoItemData.endDate = params.endDate
+        toDoItemData.repeat = params.repeat
+        toDoItemData.remindDate = params.remindDate
+        toDoItemData.priority = params.priority
+        toDoItemData.participant = ToDoParticipant.findByName(params.participant)
         if (toDoItemInstance != null) {
             toDoItemInstance.properties = toDoItemData
             toDoItemInstance.save(failOnError: true)

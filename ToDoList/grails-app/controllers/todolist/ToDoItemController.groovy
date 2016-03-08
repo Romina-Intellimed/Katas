@@ -6,8 +6,10 @@ class ToDoItemController {
     def toDoItemService
 
     def index() {
-        return [toDoListItems: ToDoItem.findAll()]
+        def toDoItems=toDoItemService.getToDoItems()
+        return [toDoListItems: toDoItems]
     }
+
 
     def create() {
     }

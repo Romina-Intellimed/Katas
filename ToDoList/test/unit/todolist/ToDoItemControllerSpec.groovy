@@ -21,30 +21,39 @@ class ToDoItemControllerSpec extends Specification {
     }
 
     void "index returns empty list when no to do items"() {
+        given:
+        def listItems=[]
+        controller.toDoItemService.toDoItems >> listItems
         when:
         def actualListItems = controller.index().toDoListItems
 
         then:
-        assert [] == actualListItems
+        assert listItems == actualListItems
     }
 
     void "index returns list with all created toDoItems"() {
         given:
+        def listItems=[]
+        controller.toDoItemService.toDoItems >> listItems
         def todoItem = new ToDoItem(name: "something").save(failOnError: true)
         def todoItem2 = new ToDoItem(name: "something 2").save(failOnError: true)
-
+        listItems.add(todoItem)
+        listItems.add(todoItem2)
         when:
         def actualListItems = controller.index().toDoListItems
 
         then:
-        assert [todoItem, todoItem2] == actualListItems
+        assert listItems == actualListItems
     }
 
     void "test index returns model"() {
+        given:
+        def listItems=[]
+        controller.toDoItemService.toDoItems >> listItems
         when:
         def toDoItemModel = controller.index()
         then:
-        assert [] == toDoItemModel.toDoListItems
+        assert listItems == toDoItemModel.toDoListItems
 
     }
 
@@ -114,7 +123,7 @@ class ToDoItemControllerSpec extends Specification {
 
     private buildExpectedToDoItemData() {
         def expectedToDoItemData = [:]
-        def participant = new ToDoParticipant(name: "default")
+        def participant = new ToDoParticipant(name: params.participant)
         controller.toDoItemService.getParticipant(params.participant) >> participant
         expectedToDoItemData.name = params.name
         expectedToDoItemData.description = params.description

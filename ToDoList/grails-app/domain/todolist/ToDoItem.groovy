@@ -10,7 +10,7 @@ class ToDoItem {
     Boolean repeat
     String location
     Date remindDate
-
+    ToDoParticipant participant
     PriorityType priority
 
 

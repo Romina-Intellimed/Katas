@@ -39,6 +39,7 @@
         <th><a href="<g:createLink action="sort_byStartDate" id="startDate"/>">Start Date</a></th>
         <th><a href="<g:createLink action="sort_byEndDate" id="endDate"/>">End Date</a></th>
         <th>Repeat</th>
+        <th>Participant</th>
         <th><a href="<g:createLink action="sort_byRemindDate" id=""/>">Remind Date</a></th>
         <th>Priority</th>
         <th>More Actions</th>

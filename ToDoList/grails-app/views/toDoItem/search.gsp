@@ -22,6 +22,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Repeat</th>
+        <th>Participant</th>
         <th>Remind Date</th>
         <th>Priority</th>
         <th>More Actions</th>

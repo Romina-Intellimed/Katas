@@ -114,6 +114,8 @@ class ToDoItemControllerSpec extends Specification {
 
     private buildExpectedToDoItemData() {
         def expectedToDoItemData = [:]
+        def participant = new ToDoParticipant(name: "default")
+        controller.toDoItemService.getParticipant(params.participant) >> participant
         expectedToDoItemData.name = params.name
         expectedToDoItemData.description = params.description
         expectedToDoItemData.location = params.location
@@ -122,6 +124,7 @@ class ToDoItemControllerSpec extends Specification {
         expectedToDoItemData.repeat = params.repeat
         expectedToDoItemData.remindDate = params.remindDate
         expectedToDoItemData.priority = params.priority
+        expectedToDoItemData.participant = participant
         expectedToDoItemData
     }
 
@@ -135,6 +138,7 @@ class ToDoItemControllerSpec extends Specification {
         params.repeat = true
         params.remindDate = new Date()
         params.priority = PriorityType.NORMAL
+        params.particpant = "James"
     }
 
 
@@ -246,15 +250,15 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.sort_byName()
     }
 
-    void "test sortByName renders the right view"(){
+    void "test sortByName renders the right view"() {
         given:
         def toDoSortByNameItems
-        controller.toDoItemService.sort_byName()>>toDoSortByNameItems
+        controller.toDoItemService.sort_byName() >> toDoSortByNameItems
         when:
         controller.sort_byName()
         then:
-        view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByNameItems]
+        view == "/toDoItem/index"
+        model == [helloString: "In Show ToDoList page", toDoListItems: toDoSortByNameItems]
 
     }
 
@@ -266,17 +270,17 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
-    void "test sortByStartDate renders the right view"(){
+    void "test sortByStartDate renders the right view"() {
         given:
         def toDoSortByStartDateItems
-        controller.toDoItemService.sort_byStartDate()>>toDoSortByStartDateItems
+        controller.toDoItemService.sort_byStartDate() >> toDoSortByStartDateItems
 
         when:
         controller.sort_byStartDate()
 
         then:
-        view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByStartDateItems]
+        view == "/toDoItem/index"
+        model == [helloString: "In Show ToDoList page", toDoListItems: toDoSortByStartDateItems]
 
     }
 
@@ -288,17 +292,17 @@ class ToDoItemControllerSpec extends Specification {
     }
 
 
-    void "test sortByEndDate renders the right view"(){
+    void "test sortByEndDate renders the right view"() {
         given:
         def toDoSortByEndDateItems
-        controller.toDoItemService.sort_byEndDate()>>toDoSortByEndDateItems
+        controller.toDoItemService.sort_byEndDate() >> toDoSortByEndDateItems
 
         when:
         controller.sort_byEndDate()
 
         then:
-        view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByEndDateItems]
+        view == "/toDoItem/index"
+        model == [helloString: "In Show ToDoList page", toDoListItems: toDoSortByEndDateItems]
 
     }
 
@@ -310,17 +314,17 @@ class ToDoItemControllerSpec extends Specification {
         1 * controller.toDoItemService.sort_byRemindDate()
     }
 
-    void "test sortByRemindDate renders the right view"(){
+    void "test sortByRemindDate renders the right view"() {
         given:
         def toDoSortByRemindDateItems
-        controller.toDoItemService.sort_byRemindDate()>>toDoSortByRemindDateItems
+        controller.toDoItemService.sort_byRemindDate() >> toDoSortByRemindDateItems
 
         when:
         controller.sort_byRemindDate()
 
         then:
-        view=="/toDoItem/index"
-        model==[helloString: "In Show ToDoList page", toDoListItems: toDoSortByRemindDateItems]
+        view == "/toDoItem/index"
+        model == [helloString: "In Show ToDoList page", toDoListItems: toDoSortByRemindDateItems]
 
     }
 

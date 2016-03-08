@@ -68,4 +68,9 @@ class ToDoItemService {
         def todoListItems = ToDoItem.list(sort: 'remindDate')
         return todoListItems
     }
+
+
+    def getParticipant(participantName){
+        return ToDoParticipant.findByName(participantName)
+    }
 }

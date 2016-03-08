@@ -1,3 +1,5 @@
+package todolist
+
 import grails.test.spock.IntegrationSpec
 import org.codehaus.groovy.grails.support.ParticipatingInterceptor
 import todolist.PriorityType

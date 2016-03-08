@@ -70,10 +70,6 @@ class ToDoItemService {
     }
 
 
-    def getParticipant(participantName) {
-        return ToDoParticipant.findByName(participantName)
-    }
-
 
     def getToDoItems() {
         def toDoItems = ToDoItem.findAll()

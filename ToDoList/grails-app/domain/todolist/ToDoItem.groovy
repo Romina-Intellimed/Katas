@@ -10,7 +10,6 @@ class ToDoItem {
     Boolean repeat
     String location
     Date remindDate
-    ToDoParticipant participant
     PriorityType priority
 
     static hasMany = [participants:ToDoParticipant]
@@ -23,7 +22,6 @@ class ToDoItem {
         location nullable: true
         remindDate nullable: true
         priority nullable: true
-        participant nullable: true
         participants nullable: true
     }
 

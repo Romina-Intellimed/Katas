@@ -9,4 +9,9 @@ class ToDoParticipant {
         age nullable: true
         emailAddress nullable: true
     }
+
+    String toString(){
+        "$name"
+    }
+
 }

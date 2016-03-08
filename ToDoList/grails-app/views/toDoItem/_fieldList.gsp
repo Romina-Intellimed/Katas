@@ -38,6 +38,15 @@
 </p>
 <br/>
 
+
+<p>
+    <label>Participant</label>
+    <g:select name="participant" id ="itemParticipant" from="${todolist.ToDoParticipant.list()}" value="${toDoItemInstance?.participant?.name}"/>
+
+</p>
+<br/>
+
+
 <p>
     <label>Remind Date</label>
     <g:datePicker precision="day" name="remindDate" value="${toDoItemInstance?.remindDate}"/>

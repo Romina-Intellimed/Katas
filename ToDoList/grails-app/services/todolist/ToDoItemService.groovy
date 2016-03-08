@@ -14,7 +14,20 @@ class ToDoItemService {
     }
 
 
-    def addNew(toDoItemData) {
+    def addNew(params) {
+
+        def toDoItemData=[:]
+
+        toDoItemData.name = params.name
+        toDoItemData.description = params.description
+        toDoItemData.location = params.location
+        toDoItemData.startDate = params.startDate
+        toDoItemData.endDate = params.endDate
+        toDoItemData.repeat = params.repeat
+        toDoItemData.remindDate = params.remindDate
+        toDoItemData.priority = params.priority
+
+        toDoItemData.participant = ToDoParticipant.findByName(params.participant)
         def toDoItemInstance = new ToDoItem()
         toDoItemInstance.properties = toDoItemData
         toDoItemInstance.save(failOnError: true)

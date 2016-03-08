@@ -124,7 +124,9 @@ class ToDoItemControllerSpec extends Specification {
     private buildExpectedToDoItemData() {
         def expectedToDoItemData = [:]
         def participant = new ToDoParticipant(name: params.participant)
+        def participants=[]
         controller.toDoItemService.getParticipant(params.participant) >> participant
+        controller.toDoItemService.getToDoParticipants(*_) >>participants
         expectedToDoItemData.name = params.name
         expectedToDoItemData.description = params.description
         expectedToDoItemData.location = params.location
@@ -134,6 +136,7 @@ class ToDoItemControllerSpec extends Specification {
         expectedToDoItemData.remindDate = params.remindDate
         expectedToDoItemData.priority = params.priority
         expectedToDoItemData.participant = participant
+        expectedToDoItemData.participants = participants
         expectedToDoItemData
     }
 

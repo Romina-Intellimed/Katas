@@ -30,8 +30,8 @@ class ToDoItemControllerSpec extends Specification {
 
     void "index returns list with all created toDoItems"() {
         given:
-        def todoItem = new ToDoItem(name: "something").save()
-        def todoItem2 = new ToDoItem(name: "something 2").save()
+        def todoItem = new ToDoItem(name: "something").save(failOnError: true)
+        def todoItem2 = new ToDoItem(name: "something 2").save(failOnError: true)
 
         when:
         def actualListItems = controller.index().toDoListItems

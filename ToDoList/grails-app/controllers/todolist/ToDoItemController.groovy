@@ -6,14 +6,24 @@ class ToDoItemController {
     def toDoItemService
 
     def index() {
-        return [toDoListItems: ToDoItem.findAll(), toDoParticipantList: ToDoParticipant.findAll()]
+        return [toDoListItems: ToDoItem.findAll()]
     }
 
     def create() {
     }
 
     def addNew() {
-        toDoItemService.addNew(params)
+        def toDoItemData=[:]
+
+        toDoItemData.name = params.name
+        toDoItemData.description = params.description
+        toDoItemData.location = params.location
+        toDoItemData.startDate = params.startDate
+        toDoItemData.endDate = params.endDate
+        toDoItemData.repeat = params.repeat
+        toDoItemData.remindDate = params.remindDate
+        toDoItemData.priority = params.priority
+        toDoItemService.addNew(toDoItemData)
 
         redirect action: "index"
     }
@@ -46,7 +56,7 @@ class ToDoItemController {
         toDoItemData.repeat = params.repeat
         toDoItemData.remindDate = params.remindDate
         toDoItemData.priority = params.priority
-        toDoItemService.save(params.id, params)
+        toDoItemService.save(params.id, toDoItemData)
         redirect action: "index"
 
     }

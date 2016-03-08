@@ -22,6 +22,7 @@ class ToDoItem {
         location nullable: true
         remindDate nullable: true
         priority nullable: true
+        participant nullable: true
     }
 
     String toString(){

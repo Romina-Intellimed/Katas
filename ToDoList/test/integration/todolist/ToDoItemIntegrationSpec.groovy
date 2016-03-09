@@ -1,21 +1,16 @@
 package todolist
 
 import grails.test.spock.IntegrationSpec
-import org.codehaus.groovy.grails.support.ParticipatingInterceptor
-import todolist.PriorityType
-import todolist.ToDoItem
-import todolist.ToDoItemController
-import todolist.ToDoParticipant
 
-/**
- * Created by romina on 08.03.2016.
- */
-class UserCanAddMoreParticipantsToAToDoItemSpec extends IntegrationSpec {
+class ToDoItemIntegrationSpec extends IntegrationSpec {
 
     def controller
 
     void setup() {
         controller = new ToDoItemController()
+    }
+
+    def cleanup() {
     }
 
     void "user can create a new to do item with one participant"() {
@@ -30,7 +25,7 @@ class UserCanAddMoreParticipantsToAToDoItemSpec extends IntegrationSpec {
         def actualItem = ToDoItem.findByName(controller.params.name)
 
         then:
-        participant == actualItem.participants.get(0)
+        participant == actualItem.participants.first()
     }
 
 
@@ -48,7 +43,7 @@ class UserCanAddMoreParticipantsToAToDoItemSpec extends IntegrationSpec {
         def actualItem = ToDoItem.findByName(controller.params.name)
 
         then:
-        participantsList == actualItem.participants
+        participantsList == actualItem.participants.sort()
     }
 
     private void buildRequestParams(participantsList) {
@@ -62,33 +57,40 @@ class UserCanAddMoreParticipantsToAToDoItemSpec extends IntegrationSpec {
 
     void "user can add more participants to an existing to do item"() {
         given:
+        def toDoItem=ToDoItem.findByName("Learn Groovy")
         def participantsList = []
         def participant1 = ToDoParticipant.list()[0]
         def participant2 = ToDoParticipant.list()[1]
         participantsList.add(participant1)
         participantsList.add(participant2)
         buildRequestParams(participantsList)
+        controller.params.name=toDoItem.name
+        controller.params.id=toDoItem.id
+
 
         when:
         controller.save()
         def actualItem = ToDoItem.findByName(controller.params.name)
 
         then:
-        participantsList == actualItem.participants
+        participantsList == actualItem.participants.sort()
     }
 
     void "user can add one participant to an existing to do item"() {
         given:
+        def toDoItem=ToDoItem.findByName("Learn Groovy")
         def participant = ToDoParticipant.list()[0]
         def participantsList = []
         participantsList.add(participant)
         buildRequestParams(participantsList)
+        controller.params.name=toDoItem.name
+        controller.params.id=toDoItem.id
 
         when:
         controller.save()
         def actualItem = ToDoItem.findByName(controller.params.name)
 
         then:
-        participant == actualItem.participants.get(0)
+        participant == actualItem.participants.first()
     }
 }

@@ -10,7 +10,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(ToDoItemService)
-@Mock([ToDoItem])
+@Mock([ToDoItem,ToDoParticipant])
 class ToDoItemServiceSpec extends Specification {
     def id
     def todoItemData
@@ -253,6 +253,22 @@ class ToDoItemServiceSpec extends Specification {
         expectedItems == listOfItems
     }
 
+    def createParticipantsList(){
+        def participants=[]
+        participants.add(new ToDoParticipant(name: "John").save(failOnError: true))
+        participants.add(new ToDoParticipant(name: "James").save(failOnError: true))
+        participants.add(new ToDoParticipant(name: "Jake").save(failOnError: true))
+        return participants
+    }
 
+    void "getToDoParticipants called with the right ids will return a list with participants"(){
+        given:
+        def expectedParticipants=createParticipantsList()
+        def idList=expectedParticipants.collect{it.id}
+        when:
+        def actualParticipants=service.getToDoParticipants(idList)
+        then:
+        expectedParticipants==actualParticipants
+    }
 
 }

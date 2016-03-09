@@ -168,11 +168,11 @@ class ToDoItemServiceSpec extends Specification {
 
     def createListOfItems() {
         List listOfItems = []
-        listOfItems.add(new ToDoItem(name: "A", startDate: new Date(), endDate: new Date()+1, priority: PriorityType.HIGH, remindDate: new Date()+1).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "A", startDate: new Date(), endDate: new Date() + 1, priority: PriorityType.HIGH, remindDate: new Date() + 1).save(failOnError: true))
         listOfItems.add(new ToDoItem(name: "B", startDate: new Date(), endDate: new Date(), priority: PriorityType.NORMAL, remindDate: new Date()).save(failOnError: true))
         listOfItems.add(new ToDoItem(name: "C", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()).save(failOnError: true))
-        listOfItems.add(new ToDoItem(name: "AC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()+1).save(failOnError: true))
-        listOfItems.add(new ToDoItem(name: "BC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date()+2).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "AC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date() + 1).save(failOnError: true))
+        listOfItems.add(new ToDoItem(name: "BC", startDate: new Date(), endDate: new Date(), priority: PriorityType.LOW, remindDate: new Date() + 2).save(failOnError: true))
         return listOfItems
     }
 
@@ -203,43 +203,56 @@ class ToDoItemServiceSpec extends Specification {
 
     void "sort_ByName returns an ordered list by name"() {
         given:
-        def items=createListOfItems()
-        def expectedItems=items.sort{it.name}
+        def items = createListOfItems()
+        def expectedItems = items.sort { it.name }
         when:
         def listOfItems = service.sort_byName()
         then:
-        assert expectedItems==listOfItems
+        assert expectedItems == listOfItems
     }
 
 
     void "sort_ByStartDate returns an ordered list by startDate"() {
         given:
-        def items=createListOfItems()
-        def expectedItems=items.sort{it.startDate}
+        def items = createListOfItems()
+        def expectedItems = items.sort { it.startDate }
         when:
         def listOfItems = service.sort_byStartDate()
         then:
-        assert expectedItems==listOfItems
+        assert expectedItems == listOfItems
     }
 
 
     void "sort_ByEndDate returns an ordered list by endDate"() {
         given:
-        def items=createListOfItems()
-        def expectedItems=items.sort{it.endDate}
+        def items = createListOfItems()
+        def expectedItems = items.sort { it.endDate }
         when:
         def listOfItems = service.sort_byEndDate()
         then:
-        assert expectedItems==listOfItems
+        assert expectedItems == listOfItems
     }
 
     void "sort_ByRemindDate returns an ordered list by remindDate"() {
         given:
-        def items=createListOfItems()
-        def expectedItems=items.sort{it.remindDate}
+        def items = createListOfItems()
+        def expectedItems = items.sort { it.remindDate }
         when:
         def listOfItems = service.sort_byRemindDate()
         then:
-        assert expectedItems==listOfItems
+        assert expectedItems == listOfItems
     }
+
+
+    void "getToDoItems returns all the itemsfrom the database"() {
+        given:
+        def expectedItems = createListOfItems()
+        when:
+        def listOfItems = service.getToDoItems()
+        then:
+        expectedItems == listOfItems
+    }
+
+
+
 }

@@ -68,11 +68,9 @@ class ToDoItemIntegrationSpec extends IntegrationSpec {
         buildRequestParams(participantsList)
         controller.params.id=toDoItem.id
 
-
         when:
         controller.save()
         def actualItem = ToDoItem.findById(controller.params.id)
-
 
         then:
         participantsList == actualItem.participants.sort()
@@ -81,9 +79,7 @@ class ToDoItemIntegrationSpec extends IntegrationSpec {
     void "user can add one participant to an existing to do item"() {
         given:
         def toDoItem=ToDoItem.findByName("Learn Groovy")
-        def participant = ToDoParticipant.list()[0]
-        def participantsList = []
-        participantsList.add(participant)
+        def participantsList = [ToDoParticipant.list()[0]]
         buildRequestParams(participantsList)
         controller.params.id=toDoItem.id
 
@@ -92,6 +88,6 @@ class ToDoItemIntegrationSpec extends IntegrationSpec {
         def actualItem = ToDoItem.findById(controller.params.id)
 
         then:
-        participant == actualItem.participants.first()
+        participantsList[0] == actualItem.participants.first()
     }
 }

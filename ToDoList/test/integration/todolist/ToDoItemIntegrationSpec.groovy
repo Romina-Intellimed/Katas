@@ -31,11 +31,7 @@ class ToDoItemIntegrationSpec extends IntegrationSpec {
 
     void "user can create a new to do item with multiple participants"() {
         given:
-        def participantsList = []
-        def participant1 = ToDoParticipant.list()[0]
-        def participant2 = ToDoParticipant.list()[1]
-        participantsList.add(participant1)
-        participantsList.add(participant2)
+        def participantsList=addParticipantsToList()
         buildRequestParams(participantsList)
 
         when:
@@ -55,14 +51,20 @@ class ToDoItemIntegrationSpec extends IntegrationSpec {
         controller.params.participants = list
     }
 
-    void "user can add more participants to an existing to do item"() {
-        given:
-        def toDoItem=ToDoItem.findByName("Learn Groovy")
+    private def addParticipantsToList(){
         def participantsList = []
         def participant1 = ToDoParticipant.list()[0]
         def participant2 = ToDoParticipant.list()[1]
         participantsList.add(participant1)
         participantsList.add(participant2)
+
+        return participantsList
+    }
+
+    void "user can add more participants to an existing to do item"() {
+        given:
+        def toDoItem=ToDoItem.findByName("Learn Groovy")
+        def participantsList = addParticipantsToList()
         buildRequestParams(participantsList)
         controller.params.name=toDoItem.name
         controller.params.id=toDoItem.id

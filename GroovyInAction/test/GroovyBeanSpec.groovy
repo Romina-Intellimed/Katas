@@ -34,10 +34,18 @@ class GroovyBeanSpec extends Specification {
 
     void "test accessors on groovy bean"() {
         given:
-        mrBean=new MrBean(firstName: 'Rowan')
-        mrBean.lastName='Atkinson'
+        mrBean = new MrBean(firstName: 'Rowan')
+        mrBean.lastName = 'Atkinson'
         expect:
-        assert 'Rowan Atkinson'==mrBean.name
+        assert 'Rowan Atkinson' == mrBean.name
+    }
+
+    void "test advanced accessors"() {
+        given:
+        mrBean = new MrBean(value: 100)
+        expect:
+        assert 200 == mrBean.value
+        assert 100 == mrBean.@value
     }
 
 }

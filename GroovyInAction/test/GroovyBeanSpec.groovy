@@ -48,4 +48,22 @@ class GroovyBeanSpec extends Specification {
         assert 100 == mrBean.@value
     }
 
+
+    void "test expando"() {
+        given:
+        def boxer = new Expando();
+        expect:
+        assert null == boxer.takeThis
+        when:
+        boxer.takeThis = 'ouch!'
+        then:
+        assert 'ouch!' == boxer.takeThis
+
+        when:
+        boxer.fightBack = { times -> delegate.takeThis * times }
+        then:
+        assert 'ouch!ouch!ouch!' == boxer.fightBack(3)
+
+    }
+
 }
